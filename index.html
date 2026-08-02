@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f4f1e9">
+  <meta name="theme-color" content="#fff9ed">
   <meta name="description" content="四季好食高齡健康餐盤指南，以四季當令主菜、配菜與湯品輕鬆搭配日常餐盤。">
   <meta property="og:title" content="四季好食｜高齡健康餐盤指南">
   <meta property="og:description" content="跟著季節，以當令主菜、配菜與湯品，輕鬆配成今天的一餐。">
@@ -20,7 +20,7 @@
   <link rel="manifest" href="site.webmanifest">
   <title>四季好食｜高齡健康餐盤指南</title>
   <style>
-    :root{--ink:#31332f;--muted:#73756e;--paper:#f4f1e9;--white:#fffdf8;--line:rgba(49,51,47,.16);--spring:#91a17f;--summer:#b97658;--autumn:#a47e4a;--winter:#708586;--accent:var(--summer)}
+    :root{--ink:#24352f;--muted:#5e655f;--paper:#fff9ed;--white:#fffef9;--line:rgba(36,53,47,.2);--spring:#477f3e;--summer:#b94e28;--autumn:#996300;--winter:#347584;--leaf:#2f6f4f;--sun:#f3c348;--coral:#c15130;--sky:#5f9eae;--accent:var(--summer)}
     *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;font-size:17px;line-height:1.7}button,a{font:inherit;color:inherit}button{cursor:pointer}a{text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #c98f73;outline-offset:3px}
     header{height:76px;padding:0 clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;background:rgba(244,241,233,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.brandmark{width:40px;height:40px;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:serif;font-size:19px}.brandtext{display:flex;flex-direction:column;line-height:1.25}.brandtext b{font-size:15px;letter-spacing:.12em}.brandtext small{font-size:10px;color:var(--muted);letter-spacing:.07em;margin-top:3px}nav{display:flex;gap:30px}nav a{font-size:13px;color:#55574f}
     .header-identity{display:flex;align-items:center;gap:14px;min-width:0}.foundation-link{display:flex;align-items:center;flex:0 0 auto}.foundation-link img{display:block;width:174px;height:auto}.header-divider{width:1px;height:38px;background:var(--line);flex:0 0 auto}nav{gap:24px}
@@ -42,6 +42,143 @@
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.skip-link{position:fixed;left:18px;top:12px;z-index:60;background:var(--ink);color:#fff;padding:11px 16px;transform:translateY(-150%)}.skip-link:focus{transform:translateY(0)}body{font-size:18px}.team-actions{display:flex;align-items:center;gap:14px;margin:0 0 34px}.team-cta{min-height:48px;padding:10px 16px;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:space-between;gap:34px;font-size:16px}.toolbar-actions{display:flex;gap:10px}.toolbar-actions button{min-height:48px;font-size:16px}.reset{border:1px solid var(--line);background:transparent;padding:9px 15px}.seasons button{min-height:72px}.mealmeta{align-items:center}.mealmeta>span:first-child{font-size:13px}.keep{min-height:44px;border:1px solid var(--line);background:transparent;padding:7px 10px;font-size:14px;letter-spacing:0;color:var(--muted)}.keep[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.month{font-size:14px}.meal-actions{gap:8px}.meal-actions button{min-height:44px;padding:8px 4px;font-size:15px;flex:1}.plannerfoot{font-size:14px}.toolleft small{font-size:14px}.staple-current{min-height:44px}.staple-current span{font-size:13px}.staple-current small,.staple-note{font-size:14px}.staple-toggle{min-height:48px;font-size:15px}.staple{min-height:84px}.staple>span,.staple-info small{font-size:12px}.staple-pick{min-height:44px;padding:8px 10px;font-size:14px}.section-title>p{font-size:16px}.menu-number small,.menu-season{font-size:12px}.menu-summary p{font-size:14px}.menu-toggle{min-height:48px;align-items:center;font-size:16px}.row{min-height:64px;padding:10px 0}.row>span{font-size:14px}.row small{font-size:13px}.row .row-arrow{font-size:17px}.apply{min-height:52px;align-items:center;font-size:16px}.carecard ul{font-size:16px}.carecard li{margin:11px 0}.remind,.senior p{font-size:15px}.note p{font-size:16px}.disclaimer{font-size:14px}.dialog-close{width:44px;height:44px}.dialog-category,.dialog-field h3{font-size:13px}.dialog-field p{font-size:18px}.dialog-note{font-size:14px}.click-hint{font-size:13px}.plate-summary{max-width:1280px;margin:22px auto 0;padding:28px;background:var(--white);border:1px solid var(--line)}.summary-head{display:flex;justify-content:space-between;align-items:end;gap:28px}.summary-head h3{font:500 30px/1.3 "Noto Serif TC","Songti TC",serif;margin:0}.summary-head p:last-child{max-width:430px;margin:0;color:var(--muted);font-size:15px}.plate-list{list-style:none;padding:0;margin:24px 0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.plate-list li{min-height:88px;padding:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}.plate-list span{color:var(--muted);font-size:13px}.plate-list b{font:600 18px serif}.summary-actions{display:flex;gap:10px;flex-wrap:wrap}.summary-actions button{min-height:48px;padding:9px 16px;border:1px solid var(--ink);background:transparent;font-size:16px}.summary-actions button.primary{background:var(--ink);color:#fff}.action-status{min-height:1.7em;margin:12px 0 0;color:var(--accent);font-size:14px}.source-details{max-width:1280px;margin:28px auto 0;border-top:1px solid rgba(49,51,47,.28);border-bottom:1px solid rgba(49,51,47,.28)}.source-details summary{min-height:56px;padding:12px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-weight:600;list-style:none}.source-details summary::-webkit-details-marker{display:none}.source-details summary:after{content:"＋";font-size:22px;font-weight:400}.source-details[open] summary:after{content:"－"}.source-content{padding:0 0 24px;display:grid;grid-template-columns:.7fr 1.3fr;gap:36px}.source-meta{font-size:15px;color:#55574f}.source-meta p{margin:6px 0}.source-content ul{margin:0;padding-left:20px}.source-content li{margin:7px 0}.source-content a{text-decoration:underline;text-underline-offset:3px}.source-note{grid-column:1/-1;margin:0;color:var(--muted);font-size:14px}.mobile-nav{display:none}.mobile-nav a{display:flex;align-items:center;justify-content:center;text-align:center}
     @media(max-width:700px){body{font-size:18px;padding-bottom:68px}.mobile-nav{position:fixed;z-index:45;left:0;right:0;bottom:0;height:64px;padding:0 8px;background:rgba(255,253,248,.97);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);backdrop-filter:blur(12px)}.mobile-nav a{min-height:56px;font-size:14px}.team-actions{margin-bottom:28px}.team-cta{width:100%}.toolbar-actions{display:grid;grid-template-columns:1fr 1fr}.toolbar-actions button{width:100%}.meal{padding:20px}.meal-actions button{font-size:16px}.staple-toggle{font-size:16px}.plate-summary{margin-top:18px;padding:22px 18px}.summary-head{align-items:start;flex-direction:column;gap:10px}.plate-list{grid-template-columns:1fr}.plate-list li{min-height:72px}.summary-actions{display:grid;grid-template-columns:1fr;width:100%}.summary-actions button{width:100%}.source-content{grid-template-columns:1fr;gap:18px}.source-note{grid-column:1}.carecard ul,.note p{font-size:17px}.disclaimer{font-size:15px}.dialog-note{font-size:15px}}
+
+    /* 熟齡友善的高明度配色：用清楚色塊辨識資訊，同時保留留白與秩序。 */
+    body{font-size:19px;background:var(--paper);color:var(--ink)}
+    header{background:rgba(255,249,237,.95);border-bottom:2px solid rgba(47,111,79,.18)}
+    nav a{font-size:15px;font-weight:700;color:#3d5048}
+    nav a:hover{color:var(--coral)}
+    .eyebrow{font-size:13px;color:#52635b}
+    .brandmark{background:var(--leaf);border-radius:12px}
+    .hero{min-height:auto;padding-top:82px;padding-bottom:88px}
+    .hero h2 em{color:#bd4e2a}
+    .intro{color:#46554e;font-size:clamp(19px,1.45vw,22px)}
+    .hero button,.team-cta{min-height:56px;border-radius:999px;background:var(--leaf);border-color:var(--leaf);font-size:18px;font-weight:700;box-shadow:0 10px 24px rgba(47,111,79,.18)}
+    .team-cta{background:var(--coral)}
+    .stats{border-top:3px solid var(--sun)}
+    .stats b{font-size:30px;color:var(--leaf)}
+    .stats small{font-size:14px;color:#536159}
+    .visual{border-radius:30px;border:2px solid rgba(36,53,47,.12);box-shadow:0 22px 50px rgba(69,77,58,.14);overflow:hidden}
+    .visual.spring{background:linear-gradient(145deg,#9fd47e,#e7f3bc)}
+    .visual.summer{background:linear-gradient(145deg,#ef8a54,#f7ce74)}
+    .visual.autumn{background:linear-gradient(145deg,#e7ad3d,#f2d49b)}
+    .visual.winter{background:linear-gradient(145deg,#69a9b7,#c9e4df)}
+    .visualmeta{font-size:12px;color:#294438}
+    .plate{background:rgba(255,254,249,.94);box-shadow:0 24px 54px rgba(50,65,48,.18),inset 0 0 0 22px rgba(255,255,255,.46),inset 0 0 0 24px rgba(36,53,47,.1)}
+    .plate>span:first-child{background:var(--leaf)}
+
+    .team{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff9ed 0%,#fff3d8 100%)}
+    .team-wrap{grid-template-columns:.9fr 1.1fr;border:0;border-radius:30px;overflow:hidden;box-shadow:0 22px 55px rgba(49,71,55,.13)}
+    .team-identity{position:relative;align-items:center;text-align:center;gap:20px;padding:clamp(34px,4.5vw,58px);overflow:hidden;background:linear-gradient(150deg,#dcefc8 0%,#f7e5a5 58%,#f4c77d 100%)}
+    .team-identity::before,.team-identity::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.33)}
+    .team-identity::before{width:280px;height:280px;left:-120px;top:28%}
+    .team-identity::after{width:190px;height:190px;right:-80px;bottom:-60px}
+    .team-identity>a{position:relative;z-index:1;width:min(100%,350px);padding:16px 20px;border-radius:20px;background:rgba(255,254,249,.78);box-shadow:0 8px 24px rgba(47,82,54,.1)}
+    .team-visual-wrap{position:relative;z-index:1;width:100%;margin:0;display:grid;justify-items:center}
+    .team-visual-wrap::before{content:"";position:absolute;z-index:-1;width:min(74vw,340px);aspect-ratio:1;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-53%);background:rgba(255,252,226,.58);border:2px solid rgba(255,255,255,.7)}
+    .team-visual{display:block;width:min(100%,360px)!important;height:auto;filter:drop-shadow(0 16px 18px rgba(45,69,49,.18))}
+    .team-visual-wrap figcaption{max-width:360px;margin-top:4px;color:#355744;font-size:16px;font-weight:700;letter-spacing:.04em}
+    .foundation-name{position:relative;z-index:1;color:#3d5b4a;font-size:14px;font-weight:700}
+    .team-copy{background:var(--white)}
+    .team-lead{color:#46554e;font-size:18px}
+    .team-points{gap:10px;border:0}
+    .team-point{min-height:112px;border:0;border-radius:16px;padding:18px 20px}
+    .team-point:nth-child(1){background:#e5f2d8}
+    .team-point:nth-child(2){background:#fff0bd}
+    .team-point:nth-child(3){background:#f9d7c7}
+    .team-point:nth-child(4){background:#dceef1}
+    .team-point span{font-size:12px;color:#52635b}
+    .team-point b{font-size:19px}
+    .team-credit{font-size:15px}
+
+    .seasons{gap:12px;padding:18px clamp(20px,5vw,72px);border:0;background:var(--white)}
+    .seasons button,.seasons button:last-child{min-height:84px;border:2px solid color-mix(in srgb,var(--color) 38%,white);border-radius:16px;background:color-mix(in srgb,var(--color) 12%,white);padding:18px clamp(14px,2vw,28px)}
+    .seasons button.active{color:#fff;background:var(--color);box-shadow:0 10px 24px color-mix(in srgb,var(--color) 28%,transparent)}
+    .seasons button.active small{color:#fff}
+    .seasons button.active:after{display:none}
+    .seasons button.active .dot{background:#fff}
+    .dot{width:13px;height:13px}
+    .seasons b{font-size:23px}
+    .seasons small{font-size:14px;color:#4d5953}
+
+    section.block{padding-top:88px;padding-bottom:88px}
+    #planner{background:#fff8e9}
+    .planner{border:0;border-radius:22px;overflow:hidden;box-shadow:0 18px 42px rgba(59,70,55,.11)}
+    .toolbar{padding:24px 28px;background:#fff0bf}
+    .seasonbadge{width:56px;height:56px;border-radius:50%;font-size:26px;box-shadow:0 7px 16px color-mix(in srgb,var(--accent) 28%,transparent)}
+    .cards{gap:10px;padding:10px;background:#f2ead8}
+    .meal{min-height:315px;border:0;border-top:6px solid var(--sun);border-radius:14px;background:var(--white);box-shadow:0 5px 14px rgba(45,58,48,.06)}
+    .meal:nth-child(2){border-top-color:var(--coral)}
+    .meal:nth-child(3){border-top-color:#63a257}
+    .meal:nth-child(4){border-top-color:var(--sky)}
+    .meal:nth-child(5){border-top-color:#557eb0}
+    .meal:hover{background:#fff9e9}
+    .plannerfoot{padding:17px 24px;background:#e8f1df;color:#45594c;font-size:15px}
+    .staple-assist{background:#fff2c8}
+    .staple{border-color:rgba(36,53,47,.18)}
+    .plate-summary{border:0;border-radius:22px;box-shadow:0 14px 35px rgba(59,70,55,.09)}
+    .summary-actions button{border-radius:999px;font-weight:700}
+    .summary-actions button.primary{background:var(--coral);border-color:var(--coral)}
+
+    .menus{background:#edf6e8}
+    .menu{border:2px solid rgba(76,135,66,.22);border-radius:18px;box-shadow:0 10px 24px rgba(53,83,56,.07)}
+    .menu-number b{color:var(--leaf)}
+    .care{background:#fff1c9}
+    .principle{border-radius:18px;background:var(--leaf);box-shadow:0 14px 30px rgba(47,111,79,.15)}
+    .principle p{color:#f1f4e9}
+    .carecard{border:0;border-top:7px solid var(--card);border-radius:18px;box-shadow:0 10px 26px rgba(71,67,47,.08)}
+    .seal{width:58px;height:58px;background:color-mix(in srgb,var(--card) 18%,white);font-size:23px;font-weight:700}
+    .carehead small{font-size:11px}
+    .senior{border-left:7px solid var(--coral);border-radius:14px;background:#fde0d1}
+    .gentle{background:#e7f1ef}
+    .notes{gap:12px;border:0}
+    .note{border:0;border-radius:18px;background:var(--white);box-shadow:0 8px 22px rgba(55,75,65,.07)}
+    .note:nth-child(1) span{background:#e5f2d8;border-color:#76a66d}
+    .note:nth-child(2) span{background:#fff0bd;border-color:#d5a52a}
+    .note:nth-child(3) span{background:#f9d7c7;border-color:#d57b59}
+
+    .site-guide{padding:80px clamp(22px,7vw,102px);background:linear-gradient(135deg,#f5cf65 0%,#f0a65d 52%,#e98662 100%)}
+    .guide-wrap{max-width:1280px;margin:auto}
+    .guide-head{max-width:760px;margin-bottom:34px}
+    .guide-head h2{margin:0;font:600 clamp(34px,4vw,52px)/1.3 "Noto Serif TC","Songti TC",serif;color:#2d473a}
+    .guide-head p:last-child{font-size:18px;color:#3f554a}
+    .guide-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .guide-steps li{min-height:160px;padding:24px;border-radius:20px;background:rgba(255,254,249,.9);display:grid;grid-template-columns:58px 1fr;gap:16px;align-items:start;box-shadow:0 12px 26px rgba(104,67,34,.11)}
+    .guide-steps>li>span{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--leaf);color:#fff;font:700 25px serif}
+    .guide-steps li:nth-child(2)>span{background:var(--coral)}
+    .guide-steps li:nth-child(3)>span{background:var(--sky)}
+    .guide-steps b{font:600 22px serif}
+    .guide-steps p{margin:6px 0 0;color:#4f5f57;font-size:16px}
+
+    .site-footer{display:block;position:relative;padding:0;background:#204f3c;color:#fff9e8}
+    .site-footer::before{content:"";display:block;height:12px;background:linear-gradient(90deg,#63a257 0 25%,#f3c348 25% 50%,#df6b43 50% 75%,#5f9eae 75%)}
+    .footer-main{max-width:1380px;margin:auto;padding:58px clamp(24px,6vw,84px) 44px;display:grid;grid-template-columns:1.1fr .7fr 1.35fr;gap:clamp(34px,5vw,76px);align-items:start}
+    .footer-logo-card{display:inline-flex;max-width:330px;padding:17px 20px;border-radius:16px;background:#fffef9}
+    .footer-logo-card img{display:block;width:100%;height:auto}
+    .footer-tagline{max-width:410px;margin:24px 0 10px;font:600 24px/1.6 "Noto Serif TC","Songti TC",serif;color:#fff}
+    .site-footer p{font-size:16px;color:#dce9de}
+    .footer-title{margin:0 0 18px;font-size:20px;color:#f8d66f}
+    .footer-links{display:grid!important;gap:4px}
+    .footer-links a,.footer-sources a{min-height:46px;display:flex;align-items:center;font-size:17px;font-weight:700;color:#fff}
+    .footer-links a:hover,.footer-sources a:hover{text-decoration:underline;text-underline-offset:4px}
+    .footer-sources{list-style:none;padding:0;margin:0}
+    .footer-sources li{border-top:1px solid rgba(255,255,255,.2)}
+    .footer-source-note{margin:18px 0 0}
+    .footer-bottom{max-width:1380px;margin:auto;padding:22px clamp(24px,6vw,84px) 30px;border-top:1px solid rgba(255,255,255,.22);display:grid;grid-template-columns:1fr 1fr auto;gap:24px;align-items:center}
+    .footer-bottom p{margin:0;font-size:15px}
+    .footer-bottom a{min-height:48px;display:flex;align-items:center;font-size:17px;font-weight:700;color:#fff}
+
+    @media(max-width:980px){
+      .footer-main{grid-template-columns:1fr 1fr}.footer-source-column{grid-column:1/-1}
+      .guide-steps{grid-template-columns:1fr}.guide-steps li{min-height:auto}
+    }
+    @media(max-width:700px){
+      body{font-size:18px}.hero{padding-top:58px}.visual{border-radius:20px}.seasons{gap:8px;padding:12px}.seasons button,.seasons button:last-child{min-height:78px;padding:14px}.seasons b{font-size:21px}
+      .team-wrap{border-radius:20px}.team-identity{padding:28px 20px}.team-identity>a{width:min(100%,300px)}.team-visual{width:min(100%,300px)!important}.team-visual-wrap::before{width:260px}.team-visual-wrap figcaption{font-size:17px}.team-copy{padding:32px 24px}.team-lead{font-size:18px}.team-point b{font-size:19px}
+      .cards{display:grid;grid-template-columns:1fr;padding:9px}.meal{min-height:230px;border-bottom:0}.toolbar{padding:20px}.section-title>p{font-size:17px}
+      .site-guide{padding:62px 20px}.guide-head p:last-child{font-size:17px}.guide-steps li{grid-template-columns:52px 1fr;padding:21px}.guide-steps>li>span{width:52px;height:52px}.guide-steps p{font-size:17px}
+      .footer-main{grid-template-columns:1fr;padding:46px 24px 34px}.footer-source-column{grid-column:auto}.footer-logo-card{max-width:290px}.footer-tagline{font-size:23px}.site-footer p{font-size:16px}.footer-links a,.footer-sources a{font-size:18px;min-height:50px}.footer-bottom{grid-template-columns:1fr;padding:24px 24px 34px}.footer-bottom p{font-size:16px}.mobile-nav{background:rgba(255,249,237,.98)}.mobile-nav a{font-size:15px;font-weight:700}
+    }
   </style>
 </head>
 <body>
@@ -52,7 +189,19 @@
   </header>
   <main id="top">
     <h1 class="sr-only">四季好食｜高齡健康餐盤指南</h1>
-    <section class="block team" id="team"><div class="team-wrap"><div class="team-identity"><a href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><p class="foundation-name">HSIN KANG FOUNDATION OF CULTURE &amp; EDUCATION</p></div><div class="team-copy"><p class="eyebrow">WHO WE ARE · WHY WE MADE THIS</p><h2>「新時代．新港覺」</h2><p class="team-lead">我們是「新時代．新港覺」。為了讓高齡者與家人更容易理解當季飲食與餐盤搭配，我們以「吃當季、吃當地」為核心，將四季食材、建議份量、營養提醒、食物質地與三高照護整理成一份可翻閱的指南，以及一個能動手配餐的互動網站。</p><div class="team-actions"><a class="team-cta" href="#planner">直接開始配餐 <span aria-hidden="true">→</span></a></div><div class="team-points"><div class="team-point"><span>01｜SEASON</span><b>四季當令食材</b></div><div class="team-point"><span>02｜BALANCE</span><b>份量與營養搭配</b></div><div class="team-point"><span>03｜TEXTURE</span><b>熟齡友善質地</b></div><div class="team-point"><span>04｜INTERACTION</span><b>可操作的配餐設計</b></div></div><p class="team-credit">編製團隊｜<strong>「新時代．新港覺」</strong></p></div></div></section>
+    <section class="block team" id="team">
+      <div class="team-wrap">
+        <div class="team-identity">
+          <a href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a>
+          <figure class="team-visual-wrap">
+            <picture><source srcset="assets/four-seasons-plate-visual.webp" type="image/webp"><img class="team-visual" src="assets/four-seasons-plate-visual.png" width="900" height="900" alt="以春夏秋冬色彩構成的四季餐盤視覺" fetchpriority="high"></picture>
+            <figcaption>四季的顏色，盛進長輩每天的一餐</figcaption>
+          </figure>
+          <p class="foundation-name">HSIN KANG FOUNDATION OF CULTURE &amp; EDUCATION</p>
+        </div>
+        <div class="team-copy"><p class="eyebrow">WHO WE ARE · WHY WE MADE THIS</p><h2>「新時代．新港覺」</h2><p class="team-lead">我們是「新時代．新港覺」。為了讓高齡者與家人更容易理解當季飲食與餐盤搭配，我們以「吃當季、吃當地」為核心，將四季食材、建議份量、營養提醒、食物質地與三高照護整理成一份可翻閱的指南，以及一個能動手配餐的互動網站。</p><div class="team-actions"><a class="team-cta" href="#planner">直接開始配餐 <span aria-hidden="true">→</span></a></div><div class="team-points"><div class="team-point"><span>01｜SEASON</span><b>四季當令食材</b></div><div class="team-point"><span>02｜BALANCE</span><b>份量與營養搭配</b></div><div class="team-point"><span>03｜TEXTURE</span><b>熟齡友善質地</b></div><div class="team-point"><span>04｜INTERACTION</span><b>可操作的配餐設計</b></div></div><p class="team-credit">編製團隊｜<strong>「新時代．新港覺」</strong></p></div>
+      </div>
+    </section>
     <section class="hero">
       <div><p class="eyebrow">SEASONAL TABLE</p><h2>跟著季節，<br><em>好好吃一餐。</em></h2><p class="intro">專為熟齡日常整理的四季餐盤。選一個季節，讓當令主菜、配菜與湯品，輕鬆配成今天的一餐。</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
       <div class="visual summer" id="visual"><div class="visualmeta"><span id="season-en">SUMMER</span><span id="season-month">6—8月</span></div><div class="plate"><span id="season-char">夏</span><span class="orbit o1" id="season-cue">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div><div class="visualmeta"><span>旬の食卓</span><span>自然 · 簡單 · 適量</span></div></div>
@@ -65,10 +214,38 @@
       <article class="carecard" style="--card:#b98755"><div class="carehead"><span class="seal">糖</span><div><small>HIGH BLOOD SUGAR</small><h3>血糖偏高</h3></div></div><p class="lead">主食固定量，不空腹也不集中吃。</p><ul><li>每餐主食份量盡量固定，避免續飯。</li><li>飯類與粥類都屬主食，仍應依個人醫囑控制每餐份量。</li><li>水果整份吃、不打成果汁，飲料選無糖。</li></ul><div class="remind">地瓜、南瓜、玉米也含醣，入菜時主食可依醫囑調整。</div></article>
       <article class="carecard" style="--card:#7d9292"><div class="carehead"><span class="seal">脂</span><div><small>HIGH BLOOD LIPIDS</small><h3>血脂偏高</h3></div></div><p class="lead">少肥肉與油炸，多豆類、魚類和蔬菜。</p><ul><li>主菜優先選豆製品、魚類或去皮瘦肉。</li><li>減少肥肉、動物皮及高油加工食品。</li><li>多清蒸、水煮、燉煮，少油炸與勾芡。</li></ul><div class="remind">煎魚可改少油香煎或清蒸，肉類去除可見脂肪再料理。</div></article>
     </div><div class="senior"><b>長者特別提醒｜控制三高，不等於什麼都少吃</b><p>高齡者仍需要足夠熱量與蛋白質維持肌力。若近期體重下降、食慾差，或同時有腎臟病、正在使用胰島素及降血糖藥物，請先和醫師或營養師確認。</p></div></section>
-    <section class="block gentle" id="notes"><div class="section-title"><div><p class="eyebrow">GENTLE REMINDER</p><h2>吃得剛好，也吃得安心</h2></div></div><div class="notes"><article class="note"><span>一</span><h3>食材切小、煮軟</h3><p>依牙口與咀嚼能力調整大小和軟硬度，讓每一口更容易入口。</p></article><article class="note"><span>二</span><h3>口味清淡、香氣保留</h3><p>善用薑、蒜、香菇等天然香氣，減少過重的鹽分與調味。</p></article><article class="note"><span>三</span><h3>少量多樣、慢慢吃</h3><p>每餐保留不同食物種類，依食慾調整份量，不勉強一次吃完。</p></article></div><p class="disclaimer">本指南提供一般餐點靈感，不取代個別營養或醫療建議。若有慢性病、吞嚥困難或特殊飲食限制，請依醫師或營養師建議調整。</p><details class="source-details" id="sources"><summary>資料來源與編製資訊</summary><div class="source-content"><div class="source-meta"><p><strong>編製團隊｜</strong>「新時代．新港覺」</p><p><strong>內容更新｜</strong>2026年8月2日</p><p><strong>內容基礎｜</strong>Canva《高齡健康餐盤飲食指南》</p></div><ul><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">衛生福利部國民健康署｜我的餐盤手冊</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">衛生福利部國民健康署｜質地調整飲食</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">衛生福利部國民健康署｜積極管理三高，打造健康新生活</a></li></ul><p class="source-note">份量與營養內容為一般衛教及餐點搭配參考，未經個別醫療評估；實際飲食仍應依健康狀況與醫師或營養師建議調整。</p></div></details></section>
+    <section class="block gentle" id="notes"><div class="section-title"><div><p class="eyebrow">GENTLE REMINDER</p><h2>吃得剛好，也吃得安心</h2></div></div><div class="notes"><article class="note"><span>一</span><h3>食材切小、煮軟</h3><p>依牙口與咀嚼能力調整大小和軟硬度，讓每一口更容易入口。</p></article><article class="note"><span>二</span><h3>口味清淡、香氣保留</h3><p>善用薑、蒜、香菇等天然香氣，減少過重的鹽分與調味。</p></article><article class="note"><span>三</span><h3>少量多樣、慢慢吃</h3><p>每餐保留不同食物種類，依食慾調整份量，不勉強一次吃完。</p></article></div><p class="disclaimer">本指南提供一般餐點靈感，不取代個別營養或醫療建議。若有慢性病、吞嚥困難或特殊飲食限制，請依醫師或營養師建議調整。</p></section>
+    <section class="site-guide" aria-labelledby="guide-title">
+      <div class="guide-wrap">
+        <div class="guide-head"><p class="eyebrow">QUICK START</p><h2 id="guide-title">三步，配好今天這一餐</h2><p>不用一次讀完所有內容，照著下面三個步驟，就能慢慢找到適合今天的餐盤。</p></div>
+        <ol class="guide-steps">
+          <li><span>1</span><div><b>先選季節</b><p>點選春、夏、秋、冬，只看當季適合的主菜、配菜與湯品。</p></div></li>
+          <li><span>2</span><div><b>點料理看資訊</b><p>點料理名稱，就能用大字查看建議份量與營養提醒。</p></div></li>
+          <li><span>3</span><div><b>保留喜歡的餐盤</b><p>固定喜歡的料理，再更換其他菜色；完成後可分享給家人。</p></div></li>
+        </ol>
+      </div>
+    </section>
   </main>
   <dialog id="food-dialog" aria-labelledby="dialog-food-name"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><p class="dialog-category" id="dialog-category"></p><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依 Canva《高齡健康餐盤飲食指南》整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></dialog>
-  <footer><a class="footer-foundation" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><p>編製團隊｜「新時代．新港覺」</p><p>吃當季 · 吃多樣 · 吃得剛剛好</p><a href="#top">回到頁首 ↑</a></footer>
+  <footer class="site-footer" id="sources">
+    <div class="footer-main">
+      <div class="footer-brand-column">
+        <a class="footer-logo-card" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a>
+        <p class="footer-tagline">吃當季・吃多樣・吃得剛剛好</p>
+        <p>由「新時代．新港覺」編製，陪長輩和家人更輕鬆地討論每天的一餐。</p>
+      </div>
+      <div class="footer-link-column">
+        <h2 class="footer-title">快速前往</h2>
+        <nav class="footer-links" aria-label="頁尾快速導覽"><a href="#team">我們是誰</a><a href="#planner">開始配餐</a><a href="#menus">參考菜單</a><a href="#care">三高提醒</a><a href="#notes">飲食提醒</a></nav>
+      </div>
+      <div class="footer-source-column">
+        <h2 class="footer-title">資料來源與編製資訊</h2>
+        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li></ul>
+        <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>內容更新｜2026年8月2日</p><p>內容基礎｜Canva《高齡健康餐盤飲食指南》</p><a href="#top">回到頁首 ↑</a></div>
+  </footer>
   <nav class="mobile-nav" aria-label="手機快速導覽"><a href="#planner">配一餐</a><a href="#menus">看菜單</a><a href="#care">三高提醒</a><a href="#top">回到頁首</a></nav>
   <script>
     const staples=["糙米飯","地瓜飯","五穀飯","白米飯","藜麥飯","紫米飯","胚芽米飯","小米粥","燕麥粥","糙米粥","五穀粥","蕎麥粥"];
@@ -135,19 +312,19 @@
       "南瓜濃湯":{portion:"約1碗（約240毫升）",nutrition:"富含β-胡蘿蔔素、膳食纖維及維生素 A，有助維持視力與免疫健康；建議減少奶油與鹽分，降低熱量攝取。"}
     };
     const S={
-      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#91a17f",desc:"春筍、蘆筍與嫩綠蔬菜，吃進清爽的季節氣息。",menus:[
+      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#477f3e",desc:"春筍、蘆筍與嫩綠蔬菜，吃進清爽的季節氣息。",menus:[
         [["清蒸鱸魚","11—3月"],["清炒菠菜","11—3月"],["春筍炒肉絲","3—5月"],["海帶芽豆腐湯","2—4月"]],
         [["滷瘦肉",""],["青花菜炒魷魚","11—4月／4—9月"],["胡蘿蔔炒蛋","12—4月"],["香菇雞湯","12—3月"]],
         [["蘿蔔燉豬肉",""],["皮蛋地瓜葉","4—11月"],["蝦仁炒蘆筍","3—6月"],["蘿蔔排骨湯","11—3月"]]]},
-      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#b97658",desc:"瓜果、秋葵與莧菜輪番上桌，清爽也有飽足感。",menus:[
+      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#b94e28",desc:"瓜果、秋葵與莧菜輪番上桌，清爽也有飽足感。",menus:[
         [["蒜苗鹹豬肉",""],["清炒空心菜","5—10月"],["玉米筍炒菇","7—9月"],["冬瓜蛤蜊湯","4—10月"]],
         [["洋蔥炒雞肉",""],["絲瓜炒蛋","5—9月"],["涼拌秋葵","5—9月"],["苦瓜排骨湯","5—9月"]],
         [["香煎虱目魚",""],["涼拌茄子","5—11月"],["清炒紅莧菜","5—10月"],["絲瓜豆腐湯","5—9月"]]]},
-      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#a47e4a",desc:"南瓜、菱角與栗子入菜，用溫潤滋味迎接轉涼。",menus:[
+      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#996300",desc:"南瓜、菱角與栗子入菜，用溫潤滋味迎接轉涼。",menus:[
         [["清蒸鯛魚片","9—11月"],["花椰菜炒蝦仁",""],["南瓜燴菇",""],["栗子雞腿湯",""]],
         [["馬鈴薯燉肉",""],["清炒高麗菜",""],["三杯杏鮑菇",""],["菱角香菇雞湯",""]],
         [["南瓜咖喱雞",""],["芹菜炒肉絲","10—4月"],["蒜炒青江菜","9—4月"],["蓮藕排骨湯","5—10月"]]]},
-      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#708586",desc:"根莖與暖湯成為主角，讓冬日餐桌溫暖而安定。",menus:[
+      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#347584",desc:"根莖與暖湯成為主角，讓冬日餐桌溫暖而安定。",menus:[
         [["香煎鮭魚","9—12月"],["青江菜炒豆皮","9—4月"],["菠菜炒羊肉",""],["蘿蔔牛腩湯",""]],
         [["薑絲鱈魚片",""],["台式白菜滷","9—4月"],["番茄炒蛋","12—4月"],["麻油雞湯",""]],
         [["照燒松阪豬",""],["蒜炒油菜","11—3月"],["山藥炒菇",""],["南瓜濃湯",""]]]}
@@ -190,7 +367,7 @@
     function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `四季好食｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
     async function copyPlate(){const text=plateText();try{await navigator.clipboard.writeText(text)}catch(error){const area=document.createElement("textarea");area.value=text;area.style.position="fixed";area.style.opacity="0";document.body.appendChild(area);area.select();document.execCommand("copy");area.remove()}document.getElementById("share-status").textContent="餐盤文字已複製。"}
     async function sharePlate(){if(navigator.share){try{await navigator.share({title:"四季好食｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
-    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#f4f1e9";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#31332f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("四季好食",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#73756e";ctx.fillText("吃當季・吃多樣・吃得剛剛好",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffdf8";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#31332f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#73756e";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#73756e";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#31332f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新時代．新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`四季好食-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
+    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("四季好食",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("吃當季・吃多樣・吃得剛剛好",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新時代．新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`四季好食-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
     loadState();
     Object.entries(S).forEach(([k,s])=>document.getElementById("season-tabs").insertAdjacentHTML("beforeend",`<button type="button" data-key="${k}" aria-pressed="false" aria-label="${s.label}季，${s.months}" style="--color:${s.color}" onclick="changeSeason('${k}')"><span class="dot" aria-hidden="true"></span><b>${s.label}季</b><small>${s.months}</small></button>`));
     staples.forEach((x,i)=>document.getElementById("staples").insertAdjacentHTML("beforeend",`<div class="staple"><span>${String(i+1).padStart(2,"0")}</span><button type="button" class="staple-info" data-food="${x}" data-category="主食"><b>${x}</b><small>查看份量與營養 ↗</small></button><button type="button" class="staple-pick" aria-pressed="false" onclick="selectStaple(${i})">選入</button></div>`));
