@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f1e9"/>
+  <rect x="0" y="0" width="18" height="630" fill="#b97658"/>
+  <image href="hkfce-logo.svg" x="76" y="58" width="250" height="75"/>
+  <text x="76" y="246" fill="#31332f" font-family="Noto Serif TC" font-size="78" font-weight="600">四季好食</text>
+  <text x="80" y="309" fill="#5d5e57" font-family="Noto Sans TC" font-size="32" letter-spacing="3">高齡健康餐盤指南</text>
+  <line x1="80" y1="360" x2="564" y2="360" stroke="#31332f" stroke-opacity=".22"/>
+  <text x="80" y="421" fill="#795f49" font-family="Noto Serif TC" font-size="34">跟著季節，好好吃一餐。</text>
+  <text x="80" y="496" fill="#73756e" font-family="Noto Sans TC" font-size="20">吃當季・吃多樣・吃得剛剛好</text>
+  <text x="80" y="548" fill="#73756e" font-family="Noto Sans TC" font-size="18">編製團隊｜「新時代．新港覺」</text>
+  <rect x="665" y="0" width="535" height="630" fill="#e5ded2"/>
+  <circle cx="930" cy="315" r="210" fill="#fffdf8" stroke="#31332f" stroke-opacity=".12" stroke-width="2"/>
+  <circle cx="930" cy="315" r="164" fill="#f4f1e9" stroke="#31332f" stroke-opacity=".10" stroke-width="20"/>
+  <circle cx="930" cy="315" r="76" fill="#31332f"/>
+  <text x="930" y="340" text-anchor="middle" fill="#fffdf8" font-family="Noto Serif TC" font-size="72">時</text>
+  <circle cx="930" cy="124" r="16" fill="#91a17f"/>
+  <circle cx="1121" cy="315" r="16" fill="#b97658"/>
+  <circle cx="930" cy="506" r="16" fill="#a47e4a"/>
+  <circle cx="739" cy="315" r="16" fill="#708586"/>
+  <text x="930" y="178" text-anchor="middle" fill="#5d5e57" font-family="Noto Sans TC" font-size="20">春</text>
+  <text x="1066" y="322" text-anchor="middle" fill="#5d5e57" font-family="Noto Sans TC" font-size="20">夏</text>
+  <text x="930" y="463" text-anchor="middle" fill="#5d5e57" font-family="Noto Sans TC" font-size="20">秋</text>
+  <text x="794" y="322" text-anchor="middle" fill="#5d5e57" font-family="Noto Sans TC" font-size="20">冬</text>
+</svg>

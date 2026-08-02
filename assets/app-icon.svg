@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="92" fill="#f4f1e9"/>
+  <circle cx="256" cy="256" r="170" fill="#fffdf8" stroke="#31332f" stroke-opacity=".14" stroke-width="22"/>
+  <circle cx="256" cy="256" r="92" fill="#31332f"/>
+  <text x="256" y="291" text-anchor="middle" fill="#fffdf8" font-family="Noto Serif TC" font-size="116">時</text>
+  <circle cx="256" cy="74" r="18" fill="#91a17f"/>
+  <circle cx="438" cy="256" r="18" fill="#b97658"/>
+  <circle cx="256" cy="438" r="18" fill="#a47e4a"/>
+  <circle cx="74" cy="256" r="18" fill="#708586"/>
+</svg>
