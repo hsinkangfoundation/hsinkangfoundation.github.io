@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#fff9ed">
-  <meta name="description" content="四季好食高齡健康餐盤指南，以四季當令主菜、配菜與湯品輕鬆搭配日常餐盤。">
-  <meta property="og:title" content="四季好食｜高齡健康餐盤指南">
+  <meta name="description" content="高齡健康餐盤指南，以四季當令主菜、配菜與湯品輕鬆搭配日常餐盤。">
+  <meta property="og:title" content="高齡健康餐盤指南">
   <meta property="og:description" content="跟著季節，以當令主菜、配菜與湯品，輕鬆配成今天的一餐。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hsinkangfoundation.github.io/">
   <meta property="og:image" content="https://hsinkangfoundation.github.io/assets/share-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="四季好食高齡健康餐盤指南">
+  <meta property="og:image:alt" content="高齡健康餐盤指南">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://hsinkangfoundation.github.io/">
   <link rel="icon" href="assets/hkfce-logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <title>四季好食｜高齡健康餐盤指南</title>
+  <title>高齡健康餐盤指南</title>
   <style>
     :root{--ink:#24352f;--muted:#5e655f;--paper:#fff9ed;--white:#fffef9;--line:rgba(36,53,47,.2);--spring:#477f3e;--summer:#b94e28;--autumn:#996300;--winter:#347584;--leaf:#2f6f4f;--sun:#f3c348;--coral:#c15130;--sky:#5f9eae;--accent:var(--summer)}
     *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;font-size:17px;line-height:1.7}button,a{font:inherit;color:inherit}button{cursor:pointer}a{text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #c98f73;outline-offset:3px}
@@ -278,16 +278,42 @@
     .site-footer{background:#2d5140}
     .site-footer::before{height:5px;background:#9caf9e}
     .footer-title{color:#e9dfc9}
+    html{scroll-padding-top:76px}
+    header{height:64px}
+    main>section[id],#planner,#menus,#care,#notes{scroll-margin-top:76px}
+    .hero{min-height:auto;padding-top:68px;padding-bottom:68px}
+    .season-visual{position:relative;min-width:0}
+    .season-step{position:absolute;z-index:3;top:50%;width:38px;height:38px;border:1px solid rgba(38,56,47,.24);border-radius:50%;background:rgba(255,253,250,.92);box-shadow:0 5px 16px rgba(38,56,47,.14);display:grid;place-items:center;font-size:25px;line-height:1;transform:translateY(-50%);transition:background .2s,transform .2s}
+    .hero .season-step{min-width:0;min-height:0;margin:0;padding:0;color:var(--ink);justify-content:center;gap:0}
+    .season-step:hover{background:#fff;transform:translateY(-50%) scale(1.05)}
+    .season-step.prev{left:-19px}.season-step.next{right:-19px}
+    .brandtext b{font-size:15px;letter-spacing:.06em}
+    .plannerfoot,#season-desc{display:none}
+    @media(max-width:700px){
+      html{scroll-padding-top:68px}
+      header{height:58px;padding-inline:14px}
+      main>section[id],#planner,#menus,#care,#notes{scroll-margin-top:68px}
+      .hero{padding-top:42px;padding-bottom:46px;gap:34px}
+      .hero h2{font-size:clamp(42px,12vw,56px)}
+      .intro{font-size:18px;line-height:1.8;margin-top:22px}
+      .season-step{width:36px;height:36px;font-size:23px}
+      .season-step.prev{left:-10px}.season-step.next{right:-10px}
+      .visual{min-height:390px;padding:22px}
+      section.block{padding-top:62px;padding-bottom:62px}
+      .toolbar-actions{display:grid;grid-template-columns:1fr 1fr}
+      .toolbar-actions button{width:100%;padding-inline:10px}
+      .brandtext b{font-size:13px;white-space:nowrap}
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#planner">直接前往配餐</a>
   <header>
-    <div class="header-identity"><a class="foundation-link" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener" aria-label="前往新港文教基金會官方網站"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><span class="header-divider" aria-hidden="true"></span><a class="brand" href="#top"><span class="brandmark">時</span><span class="brandtext"><b>四季好食</b><small>高齡健康餐盤指南</small></span></a></div>
+    <div class="header-identity"><a class="foundation-link" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener" aria-label="前往新港文教基金會官方網站"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><span class="header-divider" aria-hidden="true"></span><a class="brand" href="#top"><span class="brandmark">時</span><span class="brandtext"><b>高齡健康餐盤指南</b></span></a></div>
     <nav aria-label="主要導覽"><a href="#team">我們是誰</a><a href="#planner">配一餐</a><a href="#menus">看菜單</a><a href="#care">三高提醒</a><a href="#notes">飲食提醒</a></nav>
   </header>
   <main id="top">
-    <h1 class="sr-only">四季好食｜高齡健康餐盤指南</h1>
+    <h1 class="sr-only">高齡健康餐盤指南</h1>
     <section class="block team" id="team">
       <div class="team-wrap">
         <div class="team-identity">
@@ -303,7 +329,7 @@
     </section>
     <section class="hero">
       <div><p class="eyebrow">SEASONAL TABLE</p><h2>跟著季節，<br><em>好好吃一餐。</em></h2><p class="intro">專為熟齡日常整理的四季餐盤。選一個季節，讓當令主菜、配菜與湯品，輕鬆配成今天的一餐。</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
-      <div class="visual summer" id="visual"><div class="visualmeta"><span id="season-en">SUMMER</span><span id="season-month">6—8月</span></div><div class="plate"><span id="season-char">夏</span><span class="orbit o1" id="season-cue">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div><div class="visualmeta"><span>旬の食卓</span><span>自然 · 簡單 · 適量</span></div></div>
+      <div class="season-visual" aria-label="四季餐盤"><button type="button" class="season-step prev" aria-label="上一季" onclick="shiftSeason(-1)">‹</button><div class="visual summer" id="visual"><div class="visualmeta"><span id="season-en">SUMMER</span><span id="season-month">6—8月</span></div><div class="plate"><span id="season-char">夏</span><span class="orbit o1" id="season-cue">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div><div class="visualmeta"><span>旬の食卓</span><span>自然 · 簡單 · 適量</span></div></div><button type="button" class="season-step next" aria-label="下一季" onclick="shiftSeason(1)">›</button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
     <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="plannerfoot">◇ 點料理名稱看份量與營養；可用「保留」固定喜歡的料理，再更換整桌</div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div><p>只整理目前選中的五項料理，方便與家人討論、分享或儲存。</p></div><ol class="plate-list" id="plate-list"></ol><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
@@ -458,15 +484,16 @@
     function resetMeal(){idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];render();announce("已回到"+S[season].label+"季參考餐盤 01")}
     function applyMenu(i){idx[1]=idx[2]=idx[3]=idx[4]=i;locked=[locked[0],false,false,false,false];render();announce("已套用"+S[season].label+"季餐盤 "+String(i+1).padStart(2,"0"));document.querySelector("#planner").scrollIntoView()}
     function changeSeason(k){if(!S[k])return;season=k;idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];render();announce("已切換為"+S[k].label+"季配餐")}
+    function shiftSeason(direction){const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),next=(current+direction+keys.length)%keys.length;changeSeason(keys[next])}
     function toggleMenu(i){document.querySelectorAll(".menu").forEach((menu,j)=>{const details=menu.querySelector(".menu-details"),toggle=menu.querySelector(".menu-toggle"),open=j===i&&details.hidden;details.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.firstChild.textContent=open?"收起這套餐盤 ":"查看這套餐盤 ";menu.classList.toggle("open",open)})}
     function setStapleDrawer(open){stapleDrawer.hidden=!open;stapleToggle.setAttribute("aria-expanded",String(open));stapleToggle.firstChild.textContent=open?"收起主食選擇 ":"查看其他主食與營養資訊 "}
     function selectStaple(i){idx[0]=i;render();setStapleDrawer(false);announce("主食已選用"+staples[i])}
     function showFoodInfo(name,category){const info=foodInfo[name];if(!info)return;document.getElementById("dialog-category").textContent=category+"｜份量與營養";document.getElementById("dialog-food-name").textContent=name;document.getElementById("dialog-portion").textContent=info.portion;document.getElementById("dialog-nutrition").textContent=info.nutrition;if(typeof foodDialog.showModal==="function")foodDialog.showModal();else foodDialog.setAttribute("open","")}
     function closeFoodInfo(){if(typeof foodDialog.close==="function")foodDialog.close();else foodDialog.removeAttribute("open")}
-    function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `四季好食｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
+    function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
     async function copyPlate(){const text=plateText();try{await navigator.clipboard.writeText(text)}catch(error){const area=document.createElement("textarea");area.value=text;area.style.position="fixed";area.style.opacity="0";document.body.appendChild(area);area.select();document.execCommand("copy");area.remove()}document.getElementById("share-status").textContent="餐盤文字已複製。"}
-    async function sharePlate(){if(navigator.share){try{await navigator.share({title:"四季好食｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
-    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("四季好食",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("吃當季・吃多樣・吃得剛剛好",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新時代．新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`四季好食-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
+    async function sharePlate(){if(navigator.share){try{await navigator.share({title:"高齡健康餐盤指南｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
+    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("高齡健康餐盤指南",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("吃當季・吃多樣・吃得剛剛好",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新時代．新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`高齡健康餐盤指南-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
     loadState();
     Object.entries(S).forEach(([k,s])=>document.getElementById("season-tabs").insertAdjacentHTML("beforeend",`<button type="button" data-key="${k}" aria-pressed="false" aria-label="${s.label}季，${s.months}" style="--color:${s.color}" onclick="changeSeason('${k}')"><span class="dot" aria-hidden="true"></span><b>${s.label}季</b><small>${s.months}</small></button>`));
     staples.forEach((x,i)=>document.getElementById("staples").insertAdjacentHTML("beforeend",`<div class="staple"><span>${String(i+1).padStart(2,"0")}</span><button type="button" class="staple-info" data-food="${x}" data-category="主食"><b>${x}</b><small>查看份量與營養 ↗</small></button><button type="button" class="staple-pick" aria-pressed="false" onclick="selectStaple(${i})">選入</button></div>`));
