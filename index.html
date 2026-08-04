@@ -308,6 +308,7 @@
   <link rel="stylesheet" href="https://four-seasons-plate.huisan68.chatgpt.site/assets/index-BKOlpG2j.css">
   <style>
     html{scroll-padding-top:80px}main#top,#team,#planner,#menus,#care,#notes{scroll-margin-top:80px}header{height:68px}
+    main#top{position:relative}.site-title{position:absolute;z-index:3;top:50px;left:50%;transform:translateX(-50%);margin:0;color:#6f4b3c;font:600 22px/1.4 "Noto Serif TC","Songti TC",serif;letter-spacing:.16em;white-space:nowrap}
     .quick-nav a:nth-child(1){--nav-active:#a94f32}.quick-nav a:nth-child(2){--nav-active:#4f7754}.quick-nav a:nth-child(3){--nav-active:#956b32}.quick-nav a:nth-child(4){--nav-active:#8a533e}.quick-nav a:nth-child(5){--nav-active:#4f6f76}
     .quick-nav a.active,.quick-nav a[aria-current="location"]{background:var(--nav-active);color:#fff}
     .season-arrow{min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;justify-content:center!important}
@@ -330,13 +331,17 @@
     #planner>.section-title .eyebrow{color:var(--accent)}#planner>.section-title h2{color:color-mix(in srgb,var(--accent) 52%,var(--ink))}
     #planner .planner{border:1px solid color-mix(in srgb,var(--accent) 28%,rgba(38,56,47,.15));box-shadow:0 20px 46px color-mix(in srgb,var(--accent) 10%,transparent)}
     #planner .toolbar{background:color-mix(in srgb,var(--accent) 13%,#fffaf3);border-bottom-color:color-mix(in srgb,var(--accent) 25%,var(--line))}
-    #planner .cards{background:color-mix(in srgb,var(--accent) 7%,#e9e3d9)}#planner .staple-assist{background:color-mix(in srgb,var(--accent) 5%,#eee8de)}
+    #planner .cards{background:color-mix(in srgb,var(--accent) 7%,#e9e3d9)}
+    #planner .meal:first-child{background:#fffdfa!important;border-top-color:#d8cdbf!important}#planner .meal:first-child:hover{background:#fffaf4!important}
+    #planner .staple-assist,#planner .staple-bar{background:#fffdfa}
     #planner .plate-summary{background:color-mix(in srgb,var(--accent) 4%,#fffdfa);border:1px solid color-mix(in srgb,var(--accent) 21%,var(--line))}
+    #planner .plate-list li:first-child{background:#fffdfa;box-shadow:inset 0 4px 0 #d8cdbf}
+    #planner .plate-list li:not(:first-child){background:color-mix(in srgb,var(--accent) 8%,#fffdfa);box-shadow:inset 0 4px 0 color-mix(in srgb,var(--accent) 30%,#d8cdbf);transition:background .35s ease,box-shadow .35s ease}
     #planner .toolbar-actions{display:flex}#reset-meal{display:none!important}.toolbar-actions .roll{min-width:180px}
     .season-track .visual{border:1px solid rgba(91,65,51,.16);box-shadow:0 20px 46px rgba(67,48,39,.14)}
     .season-carousel .season-arrow{width:42px!important;height:42px!important;top:50%!important;bottom:auto!important;margin:0!important;border:1px solid rgba(91,65,51,.24);background:rgba(255,250,243,.94);color:#8a533e;box-shadow:0 9px 24px rgba(67,48,39,.18);backdrop-filter:blur(10px);transform:translateY(-50%)!important;font-size:29px!important}
     .season-carousel .season-arrow:hover{background:#fff;color:#6f3f31;transform:translateY(-50%) scale(1.04)!important}.season-carousel .season-arrow-prev{left:0!important}.season-carousel .season-arrow-next{right:0!important}
-    @media(max-width:980px){html{scroll-padding-top:76px}main#top,#team,#planner,#menus,#care,#notes{scroll-margin-top:76px}.quick-nav a{padding:4px 3px;font-size:13px;line-height:1.25}section.block.team-top{min-height:auto;padding:22px 14px 46px}.team-top .team-wrap{grid-template-columns:1fr}.team-top .team-identity{padding:28px}.team-top .team-visual{width:min(100%,340px)!important}.team-top .team-copy{padding:32px}}
+    @media(max-width:980px){html{scroll-padding-top:76px}main#top,#team,#planner,#menus,#care,#notes{scroll-margin-top:76px}.site-title{position:relative;top:auto;left:auto;transform:none;text-align:center;padding:20px 16px 0;font-size:20px}.quick-nav a{padding:4px 3px;font-size:13px;line-height:1.25}section.block.team-top{min-height:auto;padding:18px 14px 46px}.team-top .team-wrap{grid-template-columns:1fr}.team-top .team-identity{padding:28px}.team-top .team-visual{width:min(100%,340px)!important}.team-top .team-copy{padding:32px}}
     @media(max-width:700px){header{height:64px}.quick-nav a{font-size:11px}.season-carousel{padding-inline:4px}.season-track{grid-auto-columns:calc(100% - 38px);gap:14px;padding:12px 19px 18px}.season-track .visual{min-height:420px;padding:20px 18px;border-radius:22px}.season-track .visualmeta{font-size:12px;letter-spacing:.1em}.season-track .plate{width:min(88%,250px);box-shadow:0 16px 32px rgba(50,48,40,.12),inset 0 0 0 15px rgba(255,255,255,.4),inset 0 0 0 16px rgba(49,51,47,.08)}.season-track .plate>span:first-child{width:84px;height:84px;font-size:38px}.season-track .orbit{font-size:11px;letter-spacing:.06em}.season-carousel .season-arrow{width:38px!important;height:38px!important;font-size:26px!important}.season-carousel .season-arrow-prev{left:2px!important}.season-carousel .season-arrow-next{right:2px!important}.team-top .team-visual{width:min(100%,330px)!important}.team-top .team-copy{padding:28px 20px}.team-top .team-copy h2{font-size:34px}.team-top .team-lead{font-size:17px;line-height:1.8}.team-name-note{width:min(330px,86vw);font-size:14px}.team-top .team-point,.team-top .team-point:first-child,.team-top .team-point:nth-child(2),.team-top .team-point:nth-child(3),.team-top .team-point:nth-child(4){min-height:150px;padding:15px}.principle p{border-left:0;border-top:1px solid #b89377}}
   </style>
 </head>
@@ -346,7 +351,7 @@
     <div class="header-identity"><a class="foundation-link" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener" aria-label="前往新港文教基金會官方網站"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><span class="header-divider" aria-hidden="true"></span><a class="brand" href="#top"><span class="brandmark">時</span><span class="brandtext"><b>高齡健康餐盤指南</b></span></a></div>
   </header>
   <main id="top">
-    <h1 class="sr-only">高齡健康餐盤指南</h1>
+    <h1 class="site-title">高齡健康餐盤指南</h1>
     <section class="block team team-top" id="team">
       <div class="team-wrap">
         <div class="team-identity">
@@ -525,10 +530,12 @@
     document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);
     document.getElementById("season-visual-track").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();shiftSeason(-1)}if(event.key==="ArrowRight"){event.preventDefault();shiftSeason(1)}});
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
-    const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#notes,#top")];
+    const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#notes")];
     const markQuickNav=id=>quickLinks.forEach(link=>{const active=link.dataset.navTarget===id;link.classList.toggle("active",active);if(active)link.setAttribute("aria-current","location");else link.removeAttribute("aria-current")});
-    quickLinks.forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.dataset.navTarget);if(!target)return;event.preventDefault();history.replaceState(null,"",link.getAttribute("href"));target.scrollIntoView({behavior:"smooth",block:"start"});markQuickNav(link.dataset.navTarget)}));
-    const quickObserver=new IntersectionObserver(entries=>{const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(visible)markQuickNav(visible.target.id)},{rootMargin:"-18% 0px -58%",threshold:[0,.15,.4]});quickTargets.forEach(target=>quickObserver.observe(target));markQuickNav("team");
+    let quickNavLocked=false,quickNavTimer=0,quickNavFrame=0;
+    function syncQuickNav(){quickNavFrame=0;if(quickNavLocked)return;if(window.scrollY<100){markQuickNav("top");return}const anchor=(document.querySelector("header")?.offsetHeight||68)+130;let current="team";quickTargets.forEach(target=>{if(target.getBoundingClientRect().top<=anchor)current=target.id});markQuickNav(current)}
+    quickLinks.forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.dataset.navTarget);if(!target)return;event.preventDefault();quickNavLocked=true;clearTimeout(quickNavTimer);history.replaceState(null,"",link.getAttribute("href"));markQuickNav(link.dataset.navTarget);target.scrollIntoView({behavior:"smooth",block:"start"});quickNavTimer=setTimeout(()=>{quickNavLocked=false;syncQuickNav()},900)}));
+    window.addEventListener("scroll",()=>{if(!quickNavFrame)quickNavFrame=requestAnimationFrame(syncQuickNav)},{passive:true});syncQuickNav();
     document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
   </script>
 </body>
