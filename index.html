@@ -313,8 +313,8 @@
     .season-arrow{min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;justify-content:center!important}
     section.block.team-top{min-height:calc(100svh - 68px);padding:20px clamp(20px,4vw,58px) 26px;display:flex;align-items:center}
     .team-top .team-wrap{width:100%;max-width:1480px;grid-template-columns:.86fr 1.14fr}
-    .team-top .team-identity{padding:22px clamp(24px,3vw,42px);gap:12px}.team-top .team-identity>a{width:min(100%,250px)}
-    .team-top .team-visual{width:min(100%,280px)!important}.team-top .team-visual-wrap figcaption{margin-top:8px;font-size:20px}
+    .team-top .team-identity{padding:22px clamp(24px,3vw,42px);gap:16px;align-items:center;text-align:center}
+    .team-top .team-visual-wrap{width:100%;display:flex;flex-direction:column;align-items:center}.team-top .team-visual-wrap picture{width:100%;display:flex;justify-content:center}.team-top .team-visual{width:min(100%,370px)!important}.team-top .team-visual-wrap figcaption{margin-top:8px;font-size:21px}
     .team-top .design-concept{padding:13px 17px}.team-top .design-concept h3{margin:0 0 3px;font-size:19px}.team-top .design-concept p{font-size:14px;line-height:1.55}
     .team-top .team-copy{padding:26px clamp(30px,4vw,52px)}.team-top .team-copy h2{font-size:clamp(38px,3.5vw,52px)}
     .team-title-wrap{position:relative;width:fit-content;cursor:help;border-radius:8px}.team-title-wrap:focus-visible{outline:3px solid #b98a43;outline-offset:6px}
@@ -323,11 +323,14 @@
     .team-top .team-lead{margin:18px 0 20px;font-size:16px;line-height:1.75}.team-top .team-points{gap:10px}
     .team-top .team-point,.team-top .team-point:first-child,.team-top .team-point:nth-child(2),.team-top .team-point:nth-child(3),.team-top .team-point:nth-child(4){min-height:112px;padding:14px 16px;gap:4px}
     .team-top .team-point b{font-size:18px}.team-top .team-point p{font-size:14px;line-height:1.5}.team-top .team-credit{margin-top:14px}
-    .care{background:#f2ede4}.principle{background:#e3e9dd;color:#26382f;border:1px solid #c3cec0;box-shadow:none}.principle p{color:#4d5b53;border-left-color:#aab8aa}
+    .care{background:#f3eee7}.principle{background:#ddc8b7;color:#493b34;border:1px solid #c8aa93;box-shadow:0 10px 26px rgba(91,62,47,.08)}.principle p{color:#55473f;border-left-color:#b89377}
     .carecard{background:#fffaf4}.senior{background:#eee1d8;border-left-color:#a96850}
     .gentle{background:#eee7dc}.note{background:#fffaf3}.note:nth-child(1) span,.note:nth-child(2) span,.note:nth-child(3) span{background:#e7e1d5;border-color:#a4917e}
-    @media(max-width:980px){html{scroll-padding-top:76px}main#top,#team,#planner,#menus,#care,#notes{scroll-margin-top:76px}.quick-nav a{padding:4px 3px;font-size:13px;line-height:1.25}section.block.team-top{min-height:auto;padding:22px 14px 46px}.team-top .team-wrap{grid-template-columns:1fr}.team-top .team-identity{padding:28px}.team-top .team-visual{width:min(100%,310px)!important}.team-top .team-copy{padding:32px}}
-    @media(max-width:700px){header{height:64px}.quick-nav a{font-size:11px}.season-track{grid-auto-columns:calc(100% - 28px);gap:12px;padding-inline:14px}.season-arrow{width:42px;height:42px;font-size:30px}.team-top .team-copy{padding:28px 20px}.team-top .team-copy h2{font-size:34px}.team-top .team-lead{font-size:17px;line-height:1.8}.team-name-note{width:min(330px,86vw);font-size:14px}.team-top .team-point,.team-top .team-point:first-child,.team-top .team-point:nth-child(2),.team-top .team-point:nth-child(3),.team-top .team-point:nth-child(4){min-height:150px;padding:15px}.principle p{border-left:0;border-top:1px solid #aab8aa}}
+    .season-track .visual{border:1px solid rgba(91,65,51,.16);box-shadow:0 20px 46px rgba(67,48,39,.14)}
+    .season-carousel .season-arrow{width:42px!important;height:42px!important;top:50%!important;bottom:auto!important;margin:0!important;border:1px solid rgba(91,65,51,.24);background:rgba(255,250,243,.94);color:#8a533e;box-shadow:0 9px 24px rgba(67,48,39,.18);backdrop-filter:blur(10px);transform:translateY(-50%)!important;font-size:29px!important}
+    .season-carousel .season-arrow:hover{background:#fff;color:#6f3f31;transform:translateY(-50%) scale(1.04)!important}.season-carousel .season-arrow-prev{left:0!important}.season-carousel .season-arrow-next{right:0!important}
+    @media(max-width:980px){html{scroll-padding-top:76px}main#top,#team,#planner,#menus,#care,#notes{scroll-margin-top:76px}.quick-nav a{padding:4px 3px;font-size:13px;line-height:1.25}section.block.team-top{min-height:auto;padding:22px 14px 46px}.team-top .team-wrap{grid-template-columns:1fr}.team-top .team-identity{padding:28px}.team-top .team-visual{width:min(100%,340px)!important}.team-top .team-copy{padding:32px}}
+    @media(max-width:700px){header{height:64px}.quick-nav a{font-size:11px}.season-carousel{padding-inline:4px}.season-track{grid-auto-columns:calc(100% - 38px);gap:14px;padding:12px 19px 18px}.season-track .visual{min-height:420px;padding:20px 18px;border-radius:22px}.season-track .visualmeta{font-size:12px;letter-spacing:.1em}.season-track .plate{width:min(88%,250px);box-shadow:0 16px 32px rgba(50,48,40,.12),inset 0 0 0 15px rgba(255,255,255,.4),inset 0 0 0 16px rgba(49,51,47,.08)}.season-track .plate>span:first-child{width:84px;height:84px;font-size:38px}.season-track .orbit{font-size:11px;letter-spacing:.06em}.season-carousel .season-arrow{width:38px!important;height:38px!important;font-size:26px!important}.season-carousel .season-arrow-prev{left:2px!important}.season-carousel .season-arrow-next{right:2px!important}.team-top .team-visual{width:min(100%,330px)!important}.team-top .team-copy{padding:28px 20px}.team-top .team-copy h2{font-size:34px}.team-top .team-lead{font-size:17px;line-height:1.8}.team-name-note{width:min(330px,86vw);font-size:14px}.team-top .team-point,.team-top .team-point:first-child,.team-top .team-point:nth-child(2),.team-top .team-point:nth-child(3),.team-top .team-point:nth-child(4){min-height:150px;padding:15px}.principle p{border-left:0;border-top:1px solid #b89377}}
   </style>
 </head>
 <body>
@@ -340,7 +343,6 @@
     <section class="block team team-top" id="team">
       <div class="team-wrap">
         <div class="team-identity">
-          <a href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a>
           <figure class="team-visual-wrap">
             <picture><source srcset="assets/four-seasons-plate-visual.webp" type="image/webp"><img class="team-visual" src="assets/four-seasons-plate-visual.png" width="900" height="900" alt="以春夏秋冬色彩構成的四季餐盤視覺" fetchpriority="high"></picture>
             <figcaption>新食慢嚐，代代港香</figcaption>
