@@ -332,11 +332,12 @@
     #planner .planner{border:1px solid color-mix(in srgb,var(--accent) 28%,rgba(38,56,47,.15));box-shadow:0 20px 46px color-mix(in srgb,var(--accent) 10%,transparent)}
     #planner .toolbar{background:color-mix(in srgb,var(--accent) 13%,#fffaf3);border-bottom-color:color-mix(in srgb,var(--accent) 25%,var(--line))}
     #planner .cards{background:color-mix(in srgb,var(--accent) 7%,#e9e3d9)}
-    #planner .meal:first-child{background:#fffdfa!important;border-top-color:#d8cdbf!important}#planner .meal:first-child:hover{background:#fffaf4!important}
-    #planner .staple-assist,#planner .staple-bar{background:#fffdfa}
+    #planner .meal:first-child{background:#fff!important;border-top-color:#d8cdbf!important;box-shadow:0 7px 18px rgba(63,49,40,.08)!important}#planner .meal:first-child:hover{background:#fff!important}
+    #planner .staple-assist,#planner .staple-bar{background:#fff}
     #planner .plate-summary{background:color-mix(in srgb,var(--accent) 4%,#fffdfa);border:1px solid color-mix(in srgb,var(--accent) 21%,var(--line))}
-    #planner .plate-list li:first-child{background:#fffdfa;box-shadow:inset 0 4px 0 #d8cdbf}
-    #planner .plate-list li:not(:first-child){background:color-mix(in srgb,var(--accent) 8%,#fffdfa);box-shadow:inset 0 4px 0 color-mix(in srgb,var(--accent) 30%,#d8cdbf);transition:background .35s ease,box-shadow .35s ease}
+    #planner .plate-list li:first-child{background:#fff;box-shadow:inset 0 4px 0 #d8cdbf}
+    #planner .plate-list li:not(:first-child){background:color-mix(in srgb,var(--accent) 13%,#fff);box-shadow:inset 0 4px 0 color-mix(in srgb,var(--accent) 40%,#d8cdbf);transition:background .25s ease,box-shadow .25s ease}
+    html.quick-nav-jump{scroll-behavior:auto!important}
     #planner .toolbar-actions{display:flex}#reset-meal{display:none!important}.toolbar-actions .roll{min-width:180px}
     .season-track .visual{border:1px solid rgba(91,65,51,.16);box-shadow:0 20px 46px rgba(67,48,39,.14)}
     .season-carousel .season-arrow{width:42px!important;height:42px!important;top:50%!important;bottom:auto!important;margin:0!important;border:1px solid rgba(91,65,51,.24);background:rgba(255,250,243,.94);color:#8a533e;box-shadow:0 9px 24px rgba(67,48,39,.18);backdrop-filter:blur(10px);transform:translateY(-50%)!important;font-size:29px!important}
@@ -532,9 +533,9 @@
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#notes")];
     const markQuickNav=id=>quickLinks.forEach(link=>{const active=link.dataset.navTarget===id;link.classList.toggle("active",active);if(active)link.setAttribute("aria-current","location");else link.removeAttribute("aria-current")});
-    let quickNavLocked=false,quickNavTimer=0,quickNavFrame=0;
-    function syncQuickNav(){quickNavFrame=0;if(quickNavLocked)return;if(window.scrollY<100){markQuickNav("top");return}const anchor=(document.querySelector("header")?.offsetHeight||68)+130;let current="team";quickTargets.forEach(target=>{if(target.getBoundingClientRect().top<=anchor)current=target.id});markQuickNav(current)}
-    quickLinks.forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.dataset.navTarget);if(!target)return;event.preventDefault();quickNavLocked=true;clearTimeout(quickNavTimer);history.replaceState(null,"",link.getAttribute("href"));markQuickNav(link.dataset.navTarget);target.scrollIntoView({behavior:"smooth",block:"start"});quickNavTimer=setTimeout(()=>{quickNavLocked=false;syncQuickNav()},900)}));
+    let quickNavFrame=0;
+    function syncQuickNav(){quickNavFrame=0;if(window.scrollY<100){markQuickNav("top");return}const anchor=(document.querySelector("header")?.offsetHeight||68)+130;let current="team";quickTargets.forEach(target=>{if(target.getBoundingClientRect().top<=anchor)current=target.id});markQuickNav(current)}
+    quickLinks.forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.dataset.navTarget);if(!target)return;event.preventDefault();history.replaceState(null,"",link.getAttribute("href"));document.documentElement.classList.add("quick-nav-jump");const offset=(document.querySelector("header")?.offsetHeight||68)+12;window.scrollTo(0,Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset));markQuickNav(link.dataset.navTarget);requestAnimationFrame(()=>{document.documentElement.classList.remove("quick-nav-jump");syncQuickNav()})}));
     window.addEventListener("scroll",()=>{if(!quickNavFrame)quickNavFrame=requestAnimationFrame(syncQuickNav)},{passive:true});syncQuickNav();
     document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
   </script>
