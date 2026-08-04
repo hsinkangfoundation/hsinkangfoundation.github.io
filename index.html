@@ -179,6 +179,105 @@
       .site-guide{padding:62px 20px}.guide-head p:last-child{font-size:17px}.guide-steps li{grid-template-columns:52px 1fr;padding:21px}.guide-steps>li>span{width:52px;height:52px}.guide-steps p{font-size:17px}
       .footer-main{grid-template-columns:1fr;padding:46px 24px 34px}.footer-source-column{grid-column:auto}.footer-logo-card{max-width:290px}.footer-tagline{font-size:23px}.site-footer p{font-size:16px}.footer-links a,.footer-sources a{font-size:18px;min-height:50px}.footer-bottom{grid-template-columns:1fr;padding:24px 24px 34px}.footer-bottom p{font-size:16px}.mobile-nav{background:rgba(255,249,237,.98)}.mobile-nav a{font-size:15px;font-weight:700}
     }
+
+    /* 統一配色：全站以暖米白與深綠為主，季節色只用於季節相關資訊。 */
+    :root{
+      --ink:#26382f;
+      --muted:#5b665f;
+      --paper:#f6f2e8;
+      --white:#fffdfa;
+      --line:rgba(38,56,47,.18);
+      --leaf:#3f614d;
+      --leaf-soft:#dfe7dc;
+      --leaf-pale:#eef2eb;
+      --sand:#ece6da;
+      --clay:#8a5946;
+      --clay-soft:#f0e2db;
+      --spring:#4f7754;
+      --summer:#956b32;
+      --autumn:#8a533e;
+      --winter:#4f6f76;
+    }
+    button:focus-visible,a:focus-visible{outline-color:#7b604e}
+    header{background:rgba(246,242,232,.96);border-bottom-color:rgba(63,97,77,.2)}
+    .brandmark,.hero button,.team-cta{background:var(--leaf);border-color:var(--leaf)}
+    .team{background:linear-gradient(180deg,var(--paper),#f1ede3)}
+    .team-identity{background:linear-gradient(150deg,#dfe7dc 0%,#ece9dc 100%)}
+    .team-identity::before,.team-identity::after{background:rgba(255,253,250,.42)}
+    .team-point,.team-point:nth-child(1),.team-point:nth-child(2),.team-point:nth-child(3),.team-point:nth-child(4){
+      background:var(--leaf-pale);
+      border-left:4px solid #9caf9e;
+    }
+
+    /* 右側季節圓盤：每季使用同色相的深、中、淺色階。 */
+    .visual{
+      --season-deep:var(--summer);
+      --season-mid:#d7bc8d;
+      --season-light:#f1e6d1;
+      color:var(--season-deep);
+      border-color:color-mix(in srgb,var(--season-deep) 24%,white);
+      box-shadow:0 20px 44px rgba(51,65,55,.12);
+    }
+    .visual.spring{--season-deep:var(--spring);--season-mid:#b8c9b2;--season-light:#e6ede1;background:linear-gradient(145deg,var(--season-mid),var(--season-light))}
+    .visual.summer{--season-deep:var(--summer);--season-mid:#d7bc8d;--season-light:#f1e6d1;background:linear-gradient(145deg,var(--season-mid),var(--season-light))}
+    .visual.autumn{--season-deep:var(--autumn);--season-mid:#c69a82;--season-light:#eddfd5;background:linear-gradient(145deg,var(--season-mid),var(--season-light))}
+    .visual.winter{--season-deep:var(--winter);--season-mid:#abc0c2;--season-light:#e1e8e7;background:linear-gradient(145deg,var(--season-mid),var(--season-light))}
+    .visualmeta,.orbit{color:var(--season-deep)}
+    .plate{
+      background:rgba(255,253,250,.94);
+      box-shadow:0 20px 42px rgba(50,65,48,.14),inset 0 0 0 22px rgba(255,255,255,.48),inset 0 0 0 24px color-mix(in srgb,var(--season-deep) 16%,transparent);
+    }
+    .plate>span:first-child{background:var(--season-deep)}
+
+    /* 四季色保留辨識用途，未選取時維持低彩度。 */
+    .seasons{gap:10px;background:var(--white)}
+    .seasons button,.seasons button:last-child{
+      color:var(--ink);
+      border:1px solid var(--line);
+      background:color-mix(in srgb,var(--color) 6%,var(--white));
+      box-shadow:none;
+    }
+    .seasons button.active{
+      color:var(--ink);
+      border:2px solid var(--color);
+      background:color-mix(in srgb,var(--color) 14%,var(--white));
+      box-shadow:0 6px 16px color-mix(in srgb,var(--color) 12%,transparent);
+    }
+    .seasons button.active small{color:var(--muted)}
+    .seasons button.active .dot{background:var(--color)}
+
+    /* 配餐與內容區塊共用同一套中性色，當季色只作為細部提示。 */
+    #planner{background:var(--sand)}
+    .toolbar{background:color-mix(in srgb,var(--accent) 10%,var(--white))}
+    .cards{background:#e8e3d9}
+    .meal,.meal:nth-child(2),.meal:nth-child(3),.meal:nth-child(4),.meal:nth-child(5){
+      border-top-color:color-mix(in srgb,var(--accent) 62%,white);
+    }
+    .meal:hover{background:#faf7f0}
+    .plannerfoot{background:var(--leaf-soft);color:#44564b}
+    .staple-assist{background:#eee9df}
+    .summary-actions button.primary{background:var(--leaf);border-color:var(--leaf)}
+    .menus{background:#f0eee7}
+    .menu{border-color:rgba(63,97,77,.22);box-shadow:0 8px 20px rgba(53,69,58,.06)}
+    .menu-number b{color:var(--accent)}
+
+    /* 三高屬健康警示，統一使用沉穩陶土色，不再各卡一色。 */
+    .care{background:#eeeae1}
+    .principle{background:var(--leaf)}
+    .carecard{--card:var(--clay)!important}
+    .senior{border-left-color:var(--clay);background:var(--clay-soft)}
+    .gentle{background:var(--leaf-soft)}
+    .note:nth-child(1) span,.note:nth-child(2) span,.note:nth-child(3) span{
+      background:var(--leaf-pale);
+      border-color:#829987;
+    }
+
+    /* 操作說明與頁尾回到品牌綠，移除多色裝飾。 */
+    .site-guide{background:linear-gradient(135deg,#dce5d9 0%,#eee9dd 100%)}
+    .guide-steps>li>span,.guide-steps li:nth-child(2)>span,.guide-steps li:nth-child(3)>span{background:var(--leaf)}
+    .site-footer{background:#2d5140}
+    .site-footer::before{height:5px;background:#9caf9e}
+    .footer-title{color:#e9dfc9}
   </style>
 </head>
 <body>
@@ -312,19 +411,19 @@
       "南瓜濃湯":{portion:"約1碗（約240毫升）",nutrition:"富含β-胡蘿蔔素、膳食纖維及維生素 A，有助維持視力與免疫健康；建議減少奶油與鹽分，降低熱量攝取。"}
     };
     const S={
-      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#477f3e",desc:"春筍、蘆筍與嫩綠蔬菜，吃進清爽的季節氣息。",menus:[
+      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#4f7754",desc:"春筍、蘆筍與嫩綠蔬菜，吃進清爽的季節氣息。",menus:[
         [["清蒸鱸魚","11—3月"],["清炒菠菜","11—3月"],["春筍炒肉絲","3—5月"],["海帶芽豆腐湯","2—4月"]],
         [["滷瘦肉",""],["青花菜炒魷魚","11—4月／4—9月"],["胡蘿蔔炒蛋","12—4月"],["香菇雞湯","12—3月"]],
         [["蘿蔔燉豬肉",""],["皮蛋地瓜葉","4—11月"],["蝦仁炒蘆筍","3—6月"],["蘿蔔排骨湯","11—3月"]]]},
-      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#b94e28",desc:"瓜果、秋葵與莧菜輪番上桌，清爽也有飽足感。",menus:[
+      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#956b32",desc:"瓜果、秋葵與莧菜輪番上桌，清爽也有飽足感。",menus:[
         [["蒜苗鹹豬肉",""],["清炒空心菜","5—10月"],["玉米筍炒菇","7—9月"],["冬瓜蛤蜊湯","4—10月"]],
         [["洋蔥炒雞肉",""],["絲瓜炒蛋","5—9月"],["涼拌秋葵","5—9月"],["苦瓜排骨湯","5—9月"]],
         [["香煎虱目魚",""],["涼拌茄子","5—11月"],["清炒紅莧菜","5—10月"],["絲瓜豆腐湯","5—9月"]]]},
-      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#996300",desc:"南瓜、菱角與栗子入菜，用溫潤滋味迎接轉涼。",menus:[
+      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#8a533e",desc:"南瓜、菱角與栗子入菜，用溫潤滋味迎接轉涼。",menus:[
         [["清蒸鯛魚片","9—11月"],["花椰菜炒蝦仁",""],["南瓜燴菇",""],["栗子雞腿湯",""]],
         [["馬鈴薯燉肉",""],["清炒高麗菜",""],["三杯杏鮑菇",""],["菱角香菇雞湯",""]],
         [["南瓜咖喱雞",""],["芹菜炒肉絲","10—4月"],["蒜炒青江菜","9—4月"],["蓮藕排骨湯","5—10月"]]]},
-      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#347584",desc:"根莖與暖湯成為主角，讓冬日餐桌溫暖而安定。",menus:[
+      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#4f6f76",desc:"根莖與暖湯成為主角，讓冬日餐桌溫暖而安定。",menus:[
         [["香煎鮭魚","9—12月"],["青江菜炒豆皮","9—4月"],["菠菜炒羊肉",""],["蘿蔔牛腩湯",""]],
         [["薑絲鱈魚片",""],["台式白菜滷","9—4月"],["番茄炒蛋","12—4月"],["麻油雞湯",""]],
         [["照燒松阪豬",""],["蒜炒油菜","11—3月"],["山藥炒菇",""],["南瓜濃湯",""]]]}
