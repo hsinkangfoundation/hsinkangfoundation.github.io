@@ -371,7 +371,7 @@
     .table-dish-button:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 72%,#fff);outline-offset:5px}
     .table-dish-photo{position:absolute;inset:0;display:block;overflow:visible;background:transparent}
     .table-dish-photo img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;filter:drop-shadow(0 12px 12px rgba(67,48,35,.2));transition:transform .2s ease}
-    #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.08)}
+    #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:none}
     .table-refresh{position:absolute;z-index:2;top:6%;right:5%;width:34px;height:34px;border:1px solid rgba(87,65,49,.17);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.9);color:var(--accent)!important;font-size:19px!important;line-height:1;box-shadow:0 6px 15px rgba(66,48,35,.14);opacity:.72;transition:opacity .2s ease,transform .25s ease}
     .table-dish-button:hover .table-refresh,.table-dish-button:focus-visible .table-refresh{opacity:1;transform:rotate(50deg)}
     #food-dialog{width:min(940px,calc(100% - 32px));max-height:calc(100svh - 32px);border-radius:28px;background:#fffdf8;overflow:hidden}
@@ -384,7 +384,7 @@
     #food-dialog .dialog-copy h2{margin-right:42px}
     #food-dialog .dialog-note{line-height:1.7}
     @media(max-width:980px){.site-title{position:relative;top:auto;left:auto;transform:none;padding:24px 16px 2px;font-size:32px}section.block.team-top{padding-top:16px}header .brandtext b{font-size:16px}#planner .meal-actions button{font-size:14px}}
-    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.meal-table{height:720px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{content:none}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){left:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(2){left:14%;top:4%;width:72%;height:33%}#planner .meal-table .plate-list li:nth-child(3){right:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(4){left:3%;bottom:5%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(5){right:3%;bottom:5%;width:45%;height:25%}.table-refresh{width:31px;height:31px;font-size:17px!important}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.04)}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
+    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.meal-table{height:720px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{content:none}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){left:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(2){left:14%;top:4%;width:72%;height:33%}#planner .meal-table .plate-list li:nth-child(3){right:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(4){left:3%;bottom:5%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(5){right:3%;bottom:5%;width:45%;height:25%}.table-refresh{width:31px;height:31px;font-size:17px!important}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:none}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
   </style>
 </head>
 <body>
@@ -458,7 +458,7 @@
       "糙米粥":"12-01","香煎鮭魚":"12-02","青江菜炒豆皮":"12-03","菠菜炒羊肉":"12-04","蘿蔔牛腩湯":"12-05"
     };
     const dialogFoodImage=name=>`assets/dish-images/${foodImages[name]}.webp?v=20260805-4`;
-    const tableFoodImage=name=>`assets/table-dishes/${foodImages[name]}.webp`;
+    const tableFoodImage=name=>`assets/table-dishes/${foodImages[name]}.webp?v=20260805-6`;
     const dialogSeasonBackgrounds={spring:"#e7efcd",summer:"#fff2d0",autumn:"#eedfbb",winter:"#d9e2f1"};
     const dialogFoodBackground=()=>dialogSeasonBackgrounds[season]||"#f5eee3";
     const foodInfo={
