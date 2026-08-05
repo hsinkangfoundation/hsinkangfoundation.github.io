@@ -354,25 +354,27 @@
     #planner .meal-actions button{min-width:0;min-height:46px;padding:8px 3px;display:flex;align-items:center;justify-content:center;font-size:clamp(13px,1vw,15px);line-height:1.3;white-space:nowrap;text-align:center}
     #planner .info-link{text-underline-offset:4px}
 
-    /* True top-down dining table. Images are centered cutouts and every place is interactive. */
+    /* One abundant shared platter. Images remain individual interactive cutouts. */
     #planner .plate-summary{overflow:hidden}
     #planner .plate-summary .summary-head{justify-content:center;text-align:center;margin-bottom:22px}
-    .meal-table{position:relative;width:100%;aspect-ratio:16/10;border:1px solid rgba(117,87,59,.18);border-radius:42px;background-color:#d7aa70;background-image:url("assets/meal-table-bg-wood.webp");background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.42),0 24px 50px rgba(74,55,40,.14);overflow:hidden}
+    .meal-table{position:relative;isolation:isolate;width:100%;aspect-ratio:16/10;border:1px solid rgba(117,87,59,.18);border-radius:42px;background-color:#d7aa70;background-image:url("assets/meal-table-bg-wood.webp");background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.42),0 24px 50px rgba(74,55,40,.14);overflow:hidden}
+    .meal-table:before{content:"";position:absolute;z-index:0;left:5%;right:5%;top:7%;bottom:7%;box-sizing:border-box;border:14px solid rgba(255,253,247,.96);border-radius:50%/48%;background:radial-gradient(ellipse at 50% 43%,#fffefb 0 42%,#f8f3e9 66%,#e5dac9 100%);box-shadow:0 24px 32px rgba(73,50,32,.2),inset 0 0 0 2px rgba(167,141,107,.2),inset 0 16px 28px rgba(255,255,255,.88);transform:rotate(-.7deg);pointer-events:none}
+    .meal-table:after{content:"";position:absolute;z-index:1;left:10%;right:10%;top:13%;bottom:13%;border:1px solid rgba(153,126,94,.22);border-radius:50%/48%;box-shadow:inset 0 0 22px rgba(190,169,139,.13);transform:rotate(-.7deg);pointer-events:none}
     .meal-table+.summary-actions{margin-top:26px}
-    #planner .meal-table .plate-list{position:absolute;inset:0;z-index:1;min-height:0;margin:0;padding:0;display:block;border:0;background:transparent}
+    #planner .meal-table .plate-list{position:absolute;inset:0;z-index:2;min-height:0;margin:0;padding:0;display:block;border:0;background:transparent}
     #planner .meal-table .plate-list li{position:absolute;min-width:0;min-height:0;padding:0;display:block;border:0!important;background:transparent!important;box-shadow:none!important}
-    #planner .meal-table .plate-list li:nth-child(1){left:3%;top:4%;width:24%;height:33%}
-    #planner .meal-table .plate-list li:nth-child(2){left:29%;top:24%;width:42%;height:52%}
-    #planner .meal-table .plate-list li:nth-child(3){right:3%;top:4%;width:24%;height:33%}
-    #planner .meal-table .plate-list li:nth-child(4){left:3%;bottom:4%;width:24%;height:33%}
-    #planner .meal-table .plate-list li:nth-child(5){right:3%;bottom:4%;width:24%;height:33%}
-    .table-dish-button{position:relative;width:100%;height:100%;padding:0;border:0;border-radius:48%;background:transparent;color:var(--ink);display:block;cursor:pointer;transition:transform .2s ease,filter .2s ease}
+    #planner .meal-table .plate-list li:nth-child(1){z-index:4;left:2%;top:43%;width:42%;height:46%;transform:rotate(-3deg)}
+    #planner .meal-table .plate-list li:nth-child(2){z-index:3;left:22%;top:18%;width:56%;height:60%}
+    #planner .meal-table .plate-list li:nth-child(3){z-index:2;left:3%;top:5%;width:42%;height:46%;transform:rotate(-2deg)}
+    #planner .meal-table .plate-list li:nth-child(4){z-index:2;right:3%;top:4%;width:42%;height:47%;transform:rotate(3deg)}
+    #planner .meal-table .plate-list li:nth-child(5){z-index:4;right:2%;bottom:5%;width:42%;height:48%;transform:rotate(2deg)}
+    .table-dish-button{position:relative;width:100%;height:100%;padding:0;border:0;border-radius:48%;background:transparent;color:var(--ink);display:block;cursor:pointer;will-change:transform;transition:transform .12s ease,filter .12s ease}
     .table-dish-button:hover{transform:translateY(-3px) scale(1.025);filter:brightness(1.02)}
     .table-dish-button:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 72%,#fff);outline-offset:5px}
     .table-dish-photo{position:absolute;inset:0;display:block;overflow:visible;background:transparent}
-    .table-dish-photo img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;filter:drop-shadow(0 12px 12px rgba(67,48,35,.2));transition:transform .2s ease}
-    #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:none}
-    .table-refresh{position:absolute;z-index:2;top:6%;right:5%;width:34px;height:34px;border:1px solid rgba(87,65,49,.17);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.9);color:var(--accent)!important;font-size:19px!important;line-height:1;box-shadow:0 6px 15px rgba(66,48,35,.14);opacity:.72;transition:opacity .2s ease,transform .25s ease}
+    .table-dish-photo img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;filter:drop-shadow(0 12px 12px rgba(67,48,35,.2));transition:transform .1s ease}
+    #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.04)}
+    .table-refresh{position:absolute;z-index:2;top:6%;right:5%;width:31px;height:31px;border:1px solid rgba(87,65,49,.17);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.9);color:var(--accent)!important;font-size:18px!important;line-height:1;box-shadow:0 6px 15px rgba(66,48,35,.14);opacity:.48;transition:opacity .12s ease,transform .18s ease}
     .table-dish-button:hover .table-refresh,.table-dish-button:focus-visible .table-refresh{opacity:1;transform:rotate(50deg)}
     #food-dialog{width:min(940px,calc(100% - 32px));max-height:calc(100svh - 32px);border-radius:28px;background:#fffdf8;overflow:hidden}
     #food-dialog .dialog-inner{padding:0}
@@ -384,7 +386,7 @@
     #food-dialog .dialog-copy h2{margin-right:42px}
     #food-dialog .dialog-note{line-height:1.7}
     @media(max-width:980px){.site-title{position:relative;top:auto;left:auto;transform:none;padding:24px 16px 2px;font-size:32px}section.block.team-top{padding-top:16px}header .brandtext b{font-size:16px}#planner .meal-actions button{font-size:14px}}
-    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.meal-table{height:720px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{content:none}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){left:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(2){left:14%;top:4%;width:72%;height:33%}#planner .meal-table .plate-list li:nth-child(3){right:3%;top:39%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(4){left:3%;bottom:5%;width:45%;height:25%}#planner .meal-table .plate-list li:nth-child(5){right:3%;bottom:5%;width:45%;height:25%}.table-refresh{width:31px;height:31px;font-size:17px!important}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:none}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
+    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.meal-table{height:min(650px,170vw);min-height:500px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{left:2%;right:2%;top:4%;bottom:4%;border-width:10px;border-radius:48%/46%;transform:rotate(-.5deg)}.meal-table:after{left:7%;right:7%;top:9%;bottom:9%;border-radius:48%/46%;transform:rotate(-.5deg)}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){z-index:4;left:0;top:auto;bottom:4%;width:58%;height:34%;transform:rotate(-3deg)}#planner .meal-table .plate-list li:nth-child(2){z-index:3;left:4%;top:28%;width:92%;height:45%;transform:none}#planner .meal-table .plate-list li:nth-child(3){z-index:2;left:0;right:auto;top:4%;width:60%;height:34%;transform:rotate(-2deg)}#planner .meal-table .plate-list li:nth-child(4){z-index:2;left:auto;right:0;top:4%;bottom:auto;width:60%;height:34%;transform:rotate(2deg)}#planner .meal-table .plate-list li:nth-child(5){z-index:4;right:0;bottom:4%;width:58%;height:34%;transform:rotate(2deg)}.table-refresh{width:29px;height:29px;font-size:17px!important;opacity:.58}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.02)}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
   </style>
 </head>
 <body>
@@ -457,8 +459,12 @@
       "紫米飯":"11-01","香煎虱目魚":"11-02","涼拌茄子":"11-03","清炒紅莧菜":"11-04","絲瓜豆腐湯":"11-05",
       "糙米粥":"12-01","香煎鮭魚":"12-02","青江菜炒豆皮":"12-03","菠菜炒羊肉":"12-04","蘿蔔牛腩湯":"12-05"
     };
-    const dialogFoodImage=name=>`assets/dish-images/${foodImages[name]}.webp?v=20260805-8`;
-    const tableFoodImage=name=>`assets/table-dishes/${foodImages[name]}.webp?v=20260805-8`;
+    const dialogFoodImage=name=>`assets/dish-images/${foodImages[name]}.webp?v=20260805-5`;
+    const tableFoodImage=name=>`assets/table-dishes/${foodImages[name]}.webp?v=20260805-6`;
+    const tableImageCache=new Map();
+    function preloadTableImage(name,priority="auto"){if(!foodImages[name])return;const src=tableFoodImage(name);if(tableImageCache.has(src))return tableImageCache.get(src);const image=new Image();image.decoding="async";image.fetchPriority=priority;image.src=src;if(typeof image.decode==="function")image.decode().catch(()=>{});tableImageCache.set(src,image);return image}
+    function preloadCurrentTableImages(){pools().forEach(pool=>pool.forEach(entry=>preloadTableImage(Array.isArray(entry)?entry[0]:entry)))}
+    function preloadAllTableImages(){Object.keys(foodImages).forEach(name=>preloadTableImage(name))}
     const dialogSeasonBackgrounds={spring:"#e7efcd",summer:"#fff2d0",autumn:"#eedfbb",winter:"#d9e2f1"};
     const dialogFoodBackground=()=>dialogSeasonBackgrounds[season]||"#f5eee3";
     const foodInfo={
@@ -563,7 +569,7 @@
       document.getElementById("current-staple").textContent=currentStaple;document.getElementById("current-staple-portion").textContent=foodInfo[currentStaple].portion;document.getElementById("current-staple-info").dataset.food=currentStaple;
       document.querySelectorAll(".staple").forEach((card,i)=>{const selected=i===idx[0]%staples.length,button=card.querySelector(".staple-pick");card.classList.toggle("selected",selected);button.textContent=selected?"已選用":"選入";button.disabled=selected;button.setAttribute("aria-pressed",String(selected))});
       document.getElementById("menu-grid").innerHTML=s.menus.map((m,i)=>{const detailId=`menu-details-${season}-${i}`;return `<article class="menu"><div class="menuhead"><div class="menu-number"><small>餐盤</small><b>0${i+1}</b></div><span class="menu-season">${s.months}</span></div><div class="menu-summary"><b>${s.label}季餐盤 ${String(i+1).padStart(2,"0")}</b><p>主菜・配菜二道・湯品</p></div><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="${detailId}" onclick="toggleMenu(${i})">查看這套餐盤 <span aria-hidden="true">＋</span></button><div class="menu-details" id="${detailId}" hidden><div class="rows">${m.map((d,j)=>`<button type="button" class="row" data-food="${d[0]}" data-category="${labels[j+1]}"><span>${labels[j+1]}</span><span class="row-copy"><b>${d[0]}</b>${d[1]?`<small>${d[1]}</small>`:""}</span><span class="row-arrow" aria-hidden="true">↗</span></button>`).join("")}</div><button type="button" class="apply" onclick="applyMenu(${i})">套用這套餐盤 <span aria-hidden="true">→</span></button></div></article>`}).join("");
-      document.getElementById("plate-list").innerHTML=items.map((item,i)=>`<li><button type="button" class="table-dish-button" aria-label="目前${item.category}${item.name}，點一下更換${i===0?"下一種主食":"同季另一道料理"}" onclick="nextItem(${i})"><span class="table-dish-photo"><img src="${tableFoodImage(item.name)}" alt="" width="720" height="620" loading="lazy"></span><span class="table-refresh" aria-hidden="true">↻</span></button></li>`).join("");saveState();
+      document.getElementById("plate-list").innerHTML=items.map((item,i)=>`<li><button type="button" class="table-dish-button" aria-label="目前${item.category}${item.name}，點一下更換${i===0?"下一種主食":"同季另一道料理"}" onclick="nextItem(${i})"><span class="table-dish-photo"><img src="${tableFoodImage(item.name)}" alt="" width="720" height="620" loading="eager" decoding="async" fetchpriority="high"></span><span class="table-refresh" aria-hidden="true">↻</span></button></li>`).join("");saveState();preloadCurrentTableImages();
     }
     function nextItem(i){const p=pools()[i],previous=idx[i]%p.length;idx[i]=p.length>1?(previous+1)%p.length:previous;render();announce(labels[i]+"已換成"+selectedItems()[i].name)}
     function toggleLock(i){locked[i]=!locked[i];const name=selectedItems()[i].name;render();announce(name+(locked[i]?"已保留，整桌更換時不會被替換":"已取消保留"))}
@@ -597,6 +603,7 @@
     quickLinks.forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.dataset.navTarget);if(!target)return;event.preventDefault();history.replaceState(null,"",link.getAttribute("href"));document.documentElement.classList.add("quick-nav-jump");const offset=(document.querySelector("header")?.offsetHeight||68)+12;window.scrollTo(0,Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset));markQuickNav(link.dataset.navTarget);requestAnimationFrame(()=>{document.documentElement.classList.remove("quick-nav-jump");syncQuickNav()})}));
     window.addEventListener("scroll",()=>{if(!quickNavFrame)quickNavFrame=requestAnimationFrame(syncQuickNav)},{passive:true});syncQuickNav();
     document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
+    const warmRemainingTableImages=()=>preloadAllTableImages();if("requestIdleCallback" in window)window.requestIdleCallback(warmRemainingTableImages,{timeout:1200});else setTimeout(warmRemainingTableImages,160);
   </script>
 </body>
 </html>
