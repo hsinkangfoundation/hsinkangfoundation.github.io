@@ -463,6 +463,52 @@
       .carecard{padding:24px 21px}.carecard ul{font-size:18px}.senior{grid-template-columns:1fr;padding:24px 21px}.senior p{font-size:18px}
       .footer-links a,.footer-sources a,.footer-source-note,.footer-bottom p,.footer-bottom a{font-size:16px}
     }
+
+    /* Refine the tray composition without changing the interactive hit areas. */
+    #planner .meal-table .plate-list li:nth-child(2){left:28%;top:23%;width:44%;height:50%}
+    #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1)}
+
+    /* Keep the three-highs section calm and close to the surrounding paper palette. */
+    .care{background:#f5efe7}
+    .care-subnav a{border-color:#c9bcae;background:#faf6ef;color:#4f554f}
+    .care-subnav a:first-child{background:#68746c;border-color:#68746c;color:#fff}
+    .principle{background:#e4ddd2;color:#3f4540;border:1px solid #d0c4b6;box-shadow:0 12px 28px rgba(74,66,56,.08)}
+    .principle-intro small{color:#706e67}
+    .principle-intro b{color:#374039}
+    .care-priorities{border-left-color:#c6b9aa}
+    .care-priorities li{background:#f7f2ea;border:1px solid #d8cec1;color:#585d57}
+    .care-priorities li:before{color:#8b7561}
+    .care-priorities b{color:#3e4740}
+    .carecard{--card-soft:#faf7f1!important;border-color:#d8d0c5;border-top-width:5px;box-shadow:0 10px 24px rgba(69,61,53,.06)}
+    .seal{background:#eee8df}
+    .carehead h3,.carecard li b{color:#3d4640}
+    .lead{color:#4d5750;border-bottom-color:#d8d0c5}
+    .carecard ul{color:#555c57}
+    .remind{background:#f2ede5}
+    .senior{background:#e9e1d6;border-color:#cfc1b2;border-left-color:#8b7768;box-shadow:none}
+    .senior b{color:#5c4e44}
+
+    /* Portrait phones: show the complete tray and give every dish breathing room. */
+    @media(max-width:700px){
+      #planner .plate-summary{margin-top:18px;padding:20px 12px 18px}
+      #planner .plate-summary .summary-head{margin-bottom:16px}
+      #planner .plate-summary .summary-head h3{font-size:28px}
+      .meal-table{height:auto;min-height:0;aspect-ratio:4/5;border-radius:24px;background-size:100% 100%;background-position:center}
+      .meal-table:before{inset:4.5%;border-radius:19px}
+      #planner .meal-table .plate-list li:nth-child(1){left:3%;bottom:4%;width:45%;height:31%}
+      #planner .meal-table .plate-list li:nth-child(2){left:17%;top:32%;width:66%;height:36%}
+      #planner .meal-table .plate-list li:nth-child(3){left:3%;top:5%;width:46%;height:30%}
+      #planner .meal-table .plate-list li:nth-child(4){right:3%;top:5%;width:46%;height:30%}
+      #planner .meal-table .plate-list li:nth-child(5){right:3%;bottom:4%;width:45%;height:31%}
+      #planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1)}
+      #planner .meal-table .plate-list li:nth-child(2) .table-dish-hit{inset:22% 18%}
+      .table-refresh{width:27px;height:27px;font-size:16px!important}
+      .meal-table+.summary-actions{margin-top:18px}
+      .summary-actions{grid-template-columns:1fr 1fr;gap:8px}
+      .summary-actions button{min-width:0;padding-inline:8px;font-size:15px}
+      .summary-actions button.primary{grid-column:1/-1}
+      .care-priorities{border-top-color:#c6b9aa}
+    }
   </style>
 </head>
 <body>
@@ -492,9 +538,9 @@
     <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title"><div><p class="eyebrow">SEASONAL MENU</p><h2 id="menu-title">夏季參考餐盤</h2></div></div><div class="menu-grid" id="menu-grid"></div></section>
     <section class="block care" id="care"><div class="section-title"><div><p class="eyebrow">THREE-HIGHS CARE</p><h2>三高長者，這樣吃更安心</h2></div><p>先抓住最重要的飲食原則，再依個人用藥、檢查數值與醫療團隊建議調整。</p></div><nav class="care-subnav" aria-label="高齡飲食提醒內容"><a href="#care" aria-current="location">三高飲食重點</a><a href="#notes">食有所養・日常提醒 →</a></nav><div class="principle"><div class="principle-intro"><small>先記住三件事</small><b>每一餐，都先做對最重要的一步</b></div><ol class="care-priorities"><li><b>少喝湯汁</b>減少鹽分與隱藏油脂</li><li><b>主食定量</b>飯、粥與根莖都要計入</li><li><b>豆魚瘦肉</b>優先選低脂蛋白質</li></ol></div><div class="care-grid">
-      <article class="carecard" style="--card:#356d75;--card-soft:#e8f2f1"><div class="carehead"><span class="seal">壓</span><div><small>HIGH BLOOD PRESSURE</small><h3>血壓偏高</h3></div></div><p class="lead">第一步：湯少喝、醬少淋。</p><ul><li><b>吃料少喝湯：</b>湯品以食材為主，不再加鹽。</li><li><b>醃製品減量：</b>少選鹹豬肉、加工肉與重口味醬料。</li><li><b>用香氣代替鹹味：</b>善用蔥、薑、蒜、香菇與辛香料。</li></ul><div class="remind"><strong>選菜提醒</strong>照燒、滷製與三杯菜色可少淋醬汁，並搭配未加工蔬菜。</div></article>
-      <article class="carecard" style="--card:#a66a25;--card-soft:#fbefdc"><div class="carehead"><span class="seal">糖</span><div><small>HIGH BLOOD SUGAR</small><h3>血糖偏高</h3></div></div><p class="lead">第一步：每餐主食固定量。</p><ul><li><b>份量平均分配：</b>不把主食集中在同一餐，也避免續飯。</li><li><b>澱粉都要計入：</b>飯、粥、地瓜、南瓜、玉米皆屬含醣食物。</li><li><b>飲料選無糖：</b>水果整份吃，不打成果汁。</li></ul><div class="remind"><strong>選菜提醒</strong>餐盤若有南瓜、玉米或馬鈴薯，主食份量請依醫師或營養師建議調整。</div></article>
-      <article class="carecard" style="--card:#8b5150;--card-soft:#f7e9e6"><div class="carehead"><span class="seal">脂</span><div><small>HIGH BLOOD LIPIDS</small><h3>血脂偏高</h3></div></div><p class="lead">第一步：豆、魚、瘦肉優先。</p><ul><li><b>換一種主菜：</b>優先選豆製品、魚類或去皮瘦肉。</li><li><b>看得見的脂肪先去除：</b>減少肥肉、動物皮與油炸食品。</li><li><b>烹調方式清爽：</b>多清蒸、水煮、燉煮或少油香煎。</li></ul><div class="remind"><strong>選菜提醒</strong>肉類先去除可見脂肪；勾芡、油炸與濃醬菜色降低頻率。</div></article>
+      <article class="carecard" style="--card:#6f7c78;--card-soft:#faf7f1"><div class="carehead"><span class="seal">壓</span><div><small>HIGH BLOOD PRESSURE</small><h3>血壓偏高</h3></div></div><p class="lead">第一步：湯少喝、醬少淋。</p><ul><li><b>吃料少喝湯：</b>湯品以食材為主，不再加鹽。</li><li><b>醃製品減量：</b>少選鹹豬肉、加工肉與重口味醬料。</li><li><b>用香氣代替鹹味：</b>善用蔥、薑、蒜、香菇與辛香料。</li></ul><div class="remind"><strong>選菜提醒</strong>照燒、滷製與三杯菜色可少淋醬汁，並搭配未加工蔬菜。</div></article>
+      <article class="carecard" style="--card:#8b7b68;--card-soft:#faf7f1"><div class="carehead"><span class="seal">糖</span><div><small>HIGH BLOOD SUGAR</small><h3>血糖偏高</h3></div></div><p class="lead">第一步：每餐主食固定量。</p><ul><li><b>份量平均分配：</b>不把主食集中在同一餐，也避免續飯。</li><li><b>澱粉都要計入：</b>飯、粥、地瓜、南瓜、玉米皆屬含醣食物。</li><li><b>飲料選無糖：</b>水果整份吃，不打成果汁。</li></ul><div class="remind"><strong>選菜提醒</strong>餐盤若有南瓜、玉米或馬鈴薯，主食份量請依醫師或營養師建議調整。</div></article>
+      <article class="carecard" style="--card:#816e6a;--card-soft:#faf7f1"><div class="carehead"><span class="seal">脂</span><div><small>HIGH BLOOD LIPIDS</small><h3>血脂偏高</h3></div></div><p class="lead">第一步：豆、魚、瘦肉優先。</p><ul><li><b>換一種主菜：</b>優先選豆製品、魚類或去皮瘦肉。</li><li><b>看得見的脂肪先去除：</b>減少肥肉、動物皮與油炸食品。</li><li><b>烹調方式清爽：</b>多清蒸、水煮、燉煮或少油香煎。</li></ul><div class="remind"><strong>選菜提醒</strong>肉類先去除可見脂肪；勾芡、油炸與濃醬菜色降低頻率。</div></article>
     </div><div class="senior"><b>長者特別提醒｜控制三高，不等於吃得越少越好</b><p>高齡者仍需要足夠熱量與蛋白質維持肌力。若近期體重下降、食慾變差，或合併腎臟病、正在使用胰島素或降血糖藥物，請先與醫師或營養師確認飲食調整方式。</p></div></section>
     <section class="block gentle" id="notes"><div class="section-title"><div><p class="eyebrow">GENTLE REMINDER</p><h2>食有所養，日日安心。</h2></div></div><div class="notes"><article class="note"><span>一</span><h3>食材切小、煮軟</h3><p>依牙口與咀嚼能力調整大小和軟硬度，讓每一口更容易入口。</p></article><article class="note"><span>二</span><h3>口味清淡、香氣保留</h3><p>善用薑、蒜、香菇等天然香氣，減少過重的鹽分與調味。</p></article><article class="note"><span>三</span><h3>少量多樣、慢慢吃</h3><p>每餐保留不同食物種類，依食慾調整份量，不勉強一次吃完。</p></article></div></section>
   </main>
@@ -516,7 +562,7 @@
         <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
       </div>
     </div>
-    <div class="footer-bottom"><p>內容更新｜2026年8月5日</p><p>內容基礎｜Canva《高齡健康餐盤飲食指南》</p><a href="#top">回到頁首 ↑</a></div>
+    <div class="footer-bottom"><p>內容更新｜2026年8月6日</p><p>內容基礎｜Canva《高齡健康餐盤飲食指南》</p><a href="#top">回到頁首 ↑</a></div>
   </footer>
   <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考菜單</a><a href="#care" data-nav-target="care" aria-label="高齡飲食提醒：三高飲食與日常照護">高齡飲食提醒</a><a href="#top" data-nav-target="top">回到頁首</a></nav>
   <script>
