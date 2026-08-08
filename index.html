@@ -803,6 +803,48 @@
       .quick-nav a.active,.quick-nav a[aria-current="location"]{background:#eee3d6;color:#5d4538}
       .quick-nav a.active::before,.quick-nav a[aria-current="location"]::before{top:1px;height:3px;background:var(--nav-active)}
     }
+
+    /* 2026-08 editorial refinement: centered title, calm carousel and a distinct daily-care palette. */
+    .site-title{align-items:center;text-align:center}
+    .site-title-main::before{display:block}
+    .site-title-main::before{background:linear-gradient(90deg,transparent,#b59b76)}
+    .site-title-main::after{width:42px;background:linear-gradient(90deg,#b59b76,transparent)}
+
+    .season-carousel{padding-bottom:0}
+    .season-track .visual{
+      background:linear-gradient(145deg,color-mix(in srgb,var(--season-deep) 13%,#f6f1e8),color-mix(in srgb,var(--season-deep) 5%,#fffaf3))!important;
+      border-color:color-mix(in srgb,var(--season-deep) 26%,#eee7dc);
+      box-shadow:none!important;
+    }
+    .season-carousel .season-arrow{
+      top:50%!important;
+      bottom:auto!important;
+      transform:translateY(-50%)!important;
+    }
+    .season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}
+    .season-carousel .season-arrow-prev{left:8px!important}
+    .season-carousel .season-arrow-next{right:8px!important}
+
+    .gentle{background:linear-gradient(135deg,#eee9f1 0%,#f8f5f8 100%)}
+    .gentle .section-title .eyebrow{color:#715b78}
+    .gentle .note,
+    .gentle .note:nth-child(1),
+    .gentle .note:nth-child(2),
+    .gentle .note:nth-child(3){
+      border-color:#d4c7d8;
+      background:#fcfafc;
+      box-shadow:0 10px 24px rgba(91,70,99,.07);
+    }
+    .gentle .note span,
+    .gentle .note:nth-child(1) span,
+    .gentle .note:nth-child(2) span,
+    .gentle .note:nth-child(3) span{
+      background:#ede5f0;
+      border-color:#a88faf;
+      color:#715b78;
+    }
+    .gentle .note h3{color:#514458}
+    .gentle .note p{color:#625968}
   </style>
 </head>
 <body>
@@ -811,7 +853,7 @@
     <div class="header-identity"><a class="foundation-link" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener" aria-label="前往新港文教基金會官方網站"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a><span class="header-divider" aria-hidden="true"></span><a class="brand" href="#top"><span class="brandmark">時</span><span class="brandtext"><b>高齡健康餐盤指南</b></span></a></div>
   </header>
   <main id="top">
-    <h1 class="site-title"><span class="site-title-kicker">SEASONAL SENIOR PLATE</span><span class="site-title-main">高齡健康 <strong>餐盤指南</strong></span><span class="site-title-sub">四季在地・好入口・日日安心</span></h1>
+    <h1 class="site-title"><span class="site-title-kicker">SEASONAL SENIOR PLATE</span><span class="site-title-main">高齡健康 <strong>餐盤指南</strong></span></h1>
     <section class="block team team-top" id="team">
       <div class="team-wrap">
         <div class="team-identity">
@@ -837,16 +879,16 @@
     </section>
     <section class="hero">
       <div><p class="eyebrow">SEASONAL TABLE</p><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">專為高齡長者設計的四季餐盤，每套餐盤都搭配各一項主食與主菜、兩項配菜以及甜品，再也不愁今天要吃什麼！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
-      <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><button type="button" class="season-spin" id="season-spin" aria-label="轉到下一個季節"><span class="season-spin-icon" aria-hidden="true"><span>↻</span></span><span class="season-spin-copy"><small>SEASON</small><b>轉動四季</b></span></button></div>
+      <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
     <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title"><div><p class="eyebrow">SEASONAL MENU</p><h2 id="menu-title">夏季參考餐盤</h2></div></div><div class="menu-grid" id="menu-grid"></div></section>
     <section class="block gentle" id="notes"><div class="section-title"><div><p class="eyebrow">DAILY CARE</p><h2>食有所養，日日安心。</h2></div><p>從質地、調味、份量到補水與吞嚥，多一點留意，讓每天的一餐更安心。</p></div><div class="notes"><article class="note"><span>一</span><h3>切小煮軟，好入口</h3><p>依牙口調整食材大小與軟硬，吃得更輕鬆。</p></article><article class="note"><span>二</span><h3>清淡調味，保留香氣</h3><p>少鹽少醬，善用薑、蒜、香菇等天然香氣提味。</p></article><article class="note"><span>三</span><h3>少量多樣，慢慢吃</h3><p>每餐多樣搭配，依食慾調整份量，不勉強吃完。</p></article><article class="note"><span>四</span><h3>吃得剛好，比吃得更少重要</h3><p>仍要吃足熱量與蛋白質；若體重下降或食慾變差，請詢問醫師或營養師。</p></article><article class="note"><span>五</span><h3>主動補充水分</h3><p>白天分次喝水，不等口渴才喝；若有限水需求，請依醫囑調整。</p></article><article class="note"><span>六</span><h3>留意吞嚥警訊</h3><p>若常嗆咳、聲音變濕或用餐時間明顯變長，請尋求醫療專業評估。</p></article></div></section>
-    <section class="block care" id="care"><div class="section-title"><div><p class="eyebrow">SPECIAL CARE</p><h2>三高飲食重點</h2></div><p>每種狀況先抓一個重點；實際飲食請依醫囑調整。</p></div><div class="care-grid">
-      <article class="carecard"><div class="carehead"><span class="seal">壓</span><h3>血壓偏高</h3></div><p class="lead">少鹽、少湯汁</p><ul><li>吃料少喝湯，醬汁不要全淋。</li><li>少選醃製品、加工肉與重口味醬料。</li></ul></article>
-      <article class="carecard"><div class="carehead"><span class="seal">糖</span><h3>血糖偏高</h3></div><p class="lead">主食固定量</p><ul><li>飯、粥、地瓜、南瓜、玉米都算澱粉。</li><li>飲料選無糖，水果直接吃、不打汁。</li></ul></article>
-      <article class="carecard"><div class="carehead"><span class="seal">脂</span><h3>血脂偏高</h3></div><p class="lead">選低脂蛋白質</p><ul><li>豆、魚、去皮瘦肉優先。</li><li>多蒸煮，少油炸、肥肉與濃醬。</li></ul></article>
+    <section class="block care" id="care"><div class="section-title"><div><p class="eyebrow">SPECIAL CARE</p><h2>三高飲食重點</h2></div><p>從調味、主食份量到用油方式，先掌握日常容易執行的原則；若已服藥或有其他疾病，仍以醫師、營養師建議為準。</p></div><div class="care-grid">
+      <article class="carecard"><div class="carehead"><span class="seal">壓</span><h3>血壓偏高</h3></div><p class="lead">減鈉不只少放鹽，也要少喝湯、少沾醬</p><ul><li>湯麵、火鍋與燉湯以吃料為主，湯汁淺嚐即可。</li><li>醬油、豆瓣醬、沙茶與滷汁分開放，少淋、少沾。</li><li>少選香腸、火腿、醃菜與罐頭，改用薑、蒜、蔥與香菇提味。</li></ul></article>
+      <article class="carecard"><div class="carehead"><span class="seal">糖</span><h3>血糖偏高</h3></div><p class="lead">澱粉要定量，並與蛋白質、蔬菜均衡搭配</p><ul><li>飯、粥、麵、地瓜、南瓜與玉米都屬主食，避免同餐重複堆疊。</li><li>每餐主食份量盡量固定，優先選擇糙米、燕麥等全穀雜糧。</li><li>飲料選無糖，水果直接吃、不打成果汁，並依建議份量攝取。</li></ul></article>
+      <article class="carecard"><div class="carehead"><span class="seal">脂</span><h3>血脂偏高</h3></div><p class="lead">減少飽和脂肪，蛋白質優先選豆、魚與瘦肉</p><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul></article>
     </div></section>
   </main>
   <dialog id="food-dialog" aria-labelledby="dialog-food-name"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high"></figure><div class="dialog-copy"><p class="dialog-category" id="dialog-category"></p><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依 Canva《高齡健康餐盤飲食指南》整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></div></div></dialog>
@@ -863,7 +905,7 @@
       </div>
       <div class="footer-source-column">
         <h2 class="footer-title">資料來源與編製資訊</h2>
-        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4306&amp;pid=14493" target="_blank" rel="noopener">國民健康署｜聰明補充水分 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/food_item.php?id=2&amp;type=AS03" target="_blank" rel="noopener">農業部｜虱目魚主要產期 ↗</a></li></ul>
+        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4306&amp;pid=14493" target="_blank" rel="noopener">國民健康署｜聰明補充水分 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li></ul>
         <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
       </div>
     </div>
@@ -1061,7 +1103,7 @@
     stapleToggle.onclick=()=>setStapleDrawer(stapleDrawer.hidden);
     document.addEventListener("click",event=>{const trigger=event.target.closest("[data-food]");if(trigger)showFoodInfo(trigger.dataset.food,trigger.dataset.category)});
     document.getElementById("dialog-close").onclick=closeFoodInfo;foodDialog.addEventListener("click",event=>{if(event.target===foodDialog)closeFoodInfo()});
-    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);document.getElementById("season-spin").onclick=()=>shiftSeason(1);
+    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);
     document.getElementById("season-visual-track").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();shiftSeason(-1)}if(event.key==="ArrowRight"){event.preventDefault();shiftSeason(1)}});
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#care,#notes")];
