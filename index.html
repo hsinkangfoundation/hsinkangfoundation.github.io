@@ -905,8 +905,10 @@
         right:clamp(16px,6vw,82px)!important;
         width:max-content!important;
         max-width:calc(100% - 32px);
-        grid-template-columns:repeat(4,max-content)!important;
+        grid-template-columns:84px 70px 84px 116px!important;
+        overflow:hidden;
       }
+      .quick-nav a{width:100%;min-width:0;white-space:nowrap;font-weight:600}
     }
 
     @media(max-width:700px){
@@ -1182,9 +1184,9 @@
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#care,#notes")];
     const markQuickNav=id=>{const navId=id==="care"?"notes":id;quickLinks.forEach(link=>{const active=link.dataset.navTarget===navId;link.classList.toggle("active",active);if(active)link.setAttribute("aria-current","location");else link.removeAttribute("aria-current")})};
-    let quickNavFrame=0,quickNavLock="",quickNavRelease=0,quickNavJumpFrame=0;
+    let quickNavFrame=0,quickNavLock="",quickNavRelease=0,quickNavJumpFrame=0,quickNavCleanupFrame=0;
     function syncQuickNav(){quickNavFrame=0;if(quickNavLock){markQuickNav(quickNavLock);return}if(window.scrollY<100){markQuickNav("top");return}const anchor=(document.querySelector("header")?.offsetHeight||68)+130;let current="team";quickTargets.forEach(target=>{if(target.getBoundingClientRect().top<=anchor)current=target.id});markQuickNav(current)}
-    quickLinks.forEach(link=>link.addEventListener("click",event=>{const targetId=link.dataset.navTarget,target=document.getElementById(targetId);if(!target)return;event.preventDefault();clearTimeout(quickNavRelease);cancelAnimationFrame(quickNavJumpFrame);quickNavLock=targetId;markQuickNav(targetId);const offset=(document.querySelector("header")?.offsetHeight||68)+12,top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset);quickNavJumpFrame=requestAnimationFrame(()=>{window.scrollTo({top,behavior:"auto"});quickNavRelease=setTimeout(()=>{quickNavLock="";syncQuickNav()},360)})}));
+    quickLinks.forEach(link=>link.addEventListener("click",event=>{const targetId=link.dataset.navTarget,target=document.getElementById(targetId);if(!target)return;event.preventDefault();clearTimeout(quickNavRelease);cancelAnimationFrame(quickNavJumpFrame);cancelAnimationFrame(quickNavCleanupFrame);const root=document.documentElement;root.classList.add("quick-nav-jump");quickNavLock=targetId;markQuickNav(targetId);const offset=(document.querySelector("header")?.offsetHeight||68)+12,top=Math.max(0,Math.round(target.getBoundingClientRect().top+window.scrollY-offset));void root.offsetHeight;quickNavJumpFrame=requestAnimationFrame(()=>{window.scrollTo(0,top);quickNavCleanupFrame=requestAnimationFrame(()=>root.classList.remove("quick-nav-jump"));quickNavRelease=setTimeout(()=>{quickNavLock="";syncQuickNav()},180)})}));
     const backToTop=document.getElementById("back-to-top");
     function syncBackToTop(){const visible=window.scrollY>520;backToTop.classList.toggle("visible",visible);backToTop.setAttribute("aria-hidden",String(!visible));backToTop.tabIndex=visible?0:-1}
     backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
