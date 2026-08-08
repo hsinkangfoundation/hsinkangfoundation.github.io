@@ -323,6 +323,7 @@
     .team-top .design-concept{padding:13px 17px}.team-top .design-concept h3{margin:0 0 3px;font-size:19px}.team-top .design-concept p{font-size:14px;line-height:1.55}
     .team-top .team-copy{padding:26px clamp(30px,4vw,52px)}.team-top .team-copy h2{font-size:clamp(38px,3.5vw,52px)}
     .team-title-wrap{position:relative;width:fit-content;cursor:help;border-radius:8px}.team-title-wrap:focus-visible{outline:3px solid #b98a43;outline-offset:6px}
+    .team-title-hint{display:inline-flex;align-items:center;gap:7px;margin-top:7px;color:#735949;font-size:14px;font-weight:700;letter-spacing:.04em}.team-title-hint::before{content:"＋";width:21px;height:21px;border:1px solid #a98972;border-radius:50%;display:grid;place-items:center;font-size:14px;line-height:1}
     .team-name-note{position:absolute;z-index:8;left:0;top:calc(100% + 12px);width:min(560px,72vw);margin:0;padding:16px 18px;border-radius:14px;background:#4c3b33;color:#fffaf3;font-size:15px;line-height:1.75;box-shadow:0 16px 36px rgba(46,34,28,.24);opacity:0;visibility:hidden;transform:translateY(-5px);transition:.2s;pointer-events:none}
     .team-title-wrap:hover .team-name-note,.team-title-wrap:focus .team-name-note,.team-title-wrap:focus-within .team-name-note{opacity:1;visibility:visible;transform:none}
     .team-top .team-lead{margin:18px 0 20px;font-size:16px;line-height:1.75}.team-top .team-points{gap:10px}
@@ -936,6 +937,14 @@
       .quick-nav a.active,.quick-nav a[aria-current="location"]{background:var(--nav-active);border-color:var(--nav-active);color:#fff}
       .back-to-top-fab{right:14px;bottom:calc(84px + env(safe-area-inset-bottom));width:48px;height:48px;font-size:23px}
     }
+
+    /* 熟齡閱讀微調：僅放大導覽與頁尾的小字，不改動原有版面與配色。 */
+    .quick-nav a{font-size:16px}
+    .footer-links a,.footer-sources a{font-size:17px}
+    .footer-source-note,.footer-bottom p{font-size:16px}
+    .footer-bottom{grid-template-columns:repeat(4,minmax(0,auto))}
+    @media(max-width:980px){.footer-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:700px){.team-title-hint{font-size:15px}.quick-nav a{font-size:14px}.footer-bottom{grid-template-columns:1fr}.footer-links a,.footer-sources a{font-size:18px}.footer-source-note,.footer-bottom p{font-size:17px}}
   </style>
 </head>
 <body>
@@ -955,7 +964,7 @@
           <div class="design-concept"><h3>五食成圓・順時共養</h3><p>主食、主菜、兩道配菜與湯品化為五個柔和形體，共構完整餐盤。枝葉、穀粒與圓潤輪廓呼應當季、在地與柔軟好入口，讓飲食友善走入世代共融的日常。</p></div>
         </div>
         <div class="team-copy">
-          <div class="team-title-wrap" tabindex="0" aria-describedby="team-name-note"><h2><span class="team-name-primary">新食代</span><span class="team-name-dot">・</span><span class="team-name-accent">新港覺</span></h2><p class="team-name-note" id="team-name-note" role="note">「新食代・新港覺」由參與暑期職場體驗的青年宜慧與柏熹共同組成，並於新港文教基金會與新港客廳展開實作。團隊從青年視角出發，傾聽高齡者在日常飲食中的需要，結合新港食材、友善質地與四季餐桌，將關懷轉化為容易理解、貼近生活的飲食指南。期盼減少長輩用餐的不便，讓每一餐多一分安心，也讓新港的風土滋味與人情溫度，在世代之間溫柔延續。</p></div>
+          <div class="team-title-wrap" tabindex="0" aria-describedby="team-name-note"><h2><span class="team-name-primary">新食代</span><span class="team-name-dot">・</span><span class="team-name-accent">新港覺</span></h2><span class="team-title-hint" aria-hidden="true">點擊或停留，認識編製團隊</span><p class="team-name-note" id="team-name-note" role="note">「新食代・新港覺」由參與暑期職場體驗的青年宜慧與柏熹共同組成，並於新港文教基金會與新港客廳展開實作。團隊從青年視角出發，傾聽高齡者在日常飲食中的需要，結合新港食材、友善質地與四季餐桌，將關懷轉化為容易理解、貼近生活的飲食指南。期盼減少長輩用餐的不便，讓每一餐多一分安心，也讓新港的風土滋味與人情溫度，在世代之間溫柔延續。</p></div>
           <p class="team-lead">高齡飲食的議題一直以來是被社會忽視的一隅，許多長輩在飲食諸多層面上經常是充滿不便。本團隊特以高齡者為設計核心製作此網站指南，提供用餐靈感與健康資訊；期能在健康飲食的道路上，與長輩一同並肩前行。</p>
           <div class="team-points" aria-label="網站功能說明">
             <button type="button" class="team-point" data-team-point="0" aria-expanded="false" aria-controls="team-detail" aria-label="查看四季好時的說明"><span class="team-point-index">01</span><b>四季好時</b><span class="team-point-arrow" aria-hidden="true">＋</span></button>
@@ -969,7 +978,7 @@
       </div>
     </section>
     <section class="hero">
-      <div><p class="eyebrow">SEASONAL TABLE</p><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">專為高齡長者設計的四季餐盤，每套餐盤都搭配各一項主食與主菜、兩項配菜以及甜品，再也不愁今天要吃什麼！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
+      <div><p class="eyebrow">SEASONAL TABLE</p><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">專為高齡長者設計的四季餐盤，每套餐盤都搭配一項主食、一項主菜、兩道配菜與一碗湯品，再也不愁今天要吃什麼！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
       <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
@@ -982,7 +991,7 @@
       <article class="carecard"><div class="carehead"><span class="seal">脂</span><h3>血脂偏高</h3></div><p class="lead">減少飽和脂肪，蛋白質優先選豆、魚與瘦肉</p><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul></article>
     </div></section>
   </main>
-  <dialog id="food-dialog" aria-labelledby="dialog-food-name"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high"></figure><div class="dialog-copy"><p class="dialog-category" id="dialog-category"></p><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依 Canva《高齡健康餐盤飲食指南》整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></div></div></dialog>
+  <dialog id="food-dialog" aria-labelledby="dialog-food-name"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high"></figure><div class="dialog-copy"><p class="dialog-category" id="dialog-category"></p><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依《高齡健康餐盤飲食指南》及官方衛教資料整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></div></div></dialog>
   <footer class="site-footer" id="sources">
     <div class="footer-main">
       <div class="footer-brand-column">
@@ -1000,7 +1009,7 @@
         <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
       </div>
     </div>
-    <div class="footer-bottom"><p>內容更新｜2026年8月8日</p><p>內容基礎｜Canva《高齡健康餐盤飲食指南》</p><p>編製團隊｜<strong>新食代・新港覺</strong></p></div>
+    <div class="footer-bottom"><p>內容更新｜2026年8月8日</p><p>資料查閱｜2026年8月</p><p>內容基礎｜《高齡健康餐盤飲食指南》</p><p>編製團隊｜<strong>新食代・新港覺</strong></p></div>
   </footer>
   <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考菜單</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食">高齡飲食提醒</a></nav>
   <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="回到頁首" title="回到頁首" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></button>
