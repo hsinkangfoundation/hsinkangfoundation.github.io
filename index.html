@@ -795,10 +795,15 @@
         backdrop-filter:none!important;
         -webkit-backdrop-filter:none!important;
         transform:none!important;
-        contain:layout paint;
-        isolation:isolate;
+        contain:none!important;
+        isolation:auto;
+        filter:none!important;
+        opacity:1;
+        overflow:hidden;
       }
-      .quick-nav a{min-width:0;min-height:60px;padding:5px 2px;border-radius:10px;background:transparent;color:#65564e;font-size:13px;line-height:1.25;transition:none!important}
+      .quick-nav a{min-width:0;min-height:60px;padding:5px 2px;border-radius:10px;background:transparent;color:#65564e;font-size:13px;line-height:1.25;transition:none!important;transform:none!important;filter:none!important;box-shadow:none!important;animation:none!important}
+      .quick-nav a::before,.quick-nav a::after{transition:none!important;transform:none!important;filter:none!important;box-shadow:none!important;animation:none!important}
+      .quick-nav a::after{display:none!important}
       .quick-nav a:hover{background:transparent}
       .quick-nav a.active,.quick-nav a[aria-current="location"]{background:#eee3d6;color:#5d4538}
       .quick-nav a.active::before,.quick-nav a[aria-current="location"]::before{top:1px;height:3px;background:var(--nav-active)}
@@ -1167,9 +1172,9 @@
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#care,#notes")];
     const markQuickNav=id=>{const navId=id==="care"?"notes":id;quickLinks.forEach(link=>{const active=link.dataset.navTarget===navId;link.classList.toggle("active",active);if(active)link.setAttribute("aria-current","location");else link.removeAttribute("aria-current")})};
-    let quickNavFrame=0,quickNavLock="";
+    let quickNavFrame=0,quickNavLock="",quickNavRelease=0;
     function syncQuickNav(){quickNavFrame=0;if(quickNavLock){markQuickNav(quickNavLock);return}if(window.scrollY<100){markQuickNav("top");return}const anchor=(document.querySelector("header")?.offsetHeight||68)+130;let current="team";quickTargets.forEach(target=>{if(target.getBoundingClientRect().top<=anchor)current=target.id});markQuickNav(current)}
-    quickLinks.forEach(link=>link.addEventListener("click",event=>{const targetId=link.dataset.navTarget,target=document.getElementById(targetId);if(!target)return;event.preventDefault();quickNavLock=targetId;document.documentElement.classList.add("quick-nav-jump");markQuickNav(targetId);const offset=(document.querySelector("header")?.offsetHeight||68)+12,top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset);window.scrollTo({top,behavior:"auto"});if(history.replaceState)history.replaceState(null,"",link.getAttribute("href"));requestAnimationFrame(()=>requestAnimationFrame(()=>{document.documentElement.classList.remove("quick-nav-jump");quickNavLock="";syncQuickNav()}))}));
+    quickLinks.forEach(link=>link.addEventListener("click",event=>{const targetId=link.dataset.navTarget,target=document.getElementById(targetId);if(!target)return;event.preventDefault();clearTimeout(quickNavRelease);quickNavLock=targetId;markQuickNav(targetId);const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;target.scrollIntoView({block:"start",behavior:reduced?"auto":"smooth"});quickNavRelease=setTimeout(()=>{quickNavLock="";syncQuickNav()},reduced?80:650)}));
     const backToTop=document.getElementById("back-to-top");
     function syncBackToTop(){const visible=window.scrollY>520;backToTop.classList.toggle("visible",visible);backToTop.setAttribute("aria-hidden",String(!visible));backToTop.tabIndex=visible?0:-1}
     backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
