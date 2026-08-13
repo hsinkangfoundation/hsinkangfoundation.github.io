@@ -362,6 +362,12 @@
     /* One abundant wooden tray. Images remain individual interactive cutouts. */
     #planner .plate-summary{overflow:hidden}
     #planner .plate-summary .summary-head{justify-content:center;text-align:center;margin-bottom:22px}
+    .plate-reel-console{position:relative;z-index:3;margin:0 0 16px;padding:12px 16px;border:1px solid rgba(83,55,38,.28);border-radius:20px;background:linear-gradient(145deg,#73503e,#4c362d);color:#fff8ed;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 24px rgba(61,40,29,.16)}
+    .plate-reel-brand{display:flex;align-items:center;gap:11px;min-width:0}.plate-reel-light{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:#edc777;box-shadow:0 0 0 4px rgba(237,199,119,.13),0 0 14px rgba(237,199,119,.55)}
+    .plate-reel-brand span{display:flex;flex-direction:column;line-height:1.15}.plate-reel-brand small{font-size:8px;font-weight:800;letter-spacing:.2em;color:#d8c4b3}.plate-reel-brand b{font:600 17px/1.4 "Noto Serif TC","Songti TC",serif;letter-spacing:.1em;white-space:nowrap}
+    .plate-reel-dots{display:flex;align-items:center;justify-content:center;gap:7px}.plate-reel-dots i{width:8px;height:8px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.15)}.plate-reel-dots i:nth-child(1){background:#d8c4a4}.plate-reel-dots i:nth-child(2){background:#b76e55}.plate-reel-dots i:nth-child(3),.plate-reel-dots i:nth-child(4){background:#7d9b78}.plate-reel-dots i:nth-child(5){background:#72949c}
+    .plate-reel-spin{justify-self:end;min-height:46px;padding:7px 17px 7px 9px;border:1px solid rgba(255,239,216,.34);border-radius:999px;background:linear-gradient(145deg,#fff9ee,#e8d8c4);color:#5a4032;display:inline-flex;align-items:center;gap:9px;font-weight:700;box-shadow:inset 0 1px 0 #fff,0 7px 15px rgba(32,20,15,.22)}
+    .plate-reel-spin>span{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#fffdf8;color:var(--accent);font-size:18px;box-shadow:inset 0 0 0 1px rgba(90,64,48,.13)}.plate-reel-spin:hover{transform:translateY(-1px);background:#fffdf8}.plate-reel-spin:disabled{cursor:wait;opacity:.82}
     .meal-table{position:relative;isolation:isolate;width:100%;aspect-ratio:16/10;border:1px solid rgba(89,57,36,.3);border-radius:38px;background-color:#9a6540;background-image:url("assets/meal-table-bg-tray.webp?v=20260805-10");background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(255,244,222,.28),0 26px 54px rgba(63,42,27,.22);overflow:hidden}
     .meal-table:before{content:"";position:absolute;z-index:0;inset:5.8% 5%;border:1px solid rgba(255,235,202,.13);border-radius:28px;background:radial-gradient(ellipse at 48% 43%,rgba(255,229,188,.12),transparent 68%);box-shadow:inset 0 12px 24px rgba(255,236,204,.06),inset 0 -18px 34px rgba(61,35,20,.08);pointer-events:none}
     .meal-table:after{content:"";position:absolute;z-index:1;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,246,228,.06),transparent 36%,rgba(52,29,17,.06));pointer-events:none}
@@ -385,6 +391,17 @@
     #planner .meal-table .plate-list li:nth-child(3) .table-dish-photo img,#planner .meal-table .plate-list li:nth-child(4) .table-dish-photo img{transform:scale(1.04)}
     .table-refresh{position:absolute;z-index:5;top:8%;right:7%;width:31px;height:31px;border:1px solid rgba(87,65,49,.17);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.9);color:var(--accent)!important;font-size:18px!important;line-height:1;box-shadow:0 6px 15px rgba(66,48,35,.14);opacity:.58;pointer-events:none;transition:opacity .08s ease,transform .16s ease}
     .table-dish-button:hover .table-refresh,.table-dish-button:focus-visible .table-refresh{opacity:1;transform:rotate(50deg)}
+    .meal-table.is-reeling{box-shadow:inset 0 0 0 1px rgba(255,244,222,.4),0 26px 54px rgba(63,42,27,.28),0 0 0 5px color-mix(in srgb,var(--accent) 14%,transparent)}
+    .meal-table.is-reeling+.summary-actions{pointer-events:none;opacity:.72}
+    .table-dish-button.is-reeling .table-dish-hit{pointer-events:none}
+    .table-dish-button.is-reeling .table-dish-photo{will-change:transform,filter,opacity;animation:dish-reel .5s cubic-bezier(.2,.76,.2,1) both}
+    .table-dish-button.is-reeling .table-refresh{opacity:1;will-change:transform;animation:reel-refresh .5s cubic-bezier(.2,.76,.2,1) both}
+    .plate-summary.is-reeling .plate-reel-light{animation:reel-light .16s linear infinite alternate}.plate-summary.is-reeling .plate-reel-spin>span{animation:reel-control .5s linear infinite}
+    @keyframes dish-reel{0%{transform:translateY(0) rotate(0) scale(1);filter:blur(0);opacity:1}42%{transform:translateY(15%) rotate(115deg) scale(.86);filter:blur(3px);opacity:.5}50%{transform:translateY(21%) rotate(180deg) scale(.8);filter:blur(5px);opacity:.08}58%{transform:translateY(-15%) rotate(250deg) scale(.87);filter:blur(3px);opacity:.72}82%{transform:translateY(2%) rotate(354deg) scale(1.02);filter:blur(0);opacity:1}100%{transform:translateY(0) rotate(360deg) scale(1);filter:blur(0);opacity:1}}
+    @keyframes reel-refresh{0%{transform:rotate(0) scale(1)}55%{transform:rotate(290deg) scale(.88)}100%{transform:rotate(720deg) scale(1)}}
+    @keyframes reel-light{from{opacity:.5;box-shadow:0 0 0 3px rgba(237,199,119,.1)}to{opacity:1;box-shadow:0 0 0 5px rgba(237,199,119,.18),0 0 20px rgba(237,199,119,.8)}}
+    @keyframes reel-control{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){.table-dish-button.is-reeling .table-dish-photo,.table-dish-button.is-reeling .table-refresh,.plate-summary.is-reeling .plate-reel-light,.plate-summary.is-reeling .plate-reel-spin>span{animation:none!important}}
     #food-dialog{width:min(940px,calc(100% - 32px));max-height:calc(100svh - 32px);border-radius:28px;background:#fffdf8;overflow:hidden}
     #food-dialog .dialog-inner{padding:0}
     #food-dialog .dialog-close{z-index:3;border-color:rgba(69,54,43,.22);border-radius:50%;background:rgba(255,253,247,.94);box-shadow:0 5px 16px rgba(52,40,31,.12)}
@@ -395,7 +412,7 @@
     #food-dialog .dialog-copy h2{margin-right:42px}
     #food-dialog .dialog-note{line-height:1.7}
     @media(max-width:980px){.site-title{position:relative;top:auto;left:auto;transform:none;padding:24px 16px 2px;font-size:32px}section.block.team-top{padding-top:16px}header .brandtext b{font-size:16px}#planner .meal-actions button{font-size:14px}}
-    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.meal-table{height:min(650px,170vw);min-height:500px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{inset:5% 4%;border-radius:22px}.meal-table:after{inset:0;border-radius:inherit}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){z-index:5;left:0;top:auto;bottom:3%;width:56%;height:33%;transform:rotate(-3deg)}#planner .meal-table .plate-list li:nth-child(2){z-index:3;left:9%;top:29%;width:82%;height:42%;transform:none}#planner .meal-table .plate-list li:nth-child(3){z-index:2;left:0;right:auto;top:3%;width:58%;height:33%;transform:rotate(-2deg)}#planner .meal-table .plate-list li:nth-child(4){z-index:2;left:auto;right:0;top:3%;bottom:auto;width:58%;height:33%;transform:rotate(2deg)}#planner .meal-table .plate-list li:nth-child(5){z-index:5;right:0;bottom:3%;width:56%;height:33%;transform:rotate(2deg)}#planner .meal-table .plate-list li:nth-child(1) .table-dish-hit{inset:25% 20% 22%}#planner .meal-table .plate-list li:nth-child(2) .table-dish-hit{inset:22% 16%}.table-refresh{width:29px;height:29px;font-size:17px!important;opacity:.66}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.08)}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
+    @media(max-width:700px){.site-title{padding-top:22px;font-size:clamp(27px,8vw,32px);letter-spacing:.08em}header .brandtext b{font-size:14px}.plate-reel-console{padding:10px 11px;grid-template-columns:1fr auto;gap:10px}.plate-reel-brand b{font-size:15px}.plate-reel-brand small,.plate-reel-dots{display:none}.plate-reel-spin{min-height:44px;padding-right:13px;font-size:15px}.plate-reel-spin>span{width:30px;height:30px}.meal-table{height:min(650px,170vw);min-height:500px;aspect-ratio:auto;border-radius:28px;background-size:auto 100%;background-position:center}.meal-table:before{inset:5% 4%;border-radius:22px}.meal-table:after{inset:0;border-radius:inherit}#planner .meal-table .plate-list li{border-radius:50%!important;background:transparent!important}#planner .meal-table .plate-list li:nth-child(1){z-index:5;left:0;top:auto;bottom:3%;width:56%;height:33%;transform:rotate(-3deg)}#planner .meal-table .plate-list li:nth-child(2){z-index:3;left:9%;top:29%;width:82%;height:42%;transform:none}#planner .meal-table .plate-list li:nth-child(3){z-index:2;left:0;right:auto;top:3%;width:58%;height:33%;transform:rotate(-2deg)}#planner .meal-table .plate-list li:nth-child(4){z-index:2;left:auto;right:0;top:3%;bottom:auto;width:58%;height:33%;transform:rotate(2deg)}#planner .meal-table .plate-list li:nth-child(5){z-index:5;right:0;bottom:3%;width:56%;height:33%;transform:rotate(2deg)}#planner .meal-table .plate-list li:nth-child(1) .table-dish-hit{inset:25% 20% 22%}#planner .meal-table .plate-list li:nth-child(2) .table-dish-hit{inset:22% 16%}.table-refresh{width:29px;height:29px;font-size:17px!important;opacity:.66}#planner .meal-table .plate-list li:nth-child(2) .table-dish-photo img{transform:scale(1.08)}.dialog-layout{grid-template-columns:1fr;min-height:0;max-height:calc(100svh - 32px)}.dialog-media{width:100%;height:min(42svh,300px);min-height:0;padding:0}.dialog-media img{width:100%;height:100%;max-width:none;max-height:none}.dialog-copy{padding:26px 24px 30px}#food-dialog .dialog-copy h2{font-size:32px;margin-bottom:18px}.dialog-field{padding:15px 0}#planner .meal-actions{gap:8px}#planner .meal-actions button{font-size:15px}}
 
     /* Senior-readable type scale and a lower, stronger page title. */
     body{font-size:19px;line-height:1.75}
@@ -834,98 +851,24 @@
     .site-title-main::before{background:linear-gradient(90deg,transparent,#b59b76)}
     .site-title-main::after{width:42px;background:linear-gradient(90deg,#b59b76,transparent)}
 
-    .season-carousel{
-      --slot-deep:#674839;
-      position:relative;
-      width:min(100%,590px);
-      padding:18px 18px 20px;
-      border:1px solid rgba(89,61,44,.28);
-      border-radius:32px;
-      background:linear-gradient(145deg,#7b5946 0%,#4e382e 100%);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -14px 34px rgba(43,27,20,.18),0 28px 54px rgba(64,43,31,.22);
-      overflow:visible;
-      isolation:isolate;
-    }
-    .season-carousel::before{content:"";position:absolute;inset:7px;border:1px solid rgba(255,235,207,.17);border-radius:26px;pointer-events:none}
-    .slot-machine-head{position:relative;z-index:4;min-height:52px;padding:3px 8px 14px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;color:#fff8ed}
-    .slot-machine-light{width:11px;height:11px;border-radius:50%;background:#f0c873;box-shadow:0 0 0 5px rgba(240,200,115,.12),0 0 18px rgba(240,200,115,.64)}
-    .slot-machine-title{display:flex;align-items:baseline;gap:9px}
-    .slot-machine-title b{font:600 18px/1.3 "Noto Serif TC","Songti TC",serif;letter-spacing:.12em}
-    .slot-machine-title small{font-size:9px;font-weight:800;letter-spacing:.22em;color:#d8c4b3}
-    .slot-machine-count{font-size:11px;font-weight:800;letter-spacing:.16em;color:#f0dfcc}
-    .slot-window{position:relative;z-index:2;padding:14px 56px;border:1px solid rgba(80,55,42,.28);border-radius:23px;background:linear-gradient(#d9c8b6 0 5%,#f9f1e5 14% 86%,#d4c0ac 95% 100%);box-shadow:inset 0 8px 18px rgba(78,53,39,.16),inset 0 -8px 18px rgba(78,53,39,.14),0 10px 24px rgba(34,22,17,.16);overflow:hidden}
-    .slot-window::before,.slot-window::after{content:"";position:absolute;z-index:3;left:0;right:0;height:19%;pointer-events:none}
-    .slot-window::before{top:0;background:linear-gradient(#bca58f,rgba(230,216,199,.74),transparent)}
-    .slot-window::after{bottom:0;background:linear-gradient(transparent,rgba(226,210,191,.78),#b79f89)}
-    .slot-window-line{position:absolute;z-index:4;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(111,75,54,.28),transparent);pointer-events:none}
-    .slot-window-line.top{top:14%}.slot-window-line.bottom{bottom:14%}
-    .season-track{position:relative!important;width:100%;height:clamp(340px,35vw,430px);padding:0!important;display:block!important;overflow:hidden!important;scroll-snap-type:none!important}
+    .season-carousel{padding-bottom:0}
     .season-track .visual.spring{--season-deep:#4f7754}
     .season-track .visual.summer{--season-deep:#956b32}
     .season-track .visual.autumn{--season-deep:#8a533e}
     .season-track .visual.winter{--season-deep:#4f6f76}
     .season-track .visual{
-      position:absolute!important;
-      inset:0!important;
-      width:100%!important;
-      min-height:0!important;
-      padding:22px 22px 26px!important;
-      border:1px solid color-mix(in srgb,var(--season-deep) 28%,#e7dccc)!important;
-      border-radius:18px!important;
       background:linear-gradient(145deg,color-mix(in srgb,var(--season-deep) 13%,#f6f1e8),color-mix(in srgb,var(--season-deep) 5%,#fffaf3))!important;
-      box-shadow:0 12px 24px rgba(64,44,32,.1)!important;
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transform:translateY(105%);
-      transition:none!important;
+      border-color:color-mix(in srgb,var(--season-deep) 26%,#eee7dc);
+      box-shadow:none!important;
     }
-    .season-track .visual.active{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
-    .season-track .visualmeta{position:relative;z-index:2}
-    .season-track .visual .plate{width:min(82%,330px);transform-origin:50% 50%;backface-visibility:hidden}
     .season-carousel .season-arrow{
       top:50%!important;
       bottom:auto!important;
-      width:40px!important;
-      height:40px!important;
-      border-color:rgba(94,66,50,.22)!important;
-      background:rgba(255,250,242,.92)!important;
-      box-shadow:0 6px 15px rgba(54,34,24,.18)!important;
       transform:translateY(-50%)!important;
     }
     .season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}
-    .season-carousel .season-arrow-prev{left:15px!important}
-    .season-carousel .season-arrow-next{right:15px!important}
-    .season-track .visual.season-turn-in{visibility:visible;z-index:2;will-change:transform,filter,opacity;animation:slot-reel-in .42s cubic-bezier(.16,.78,.2,1) both}
-    .season-track .visual.season-turn-out{visibility:visible;z-index:1;will-change:transform,filter,opacity;animation:slot-reel-out .25s cubic-bezier(.4,0,.82,.35) both}
-    .season-track .visual.season-turn-in .plate{will-change:transform;animation:slot-plate-settle .42s cubic-bezier(.16,.78,.2,1) both}
-    .season-carousel.is-spinning .slot-machine-light{animation:slot-light .18s linear infinite alternate}
-    .season-carousel.is-spinning .slot-window::before,.season-carousel.is-spinning .slot-window::after{height:27%}
-    .season-carousel.is-spinning [data-season-slide]{pointer-events:none}
-    @keyframes slot-reel-in{0%{transform:translateY(var(--season-turn-start,-108%));filter:blur(5px);opacity:.12}62%{transform:translateY(var(--season-turn-overshoot,5%));filter:blur(0);opacity:1}100%{transform:translateY(0);filter:blur(0);opacity:1}}
-    @keyframes slot-reel-out{0%{transform:translateY(0);filter:blur(0);opacity:1}100%{transform:translateY(var(--season-turn-exit,100%));filter:blur(5px);opacity:.08}}
-    @keyframes slot-plate-settle{0%{transform:rotate(var(--season-plate-start,-150deg)) scale(.86)}72%{transform:rotate(var(--season-plate-over,7deg)) scale(1.025)}100%{transform:rotate(0) scale(1)}}
-    @keyframes slot-light{from{opacity:.52;box-shadow:0 0 0 3px rgba(240,200,115,.08)}to{opacity:1;box-shadow:0 0 0 6px rgba(240,200,115,.18),0 0 22px rgba(240,200,115,.78)}}
-    .slot-machine-foot{position:relative;z-index:4;padding:15px 7px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;color:#f8eadb}
-    .slot-season-lights{display:flex;gap:8px;align-items:center}
-    .slot-season-lights i{width:9px;height:9px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.14);transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
-    .slot-season-lights i.active{background:var(--light,#f0c873);box-shadow:0 0 12px color-mix(in srgb,var(--light,#f0c873) 72%,transparent);transform:scale(1.2)}
-    .season-spin{position:relative!important;left:auto!important;bottom:auto!important;min-width:174px!important;min-height:54px!important;margin:0!important;padding:7px 18px 7px 8px!important;border:1px solid rgba(255,236,210,.3)!important;border-radius:999px!important;background:linear-gradient(145deg,#fff8ec,#e8d7c3)!important;color:#5b4031!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(33,21,16,.25)!important;transform:none!important}
-    .season-spin:hover{background:#fffdf8!important;transform:translateY(-2px)!important}
-    .season-spin:disabled{cursor:wait;opacity:.88}
-    .season-spin-icon{width:38px;height:38px;flex:0 0 38px}
-    .season-carousel.is-spinning .season-spin-icon{animation:slot-button-spin .42s linear infinite}
-    @keyframes slot-button-spin{to{transform:rotate(360deg)}}
-    .slot-machine-hint{justify-self:end;font-size:10px;font-weight:700;letter-spacing:.1em;color:#d8c4b3;text-align:right}
-    @media(max-width:700px){
-      .season-carousel{width:100%;padding:12px 11px 14px;border-radius:24px}
-      .slot-machine-head{min-height:44px;padding:1px 6px 10px;gap:8px}.slot-machine-title b{font-size:16px}.slot-machine-title small{display:none}
-      .slot-window{padding:10px 40px;border-radius:18px}.season-track{height:340px}.season-track .visual{padding:17px 12px 20px!important;border-radius:14px!important}.season-track .visual .plate{width:min(92%,255px)}
-      .season-carousel .season-arrow{top:50%!important;bottom:auto!important;width:34px!important;height:34px!important;transform:translateY(-50%)!important}.season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}.season-carousel .season-arrow-prev{left:9px!important}.season-carousel .season-arrow-next{right:9px!important}
-      .slot-machine-foot{grid-template-columns:auto 1fr;padding:12px 4px 0}.slot-machine-hint{display:none}.season-spin{justify-self:end;min-width:158px!important;min-height:50px!important}.season-spin-copy b{font-size:14px}
-    }
-    @media(prefers-reduced-motion:reduce){.season-track .visual.season-turn-in,.season-track .visual.season-turn-out,.season-track .visual.season-turn-in .plate,.season-carousel.is-spinning .slot-machine-light,.season-carousel.is-spinning .season-spin-icon{animation:none!important}}
-
+    .season-carousel .season-arrow-prev{left:8px!important}
+    .season-carousel .season-arrow-next{right:8px!important}
     .gentle{background:linear-gradient(135deg,#f3e8e4 0%,#faf6f2 100%)}
     .gentle .section-title .eyebrow{color:#85685f}
     .gentle .note,
@@ -1052,14 +995,10 @@
     </section>
     <section class="hero">
       <div><p class="eyebrow">SEASONAL TABLE</p><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">專為高齡長者設計的四季餐盤，每套餐盤都搭配一項主食、一項主菜、兩道配菜與一碗湯品，再也不愁今天要吃什麼！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
-      <div class="season-carousel" aria-label="四季餐盤轉輪">
-        <div class="slot-machine-head"><span class="slot-machine-light" aria-hidden="true"></span><span class="slot-machine-title"><b>四季轉輪</b><small>SEASON REEL</small></span><span class="slot-machine-count">04 SEASONS</span></div>
-        <div class="slot-window"><span class="slot-window-line top" aria-hidden="true"></span><span class="slot-window-line bottom" aria-hidden="true"></span><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤轉輪"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
-        <div class="slot-machine-foot"><span class="slot-season-lights" aria-hidden="true"><i data-season-light="spring" style="--light:#77a27d"></i><i data-season-light="summer" style="--light:#d2a44d"></i><i data-season-light="autumn" style="--light:#b56d50"></i><i data-season-light="winter" style="--light:#6e929b"></i></span><button type="button" class="season-spin" id="season-spin"><span class="season-spin-icon" aria-hidden="true"><span>↻</span></span><span class="season-spin-copy"><small>QUICK SPIN</small><b>轉動換季</b></span></button><span class="slot-machine-hint">快速轉動<br>自動停在下一季</span></div>
-      </div>
+      <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
-    <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
+    <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div></div><div class="plate-reel-console"><span class="plate-reel-brand"><i class="plate-reel-light" aria-hidden="true"></i><span><small>FIVE DISH REEL</small><b>五味餐盤轉輪</b></span></span><span class="plate-reel-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="plate-reel-spin" id="plate-spin"><span aria-hidden="true">↻</span>整盤快轉</button></div><div class="meal-table" role="group" aria-label="五項餐食轉輪；點選任一道料理即可快速更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title"><div><p class="eyebrow">SEASONAL MENU</p><h2 id="menu-title">夏季參考餐盤</h2></div></div><div class="menu-grid" id="menu-grid"></div></section>
     <section class="block gentle" id="notes"><div class="section-title"><div><p class="eyebrow">DAILY CARE</p><h2>食有所養，日日安心。</h2></div><p>從質地、調味、份量到補水與吞嚥，多一點留意，讓每天的一餐更安心。</p></div><div class="notes"><article class="note"><span>一</span><h3>切小煮軟，好入口</h3><p>依牙口調整食材大小與軟硬，吃得更輕鬆。</p></article><article class="note"><span>二</span><h3>清淡調味，保留香氣</h3><p>少鹽少醬，善用薑、蒜、香菇等天然香氣提味。</p></article><article class="note"><span>三</span><h3>少量多樣，慢慢吃</h3><p>每餐多樣搭配，依食慾調整份量，不勉強吃完。</p></article><article class="note"><span>四</span><h3>吃得剛好，比吃得更少重要</h3><p>仍要吃足熱量與蛋白質；若體重下降或食慾變差，請詢問醫師或營養師。</p></article><article class="note"><span>五</span><h3>主動補充水分</h3><p>白天分次喝水，不等口渴才喝；若有限水需求，請依醫囑調整。</p></article><article class="note"><span>六</span><h3>留意吞嚥警訊</h3><p>若常嗆咳、聲音變濕或用餐時間明顯變長，請尋求醫療專業評估。</p></article></div></section>
     <section class="block care" id="care"><div class="section-title"><div><p class="eyebrow">SPECIAL CARE</p><h2>三高飲食重點</h2></div><p>從調味、主食份量到用油方式，先掌握日常容易執行的原則；若已服藥或有其他疾病，仍以醫師、營養師建議為準。</p></div><div class="care-grid">
@@ -1211,7 +1150,7 @@
     const foodDialog=document.getElementById("food-dialog");
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,seasonTurnToken=0,seasonSpinToken=0,seasonSpinBusy=false;
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,plateReelToken=0;
     const teamPointDetails=[
       {title:"四季好時",copy:"依春夏秋冬切換當令菜色，找到此刻適合的滋味。"},
       {title:"份量與營養",copy:"每道料理附上建議份量與營養重點，資訊更容易查找。"},
@@ -1231,23 +1170,7 @@
     function pools(){const m=S[season].menus;return[staples,m.map(x=>x[0]),m.map(x=>x[1]),m.map(x=>x[2]),m.map(x=>x[3])]}
     function selectedItems(){return pools().map((pool,i)=>{const d=pool[idx[i]%pool.length],name=Array.isArray(d)?d[0]:d;return{category:labels[i],name,portion:foodInfo[name]?.portion||"",month:i===0?"全年可選":(d[1]||"全年皆宜")}})}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
-    function clearSeasonTurnState(slides=[...document.querySelectorAll("[data-season-slide]")]){slides.forEach(slide=>{slide.classList.remove("season-turn-in","season-turn-out");slide.style.removeProperty("--season-turn-start");slide.style.removeProperty("--season-turn-overshoot");slide.style.removeProperty("--season-turn-exit");slide.style.removeProperty("--season-plate-start");slide.style.removeProperty("--season-plate-over")})}
-    function animateSeasonTurn(active,previous,direction=1){
-      const slides=[...document.querySelectorAll("[data-season-slide]")],token=++seasonTurnToken;clearSeasonTurnState(slides);
-      if(!active||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-      active.style.setProperty("--season-turn-start",direction<0?"108%":"-108%");active.style.setProperty("--season-turn-overshoot",direction<0?"-5%":"5%");active.style.setProperty("--season-plate-start",direction<0?"150deg":"-150deg");active.style.setProperty("--season-plate-over",direction<0?"-7deg":"7deg");
-      if(previous&&previous!==active){previous.style.setProperty("--season-turn-exit",direction<0?"-100%":"100%");previous.classList.add("season-turn-out")}
-      void active.offsetWidth;active.classList.add("season-turn-in");setTimeout(()=>{if(token===seasonTurnToken)clearSeasonTurnState(slides)},440)
-    }
-    function updateSeasonCarousel(turnDirection=0,forceTurn=false,visualSeason=season){const slides=[...document.querySelectorAll("[data-season-slide]")],previous=slides.find(slide=>slide.classList.contains("active")),active=slides.find(slide=>slide.dataset.seasonSlide===visualSeason);slides.forEach(slide=>slide.classList.toggle("active",slide===active));document.querySelectorAll("[data-season-light]").forEach(light=>light.classList.toggle("active",light.dataset.seasonLight===visualSeason));if((forceTurn||previous&&previous!==active)&&turnDirection)animateSeasonTurn(active,previous,turnDirection)}
-    const spinWait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-    async function spinSeasonReel(){
-      if(seasonSpinBusy)return;seasonSpinBusy=true;const token=++seasonSpinToken,carousel=document.querySelector(".season-carousel"),spinButton=document.getElementById("season-spin"),arrows=[document.getElementById("season-prev"),document.getElementById("season-next")],seasonTabs=[...document.querySelectorAll(".seasons button")],keys=["spring","summer","autumn","winter"],start=keys.indexOf(season),delays=[45,55,70,90,120];
-      carousel.classList.add("is-spinning");spinButton.disabled=true;spinButton.setAttribute("aria-busy","true");[...arrows,...seasonTabs].forEach(button=>button.disabled=true);
-      for(let step=1;step<=delays.length;step++){if(token!==seasonSpinToken)return;updateSeasonCarousel(1,true,keys[(start+step)%keys.length]);await spinWait(delays[step-1])}
-      const target=keys[(start+1)%keys.length];await changeSeason(target,1);await spinWait(300);
-      if(token===seasonSpinToken){carousel.classList.remove("is-spinning");spinButton.disabled=false;spinButton.removeAttribute("aria-busy");[...arrows,...seasonTabs].forEach(button=>button.disabled=false);seasonSpinBusy=false;announce("四季轉輪停在"+S[target].label+"季")}
-    }
+    function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
     function render(){
       const s=S[season],p=pools(),items=selectedItems();document.documentElement.style.setProperty("--accent",s.color);document.getElementById("menus").dataset.season=season;
       updateSeasonCarousel();document.getElementById("badge").textContent=s.label;document.getElementById("table-title").textContent=s.label+"季餐桌";document.getElementById("table-desc").textContent=s.desc;document.getElementById("menu-title").textContent=s.label+"季參考餐盤";document.getElementById("reset-meal").textContent="餐盤 01";
@@ -1272,21 +1195,32 @@
       if(indices.includes(0)){const currentStaple=items[0].name;document.getElementById("current-staple").textContent=currentStaple;document.getElementById("current-staple-portion").textContent=foodInfo[currentStaple].portion;document.getElementById("current-staple-info").dataset.food=currentStaple;document.querySelectorAll(".staple").forEach((card,i)=>{const selected=i===idx[0]%staples.length,button=card.querySelector(".staple-pick");card.classList.toggle("selected",selected);button.textContent=selected?"已選用":"選入";button.disabled=selected;button.setAttribute("aria-pressed",String(selected))})}
       saveState();prefetchUpcomingItems(indices);
     }
-    async function nextItem(i){const p=pools()[i],previous=idx[i]%p.length,next=p.length>1?(previous+1)%p.length:previous,entry=p[next],nextName=Array.isArray(entry)?entry[0]:entry,request=++itemChangeRequest[i],assets=[preloadTableImage(nextName,"high"),preloadDialogImage(nextName,"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[i])return;idx[i]=next;updatePlannerItems([i]);announce(labels[i]+"已換成"+selectedItems()[i].name)}
+    const plateReelDuration=500,plateReelSwapDelay=220,plateReelWait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    function plateItemName(pool,index){const entry=pool[index%pool.length];return Array.isArray(entry)?entry[0]:entry}
+    function preloadPlateSelection(nextIndices,indices){const itemPools=pools(),assets=[];[...new Set(indices)].forEach(i=>{const name=plateItemName(itemPools[i],nextIndices[i]);assets.push(preloadTableImage(name,"high"),preloadDialogImage(name,"high"))});return Promise.all(assets.filter(Boolean).map(asset=>asset.ready))}
+    function clearPlateReelState(){document.querySelectorAll(".table-dish-button.is-reeling").forEach(button=>{button.classList.remove("is-reeling");button.removeAttribute("aria-busy")});document.querySelector(".meal-table")?.classList.remove("is-reeling");document.querySelector(".plate-summary")?.classList.remove("is-reeling");[document.getElementById("roll"),document.getElementById("plate-spin")].forEach(button=>{if(button){button.disabled=false;button.removeAttribute("aria-busy")}})}
+    async function animatePlateChange(indices,commit){
+      const unique=[...new Set(indices)],token=++plateReelToken,plateList=document.getElementById("plate-list"),table=document.querySelector(".meal-table"),summary=document.querySelector(".plate-summary"),buttons=unique.map(i=>plateList?.children[i]?.querySelector(".table-dish-button")).filter(Boolean),controls=[document.getElementById("roll"),document.getElementById("plate-spin")].filter(Boolean),reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      clearPlateReelState();if(reduced||!buttons.length){commit();return true}
+      table.classList.add("is-reeling");summary.classList.add("is-reeling");controls.forEach(button=>{button.disabled=true;button.setAttribute("aria-busy","true")});buttons.forEach(button=>{button.classList.add("is-reeling");button.setAttribute("aria-busy","true")});
+      await plateReelWait(plateReelSwapDelay);if(token!==plateReelToken)return false;commit();
+      await plateReelWait(plateReelDuration-plateReelSwapDelay);if(token!==plateReelToken)return false;clearPlateReelState();return true
+    }
+    async function nextItem(i){const p=pools()[i],previous=idx[i]%p.length,next=p.length>1?(previous+1)%p.length:previous,entry=p[next],nextName=Array.isArray(entry)?entry[0]:entry,request=++itemChangeRequest[i],assets=[preloadTableImage(nextName,"high"),preloadDialogImage(nextName,"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[i])return;const committed=await animatePlateChange(next===previous?[]:[i],()=>{idx[i]=next;updatePlannerItems([i])});if(committed)announce(labels[i]+"已換成"+selectedItems()[i].name)}
     function toggleLock(i){locked[i]=!locked[i];const name=selectedItems()[i].name;updatePlannerItems([i]);announce(name+(locked[i]?"已保留，整桌更換時不會被替換":"已取消保留"))}
-    function cancelPendingItemChanges(){itemChangeRequest=itemChangeRequest.map(value=>value+1)}
-    async function randomizeMeal(){cancelPendingItemChanges();let changed=0;pools().forEach((pool,i)=>{if(locked[i]||pool.length<2)return;const current=idx[i]%pool.length;idx[i]=(current+1+Math.floor(Math.random()*(pool.length-1)))%pool.length;changed++});if(changed)await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce(changed?"餐盤已重新搭配，已保留的料理沒有更換":"五項料理都已保留，餐盤沒有更換")}
-    async function resetMeal(){cancelPendingItemChanges();idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce("已回到"+S[season].label+"季參考餐盤 01")}
-    async function applyMenu(i){cancelPendingItemChanges();idx[1]=idx[2]=idx[3]=idx[4]=i;locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce("已套用"+S[season].label+"季餐盤 "+String(i+1).padStart(2,"0"));document.querySelector("#planner").scrollIntoView()}
-    async function changeSeason(k,direction=0){if(!S[k])return;const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),target=keys.indexOf(k);if(!direction){const forward=(target-current+keys.length)%keys.length;direction=forward===keys.length-1?-1:1}if(k===season){updateSeasonCarousel(direction||1,true);return}cancelPendingItemChanges();season=k;updateSeasonCarousel(direction);idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");render();announce("已切換為"+S[k].label+"季配餐")}
-    function shiftSeason(direction){const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),next=(current+direction+keys.length)%keys.length;changeSeason(keys[next],direction)}
+    function cancelPendingItemChanges(){itemChangeRequest=itemChangeRequest.map(value=>value+1);plateReelToken++;clearPlateReelState()}
+    async function randomizeMeal(){cancelPendingItemChanges();const nextIdx=[...idx],changedIndices=[];pools().forEach((pool,i)=>{if(locked[i]||pool.length<2)return;const current=idx[i]%pool.length;nextIdx[i]=(current+1+Math.floor(Math.random()*(pool.length-1)))%pool.length;changedIndices.push(i)});if(changedIndices.length)await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;updatePlannerItems(changedIndices)});if(committed)announce(changedIndices.length?"餐盤已快速轉出新搭配，已保留的料理沒有更換":"五項料理都已保留，餐盤沒有更換")}
+    async function resetMeal(){cancelPendingItemChanges();const itemPools=pools(),nextIdx=[idx[0],0,0,0,0],changedIndices=[1,2,3,4].filter(i=>idx[i]%itemPools[i].length!==0);await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;locked=[locked[0],false,false,false,false];updatePlannerItems([0,1,2,3,4])});if(committed)announce("已回到"+S[season].label+"季參考餐盤 01")}
+    async function applyMenu(i){cancelPendingItemChanges();const itemPools=pools(),nextIdx=[idx[0],i,i,i,i],changedIndices=[1,2,3,4].filter(j=>idx[j]%itemPools[j].length!==i%itemPools[j].length);await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;locked=[locked[0],false,false,false,false];updatePlannerItems([0,1,2,3,4])});if(committed){announce("已套用"+S[season].label+"季餐盤 "+String(i+1).padStart(2,"0"));document.querySelector("#planner").scrollIntoView()}}
+    async function changeSeason(k){if(!S[k]||k===season)return;cancelPendingItemChanges();season=k;idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");render();announce("已切換為"+S[k].label+"季配餐")}
+    function shiftSeason(direction){const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),next=(current+direction+keys.length)%keys.length;changeSeason(keys[next])}
     function menuTrackIndex(track){const width=Math.max(track.clientWidth||track.getBoundingClientRect().width||1,1);return Math.max(0,Math.min(track.children.length-1,Math.round(track.scrollLeft/width)))}
     function syncMenuCarousel(track){if(!track)return;const index=menuTrackIndex(track),shell=track.closest(".menu-carousel-shell"),status=document.getElementById(track.dataset.status);if(status)status.textContent=`${index+1} / ${track.children.length}`;if(shell){const prev=shell.querySelector(".menu-swipe-arrow.prev"),next=shell.querySelector(".menu-swipe-arrow.next");if(prev)prev.disabled=index===0;if(next)next.disabled=index===track.children.length-1}}
     function slideMenuDish(event,trackId,direction){if(event){event.preventDefault();event.stopPropagation()}const track=document.getElementById(trackId);if(!track)return;const width=Math.max(track.clientWidth||track.getBoundingClientRect().width||1,1),next=Math.max(0,Math.min(track.children.length-1,menuTrackIndex(track)+direction)),left=next*width;if(typeof track.scrollTo==="function")track.scrollTo({left,behavior:"smooth"});else track.scrollLeft=left;requestAnimationFrame(()=>syncMenuCarousel(track))}
     function setupMenuCarousels(){document.querySelectorAll(".menu-dish-track").forEach(track=>{let frame=0;track.addEventListener("scroll",()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;syncMenuCarousel(track)})},{passive:true});track.addEventListener("keydown",event=>{if(event.key==="ArrowLeft")slideMenuDish(event,track.id,-1);if(event.key==="ArrowRight")slideMenuDish(event,track.id,1)});syncMenuCarousel(track)})}
     function toggleMenu(i){document.querySelectorAll(".menu").forEach((menu,j)=>{const details=menu.querySelector(".menu-details"),toggle=menu.querySelector(".menu-toggle"),open=j===i&&details.hidden;details.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.firstChild.textContent=open?"收起這套餐盤 ":"查看這套餐盤 ";menu.classList.toggle("open",open);if(open){const track=details.querySelector(".menu-dish-track");requestAnimationFrame(()=>syncMenuCarousel(track))}})}
     function setStapleDrawer(open){stapleDrawer.hidden=!open;stapleToggle.setAttribute("aria-expanded",String(open));stapleToggle.firstChild.textContent=open?"收起主食選擇 ":"查看其他主食與營養資訊 "}
-    async function selectStaple(i){const request=++itemChangeRequest[0],assets=[preloadTableImage(staples[i],"high"),preloadDialogImage(staples[i],"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[0])return;idx[0]=i;updatePlannerItems([0]);setStapleDrawer(false);announce("主食已選用"+staples[i])}
+    async function selectStaple(i){const request=++itemChangeRequest[0],assets=[preloadTableImage(staples[i],"high"),preloadDialogImage(staples[i],"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[0])return;const committed=await animatePlateChange(idx[0]%staples.length===i?[]:[0],()=>{idx[0]=i;updatePlannerItems([0])});if(committed){setStapleDrawer(false);announce("主食已選用"+staples[i])}}
     async function showFoodInfo(name,category){const info=foodInfo[name];if(!info)return;const request=++dialogRequestId,cached=preloadDialogImage(name,"high");if(cached)await cached.ready;if(request!==dialogRequestId)return;const image=document.getElementById("dialog-image");image.src=dialogFoodImage(name);image.alt=name+"料理照片";foodDialog.style.setProperty("--dish-bg",dialogFoodBackground());document.getElementById("dialog-category").textContent=category+"｜份量與營養";document.getElementById("dialog-food-name").textContent=name;document.getElementById("dialog-portion").textContent=info.portion;document.getElementById("dialog-nutrition").textContent=info.nutrition;if(typeof foodDialog.showModal==="function"&&!foodDialog.open)foodDialog.showModal();else foodDialog.setAttribute("open","")}
     function closeFoodInfo(){dialogRequestId++;if(typeof foodDialog.close==="function"&&foodDialog.open)foodDialog.close();else foodDialog.removeAttribute("open")}
     function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
@@ -1299,7 +1233,7 @@
     stapleToggle.onclick=()=>setStapleDrawer(stapleDrawer.hidden);
     document.addEventListener("click",event=>{const trigger=event.target.closest("[data-food]");if(trigger)showFoodInfo(trigger.dataset.food,trigger.dataset.category)});
     document.getElementById("dialog-close").onclick=closeFoodInfo;foodDialog.addEventListener("click",event=>{if(event.target===foodDialog)closeFoodInfo()});
-    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);document.getElementById("season-spin").onclick=spinSeasonReel;
+    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);
     document.getElementById("season-visual-track").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();shiftSeason(-1)}if(event.key==="ArrowRight"){event.preventDefault();shiftSeason(1)}});
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#care,#notes")];
@@ -1312,7 +1246,7 @@
     function syncBackToTop(){const visible=window.scrollY>520;backToTop.classList.toggle("visible",visible);backToTop.setAttribute("aria-hidden",String(!visible));backToTop.tabIndex=visible?0:-1}
     backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
     window.addEventListener("scroll",()=>{if(!quickNavFrame)quickNavFrame=requestAnimationFrame(syncQuickNav);syncBackToTop()},{passive:true});quickNavMobile.addEventListener?.("change",syncQuickNav);syncQuickNav();syncBackToTop();
-    document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
+    document.getElementById("roll").onclick=randomizeMeal;document.getElementById("plate-spin").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
     const warmSeasonFoodImages=()=>{const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(window.matchMedia("(min-width:701px)").matches&&!connection?.saveData)preloadSeasonImages(season)};if("requestIdleCallback" in window)window.requestIdleCallback(warmSeasonFoodImages,{timeout:3000});else setTimeout(warmSeasonFoodImages,1800);
   </script>
 </body>
