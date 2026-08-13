@@ -385,14 +385,6 @@
     #planner .meal-table .plate-list li:nth-child(3) .table-dish-photo img,#planner .meal-table .plate-list li:nth-child(4) .table-dish-photo img{transform:scale(1.04)}
     .table-refresh{position:absolute;z-index:5;top:8%;right:7%;width:31px;height:31px;border:1px solid rgba(87,65,49,.17);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.9);color:var(--accent)!important;font-size:18px!important;line-height:1;box-shadow:0 6px 15px rgba(66,48,35,.14);opacity:.58;pointer-events:none;transition:opacity .08s ease,transform .16s ease}
     .table-dish-button:hover .table-refresh,.table-dish-button:focus-visible .table-refresh{opacity:1;transform:rotate(50deg)}
-    #planner .meal-table .plate-list.is-turning{transform-origin:50% 50%;animation:plate-turn-nudge .42s cubic-bezier(.2,.78,.24,1) both}
-    .table-dish-button.is-turning .table-dish-hit{pointer-events:none}
-    .table-dish-button.is-turning .table-dish-photo{will-change:transform,opacity;animation:dish-turn .42s cubic-bezier(.2,.78,.24,1) both}
-    .table-dish-button.is-turning .table-refresh{opacity:1;will-change:transform;animation:refresh-turn .42s cubic-bezier(.2,.78,.24,1) both}
-    @keyframes plate-turn-nudge{0%{transform:rotate(0) scale(1)}48%{transform:rotate(var(--plate-turn-angle,4deg)) scale(.992)}100%{transform:rotate(0) scale(1)}}
-    @keyframes dish-turn{0%{transform:rotate(0) scale(1);opacity:1}42%{transform:rotate(145deg) scale(.86);opacity:.76}50%{transform:rotate(180deg) scale(.8);opacity:.12}60%{transform:rotate(235deg) scale(.87);opacity:.86}100%{transform:rotate(360deg) scale(1);opacity:1}}
-    @keyframes refresh-turn{0%{transform:rotate(0) scale(1)}55%{transform:rotate(250deg) scale(.9)}100%{transform:rotate(540deg) scale(1)}}
-    @media(prefers-reduced-motion:reduce){#planner .meal-table .plate-list.is-turning,.table-dish-button.is-turning .table-dish-photo,.table-dish-button.is-turning .table-refresh{animation:none!important}}
     #food-dialog{width:min(940px,calc(100% - 32px));max-height:calc(100svh - 32px);border-radius:28px;background:#fffdf8;overflow:hidden}
     #food-dialog .dialog-inner{padding:0}
     #food-dialog .dialog-close{z-index:3;border-color:rgba(69,54,43,.22);border-radius:50%;background:rgba(255,253,247,.94);box-shadow:0 5px 16px rgba(52,40,31,.12)}
@@ -860,6 +852,14 @@
     .season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}
     .season-carousel .season-arrow-prev{left:8px!important}
     .season-carousel .season-arrow-next{right:8px!important}
+    .season-track .visual .plate{transform-origin:50% 50%;backface-visibility:hidden}
+    .season-track .visual.season-turn-in .plate{will-change:transform,opacity;animation:season-plate-turn-in .5s cubic-bezier(.18,.78,.2,1) both}
+    .season-track .visual.season-turn-out .plate{will-change:transform,opacity;animation:season-plate-turn-out .28s cubic-bezier(.4,0,.8,.3) both}
+    .season-track .visual.season-turn-in{animation:season-card-settle .5s ease-out both}
+    @keyframes season-plate-turn-in{0%{transform:rotate(var(--season-turn-start,-300deg)) scale(.78);opacity:.18}68%{transform:rotate(var(--season-turn-overshoot,12deg)) scale(1.035);opacity:1}100%{transform:rotate(0) scale(1);opacity:1}}
+    @keyframes season-plate-turn-out{0%{transform:rotate(0) scale(1);opacity:1}100%{transform:rotate(var(--season-turn-exit,135deg)) scale(.86);opacity:.22}}
+    @keyframes season-card-settle{0%{filter:saturate(.82)}55%{filter:saturate(1.12)}100%{filter:saturate(1)}}
+    @media(prefers-reduced-motion:reduce){.season-track .visual.season-turn-in,.season-track .visual.season-turn-in .plate,.season-track .visual.season-turn-out .plate{animation:none!important}}
 
     .gentle{background:linear-gradient(135deg,#f3e8e4 0%,#faf6f2 100%)}
     .gentle .section-title .eyebrow{color:#85685f}
@@ -1142,7 +1142,7 @@
     const foodDialog=document.getElementById("food-dialog");
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,plateTurnToken=0;
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,seasonTurnToken=0;
     const teamPointDetails=[
       {title:"四季好時",copy:"依春夏秋冬切換當令菜色，找到此刻適合的滋味。"},
       {title:"份量與營養",copy:"每道料理附上建議份量與營養重點，資訊更容易查找。"},
@@ -1162,7 +1162,15 @@
     function pools(){const m=S[season].menus;return[staples,m.map(x=>x[0]),m.map(x=>x[1]),m.map(x=>x[2]),m.map(x=>x[3])]}
     function selectedItems(){return pools().map((pool,i)=>{const d=pool[idx[i]%pool.length],name=Array.isArray(d)?d[0]:d;return{category:labels[i],name,portion:foodInfo[name]?.portion||"",month:i===0?"全年可選":(d[1]||"全年皆宜")}})}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
-    function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
+    function clearSeasonTurnState(slides=[...document.querySelectorAll("[data-season-slide]")]){slides.forEach(slide=>{slide.classList.remove("season-turn-in","season-turn-out");slide.style.removeProperty("--season-turn-start");slide.style.removeProperty("--season-turn-overshoot");slide.style.removeProperty("--season-turn-exit")})}
+    function animateSeasonTurn(active,previous,direction=1){
+      const slides=[...document.querySelectorAll("[data-season-slide]")],token=++seasonTurnToken;clearSeasonTurnState(slides);
+      if(!active||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+      active.style.setProperty("--season-turn-start",direction<0?"300deg":"-300deg");active.style.setProperty("--season-turn-overshoot",direction<0?"-12deg":"12deg");
+      if(previous&&previous!==active){previous.style.setProperty("--season-turn-exit",direction<0?"-135deg":"135deg");previous.classList.add("season-turn-out")}
+      void active.offsetWidth;active.classList.add("season-turn-in");setTimeout(()=>{if(token===seasonTurnToken)clearSeasonTurnState(slides)},520)
+    }
+    function updateSeasonCarousel(turnDirection=0,forceTurn=false){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],previous=slides.find(slide=>slide.classList.contains("active")),active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if((forceTurn||previous&&previous!==active)&&turnDirection)animateSeasonTurn(active,previous,turnDirection);if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2,reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;track.scrollTo({left:Math.max(0,left),behavior:reduced?"auto":"smooth"})}}
     function render(){
       const s=S[season],p=pools(),items=selectedItems();document.documentElement.style.setProperty("--accent",s.color);document.getElementById("menus").dataset.season=season;
       updateSeasonCarousel();document.getElementById("badge").textContent=s.label;document.getElementById("table-title").textContent=s.label+"季餐桌";document.getElementById("table-desc").textContent=s.desc;document.getElementById("menu-title").textContent=s.label+"季參考餐盤";document.getElementById("reset-meal").textContent="餐盤 01";
@@ -1187,35 +1195,21 @@
       if(indices.includes(0)){const currentStaple=items[0].name;document.getElementById("current-staple").textContent=currentStaple;document.getElementById("current-staple-portion").textContent=foodInfo[currentStaple].portion;document.getElementById("current-staple-info").dataset.food=currentStaple;document.querySelectorAll(".staple").forEach((card,i)=>{const selected=i===idx[0]%staples.length,button=card.querySelector(".staple-pick");card.classList.toggle("selected",selected);button.textContent=selected?"已選用":"選入";button.disabled=selected;button.setAttribute("aria-pressed",String(selected))})}
       saveState();prefetchUpcomingItems(indices);
     }
-    const plateTurnDuration=420,plateTurnSwapDelay=190,wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-    function plateItemName(pool,index){const entry=pool[index%pool.length];return Array.isArray(entry)?entry[0]:entry}
-    function preloadPlateSelection(nextIndices,indices){const itemPools=pools(),assets=[];[...new Set(indices)].forEach(i=>{const name=plateItemName(itemPools[i],nextIndices[i]);assets.push(preloadTableImage(name,"high"),preloadDialogImage(name,"high"))});return Promise.all(assets.filter(Boolean).map(asset=>asset.ready))}
-    function clearPlateTurnState(){document.querySelectorAll(".table-dish-button.is-turning").forEach(button=>{button.classList.remove("is-turning");button.removeAttribute("aria-busy")});const plateList=document.getElementById("plate-list");if(plateList){plateList.classList.remove("is-turning");plateList.style.removeProperty("--plate-turn-angle")}}
-    async function animatePlateChange(indices,commit){
-      const unique=[...new Set(indices)],token=++plateTurnToken,plateList=document.getElementById("plate-list"),buttons=unique.map(i=>plateList?.children[i]?.querySelector(".table-dish-button")).filter(Boolean),reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      clearPlateTurnState();if(plateList)void plateList.offsetWidth;
-      if(reduced||!plateList||!buttons.length){commit();return true}
-      plateList.style.setProperty("--plate-turn-angle",unique.length>1?"7deg":"4deg");plateList.classList.add("is-turning");
-      buttons.forEach(button=>{button.classList.add("is-turning");button.setAttribute("aria-busy","true")});
-      await wait(plateTurnSwapDelay);if(token!==plateTurnToken)return false;commit();
-      await wait(plateTurnDuration-plateTurnSwapDelay);
-      if(token!==plateTurnToken)return false;clearPlateTurnState();return true
-    }
-    async function nextItem(i){const p=pools()[i],previous=idx[i]%p.length,next=p.length>1?(previous+1)%p.length:previous,entry=p[next],nextName=Array.isArray(entry)?entry[0]:entry,request=++itemChangeRequest[i],assets=[preloadTableImage(nextName,"high"),preloadDialogImage(nextName,"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[i])return;const committed=await animatePlateChange(next===previous?[]:[i],()=>{idx[i]=next;updatePlannerItems([i])});if(committed)announce(labels[i]+"已換成"+selectedItems()[i].name)}
+    async function nextItem(i){const p=pools()[i],previous=idx[i]%p.length,next=p.length>1?(previous+1)%p.length:previous,entry=p[next],nextName=Array.isArray(entry)?entry[0]:entry,request=++itemChangeRequest[i],assets=[preloadTableImage(nextName,"high"),preloadDialogImage(nextName,"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[i])return;idx[i]=next;updatePlannerItems([i]);announce(labels[i]+"已換成"+selectedItems()[i].name)}
     function toggleLock(i){locked[i]=!locked[i];const name=selectedItems()[i].name;updatePlannerItems([i]);announce(name+(locked[i]?"已保留，整桌更換時不會被替換":"已取消保留"))}
-    function cancelPendingItemChanges(){itemChangeRequest=itemChangeRequest.map(value=>value+1);plateTurnToken++;clearPlateTurnState()}
-    async function randomizeMeal(){cancelPendingItemChanges();const nextIdx=[...idx],changedIndices=[];pools().forEach((pool,i)=>{if(locked[i]||pool.length<2)return;const current=idx[i]%pool.length;nextIdx[i]=(current+1+Math.floor(Math.random()*(pool.length-1)))%pool.length;changedIndices.push(i)});if(changedIndices.length)await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;updatePlannerItems([0,1,2,3,4])});if(committed)announce(changedIndices.length?"餐盤已重新搭配，已保留的料理沒有更換":"五項料理都已保留，餐盤沒有更換")}
-    async function resetMeal(){cancelPendingItemChanges();const itemPools=pools(),nextIdx=[idx[0],0,0,0,0],changedIndices=[1,2,3,4].filter(i=>idx[i]%itemPools[i].length!==0);await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;locked=[locked[0],false,false,false,false];updatePlannerItems([0,1,2,3,4])});if(committed)announce("已回到"+S[season].label+"季參考餐盤 01")}
-    async function applyMenu(i){cancelPendingItemChanges();const itemPools=pools(),nextIdx=[idx[0],i,i,i,i],changedIndices=[1,2,3,4].filter(j=>idx[j]%itemPools[j].length!==i%itemPools[j].length);await preloadPlateSelection(nextIdx,changedIndices);const committed=await animatePlateChange(changedIndices,()=>{idx=nextIdx;locked=[locked[0],false,false,false,false];updatePlannerItems([0,1,2,3,4])});if(committed){announce("已套用"+S[season].label+"季餐盤 "+String(i+1).padStart(2,"0"));document.querySelector("#planner").scrollIntoView()}}
-    async function changeSeason(k){if(!S[k])return;cancelPendingItemChanges();season=k;idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");render();announce("已切換為"+S[k].label+"季配餐")}
-    function shiftSeason(direction){const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),next=(current+direction+keys.length)%keys.length;changeSeason(keys[next])}
+    function cancelPendingItemChanges(){itemChangeRequest=itemChangeRequest.map(value=>value+1)}
+    async function randomizeMeal(){cancelPendingItemChanges();let changed=0;pools().forEach((pool,i)=>{if(locked[i]||pool.length<2)return;const current=idx[i]%pool.length;idx[i]=(current+1+Math.floor(Math.random()*(pool.length-1)))%pool.length;changed++});if(changed)await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce(changed?"餐盤已重新搭配，已保留的料理沒有更換":"五項料理都已保留，餐盤沒有更換")}
+    async function resetMeal(){cancelPendingItemChanges();idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce("已回到"+S[season].label+"季參考餐盤 01")}
+    async function applyMenu(i){cancelPendingItemChanges();idx[1]=idx[2]=idx[3]=idx[4]=i;locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");updatePlannerItems([0,1,2,3,4]);announce("已套用"+S[season].label+"季餐盤 "+String(i+1).padStart(2,"0"));document.querySelector("#planner").scrollIntoView()}
+    async function changeSeason(k,direction=0){if(!S[k])return;const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),target=keys.indexOf(k);if(!direction){const forward=(target-current+keys.length)%keys.length;direction=forward===keys.length-1?-1:1}if(k===season){updateSeasonCarousel(direction||1,true);return}cancelPendingItemChanges();season=k;updateSeasonCarousel(direction);idx=[idx[0],0,0,0,0];locked=[locked[0],false,false,false,false];await preloadSelectedItems("high");render();announce("已切換為"+S[k].label+"季配餐")}
+    function shiftSeason(direction){const keys=["spring","summer","autumn","winter"],current=keys.indexOf(season),next=(current+direction+keys.length)%keys.length;changeSeason(keys[next],direction)}
     function menuTrackIndex(track){const width=Math.max(track.clientWidth||track.getBoundingClientRect().width||1,1);return Math.max(0,Math.min(track.children.length-1,Math.round(track.scrollLeft/width)))}
     function syncMenuCarousel(track){if(!track)return;const index=menuTrackIndex(track),shell=track.closest(".menu-carousel-shell"),status=document.getElementById(track.dataset.status);if(status)status.textContent=`${index+1} / ${track.children.length}`;if(shell){const prev=shell.querySelector(".menu-swipe-arrow.prev"),next=shell.querySelector(".menu-swipe-arrow.next");if(prev)prev.disabled=index===0;if(next)next.disabled=index===track.children.length-1}}
     function slideMenuDish(event,trackId,direction){if(event){event.preventDefault();event.stopPropagation()}const track=document.getElementById(trackId);if(!track)return;const width=Math.max(track.clientWidth||track.getBoundingClientRect().width||1,1),next=Math.max(0,Math.min(track.children.length-1,menuTrackIndex(track)+direction)),left=next*width;if(typeof track.scrollTo==="function")track.scrollTo({left,behavior:"smooth"});else track.scrollLeft=left;requestAnimationFrame(()=>syncMenuCarousel(track))}
     function setupMenuCarousels(){document.querySelectorAll(".menu-dish-track").forEach(track=>{let frame=0;track.addEventListener("scroll",()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;syncMenuCarousel(track)})},{passive:true});track.addEventListener("keydown",event=>{if(event.key==="ArrowLeft")slideMenuDish(event,track.id,-1);if(event.key==="ArrowRight")slideMenuDish(event,track.id,1)});syncMenuCarousel(track)})}
     function toggleMenu(i){document.querySelectorAll(".menu").forEach((menu,j)=>{const details=menu.querySelector(".menu-details"),toggle=menu.querySelector(".menu-toggle"),open=j===i&&details.hidden;details.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.firstChild.textContent=open?"收起這套餐盤 ":"查看這套餐盤 ";menu.classList.toggle("open",open);if(open){const track=details.querySelector(".menu-dish-track");requestAnimationFrame(()=>syncMenuCarousel(track))}})}
     function setStapleDrawer(open){stapleDrawer.hidden=!open;stapleToggle.setAttribute("aria-expanded",String(open));stapleToggle.firstChild.textContent=open?"收起主食選擇 ":"查看其他主食與營養資訊 "}
-    async function selectStaple(i){const request=++itemChangeRequest[0],assets=[preloadTableImage(staples[i],"high"),preloadDialogImage(staples[i],"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[0])return;const committed=await animatePlateChange(idx[0]%staples.length===i?[]:[0],()=>{idx[0]=i;updatePlannerItems([0])});if(committed){setStapleDrawer(false);announce("主食已選用"+staples[i])}}
+    async function selectStaple(i){const request=++itemChangeRequest[0],assets=[preloadTableImage(staples[i],"high"),preloadDialogImage(staples[i],"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[0])return;idx[0]=i;updatePlannerItems([0]);setStapleDrawer(false);announce("主食已選用"+staples[i])}
     async function showFoodInfo(name,category){const info=foodInfo[name];if(!info)return;const request=++dialogRequestId,cached=preloadDialogImage(name,"high");if(cached)await cached.ready;if(request!==dialogRequestId)return;const image=document.getElementById("dialog-image");image.src=dialogFoodImage(name);image.alt=name+"料理照片";foodDialog.style.setProperty("--dish-bg",dialogFoodBackground());document.getElementById("dialog-category").textContent=category+"｜份量與營養";document.getElementById("dialog-food-name").textContent=name;document.getElementById("dialog-portion").textContent=info.portion;document.getElementById("dialog-nutrition").textContent=info.nutrition;if(typeof foodDialog.showModal==="function"&&!foodDialog.open)foodDialog.showModal();else foodDialog.setAttribute("open","")}
     function closeFoodInfo(){dialogRequestId++;if(typeof foodDialog.close==="function"&&foodDialog.open)foodDialog.close();else foodDialog.removeAttribute("open")}
     function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
