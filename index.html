@@ -834,32 +834,97 @@
     .site-title-main::before{background:linear-gradient(90deg,transparent,#b59b76)}
     .site-title-main::after{width:42px;background:linear-gradient(90deg,#b59b76,transparent)}
 
-    .season-carousel{padding-bottom:0}
+    .season-carousel{
+      --slot-deep:#674839;
+      position:relative;
+      width:min(100%,590px);
+      padding:18px 18px 20px;
+      border:1px solid rgba(89,61,44,.28);
+      border-radius:32px;
+      background:linear-gradient(145deg,#7b5946 0%,#4e382e 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -14px 34px rgba(43,27,20,.18),0 28px 54px rgba(64,43,31,.22);
+      overflow:visible;
+      isolation:isolate;
+    }
+    .season-carousel::before{content:"";position:absolute;inset:7px;border:1px solid rgba(255,235,207,.17);border-radius:26px;pointer-events:none}
+    .slot-machine-head{position:relative;z-index:4;min-height:52px;padding:3px 8px 14px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;color:#fff8ed}
+    .slot-machine-light{width:11px;height:11px;border-radius:50%;background:#f0c873;box-shadow:0 0 0 5px rgba(240,200,115,.12),0 0 18px rgba(240,200,115,.64)}
+    .slot-machine-title{display:flex;align-items:baseline;gap:9px}
+    .slot-machine-title b{font:600 18px/1.3 "Noto Serif TC","Songti TC",serif;letter-spacing:.12em}
+    .slot-machine-title small{font-size:9px;font-weight:800;letter-spacing:.22em;color:#d8c4b3}
+    .slot-machine-count{font-size:11px;font-weight:800;letter-spacing:.16em;color:#f0dfcc}
+    .slot-window{position:relative;z-index:2;padding:14px 56px;border:1px solid rgba(80,55,42,.28);border-radius:23px;background:linear-gradient(#d9c8b6 0 5%,#f9f1e5 14% 86%,#d4c0ac 95% 100%);box-shadow:inset 0 8px 18px rgba(78,53,39,.16),inset 0 -8px 18px rgba(78,53,39,.14),0 10px 24px rgba(34,22,17,.16);overflow:hidden}
+    .slot-window::before,.slot-window::after{content:"";position:absolute;z-index:3;left:0;right:0;height:19%;pointer-events:none}
+    .slot-window::before{top:0;background:linear-gradient(#bca58f,rgba(230,216,199,.74),transparent)}
+    .slot-window::after{bottom:0;background:linear-gradient(transparent,rgba(226,210,191,.78),#b79f89)}
+    .slot-window-line{position:absolute;z-index:4;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(111,75,54,.28),transparent);pointer-events:none}
+    .slot-window-line.top{top:14%}.slot-window-line.bottom{bottom:14%}
+    .season-track{position:relative!important;width:100%;height:clamp(340px,35vw,430px);padding:0!important;display:block!important;overflow:hidden!important;scroll-snap-type:none!important}
     .season-track .visual.spring{--season-deep:#4f7754}
     .season-track .visual.summer{--season-deep:#956b32}
     .season-track .visual.autumn{--season-deep:#8a533e}
     .season-track .visual.winter{--season-deep:#4f6f76}
     .season-track .visual{
+      position:absolute!important;
+      inset:0!important;
+      width:100%!important;
+      min-height:0!important;
+      padding:22px 22px 26px!important;
+      border:1px solid color-mix(in srgb,var(--season-deep) 28%,#e7dccc)!important;
+      border-radius:18px!important;
       background:linear-gradient(145deg,color-mix(in srgb,var(--season-deep) 13%,#f6f1e8),color-mix(in srgb,var(--season-deep) 5%,#fffaf3))!important;
-      border-color:color-mix(in srgb,var(--season-deep) 26%,#eee7dc);
-      box-shadow:none!important;
+      box-shadow:0 12px 24px rgba(64,44,32,.1)!important;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transform:translateY(105%);
+      transition:none!important;
     }
+    .season-track .visual.active{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+    .season-track .visualmeta{position:relative;z-index:2}
+    .season-track .visual .plate{width:min(82%,330px);transform-origin:50% 50%;backface-visibility:hidden}
     .season-carousel .season-arrow{
       top:50%!important;
       bottom:auto!important;
+      width:40px!important;
+      height:40px!important;
+      border-color:rgba(94,66,50,.22)!important;
+      background:rgba(255,250,242,.92)!important;
+      box-shadow:0 6px 15px rgba(54,34,24,.18)!important;
       transform:translateY(-50%)!important;
     }
     .season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}
-    .season-carousel .season-arrow-prev{left:8px!important}
-    .season-carousel .season-arrow-next{right:8px!important}
-    .season-track .visual .plate{transform-origin:50% 50%;backface-visibility:hidden}
-    .season-track .visual.season-turn-in .plate{will-change:transform,opacity;animation:season-plate-turn-in .5s cubic-bezier(.18,.78,.2,1) both}
-    .season-track .visual.season-turn-out .plate{will-change:transform,opacity;animation:season-plate-turn-out .28s cubic-bezier(.4,0,.8,.3) both}
-    .season-track .visual.season-turn-in{animation:season-card-settle .5s ease-out both}
-    @keyframes season-plate-turn-in{0%{transform:rotate(var(--season-turn-start,-300deg)) scale(.78);opacity:.18}68%{transform:rotate(var(--season-turn-overshoot,12deg)) scale(1.035);opacity:1}100%{transform:rotate(0) scale(1);opacity:1}}
-    @keyframes season-plate-turn-out{0%{transform:rotate(0) scale(1);opacity:1}100%{transform:rotate(var(--season-turn-exit,135deg)) scale(.86);opacity:.22}}
-    @keyframes season-card-settle{0%{filter:saturate(.82)}55%{filter:saturate(1.12)}100%{filter:saturate(1)}}
-    @media(prefers-reduced-motion:reduce){.season-track .visual.season-turn-in,.season-track .visual.season-turn-in .plate,.season-track .visual.season-turn-out .plate{animation:none!important}}
+    .season-carousel .season-arrow-prev{left:15px!important}
+    .season-carousel .season-arrow-next{right:15px!important}
+    .season-track .visual.season-turn-in{visibility:visible;z-index:2;will-change:transform,filter,opacity;animation:slot-reel-in .42s cubic-bezier(.16,.78,.2,1) both}
+    .season-track .visual.season-turn-out{visibility:visible;z-index:1;will-change:transform,filter,opacity;animation:slot-reel-out .25s cubic-bezier(.4,0,.82,.35) both}
+    .season-track .visual.season-turn-in .plate{will-change:transform;animation:slot-plate-settle .42s cubic-bezier(.16,.78,.2,1) both}
+    .season-carousel.is-spinning .slot-machine-light{animation:slot-light .18s linear infinite alternate}
+    .season-carousel.is-spinning .slot-window::before,.season-carousel.is-spinning .slot-window::after{height:27%}
+    .season-carousel.is-spinning [data-season-slide]{pointer-events:none}
+    @keyframes slot-reel-in{0%{transform:translateY(var(--season-turn-start,-108%));filter:blur(5px);opacity:.12}62%{transform:translateY(var(--season-turn-overshoot,5%));filter:blur(0);opacity:1}100%{transform:translateY(0);filter:blur(0);opacity:1}}
+    @keyframes slot-reel-out{0%{transform:translateY(0);filter:blur(0);opacity:1}100%{transform:translateY(var(--season-turn-exit,100%));filter:blur(5px);opacity:.08}}
+    @keyframes slot-plate-settle{0%{transform:rotate(var(--season-plate-start,-150deg)) scale(.86)}72%{transform:rotate(var(--season-plate-over,7deg)) scale(1.025)}100%{transform:rotate(0) scale(1)}}
+    @keyframes slot-light{from{opacity:.52;box-shadow:0 0 0 3px rgba(240,200,115,.08)}to{opacity:1;box-shadow:0 0 0 6px rgba(240,200,115,.18),0 0 22px rgba(240,200,115,.78)}}
+    .slot-machine-foot{position:relative;z-index:4;padding:15px 7px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;color:#f8eadb}
+    .slot-season-lights{display:flex;gap:8px;align-items:center}
+    .slot-season-lights i{width:9px;height:9px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.14);transition:background .18s ease,box-shadow .18s ease,transform .18s ease}
+    .slot-season-lights i.active{background:var(--light,#f0c873);box-shadow:0 0 12px color-mix(in srgb,var(--light,#f0c873) 72%,transparent);transform:scale(1.2)}
+    .season-spin{position:relative!important;left:auto!important;bottom:auto!important;min-width:174px!important;min-height:54px!important;margin:0!important;padding:7px 18px 7px 8px!important;border:1px solid rgba(255,236,210,.3)!important;border-radius:999px!important;background:linear-gradient(145deg,#fff8ec,#e8d7c3)!important;color:#5b4031!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(33,21,16,.25)!important;transform:none!important}
+    .season-spin:hover{background:#fffdf8!important;transform:translateY(-2px)!important}
+    .season-spin:disabled{cursor:wait;opacity:.88}
+    .season-spin-icon{width:38px;height:38px;flex:0 0 38px}
+    .season-carousel.is-spinning .season-spin-icon{animation:slot-button-spin .42s linear infinite}
+    @keyframes slot-button-spin{to{transform:rotate(360deg)}}
+    .slot-machine-hint{justify-self:end;font-size:10px;font-weight:700;letter-spacing:.1em;color:#d8c4b3;text-align:right}
+    @media(max-width:700px){
+      .season-carousel{width:100%;padding:12px 11px 14px;border-radius:24px}
+      .slot-machine-head{min-height:44px;padding:1px 6px 10px;gap:8px}.slot-machine-title b{font-size:16px}.slot-machine-title small{display:none}
+      .slot-window{padding:10px 40px;border-radius:18px}.season-track{height:340px}.season-track .visual{padding:17px 12px 20px!important;border-radius:14px!important}.season-track .visual .plate{width:min(92%,255px)}
+      .season-carousel .season-arrow{top:50%!important;bottom:auto!important;width:34px!important;height:34px!important;transform:translateY(-50%)!important}.season-carousel .season-arrow:hover{transform:translateY(-50%) scale(1.04)!important}.season-carousel .season-arrow-prev{left:9px!important}.season-carousel .season-arrow-next{right:9px!important}
+      .slot-machine-foot{grid-template-columns:auto 1fr;padding:12px 4px 0}.slot-machine-hint{display:none}.season-spin{justify-self:end;min-width:158px!important;min-height:50px!important}.season-spin-copy b{font-size:14px}
+    }
+    @media(prefers-reduced-motion:reduce){.season-track .visual.season-turn-in,.season-track .visual.season-turn-out,.season-track .visual.season-turn-in .plate,.season-carousel.is-spinning .slot-machine-light,.season-carousel.is-spinning .season-spin-icon{animation:none!important}}
 
     .gentle{background:linear-gradient(135deg,#f3e8e4 0%,#faf6f2 100%)}
     .gentle .section-title .eyebrow{color:#85685f}
@@ -987,7 +1052,11 @@
     </section>
     <section class="hero">
       <div><p class="eyebrow">SEASONAL TABLE</p><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">專為高齡長者設計的四季餐盤，每套餐盤都搭配一項主食、一項主菜、兩道配菜與一碗湯品，再也不愁今天要吃什麼！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
-      <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
+      <div class="season-carousel" aria-label="四季餐盤轉輪">
+        <div class="slot-machine-head"><span class="slot-machine-light" aria-hidden="true"></span><span class="slot-machine-title"><b>四季轉輪</b><small>SEASON REEL</small></span><span class="slot-machine-count">04 SEASONS</span></div>
+        <div class="slot-window"><span class="slot-window-line top" aria-hidden="true"></span><span class="slot-window-line bottom" aria-hidden="true"></span><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤轉輪"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
+        <div class="slot-machine-foot"><span class="slot-season-lights" aria-hidden="true"><i data-season-light="spring" style="--light:#77a27d"></i><i data-season-light="summer" style="--light:#d2a44d"></i><i data-season-light="autumn" style="--light:#b56d50"></i><i data-season-light="winter" style="--light:#6e929b"></i></span><button type="button" class="season-spin" id="season-spin"><span class="season-spin-icon" aria-hidden="true"><span>↻</span></span><span class="season-spin-copy"><small>QUICK SPIN</small><b>轉動換季</b></span></button><span class="slot-machine-hint">快速轉動<br>自動停在下一季</span></div>
+      </div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
     <section class="block" id="planner"><div class="section-title"><div><p class="eyebrow">TODAY'S PLATE</p><h2>今天，想吃哪一餐？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll">↻ 整桌換一組</button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><p class="eyebrow">MY PLATE</p><h3 id="plate-summary-title">我的餐盤摘要</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
@@ -1142,7 +1211,7 @@
     const foodDialog=document.getElementById("food-dialog");
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,seasonTurnToken=0;
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,seasonTurnToken=0,seasonSpinToken=0,seasonSpinBusy=false;
     const teamPointDetails=[
       {title:"四季好時",copy:"依春夏秋冬切換當令菜色，找到此刻適合的滋味。"},
       {title:"份量與營養",copy:"每道料理附上建議份量與營養重點，資訊更容易查找。"},
@@ -1162,15 +1231,23 @@
     function pools(){const m=S[season].menus;return[staples,m.map(x=>x[0]),m.map(x=>x[1]),m.map(x=>x[2]),m.map(x=>x[3])]}
     function selectedItems(){return pools().map((pool,i)=>{const d=pool[idx[i]%pool.length],name=Array.isArray(d)?d[0]:d;return{category:labels[i],name,portion:foodInfo[name]?.portion||"",month:i===0?"全年可選":(d[1]||"全年皆宜")}})}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
-    function clearSeasonTurnState(slides=[...document.querySelectorAll("[data-season-slide]")]){slides.forEach(slide=>{slide.classList.remove("season-turn-in","season-turn-out");slide.style.removeProperty("--season-turn-start");slide.style.removeProperty("--season-turn-overshoot");slide.style.removeProperty("--season-turn-exit")})}
+    function clearSeasonTurnState(slides=[...document.querySelectorAll("[data-season-slide]")]){slides.forEach(slide=>{slide.classList.remove("season-turn-in","season-turn-out");slide.style.removeProperty("--season-turn-start");slide.style.removeProperty("--season-turn-overshoot");slide.style.removeProperty("--season-turn-exit");slide.style.removeProperty("--season-plate-start");slide.style.removeProperty("--season-plate-over")})}
     function animateSeasonTurn(active,previous,direction=1){
       const slides=[...document.querySelectorAll("[data-season-slide]")],token=++seasonTurnToken;clearSeasonTurnState(slides);
       if(!active||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-      active.style.setProperty("--season-turn-start",direction<0?"300deg":"-300deg");active.style.setProperty("--season-turn-overshoot",direction<0?"-12deg":"12deg");
-      if(previous&&previous!==active){previous.style.setProperty("--season-turn-exit",direction<0?"-135deg":"135deg");previous.classList.add("season-turn-out")}
-      void active.offsetWidth;active.classList.add("season-turn-in");setTimeout(()=>{if(token===seasonTurnToken)clearSeasonTurnState(slides)},520)
+      active.style.setProperty("--season-turn-start",direction<0?"108%":"-108%");active.style.setProperty("--season-turn-overshoot",direction<0?"-5%":"5%");active.style.setProperty("--season-plate-start",direction<0?"150deg":"-150deg");active.style.setProperty("--season-plate-over",direction<0?"-7deg":"7deg");
+      if(previous&&previous!==active){previous.style.setProperty("--season-turn-exit",direction<0?"-100%":"100%");previous.classList.add("season-turn-out")}
+      void active.offsetWidth;active.classList.add("season-turn-in");setTimeout(()=>{if(token===seasonTurnToken)clearSeasonTurnState(slides)},440)
     }
-    function updateSeasonCarousel(turnDirection=0,forceTurn=false){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],previous=slides.find(slide=>slide.classList.contains("active")),active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if((forceTurn||previous&&previous!==active)&&turnDirection)animateSeasonTurn(active,previous,turnDirection);if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2,reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;track.scrollTo({left:Math.max(0,left),behavior:reduced?"auto":"smooth"})}}
+    function updateSeasonCarousel(turnDirection=0,forceTurn=false,visualSeason=season){const slides=[...document.querySelectorAll("[data-season-slide]")],previous=slides.find(slide=>slide.classList.contains("active")),active=slides.find(slide=>slide.dataset.seasonSlide===visualSeason);slides.forEach(slide=>slide.classList.toggle("active",slide===active));document.querySelectorAll("[data-season-light]").forEach(light=>light.classList.toggle("active",light.dataset.seasonLight===visualSeason));if((forceTurn||previous&&previous!==active)&&turnDirection)animateSeasonTurn(active,previous,turnDirection)}
+    const spinWait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    async function spinSeasonReel(){
+      if(seasonSpinBusy)return;seasonSpinBusy=true;const token=++seasonSpinToken,carousel=document.querySelector(".season-carousel"),spinButton=document.getElementById("season-spin"),arrows=[document.getElementById("season-prev"),document.getElementById("season-next")],seasonTabs=[...document.querySelectorAll(".seasons button")],keys=["spring","summer","autumn","winter"],start=keys.indexOf(season),delays=[45,55,70,90,120];
+      carousel.classList.add("is-spinning");spinButton.disabled=true;spinButton.setAttribute("aria-busy","true");[...arrows,...seasonTabs].forEach(button=>button.disabled=true);
+      for(let step=1;step<=delays.length;step++){if(token!==seasonSpinToken)return;updateSeasonCarousel(1,true,keys[(start+step)%keys.length]);await spinWait(delays[step-1])}
+      const target=keys[(start+1)%keys.length];await changeSeason(target,1);await spinWait(300);
+      if(token===seasonSpinToken){carousel.classList.remove("is-spinning");spinButton.disabled=false;spinButton.removeAttribute("aria-busy");[...arrows,...seasonTabs].forEach(button=>button.disabled=false);seasonSpinBusy=false;announce("四季轉輪停在"+S[target].label+"季")}
+    }
     function render(){
       const s=S[season],p=pools(),items=selectedItems();document.documentElement.style.setProperty("--accent",s.color);document.getElementById("menus").dataset.season=season;
       updateSeasonCarousel();document.getElementById("badge").textContent=s.label;document.getElementById("table-title").textContent=s.label+"季餐桌";document.getElementById("table-desc").textContent=s.desc;document.getElementById("menu-title").textContent=s.label+"季參考餐盤";document.getElementById("reset-meal").textContent="餐盤 01";
@@ -1222,7 +1299,7 @@
     stapleToggle.onclick=()=>setStapleDrawer(stapleDrawer.hidden);
     document.addEventListener("click",event=>{const trigger=event.target.closest("[data-food]");if(trigger)showFoodInfo(trigger.dataset.food,trigger.dataset.category)});
     document.getElementById("dialog-close").onclick=closeFoodInfo;foodDialog.addEventListener("click",event=>{if(event.target===foodDialog)closeFoodInfo()});
-    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);
+    document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);document.getElementById("season-spin").onclick=spinSeasonReel;
     document.getElementById("season-visual-track").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();shiftSeason(-1)}if(event.key==="ArrowRight"){event.preventDefault();shiftSeason(1)}});
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
     const quickLinks=[...document.querySelectorAll(".quick-nav a")],quickTargets=[...document.querySelectorAll("#team,#planner,#menus,#care,#notes")];
