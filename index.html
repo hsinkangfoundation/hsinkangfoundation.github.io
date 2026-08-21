@@ -1119,7 +1119,7 @@
     function preloadSeasonImages(key=season,priority="auto"){const assets=[];seasonFoodNames(key).forEach(name=>{assets.push(preloadTableImage(name,priority),preloadDialogImage(name,priority))});return Promise.all(assets.filter(Boolean).map(asset=>asset.ready))}
     function preloadSelectedItems(priority="high"){const assets=[];selectedItems().forEach(item=>{assets.push(preloadTableImage(item.name,priority),preloadDialogImage(item.name,priority))});return Promise.all(assets.filter(Boolean).map(asset=>asset.ready))}
     const upcomingImagePrefetches=new Set();
-    function prefetchUpcomingItems(indices=[0,1,2,3,4]){const itemPools=pools();[...new Set(indices)].forEach(i=>{const pool=itemPools[i];if(!pool||pool.length<2)return;const entry=pool[(idx[i]%pool.length+1)%pool.length],name=Array.isArray(entry)?entry[0]:entry,src=tableFoodImage(name);if(upcomingImagePrefetches.has(src))return;upcomingImagePrefetches.add(src);preloadTableImage(name,"high")})}
+    function prefetchUpcomingItems(indices=[0,1,2,3,4]){const itemPools=pools();[...new Set(indices)].forEach(i=>{const pool=itemPools[i];if(!pool||pool.length<2)return;const lookahead=Math.min(2,pool.length-1);for(let step=1;step<=lookahead;step++){const entry=pool[(idx[i]%pool.length+step)%pool.length],name=Array.isArray(entry)?entry[0]:entry,src=tableFoodImage(name);if(upcomingImagePrefetches.has(src))continue;upcomingImagePrefetches.add(src);preloadTableImage(name,step===1?"high":"auto")}})}
     const dialogSeasonBackgrounds={spring:"#e7efcd",summer:"#fff2d0",autumn:"#eedfbb",winter:"#d9e2f1"};
     const dialogFoodBackground=()=>dialogSeasonBackgrounds[season]||"#f5eee3";
     const foodInfo={
