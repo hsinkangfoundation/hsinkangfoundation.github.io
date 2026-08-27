@@ -1085,6 +1085,7 @@
     .carecard-toggle{width:100%;padding:24px;display:block;border:0;background:transparent;color:var(--ink);text-align:left}
     .carecard-toggle-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
     .carecard-toggle .carehead{min-width:0}
+    .carecard-name{font:600 24px/1.35 "Noto Serif TC","Songti TC",serif}
     .carecard-status{display:none;margin-left:auto;padding:5px 8px;border-radius:999px;background:var(--clay-soft);color:#8b4329;font-size:11px;font-weight:800;white-space:nowrap}
     .carecard.is-open .carecard-status{display:inline-flex}
     .carecard-toggle .lead{margin:18px 0 0;padding:0 34px 0 0;border:0;color:#474d48;font-size:17px;line-height:1.65}
@@ -1188,21 +1189,21 @@
       <div class="care-grid">
         <article class="carecard" data-health-card="pressure">
           <button type="button" class="carecard-toggle" data-health-condition="pressure" aria-expanded="false" aria-controls="care-details-pressure">
-            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">壓</span><span><h3>血壓偏高</h3></span></span><span class="carecard-status">已同步餐盤</span></span>
+            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">壓</span><span class="carecard-name">血壓偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
             <span class="lead">少湯、少醬，比只少放鹽更重要</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
           <div class="carecard-details" id="care-details-pressure" hidden><ul><li>湯麵、火鍋與燉湯以吃料為主，湯汁淺嚐即可。</li><li>醬油、豆瓣醬、沙茶與滷汁分開放，少淋、少沾。</li><li>少選香腸、火腿、醃菜與罐頭，改用薑、蒜、蔥與香菇提味。</li></ul><p class="carecard-plate" id="care-plate-pressure"></p></div>
         </article>
         <article class="carecard" data-health-card="sugar">
           <button type="button" class="carecard-toggle" data-health-condition="sugar" aria-expanded="false" aria-controls="care-details-sugar">
-            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">糖</span><span><h3>血糖偏高</h3></span></span><span class="carecard-status">已同步餐盤</span></span>
+            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">糖</span><span class="carecard-name">血糖偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
             <span class="lead">飯與根莖類，都要算進同一餐的澱粉</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
           <div class="carecard-details" id="care-details-sugar" hidden><ul><li>飯、粥、麵、地瓜、南瓜與玉米都屬主食，避免同餐重複堆疊。</li><li>每餐主食份量盡量固定，優先選擇糙米、燕麥等全穀雜糧。</li><li>飲料選無糖，水果直接吃、不打成果汁，並依建議份量攝取。</li></ul><p class="carecard-plate" id="care-plate-sugar"></p></div>
         </article>
         <article class="carecard" data-health-card="lipid">
           <button type="button" class="carecard-toggle" data-health-condition="lipid" aria-expanded="false" aria-controls="care-details-lipid">
-            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">脂</span><span><h3>血脂偏高</h3></span></span><span class="carecard-status">已同步餐盤</span></span>
+            <span class="carecard-toggle-top"><span class="carehead"><span class="seal">脂</span><span class="carecard-name">血脂偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
             <span class="lead">蛋白質優先選豆、魚與瘦肉</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
           <div class="carecard-details" id="care-details-lipid" hidden><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul><p class="carecard-plate" id="care-plate-lipid"></p></div>
