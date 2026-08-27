@@ -1060,6 +1060,11 @@
     .ai-helper .advice-card-meta{display:block}.ai-helper .advice-number{font-size:14px;letter-spacing:.04em}.ai-helper .advice-card h4{margin:7px 0 5px;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;font-size:21px}.ai-helper .advice-card p{font-size:17px;line-height:1.8}
     @media(max-width:700px){.plate-advice.ai-helper{padding:24px 19px;border-radius:8px}.ai-helper .advice-head{align-items:start}.ai-helper .advice-state{width:auto;justify-content:flex-start;padding:0}.ai-helper .advice-card{padding:17px 0}.ai-helper .advice-card h4{font-size:21px}.ai-helper .advice-card p{font-size:17px}}
 
+    /* Keep the plate mark and tagline centered when the team detail makes this spread taller. */
+    @media(min-width:981px){
+      .team-top .team-visual-wrap{flex:1 1 auto;min-height:0;justify-content:center;align-items:center;text-align:center}
+    }
+
     /* Keep the team wordmark, its hint and the expanded note on one center axis. */
     .team-title-wrap{margin-inline:auto;text-align:center}
     .team-title-label{justify-content:center}
