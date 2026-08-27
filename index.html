@@ -1043,6 +1043,13 @@
     .ai-helper .advice-card{min-height:0;padding:19px 0;border:0;border-bottom:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));border-radius:0;background:transparent;box-shadow:none}
     .ai-helper .advice-card-meta{display:block}.ai-helper .advice-number{font-size:14px;letter-spacing:.04em}.ai-helper .advice-card h4{margin:7px 0 5px;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;font-size:21px}.ai-helper .advice-card p{font-size:17px;line-height:1.8}
     @media(max-width:700px){.plate-advice.ai-helper{padding:24px 19px;border-radius:8px}.ai-helper .advice-head{align-items:start}.ai-helper .advice-state{width:auto;justify-content:flex-start;padding:0}.ai-helper .advice-card{padding:17px 0}.ai-helper .advice-card h4{font-size:21px}.ai-helper .advice-card p{font-size:17px}}
+
+    /* Keep the team wordmark, its hint and the expanded note on one center axis. */
+    .team-title-wrap{margin-inline:auto;text-align:center}
+    .team-title-label{justify-content:center}
+    .team-title-hint{display:flex;width:max-content;max-width:100%;margin:7px auto 0}
+    .team-name-note{left:50%;text-align:left;transform:translate(-50%,-5px)}
+    .team-title-wrap:hover .team-name-note,.team-title-wrap:focus .team-name-note,.team-title-wrap:focus-within .team-name-note{transform:translateX(-50%)}
 </style>
 </head>
 <body>
@@ -1267,7 +1274,7 @@
         {number:"04",title:careTitle,text:careText}
       ]
     }
-    function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>`<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">AI 建議 ${item.number}</span></div><h4>${item.title}</h4><p>${item.text}</p></article>`).join("")}
+    function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>`<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">建議 ${item.number}</span></div><h4>${item.title}</h4><p>${item.text}</p></article>`).join("")}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
     function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
     function render(){
