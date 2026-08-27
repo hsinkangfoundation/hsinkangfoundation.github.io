@@ -1064,6 +1064,86 @@
     .team-title-hint{display:flex;width:max-content;max-width:100%;margin:7px auto 0}
     .team-name-note{left:50%;text-align:left;transform:translate(-50%,-5px)}
     .team-title-wrap:hover .team-name-note,.team-title-wrap:focus .team-name-note,.team-title-wrap:focus-within .team-name-note{transform:translateX(-50%)}
+    /* 高齡飲食提醒：互動導覽與手機友善控制 */
+    .health-reminder-group{position:relative;background:var(--leaf-soft)}
+    .health-reminder-group .health-section-nav{position:sticky;top:82px;z-index:18;width:calc(100% - clamp(44px,14vw,204px));max-width:1280px;margin:0 auto;padding:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:rgba(255,253,248,.94);border:1px solid rgba(47,111,79,.18);border-radius:18px;box-shadow:0 12px 30px rgba(36,53,47,.09);backdrop-filter:blur(14px)}
+    .health-section-nav a{min-height:48px;padding:10px 16px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--ink);font-weight:700;font-size:15px;text-align:center;transition:background .2s,color .2s}
+    .health-section-nav a:hover,.health-section-nav a:focus-visible{background:var(--leaf-pale);color:var(--forest)}
+    .health-section-nav a:first-child{background:var(--forest);color:#fff}
+    .daily-checkin,.condition-picker{max-width:1280px;margin:0 auto 26px;padding:clamp(22px,3vw,32px);background:rgba(255,253,248,.92);border:1px solid rgba(47,111,79,.18);border-radius:24px;box-shadow:0 12px 34px rgba(36,53,47,.07)}
+    .daily-checkin{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:22px 34px;align-items:start}
+    .daily-checkin-copy p,.condition-picker-copy p{margin:0 0 7px;color:var(--forest);font-size:13px;font-weight:800;letter-spacing:.08em}
+    .daily-checkin-copy h3,.condition-picker-copy h3{margin:0;font:600 clamp(23px,2.4vw,31px)/1.35 "Noto Serif TC","Songti TC",serif}
+    .daily-checkin-copy small,.condition-picker-copy small{display:block;margin-top:10px;color:var(--muted);font-size:14px;line-height:1.65}
+    .daily-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .daily-choice{min-height:62px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;background:#fffdf8;color:var(--ink);font-size:17px;font-weight:700;text-align:left}
+    .daily-choice:after{content:"＋";flex:0 0 auto;color:var(--forest);font-size:22px;font-weight:400}
+    .daily-choice:hover,.daily-choice:focus-visible{border-color:var(--forest);background:var(--leaf-pale)}
+    .daily-choice[aria-pressed="true"]{border-color:var(--forest);background:var(--forest);color:#fff;box-shadow:0 8px 18px rgba(47,111,79,.18)}
+    .daily-choice[aria-pressed="true"]:after{content:"✓";color:#fff}
+    .daily-response{grid-column:1/-1;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--leaf-pale);border-left:5px solid var(--forest);border-radius:0 16px 16px 0}
+    .daily-response[hidden]{display:none}
+    .daily-response-copy{min-width:0}
+    .daily-response-kicker{display:block;margin-bottom:5px;color:var(--forest);font-size:12px;font-weight:800;letter-spacing:.1em}
+    .daily-response h4{margin:0 0 6px;font:600 21px/1.4 "Noto Serif TC","Songti TC",serif}
+    .daily-response p{margin:0;color:#53605a;font-size:15px;line-height:1.75}
+    .daily-response-clear,.condition-clear{min-height:44px;padding:9px 13px;flex:0 0 auto;border:1px solid rgba(36,53,47,.32);border-radius:10px;background:transparent;color:var(--ink);font-size:14px;font-weight:700}
+    #notes .notes{align-items:stretch}
+    #notes .note{transition:border-color .2s,box-shadow .2s,background .2s}
+    #notes .note.is-related{border-color:var(--forest);background:#fffef9;box-shadow:0 0 0 3px rgba(47,111,79,.14),0 12px 28px rgba(36,53,47,.09)}
+    .condition-picker{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.2fr);gap:20px 34px;align-items:center}
+    .condition-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .condition-option{min-height:56px;padding:10px 8px;border:1px solid var(--line);border-radius:14px;background:#fffdf8;color:var(--ink);font-size:17px;font-weight:800;text-align:center}
+    .condition-option:hover,.condition-option:focus-visible{border-color:var(--clay);background:var(--clay-soft)}
+    .condition-option[aria-pressed="true"]{border-color:var(--clay);background:var(--clay);color:#fff;box-shadow:0 8px 18px rgba(181,91,56,.18)}
+    .condition-status-row{grid-column:1/-1;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .condition-status{margin:0;color:#59615c;font-size:15px;line-height:1.65}
+    .condition-status strong{color:var(--ink)}
+    .condition-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+    .condition-clear[hidden]{display:none}
+    .condition-advice-link{min-height:44px;padding:9px 14px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:var(--ink);color:#fff;font-size:14px;font-weight:800;text-align:center}
+    #care .carecard{position:relative;transition:border-color .2s,box-shadow .2s,background .2s}
+    #care .carecard.is-selected{border-color:var(--clay);background:#fffdf9;box-shadow:0 0 0 3px rgba(181,91,56,.14),0 12px 30px rgba(57,43,35,.09)}
+    .condition-card-state{display:inline-flex;width:max-content;margin:14px 0 0;padding:5px 9px;border-radius:999px;background:var(--clay-soft);color:#8b4329;font-size:12px;font-weight:800}
+    .condition-card-state[hidden]{display:none}
+    .advice-condition-summary{margin:18px 0 0;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#f5efe4;border:1px solid rgba(181,91,56,.2);border-radius:14px}
+    .advice-condition-summary[hidden]{display:none}
+    .advice-condition-summary p{margin:0;color:#5b5751;font-size:14px;line-height:1.6}
+    .advice-condition-chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+    .advice-health-chip{padding:5px 9px;border-radius:999px;background:var(--clay);color:#fff;font-size:12px;font-weight:800;white-space:nowrap}
+    @media(max-width:980px){
+      .health-reminder-group .health-section-nav{width:calc(100% - 40px)}
+      .daily-checkin,.condition-picker{grid-template-columns:1fr}
+      .condition-status-row{grid-column:1}
+    }
+    @media(max-width:700px){
+      .health-reminder-group .health-section-nav{position:relative;top:auto;width:100%;margin:0;padding:12px 20px;border-width:1px 0;border-radius:0;box-shadow:none;background:rgba(255,253,248,.98);display:grid}
+      .health-section-nav a{min-height:46px;padding:9px 7px;font-size:14px}
+      .health-reminder-group section.block#notes,.health-reminder-group section.block#care{padding-top:48px;padding-bottom:56px}
+      .daily-checkin,.condition-picker{margin-bottom:20px;padding:18px;border-radius:18px;gap:18px}
+      .daily-checkin-copy small,.condition-picker-copy small{font-size:13px}
+      .daily-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .daily-choice{min-height:58px;padding:11px 12px;font-size:16px}
+      .daily-response{padding:17px;align-items:stretch;flex-direction:column;gap:14px}
+      .daily-response-clear{width:100%}
+      #notes .notes{gap:10px}
+      #notes .note{padding:24px 20px}
+      .condition-options{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+      .condition-option{min-height:50px;padding:9px 4px;font-size:15px}
+      .condition-status-row{padding-top:15px;align-items:stretch;flex-direction:column;gap:13px}
+      .condition-actions{display:grid;grid-template-columns:1fr;justify-content:stretch}
+      .condition-clear,.condition-advice-link{width:100%}
+      #care .care-grid{gap:12px}
+      #care .carecard{padding:22px 19px}
+      #care .carecard.is-selected{transform:none}
+      .advice-condition-summary{align-items:flex-start;flex-direction:column}
+      .advice-condition-chips{justify-content:flex-start}
+    }
+    @media(max-width:420px){
+      .daily-choice-grid{grid-template-columns:1fr}
+      .health-section-nav a{font-size:13px}
+    }
+
 </style>
 </head>
 <body>
@@ -1101,14 +1181,52 @@
       <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
-    <section class="block" id="planner"><div class="section-title"><div><h2>今天想吃什麼？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll" aria-label="更新全部餐食">↻ 全部更新</button><button type="button" class="reel-lever" id="reel-lever" aria-label="拉下把手，更新全部餐食"></button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><h3 id="plate-summary-title">我配好的餐盤</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><section class="plate-advice ai-helper" aria-labelledby="plate-advice-title"><div class="advice-head"><div class="ai-helper-identity"><div><h3 id="plate-advice-title">AI 餐盤建議</h3><p class="ai-helper-intro">依你配好的餐盤，整理幾個實際吃法。</p></div></div><span class="advice-state"><span class="ai-status-dot" aria-hidden="true"></span>會跟著餐盤更換</span></div><div class="advice-grid" id="plate-advice-list" role="list" aria-live="polite"></div><p class="advice-disclaimer">AI 餐盤建議供日常飲食參考；若有慢性病、服藥、限水或吞嚥問題，請依醫師或營養師建議調整。</p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
+    <section class="block" id="planner"><div class="section-title"><div><h2>今天想吃什麼？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll" aria-label="更新全部餐食">↻ 全部更新</button><button type="button" class="reel-lever" id="reel-lever" aria-label="拉下把手，更新全部餐食"></button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><h3 id="plate-summary-title">我配好的餐盤</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><section class="plate-advice ai-helper" aria-labelledby="plate-advice-title"><div class="advice-head"><div class="ai-helper-identity"><div><h3 id="plate-advice-title">AI 餐盤建議</h3><p class="ai-helper-intro">依你配好的餐盤，整理幾個實際吃法。</p></div></div><span class="advice-state"><span class="ai-status-dot" aria-hidden="true"></span>會跟著餐盤與選擇更換</span></div><div class="advice-condition-summary" id="advice-condition-summary" hidden><p>餐盤建議已加入你選擇的三高留意方向：</p><div class="advice-condition-chips" id="advice-condition-chips" aria-label="已選擇的三高留意項目"></div></div><div class="advice-grid" id="plate-advice-list" role="list" aria-live="polite"></div><p class="advice-disclaimer">AI 餐盤建議供日常飲食參考；若有慢性病、服藥、限水或吞嚥問題，請依醫師或營養師建議調整。</p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title"><div><h2 id="menu-title">夏季參考餐盤</h2></div></div><div class="menu-grid" id="menu-grid"></div></section>
-    <section class="block gentle" id="notes"><div class="section-title"><div><h2>吃飯時多留意</h2></div><p>從牙口、份量到補水與吞嚥，整理幾個每天用得到的提醒。</p></div><div class="notes"><article class="note"><span>一</span><h3>切小煮軟，好入口</h3><p>依牙口調整食材大小與軟硬，吃得更輕鬆。</p></article><article class="note"><span>二</span><h3>清淡調味，保留香氣</h3><p>少鹽少醬，善用薑、蒜、香菇等天然香氣提味。</p></article><article class="note"><span>三</span><h3>少量多樣，慢慢吃</h3><p>每餐多樣搭配，依食慾調整份量，不勉強吃完。</p></article><article class="note"><span>四</span><h3>吃得剛好，比吃得更少重要</h3><p>仍要吃足熱量與蛋白質；若體重下降或食慾變差，請詢問醫師或營養師。</p></article><article class="note"><span>五</span><h3>主動補充水分</h3><p>白天分次喝水，不等口渴才喝；若有限水需求，請依醫囑調整。</p></article><article class="note"><span>六</span><h3>留意吞嚥警訊</h3><p>若常嗆咳、聲音變濕或用餐時間明顯變長，請尋求醫療專業評估。</p></article></div></section>
-    <section class="block care" id="care"><div class="section-title"><div><h2>三高怎麼吃？</h2></div><p>先從少鹽、固定主食份量和調整用油做起；若已服藥或有其他疾病，仍以醫師、營養師建議為準。</p></div><div class="care-grid">
-      <article class="carecard"><div class="carehead"><span class="seal">壓</span><h3>血壓偏高</h3></div><p class="lead">減鈉不只少放鹽，也要少喝湯、少沾醬</p><ul><li>湯麵、火鍋與燉湯以吃料為主，湯汁淺嚐即可。</li><li>醬油、豆瓣醬、沙茶與滷汁分開放，少淋、少沾。</li><li>少選香腸、火腿、醃菜與罐頭，改用薑、蒜、蔥與香菇提味。</li></ul></article>
-      <article class="carecard"><div class="carehead"><span class="seal">糖</span><h3>血糖偏高</h3></div><p class="lead">澱粉要定量，並與蛋白質、蔬菜均衡搭配</p><ul><li>飯、粥、麵、地瓜、南瓜與玉米都屬主食，避免同餐重複堆疊。</li><li>每餐主食份量盡量固定，優先選擇糙米、燕麥等全穀雜糧。</li><li>飲料選無糖，水果直接吃、不打成果汁，並依建議份量攝取。</li></ul></article>
-      <article class="carecard"><div class="carehead"><span class="seal">脂</span><h3>血脂偏高</h3></div><p class="lead">減少飽和脂肪，蛋白質優先選豆、魚與瘦肉</p><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul></article>
-    </div></section>
+    <section class="health-reminder-group" aria-label="高齡飲食提醒">
+      <nav class="health-section-nav" aria-label="高齡飲食提醒分類">
+        <a href="#notes">日常飲食照護</a>
+        <a href="#care">三高飲食提醒</a>
+      </nav>
+      <section class="block gentle" id="notes">
+        <div class="section-title"><div><h2>吃飯時多留意</h2></div><p>先選出今天最需要留意的狀況，再查看對應的做法與完整提醒。</p></div>
+        <section class="daily-checkin" aria-labelledby="daily-checkin-title">
+          <div class="daily-checkin-copy"><p>今天的用餐小檢查</p><h3 id="daily-checkin-title">今天吃飯比較需要注意什麼？</h3><small>選一項就會在下方顯示可以立刻做的調整；這不是醫療診斷。</small></div>
+          <div class="daily-choice-grid" role="group" aria-label="選擇今天的用餐狀況">
+            <button type="button" class="daily-choice" data-daily-choice="texture" aria-pressed="false">咬不動</button>
+            <button type="button" class="daily-choice" data-daily-choice="appetite" aria-pressed="false">食慾不好</button>
+            <button type="button" class="daily-choice" data-daily-choice="hydration" aria-pressed="false">容易忘記喝水</button>
+            <button type="button" class="daily-choice" data-daily-choice="swallow" aria-pressed="false">吃飯會嗆到</button>
+          </div>
+          <article class="daily-response" id="daily-response" aria-live="polite" hidden><div class="daily-response-copy"><span class="daily-response-kicker">今天先這樣做</span><h4 id="daily-response-title"></h4><p id="daily-response-copy"></p></div><button type="button" class="daily-response-clear" id="daily-response-clear">查看全部提醒</button></article>
+        </section>
+        <div class="notes">
+          <article class="note" data-daily-note="texture swallow"><span>一</span><h3>切小煮軟，好入口</h3><p>依牙口調整食材大小與軟硬，吃得更輕鬆。</p></article>
+          <article class="note"><span>二</span><h3>清淡調味，保留香氣</h3><p>少鹽少醬，善用薑、蒜、香菇等天然香氣提味。</p></article>
+          <article class="note" data-daily-note="appetite"><span>三</span><h3>少量多樣，慢慢吃</h3><p>每餐多樣搭配，依食慾調整份量，不勉強吃完。</p></article>
+          <article class="note" data-daily-note="appetite"><span>四</span><h3>吃得剛好，比吃得更少重要</h3><p>仍要吃足熱量與蛋白質；若體重下降或食慾變差，請詢問醫師或營養師。</p></article>
+          <article class="note" data-daily-note="hydration"><span>五</span><h3>主動補充水分</h3><p>白天分次喝水，不等口渴才喝；若有限水需求，請依醫囑調整。</p></article>
+          <article class="note" data-daily-note="swallow"><span>六</span><h3>留意吞嚥警訊</h3><p>若常嗆咳、聲音變濕或用餐時間明顯變長，請尋求醫療專業評估。</p></article>
+        </div>
+      </section>
+      <section class="block care" id="care">
+        <div class="section-title"><div><h2>三高怎麼吃？</h2></div><p>可複選需要留意的項目，網站會同步調整上方「AI 餐盤建議」。</p></div>
+        <section class="condition-picker" aria-labelledby="condition-picker-title">
+          <div class="condition-picker-copy"><p>依自己的狀況查看</p><h3 id="condition-picker-title">想特別留意哪一項？</h3><small>選擇只會保存在這台裝置，不會上傳；若已服藥或有其他疾病，仍以醫師、營養師建議為準。</small></div>
+          <div class="condition-options" role="group" aria-label="選擇三高留意項目，可複選">
+            <button type="button" class="condition-option" data-health-condition="pressure" aria-pressed="false">血壓</button>
+            <button type="button" class="condition-option" data-health-condition="sugar" aria-pressed="false">血糖</button>
+            <button type="button" class="condition-option" data-health-condition="lipid" aria-pressed="false">血脂</button>
+          </div>
+          <div class="condition-status-row"><p class="condition-status" id="condition-status" aria-live="polite">尚未選擇，先顯示一般三高飲食提醒。</p><div class="condition-actions"><button type="button" class="condition-clear" id="condition-clear" hidden>清除選擇</button><a class="condition-advice-link" href="#plate-advice-title">查看調整後的餐盤建議 ↑</a></div></div>
+        </section>
+        <div class="care-grid">
+          <article class="carecard" data-health-card="pressure"><div class="carehead"><span class="seal">壓</span><h3>血壓偏高</h3></div><span class="condition-card-state" hidden>✓ 目前留意</span><p class="lead">減鈉不只少放鹽，也要少喝湯、少沾醬</p><ul><li>湯麵、火鍋與燉湯以吃料為主，湯汁淺嚐即可。</li><li>醬油、豆瓣醬、沙茶與滷汁分開放，少淋、少沾。</li><li>少選香腸、火腿、醃菜與罐頭，改用薑、蒜、蔥與香菇提味。</li></ul></article>
+          <article class="carecard" data-health-card="sugar"><div class="carehead"><span class="seal">糖</span><h3>血糖偏高</h3></div><span class="condition-card-state" hidden>✓ 目前留意</span><p class="lead">澱粉要定量，並與蛋白質、蔬菜均衡搭配</p><ul><li>飯、粥、麵、地瓜、南瓜與玉米都屬主食，避免同餐重複堆疊。</li><li>每餐主食份量盡量固定，優先選擇糙米、燕麥等全穀雜糧。</li><li>飲料選無糖，水果直接吃、不打成果汁，並依建議份量攝取。</li></ul></article>
+          <article class="carecard" data-health-card="lipid"><div class="carehead"><span class="seal">脂</span><h3>血脂偏高</h3></div><span class="condition-card-state" hidden>✓ 目前留意</span><p class="lead">減少飽和脂肪，蛋白質優先選豆、魚與瘦肉</p><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul></article>
+        </div>
+      </section>
+    </section>
   </main>
   <dialog id="food-dialog" aria-labelledby="dialog-food-name"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high"></figure><div class="dialog-copy"><p class="dialog-category" id="dialog-category"></p><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依《高齡健康餐盤飲食指南》及官方衛教資料整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></div></div></dialog>
   <footer class="site-footer" id="sources">
@@ -1265,7 +1383,8 @@
     const foodDialog=document.getElementById("food-dialog");
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,mealReelToken=0;
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,mealReelToken=0,healthConditions=new Set();
+    const conditionLabels={pressure:"血壓",sugar:"血糖",lipid:"血脂"};
     const teamPointDetails=[
       {title:"四季好時",copy:"依春夏秋冬切換當季菜色，選菜時更有方向。"},
       {title:"份量與營養",copy:"每道料理都列出參考份量與吃法，點一下就能查看。"},
@@ -1280,27 +1399,38 @@
     document.getElementById("team-detail-close").addEventListener("click",()=>closeTeamPoint(true));
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!teamDetailPanel.hidden&&!foodDialog.open)closeTeamPoint(true)});
     function detectSeason(){const month=new Date().getMonth()+1;if(month>=3&&month<=5)return"spring";if(month>=6&&month<=8)return"summer";if(month>=9&&month<=11)return"autumn";return"winter"}
-    function loadState(){try{const saved=JSON.parse(localStorage.getItem(stateKey));if(!saved||!S[saved.season])return;season=saved.season;if(Array.isArray(saved.idx)&&saved.idx.length===5)idx=saved.idx.map(x=>Number.isFinite(Number(x))?Math.max(0,Number(x)):0);if(Array.isArray(saved.locked)&&saved.locked.length===5)locked=saved.locked.map(Boolean)}catch(error){}}
-    function saveState(){try{localStorage.setItem(stateKey,JSON.stringify({season,idx,locked}))}catch(error){}}
+    function loadState(){try{const saved=JSON.parse(localStorage.getItem(stateKey));if(!saved)return;if(S[saved.season])season=saved.season;if(Array.isArray(saved.idx)&&saved.idx.length===5)idx=saved.idx.map(x=>Number.isFinite(Number(x))?Math.max(0,Number(x)):0);if(Array.isArray(saved.locked)&&saved.locked.length===5)locked=saved.locked.map(Boolean);if(Array.isArray(saved.healthConditions))healthConditions=new Set(saved.healthConditions.filter(key=>conditionLabels[key]))}catch(error){}}
+    function saveState(){try{localStorage.setItem(stateKey,JSON.stringify({season,idx,locked,healthConditions:[...healthConditions]}))}catch(error){}}
     function pools(){const m=S[season].menus;return[staples,m.map(x=>x[0]),m.map(x=>x[1]),m.map(x=>x[2]),m.map(x=>x[3])]}
     function selectedItems(){return pools().map((pool,i)=>{const d=pool[idx[i]%pool.length],name=Array.isArray(d)?d[0]:d;return{category:labels[i],name,portion:foodInfo[name]?.portion||"",month:i===0?"全年可選":(d[1]||"全年皆宜")}})}
     function plateAdvice(){
       const items=selectedItems(),names=items.map(item=>item.name),staple=names[0]||"主食",mainDish=names[1]||"主菜",sides=names.slice(2,4),soup=names[4]||"湯品";
-      const wholeGrain=/(糙米|五穀|燕麥|紫米|藜麥|薏仁)/.test(staple),fishName=names.find(name=>/(魚|鮭|鯖|虱目|鱈|鯛|秋刀)/.test(name)),chilledName=names.find(name=>/(涼拌|冷拌|生菜)/.test(name)),strongName=names.find(name=>/(鹹豬肉|三杯|糖醋|紅燒|滷|照燒|醬燒|麻婆|咖哩|麻油|臘|香腸)/.test(name)),heartySoup=/(濃湯|雞湯|排骨湯|牛腩湯|肉羹|佛跳牆)/.test(soup);
+      const pressureSelected=healthConditions.has("pressure"),sugarSelected=healthConditions.has("sugar"),lipidSelected=healthConditions.has("lipid");
+      const wholeGrain=/(糙米|五穀|燕麥|紫米|藜麥|薏仁)/.test(staple),fishName=names.find(name=>/(魚|鮭|鯖|虱目|鱈|鯛|秋刀)/.test(name)),chilledName=names.find(name=>/(涼拌|冷拌|生菜)/.test(name)),strongName=names.find(name=>/(鹹豬肉|三杯|糖醋|紅燒|滷|照燒|醬燒|麻婆|咖哩|麻油|臘|香腸)/.test(name)),heartySoup=/(濃湯|雞湯|排骨湯|牛腩湯|肉羹|佛跳牆)/.test(soup),fattyName=names.find(name=>/(肥肉|肉皮|松阪|奶油|酥皮|油炸|炸|麻油)/.test(name));
       const starchyName=names.slice(1).find(name=>/(地瓜|南瓜|馬鈴薯|山藥|玉米|栗子|菱角|蓮藕|芋頭)/.test(name)),leafyName=sides.find(name=>/(空心菜|菠菜|高麗菜|青江菜|油菜|莧菜|地瓜葉|芹菜|花椰菜|青花菜|白菜|秋葵|絲瓜|茄子|蘆筍|苦瓜)/.test(name)),extraProtein=sides.find(name=>/(蛋|豆腐|豆皮|豆干|毛豆|肉|羊|牛|豬|雞|魚|蝦|魷魚)/.test(name));
-      const mainPortion=foodInfo[mainDish]?.portion||"約1掌心",proteinText=extraProtein?`${mainDish}建議${mainPortion}；${extraProtein}也能補充蛋白質。食量較小時先吃這兩樣，再吃飯與湯，比較不容易蛋白質吃不夠。`:`${mainDish}建議${mainPortion}；食量較小時先吃主菜，再吃飯與湯，比較不容易蛋白質吃不夠。`;
-      const stapleText=starchyName?`${staple}與${starchyName}都會提供澱粉；同餐時可減少${staple}的份量，避免飯、根莖或濃湯中的澱粉重複吃過量。`:wholeGrain?`${staple}屬全穀雜糧選擇，份量可先抓約1碗，再依食慾與活動量調整。`:`${staple}份量可先抓約1碗；若活動量較少或血糖偏高，可依醫師或營養師建議調整。`;
-      const vegetableText=leafyName?`${leafyName}可作為這餐的主要蔬菜；兩道配菜合計以超過一個拳頭為目標。${extraProtein?`${extraProtein}同時含有蛋白質，若蔬菜量不多，可再補一些青菜。`:"可搭配不同顏色的蔬菜，增加纖維與營養多樣性。"}`:`兩道配菜合計以超過一個拳頭為目標；若以蛋、肉或根莖類為主，建議再補一份深綠色蔬菜。`;
-      const careTitle=strongName||heartySoup?"湯與醬汁要節制":fishName||chilledName?"質地安全再入口":"切小煮軟更好入口";
-      const careText=strongName?`${strongName}的醬汁、鹽分或油脂可能較高，建議少淋醬、去除肥油；${soup}以吃料為主，湯汁淺嚐即可。`:heartySoup?`${soup}可能含較多鹽、油脂或勾芡，建議小碗盛裝；自行料理時可減少奶油、鹽與勾芡。`:fishName?`${fishName}建議蒸、煮至軟嫩並仔細去刺；牙口較弱者可切小，避免乾煎得太硬。`:chilledName?`${chilledName}可改成溫拌，並依牙口切小、煮軟，減少生冷與咀嚼負擔。`:`主菜與配菜可切小、煮軟，肉類逆紋切薄；若用餐常嗆咳，應請醫療專業人員評估。`;
-      return[
-        {number:"01",title:"先把蛋白質吃夠",text:proteinText},
-        {number:"02",title:starchyName?"澱粉別重複吃":"主食份量抓剛好",text:stapleText},
-        {number:"03",title:"蔬菜要比一拳多",text:vegetableText},
-        {number:"04",title:careTitle,text:careText}
-      ]
+      const mainPortion=foodInfo[mainDish]?.portion||"約1掌心";
+      let proteinTitle="先把蛋白質吃夠",proteinText=extraProtein?mainDish+"建議"+mainPortion+"；"+extraProtein+"也能補充蛋白質。食量較小時先吃這兩樣，再吃飯與湯，比較不容易蛋白質吃不夠。":mainDish+"建議"+mainPortion+"；食量較小時先吃主菜，再吃飯與湯，比較不容易蛋白質吃不夠。";
+      if(lipidSelected){proteinTitle="血脂留意：豆魚瘦肉優先";proteinText=fishName?fishName+"可作為這餐較合適的蛋白質；份量以約一掌心為參考，烹調以蒸、煮為主。"+(fattyName?"同餐的"+fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):"這餐的蛋白質可優先保留豆類、魚類或瘦肉，肉類去皮並避免油炸。"+(fattyName?fattyName+"建議減量或改用較清爽的料理方式。":"食用油仍要適量。")}
+      let stapleTitle=starchyName?"澱粉別重複吃":"主食份量抓剛好",stapleText=starchyName?staple+"與"+starchyName+"都會提供澱粉；同餐時可減少"+staple+"的份量，避免飯、根莖或濃湯中的澱粉重複吃過量。":wholeGrain?staple+"屬全穀雜糧選擇，份量可先抓約1碗，再依食慾與活動量調整。":staple+"份量可先抓約1碗；若活動量較少或血糖偏高，可依醫師或營養師建議調整。";
+      if(sugarSelected){stapleTitle="血糖留意：澱粉合併計算";stapleText=starchyName?staple+"和"+starchyName+"都算澱粉，建議同餐合併抓固定份量；可少一點"+staple+"，並搭配蛋白質與蔬菜。":staple+"建議維持固定份量，優先選全穀雜糧，和主菜、蔬菜一起吃；含糖飲料與果汁先不加入這餐。"}
+      const vegetableText=leafyName?leafyName+"可作為這餐的主要蔬菜；兩道配菜合計以超過一個拳頭為目標。"+(extraProtein?extraProtein+"同時含有蛋白質，若蔬菜量不多，可再補一些青菜。":"可搭配不同顏色的蔬菜，增加纖維與營養多樣性。"):"兩道配菜合計以超過一個拳頭為目標；若以蛋、肉或根莖類為主，建議再補一份深綠色蔬菜。";
+      let careTitle=strongName||heartySoup?"湯與醬汁要節制":fishName||chilledName?"質地安全再入口":"切小煮軟更好入口",careText=strongName?strongName+"的醬汁、鹽分或油脂可能較高，建議少淋醬、去除肥油；"+soup+"以吃料為主，湯汁淺嚐即可。":heartySoup?soup+"可能含較多鹽、油脂或勾芡，建議小碗盛裝；自行料理時可減少奶油、鹽與勾芡。":fishName?fishName+"建議蒸、煮至軟嫩並仔細去刺；牙口較弱者可切小，避免乾煎得太硬。":chilledName?chilledName+"可改成溫拌，並依牙口切小、煮軟，減少生冷與咀嚼負擔。":"主菜與配菜可切小、煮軟，肉類逆紋切薄；若用餐常嗆咳，應請醫療專業人員評估。";
+      if(pressureSelected){careTitle="血壓留意：少湯、少醬";careText=[strongName,soup].filter(Boolean).join("、")+"建議以吃料為主，醬汁與湯汁淺嚐即可；料理時可用薑、蒜、蔥、菇類增添香氣，減少鹽與加工調味料。"}
+      return[{number:"01",title:proteinTitle,text:proteinText},{number:"02",title:stapleTitle,text:stapleText},{number:"03",title:"蔬菜要比一拳多",text:vegetableText},{number:"04",title:careTitle,text:careText}]
     }
-    function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>`<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">建議 ${item.number}</span></div><h4>${item.title}</h4><p>${item.text}</p></article>`).join("")}
+    function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>'<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">建議 '+item.number+'</span></div><h4>'+item.title+'</h4><p>'+item.text+'</p></article>').join("");syncAdviceConditionSummary()}
+    const dailyGuidance={
+      texture:{title:"把食材切小、煮軟",copy:"優先用蒸、煮、燉，肉類逆紋切薄；仍咬不動時，可再切碎或壓泥，讓每一口更省力。"},
+      appetite:{title:"少量分次，先吃營養密度高的食物",copy:"每餐保留主食與蛋白質，份量先盛少一點、吃得下再加；若體重下降或食慾持續變差，請詢問醫師或營養師。"},
+      hydration:{title:"白天分次、小口補水",copy:"把水放在看得到的地方，餐與餐之間固定喝幾口，不必等口渴；若有心臟、腎臟疾病或限水需求，請依醫囑調整。"},
+      swallow:{title:"坐直、放慢速度並留意警訊",copy:"吃飯時坐直、一次一小口，吞完再吃下一口並避免邊吃邊說話；若常嗆咳、聲音變濕或用餐很久，請尋求吞嚥專業評估。"}
+    };
+    function clearDailyConcern(){document.querySelectorAll("[data-daily-choice]").forEach(button=>button.setAttribute("aria-pressed","false"));document.querySelectorAll("[data-daily-note]").forEach(card=>card.classList.remove("is-related"));const response=document.getElementById("daily-response");if(response)response.hidden=true}
+    function selectDailyConcern(key){const guide=dailyGuidance[key],button=document.querySelector('[data-daily-choice="'+key+'"]');if(!guide||!button)return;if(button.getAttribute("aria-pressed")==="true"){clearDailyConcern();return}document.querySelectorAll("[data-daily-choice]").forEach(item=>item.setAttribute("aria-pressed",String(item===button)));document.getElementById("daily-response-title").textContent=guide.title;document.getElementById("daily-response-copy").textContent=guide.copy;document.getElementById("daily-response").hidden=false;document.querySelectorAll("[data-daily-note]").forEach(card=>card.classList.toggle("is-related",(card.dataset.dailyNote||"").split(" ").includes(key)))}
+    function syncAdviceConditionSummary(){const summary=document.getElementById("advice-condition-summary"),chips=document.getElementById("advice-condition-chips");if(!summary||!chips)return;const active=[...healthConditions].filter(key=>conditionLabels[key]);summary.hidden=!active.length;chips.innerHTML=active.map(key=>'<span class="advice-health-chip">'+conditionLabels[key]+'</span>').join("")}
+    function syncHealthConditionUI(updateAdvice=true){document.querySelectorAll("[data-health-condition]").forEach(button=>button.setAttribute("aria-pressed",String(healthConditions.has(button.dataset.healthCondition))));document.querySelectorAll("[data-health-card]").forEach(card=>{const selected=healthConditions.has(card.dataset.healthCard);card.classList.toggle("is-selected",selected);const state=card.querySelector(".condition-card-state");if(state)state.hidden=!selected});const active=[...healthConditions].filter(key=>conditionLabels[key]),status=document.getElementById("condition-status"),clear=document.getElementById("condition-clear");if(status)status.innerHTML=active.length?"目前留意：<strong>"+active.map(key=>conditionLabels[key]).join("、")+"</strong>。上方餐盤建議已同步調整。":"尚未選擇，先顯示一般三高飲食提醒。";if(clear)clear.hidden=!active.length;saveState();if(updateAdvice)renderPlateAdvice();else syncAdviceConditionSummary()}
+    function toggleHealthCondition(key){if(!conditionLabels[key])return;if(healthConditions.has(key))healthConditions.delete(key);else healthConditions.add(key);syncHealthConditionUI()}
+    function clearHealthConditions(){healthConditions.clear();syncHealthConditionUI()}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
     function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
     function render(){
@@ -1368,6 +1498,10 @@
     async function sharePlate(){if(navigator.share){try{await navigator.share({title:"高齡健康餐盤指南｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
     function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("高齡健康餐盤指南",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("新食慢嚐，代代港香",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新食代・新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`高齡健康餐盤指南-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
     loadState();preloadSelectedItems("high");
+    document.querySelectorAll("[data-daily-choice]").forEach(button=>button.addEventListener("click",()=>selectDailyConcern(button.dataset.dailyChoice)));
+    document.getElementById("daily-response-clear")?.addEventListener("click",clearDailyConcern);
+    document.querySelectorAll("[data-health-condition]").forEach(button=>button.addEventListener("click",()=>toggleHealthCondition(button.dataset.healthCondition)));
+    document.getElementById("condition-clear")?.addEventListener("click",clearHealthConditions);
     Object.entries(S).forEach(([k,s])=>document.getElementById("season-tabs").insertAdjacentHTML("beforeend",`<button type="button" data-key="${k}" aria-pressed="false" aria-label="${s.label}季，${s.months}" style="--color:${s.color}" onclick="changeSeason('${k}')"><span class="dot" aria-hidden="true"></span><b>${s.label}季</b><small>${s.months}</small></button>`));
     staples.forEach((x,i)=>document.getElementById("staples").insertAdjacentHTML("beforeend",`<div class="staple"><span>${String(i+1).padStart(2,"0")}</span><button type="button" class="staple-info" data-food="${x}" data-category="主食"><b>${x}</b><small>查看份量與營養 ↗</small></button><button type="button" class="staple-pick" aria-pressed="false" onclick="selectStaple(${i})">選入</button></div>`));
     stapleToggle.onclick=()=>setStapleDrawer(stapleDrawer.hidden);
@@ -1386,7 +1520,7 @@
     function syncBackToTop(){const visible=window.scrollY>520;backToTop.classList.toggle("visible",visible);backToTop.setAttribute("aria-hidden",String(!visible));backToTop.tabIndex=visible?0:-1}
     backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
     window.addEventListener("scroll",()=>{if(!quickNavFrame)quickNavFrame=requestAnimationFrame(syncQuickNav);syncBackToTop()},{passive:true});quickNavMobile.addEventListener?.("change",syncQuickNav);syncQuickNav();syncBackToTop();
-    document.getElementById("roll").textContent="↻ 全部更新";document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reel-lever").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();
+    document.getElementById("roll").textContent="↻ 全部更新";document.getElementById("roll").onclick=randomizeMeal;document.getElementById("reel-lever").onclick=randomizeMeal;document.getElementById("reset-meal").onclick=resetMeal;document.getElementById("copy-plate").onclick=copyPlate;document.getElementById("share-plate").onclick=sharePlate;document.getElementById("download-plate").onclick=downloadPlate;render();syncHealthConditionUI(false);
     const warmSeasonFoodImages=()=>{const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(window.matchMedia("(min-width:701px)").matches&&!connection?.saveData)preloadSeasonImages(season)};if("requestIdleCallback" in window)window.requestIdleCallback(warmSeasonFoodImages,{timeout:3000});else setTimeout(warmSeasonFoodImages,1800);
   </script>
 </body>
