@@ -952,21 +952,17 @@
     @media(max-width:980px){.footer-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:700px){.team-title-wrap{width:min(100%,330px)}.team-title-label{font-size:15px}.team-title-hint{font-size:15px}.quick-nav a{font-size:14px}.footer-bottom{grid-template-columns:1fr}.footer-links a,.footer-sources a{font-size:18px}.footer-source-note,.footer-bottom p{font-size:17px}}
 
-    /* 新港客廳社群入口：延續深綠頁尾，以暖米白卡片保留清楚而安靜的質感。 */
+    /* 新港客廳社群入口：保留兩個清楚的品牌連結，移除外層資訊框。 */
     .footer-social{max-width:1380px;margin:0 auto 28px;padding:0 clamp(24px,6vw,84px)}
-    .footer-social-inner{padding:26px 28px;border:1px solid rgba(255,255,255,.24);border-radius:22px;background:rgba(255,249,237,.08);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
-    .footer-social-kicker{margin:0 0 4px!important;color:#d9cdb8!important;font-size:14px!important;font-weight:700;letter-spacing:.12em}
-    .footer-social-title{margin:0;color:#fff;font:600 clamp(22px,2.3vw,30px)/1.45 "Noto Serif TC","Songti TC",serif}
-    .footer-social-links{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
-    .footer-social-link{min-width:220px;min-height:72px;padding:12px 16px;border:1px solid rgba(255,255,255,.72);border-radius:16px;background:#fff9ed;color:#2d5140;display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;box-shadow:0 8px 20px rgba(20,42,32,.08);transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
+    .footer-social-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .footer-social-link{min-width:210px;min-height:66px;padding:10px 15px;border:1px solid rgba(255,255,255,.72);border-radius:16px;background:#fff9ed;color:#2d5140;display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;box-shadow:0 8px 20px rgba(20,42,32,.08);transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
     .footer-social-link:hover{transform:translateY(-2px);background:#fffef9;box-shadow:0 12px 28px rgba(20,42,32,.18)}
     .footer-social-icon{width:42px;height:42px;border-radius:50%;background:#e6ede7;display:grid;place-items:center;color:#2d5140}
     .footer-social-icon svg{width:22px;height:22px;display:block}
     .footer-social-copy b{display:block;font-size:17px;line-height:1.35}
-    .footer-social-copy small{display:block;margin-top:2px;color:#647168;font-size:13px;line-height:1.35}
     .footer-social-arrow{font-size:20px;line-height:1}
-    @media(max-width:980px){.footer-social-inner{grid-template-columns:1fr}.footer-social-links{justify-content:flex-start}}
-    @media(max-width:700px){.footer-social{margin-bottom:22px;padding:0 24px}.footer-social-inner{padding:23px 18px;border-radius:18px}.footer-social-title{font-size:23px}.footer-social-links{display:grid;width:100%}.footer-social-link{width:100%;min-width:0;min-height:76px}.footer-social-kicker{font-size:14px!important}.footer-social-copy b{font-size:18px}.footer-social-copy small{font-size:15px}}
+    @media(max-width:700px){.footer-social{margin-bottom:22px;padding:0 24px}.footer-social-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px}.footer-social-link{width:100%;min-width:0;min-height:66px;padding:10px 12px;grid-template-columns:38px minmax(0,1fr) auto;gap:9px}.footer-social-icon{width:38px;height:38px}.footer-social-copy b{font-size:16px}}
+    @media(max-width:440px){.footer-social-links{grid-template-columns:1fr}.footer-social-link{width:min(100%,280px);justify-self:center}}
 
     /* Five-dish slot reels: the interactive cards are the reels, not the seasonal hero. */
     #planner .planner{border:1px solid color-mix(in srgb,var(--accent) 34%,rgba(90,70,54,.18));border-radius:30px;overflow:hidden;box-shadow:0 20px 46px color-mix(in srgb,var(--accent) 15%,rgba(66,51,40,.12))}
@@ -1135,24 +1131,18 @@
         <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
       </div>
     </div>
-    <section class="footer-social" aria-labelledby="footer-social-title">
-      <div class="footer-social-inner">
-        <div>
-          <p class="footer-social-kicker">新港客廳・日常上菜</p>
-          <h2 class="footer-social-title" id="footer-social-title">追蹤餐桌新訊與活動花絮</h2>
-        </div>
-        <div class="footer-social-links">
-          <a class="footer-social-link" href="https://www.facebook.com/hkfcecafe/" target="_blank" rel="noopener noreferrer" aria-label="前往新港客廳 Facebook，另開新視窗">
-            <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 8H17V4h-3.3C10.5 4 9 5.9 9 8.8V11H6v4h3v7h4v-7h3.2l.8-4H13V9.2c0-.8.4-1.2 1.2-1.2Z"/></svg></span>
-            <span class="footer-social-copy"><b>Facebook</b><small>菜單、公告與活動消息</small></span>
-            <span class="footer-social-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a class="footer-social-link" href="https://www.instagram.com/hkfcecafe/" target="_blank" rel="noopener noreferrer" aria-label="前往新港客廳 Instagram，另開新視窗">
-            <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span>
-            <span class="footer-social-copy"><b>Instagram</b><small>餐點特寫與客廳日常</small></span>
-            <span class="footer-social-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
+    <section class="footer-social" aria-label="新港客廳社群連結">
+      <div class="footer-social-links">
+        <a class="footer-social-link" href="https://www.facebook.com/hkfcecafe/" target="_blank" rel="noopener noreferrer" aria-label="前往新港客廳 Facebook，另開新視窗">
+          <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 8H17V4h-3.3C10.5 4 9 5.9 9 8.8V11H6v4h3v7h4v-7h3.2l.8-4H13V9.2c0-.8.4-1.2 1.2-1.2Z"/></svg></span>
+          <span class="footer-social-copy"><b>Facebook</b></span>
+          <span class="footer-social-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="footer-social-link" href="https://www.instagram.com/hkfcecafe/" target="_blank" rel="noopener noreferrer" aria-label="前往新港客廳 Instagram，另開新視窗">
+          <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="footer-social-copy"><b>Instagram</b></span>
+          <span class="footer-social-arrow" aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
     <div class="footer-bottom"><p>內容更新｜2026年8月8日</p><p>資料查閱｜2026年8月</p><p>內容基礎｜《高齡健康餐盤飲食指南》</p><p>編製團隊｜<strong>新食代・新港覺</strong></p></div>
