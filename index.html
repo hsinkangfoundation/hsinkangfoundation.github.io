@@ -1124,6 +1124,15 @@
       .advice-condition-chips{justify-content:flex-start}
     }
 
+
+    /* 本次調整：三高摺疊標題改為一般字重，團隊字標置於頁尾社群連結下方。 */
+    .carecard-toggle .lead{font-weight:400}
+    .footer-team-logo-wrap{width:min(100%,330px);margin-top:28px;padding:16px 18px;border-radius:14px;background:rgba(255,253,250,.96)}
+    .footer-team-logo{display:block;width:100%;height:auto}
+    @media(max-width:700px){
+      .footer-team-logo-wrap{width:min(100%,290px);margin-top:24px;padding:14px 16px}
+    }
+
 </style>
 </head>
 <body>
@@ -1230,6 +1239,9 @@
             </a>
           </div>
         </section>
+        <div class="footer-team-logo-wrap" aria-label="新食代・新港覺">
+          <img class="footer-team-logo" src="assets/new-era-new-hsinkang-title-flat-v3.png" alt="新食代・新港覺">
+        </div>
       </div>
       <div class="footer-link-column">
         <h2 class="footer-title">快速前往</h2>
