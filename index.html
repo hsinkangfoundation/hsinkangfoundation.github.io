@@ -1155,6 +1155,149 @@
       .team-guide-title .site-title-main::before,.team-guide-title .site-title-main::after{width:22px}
     }
 
+    /* 三個資訊區共用霧面陶瓷方盤：保留內容與互動，只替換卡片外觀。 */
+    #menus .menu,
+    .compact-reminders .note,
+    .compact-care .carecard{
+      --plate-fill:#fffdf8;
+      --plate-rim:#d8d0c4;
+      --plate-shadow:rgba(70,62,52,.14);
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      border:1px solid color-mix(in srgb,var(--plate-rim) 86%,#fff)!important;
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 18% 14%,rgba(255,255,255,.98) 0,rgba(255,255,255,.48) 24%,transparent 46%),
+        radial-gradient(circle at 78% 82%,rgba(79,67,51,.035) 0 1px,transparent 1.4px) 0 0/17px 17px,
+        linear-gradient(145deg,color-mix(in srgb,var(--plate-fill) 82%,#fff) 0%,var(--plate-fill) 58%,color-mix(in srgb,var(--plate-rim) 18%,var(--plate-fill)) 100%)!important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.98),
+        inset 0 0 0 9px rgba(255,255,255,.38),
+        0 3px 5px rgba(59,51,42,.08),
+        0 18px 34px var(--plate-shadow)!important;
+    }
+    #menus .menu::before,
+    .compact-reminders .note::before,
+    .compact-care .carecard::before{
+      content:"";
+      position:absolute;
+      z-index:0;
+      inset:11px;
+      border:1px solid color-mix(in srgb,var(--plate-rim) 78%,#fff);
+      border-radius:22px;
+      box-shadow:
+        inset 0 9px 16px rgba(69,58,44,.065),
+        inset 0 -4px 10px rgba(255,255,255,.78),
+        0 1px 0 rgba(255,255,255,.9);
+      pointer-events:none;
+    }
+    #menus .menu::after,
+    .compact-reminders .note::after,
+    .compact-care .carecard::after{
+      content:"";
+      position:absolute;
+      z-index:0;
+      top:11px;
+      right:17%;
+      left:17%;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
+      pointer-events:none;
+    }
+    #menus .menu>* ,
+    .compact-reminders .note>* ,
+    .compact-care .carecard>*{
+      position:relative;
+      z-index:1;
+    }
+
+    /* 參考餐盤：沿用每季配色，收合時維持接近正方形。 */
+    #menus .menu{
+      --plate-fill:var(--menu-card);
+      --plate-rim:var(--menu-border);
+      --plate-shadow:color-mix(in srgb,var(--menu-deep) 16%,transparent);
+      aspect-ratio:1;
+      min-height:0;
+      padding:38px 36px 34px;
+      display:flex;
+      flex-direction:column;
+    }
+    #menus .menu:not(.open) .menu-toggle{margin-top:auto}
+    #menus .menu.open{
+      aspect-ratio:auto;
+      border-color:color-mix(in srgb,var(--menu-deep) 34%,var(--menu-border))!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 9px rgba(255,255,255,.38),0 4px 7px rgba(59,51,42,.09),0 22px 42px color-mix(in srgb,var(--menu-deep) 20%,transparent)!important;
+    }
+
+    /* 用餐多留意：兩只方盤置中呈現，保留原本的主題篩選。 */
+    .compact-reminders .notes{
+      grid-template-columns:repeat(2,minmax(0,410px));
+      justify-content:center;
+      gap:24px;
+    }
+    .compact-reminders .note{
+      --plate-fill:#fbfcf7;
+      --plate-rim:#b8c9b5;
+      --plate-shadow:rgba(50,76,55,.14);
+      width:100%;
+      min-height:0;
+      aspect-ratio:1;
+      padding:40px 38px;
+    }
+    .compact-reminders .note.is-related{
+      border-color:color-mix(in srgb,var(--forest) 46%,var(--plate-rim))!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 9px rgba(255,255,255,.38),0 3px 5px rgba(59,51,42,.08),0 20px 38px rgba(47,111,79,.18)!important;
+    }
+    .compact-reminders .note.is-related::before{border-color:color-mix(in srgb,var(--forest) 35%,var(--plate-rim))}
+
+    /* 三高小錦囊：方盤本體一致，展開時可隨內容自然加高。 */
+    .compact-care .care-grid{align-items:start}
+    .compact-care .carecard{
+      --plate-fill:#fbf8f2;
+      --plate-rim:#d4c9bb;
+      --plate-shadow:rgba(79,65,52,.14);
+      aspect-ratio:1;
+      padding:0;
+      border-top-width:1px!important;
+    }
+    .compact-care .carecard:not(.is-open) .carecard-toggle{
+      height:100%;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .compact-care .carecard.is-open{
+      aspect-ratio:auto;
+      border-color:color-mix(in srgb,var(--clay) 38%,var(--plate-rim))!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 9px rgba(255,255,255,.38),0 4px 7px rgba(59,51,42,.09),0 22px 42px rgba(87,58,43,.17)!important;
+    }
+    .compact-care .carecard.is-open::before{border-color:color-mix(in srgb,var(--clay) 28%,var(--plate-rim))}
+    .compact-care .carecard .carecard-toggle{padding:40px 36px}
+    .compact-care .carecard .carecard-details{padding:0 36px 38px}
+    .compact-care .carecard .carecard-plus{right:36px;bottom:36px}
+
+    @media(max-width:980px){
+      #menus .menu-grid,
+      .compact-care .care-grid{
+        grid-template-columns:minmax(0,430px);
+        justify-content:center;
+      }
+      .compact-reminders .notes{grid-template-columns:minmax(0,410px)}
+    }
+    @media(max-width:700px){
+      #menus .menu-grid,
+      .compact-reminders .notes,
+      .compact-care .care-grid{grid-template-columns:minmax(0,1fr)}
+      #menus .menu{padding:34px 30px 31px}
+      .compact-reminders .note{padding:34px 30px}
+      .compact-care .carecard .carecard-toggle{padding:34px 30px}
+      .compact-care .carecard .carecard-details{padding:0 30px 34px}
+      .compact-care .carecard .carecard-plus{right:30px;bottom:31px}
+    }
+
 </style>
 </head>
 <body>
