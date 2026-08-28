@@ -1298,6 +1298,15 @@
       .compact-care .carecard .carecard-plus{right:30px;bottom:31px}
     }
 
+
+    /* 四項功能未展開時，右側資訊整組垂直置中；展開後回到靠上排列。 */
+    .team-top .team-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .team-top .team-copy.has-open-detail{justify-content:flex-start}
+
 </style>
 </head>
 <body>
@@ -1555,10 +1564,10 @@
       {title:"柔軟質地",copy:"切小、煮軟與清淡調味，讓入口更舒服。"},
       {title:"自由搭配",copy:"自由保留、切換各道料理，打造專屬於自己的套餐菜色。"}
     ];
-    const teamPointButtons=[...document.querySelectorAll("[data-team-point]")],teamDetailPanel=document.getElementById("team-detail");
+    const teamPointButtons=[...document.querySelectorAll("[data-team-point]")],teamDetailPanel=document.getElementById("team-detail"),teamCopy=document.querySelector(".team-top .team-copy");
     let activeTeamPoint=-1;
-    function closeTeamPoint(returnFocus=false){const previous=activeTeamPoint;activeTeamPoint=-1;teamDetailPanel.hidden=true;teamPointButtons.forEach(button=>{button.classList.remove("active");button.setAttribute("aria-expanded","false")});if(returnFocus&&previous>=0)teamPointButtons[previous].focus()}
-    function openTeamPoint(index){const item=teamPointDetails[index];if(!item)return;if(activeTeamPoint===index&&!teamDetailPanel.hidden){closeTeamPoint();return}activeTeamPoint=index;document.getElementById("team-detail-title").textContent=item.title;document.getElementById("team-detail-copy").textContent=item.copy;teamPointButtons.forEach((button,i)=>{const active=i===index;button.classList.toggle("active",active);button.setAttribute("aria-expanded",String(active))});teamDetailPanel.hidden=false}
+    function closeTeamPoint(returnFocus=false){const previous=activeTeamPoint;activeTeamPoint=-1;teamDetailPanel.hidden=true;teamCopy.classList.remove("has-open-detail");teamPointButtons.forEach(button=>{button.classList.remove("active");button.setAttribute("aria-expanded","false")});if(returnFocus&&previous>=0)teamPointButtons[previous].focus()}
+    function openTeamPoint(index){const item=teamPointDetails[index];if(!item)return;if(activeTeamPoint===index&&!teamDetailPanel.hidden){closeTeamPoint();return}activeTeamPoint=index;document.getElementById("team-detail-title").textContent=item.title;document.getElementById("team-detail-copy").textContent=item.copy;teamPointButtons.forEach((button,i)=>{const active=i===index;button.classList.toggle("active",active);button.setAttribute("aria-expanded",String(active))});teamDetailPanel.hidden=false;teamCopy.classList.add("has-open-detail")}
     teamPointButtons.forEach(button=>button.addEventListener("click",()=>openTeamPoint(Number(button.dataset.teamPoint))));
     document.getElementById("team-detail-close").addEventListener("click",()=>closeTeamPoint(true));
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!teamDetailPanel.hidden&&!foodDialog.open)closeTeamPoint(true)});
