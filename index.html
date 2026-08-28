@@ -1166,7 +1166,8 @@
       isolation:isolate;
       overflow:hidden;
       border:1px solid color-mix(in srgb,var(--plate-rim) 86%,#fff)!important;
-      border-radius:32px;
+      border-radius:32px!important;
+      background-clip:padding-box!important;
       background:
         radial-gradient(circle at 18% 14%,rgba(255,255,255,.98) 0,rgba(255,255,255,.48) 24%,transparent 46%),
         radial-gradient(circle at 78% 82%,rgba(79,67,51,.035) 0 1px,transparent 1.4px) 0 0/17px 17px,
@@ -1185,7 +1186,7 @@
       z-index:0;
       inset:11px;
       border:1px solid color-mix(in srgb,var(--plate-rim) 78%,#fff);
-      border-radius:22px;
+      border-radius:22px!important;
       box-shadow:
         inset 0 9px 16px rgba(69,58,44,.065),
         inset 0 -4px 10px rgba(255,255,255,.78),
@@ -1237,6 +1238,10 @@
       justify-content:center;
       gap:24px;
     }
+    .compact-reminders .notes:not(.is-filtered){
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      justify-content:stretch;
+    }
     .compact-reminders .note{
       --plate-fill:#fbfcf7;
       --plate-rim:#b8c9b5;
@@ -1285,12 +1290,30 @@
         grid-template-columns:minmax(0,430px);
         justify-content:center;
       }
-      .compact-reminders .notes{grid-template-columns:minmax(0,410px)}
+      .compact-reminders .notes,
+      .compact-reminders .notes:not(.is-filtered){
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        justify-content:stretch;
+      }
     }
     @media(max-width:700px){
       #menus .menu-grid,
-      .compact-reminders .notes,
       .compact-care .care-grid{grid-template-columns:minmax(0,1fr)}
+      .compact-reminders .notes,
+      .compact-reminders .notes:not(.is-filtered){
+        grid-template-columns:none;
+        grid-auto-flow:column;
+        grid-auto-columns:minmax(285px,84vw);
+        justify-content:start;
+        overflow-x:auto;
+        overscroll-behavior-inline:contain;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+        margin-inline:-20px;
+        padding:4px 20px 24px;
+      }
+      .compact-reminders .notes::-webkit-scrollbar{display:none}
+      .compact-reminders .note{scroll-snap-align:start;scroll-snap-stop:always}
       #menus .menu{padding:34px 30px 31px}
       .compact-reminders .note{padding:34px 30px}
       .compact-care .carecard .carecard-toggle{padding:34px 30px}
