@@ -1043,7 +1043,7 @@
     .meal-reel-window{border-radius:7px;background:#fffaf2;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
     .plate-summary,.menu,.carecard,.team-detail-panel{border-radius:8px}
     .menu,.carecard{box-shadow:none!important}
-    .gentle .note,.gentle .note:nth-child(1),.gentle .note:nth-child(2),.gentle .note:nth-child(3){border-radius:0!important;box-shadow:none!important}
+    .gentle .note{box-shadow:none!important}
     .plate-advice.ai-helper{padding:30px;background:#f3eee5;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-left:6px solid var(--accent);border-radius:8px;box-shadow:none}
     .plate-advice.ai-helper::after,.ai-helper .advice-card::before,.advice-spark{display:none}
     .ai-helper .advice-head{align-items:end;margin-bottom:20px}.ai-helper-identity{display:block}.ai-helper .advice-head h3{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(30px,3vw,38px);letter-spacing:0}
@@ -1243,16 +1243,30 @@
       grid-template-columns:repeat(4,minmax(0,1fr));
       justify-content:stretch;
     }
-    .compact-reminders .notes{align-items:start}
+    .compact-reminders .notes{
+      align-items:stretch;
+      grid-auto-rows:1fr;
+    }
     .compact-reminders .note{
       --plate-fill:#fbfcf7;
       --plate-rim:#b8c9b5;
       --plate-shadow:rgba(50,76,55,.14);
       width:100%;
-      height:auto;
-      min-height:0;
+      height:100%;
+      min-height:100%;
       aspect-ratio:auto;
       padding:40px 38px;
+      display:flex;
+      flex-direction:column;
+      align-self:stretch;
+    }
+    .compact-reminders .note,
+    .compact-reminders .note:nth-child(n){
+      border-radius:32px!important;
+    }
+    .compact-reminders .note::before,
+    .compact-reminders .note:nth-child(n)::before{
+      border-radius:22px!important;
     }
     .compact-reminders .note-number,
     .compact-reminders .note:nth-child(n) .note-number{
