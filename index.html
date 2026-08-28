@@ -158,9 +158,9 @@
     .site-footer{display:block;position:relative;padding:0;background:#204f3c;color:#fff9e8}
     .site-footer::before{content:"";display:block;height:12px;background:linear-gradient(90deg,#63a257 0 25%,#f3c348 25% 50%,#df6b43 50% 75%,#5f9eae 75%)}
     .footer-main{max-width:1380px;margin:auto;padding:58px clamp(24px,6vw,84px) 44px;display:grid;grid-template-columns:1.1fr .7fr 1.35fr;gap:clamp(34px,5vw,76px);align-items:start}
-    .footer-logo-card{display:inline-flex;max-width:330px;padding:17px 20px;border-radius:16px;background:#fffef9}
+    .footer-logo-card{display:block;width:min(100%,330px);margin-top:24px;padding:0;border-radius:0;background:transparent}
     .footer-logo-card img{display:block;width:100%;height:auto}
-    .footer-tagline{max-width:410px;margin:24px 0 10px;font:600 24px/1.6 "Noto Serif TC","Songti TC",serif;color:#fff}
+    .footer-tagline{max-width:410px;margin:0 0 10px;font:600 24px/1.6 "Noto Serif TC","Songti TC",serif;color:#fff}
     .site-footer p{font-size:16px;color:#dce9de}
     .footer-title{margin:0 0 18px;font-size:20px;color:#f8d66f}
     .footer-links{display:grid!important;gap:4px}
@@ -1451,7 +1451,6 @@
   <footer class="site-footer" id="sources">
     <div class="footer-main">
       <div class="footer-brand-column">
-        <a class="footer-logo-card" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a>
         <p class="footer-tagline">新食慢嚐，代代港香</p>
         <section class="footer-social" aria-label="新港客廳社群連結">
           <div class="footer-social-links">
@@ -1465,6 +1464,7 @@
             </a>
           </div>
         </section>
+        <a class="footer-logo-card" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener" aria-label="前往新港文教基金會官方網站"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></a>
       </div>
       <div class="footer-link-column">
         <h2 class="footer-title">快速前往</h2>
