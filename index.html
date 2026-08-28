@@ -1395,19 +1395,19 @@
     .compact-reminders .notes{align-items:stretch;grid-auto-rows:1fr}.compact-reminders .notes.has-open-note{align-items:start;grid-auto-rows:auto}
     .compact-reminders .note,
     .compact-reminders .note:nth-child(n){height:100%;min-height:100%;padding:0;align-self:stretch}.compact-reminders .notes.has-open-note .note,.compact-reminders .notes.has-open-note .note:nth-child(n){height:auto;min-height:0;align-self:start}
-    .compact-reminders .note-toggle{width:100%;min-height:158px;padding:34px;display:grid;grid-template-columns:38px minmax(0,1fr) 34px;gap:18px;align-items:center;border:0;background:transparent;color:var(--ink);text-align:left}
+    .compact-reminders .note-toggle{width:100%;min-height:158px;height:100%;padding:24px 30px;display:grid;grid-template-columns:minmax(0,1fr) 34px;grid-template-rows:38px minmax(2.8em,auto);grid-template-areas:"number mark" "title title";column-gap:16px;row-gap:8px;align-content:center;align-items:center;border:0;background:transparent;color:var(--ink);text-align:left}.compact-reminders .note-toggle .note-number{grid-area:number;justify-self:start}
     .compact-reminders .note-toggle:hover .note-title{color:var(--forest)}
-    .compact-reminders .note .note-title{width:auto;height:auto;padding:0!important;display:block;border:0!important;border-radius:0;background:transparent!important;background-image:none!important;box-shadow:none!important;color:var(--ink);font:600 23px/1.5 "Noto Serif TC","Songti TC",serif}
-    .compact-reminders .note .note-expand-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(79,108,83,.5);border-radius:50%;background:rgba(232,240,229,.72);color:#4f6c53;font:500 23px/1 "Noto Sans TC",sans-serif;transition:background-color .2s,color .2s,border-color .2s}
+    .compact-reminders .note .note-title{grid-area:title;width:100%;height:auto;min-height:2.8em;padding:0!important;display:flex;align-items:center;justify-self:stretch;border:0!important;border-radius:0;background:transparent!important;background-image:none!important;box-shadow:none!important;color:var(--ink);font:600 clamp(20px,1.35vw,22px)/1.4 "Noto Serif TC","Songti TC",serif;letter-spacing:-.015em;text-wrap:balance;line-break:strict}
+    .compact-reminders .note:nth-child(n) .note-expand-mark{grid-area:mark;justify-self:end;width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(79,108,83,.5);border-radius:50%;background:rgba(232,240,229,.72);color:#4f6c53;font:500 23px/1 "Noto Sans TC",sans-serif;transition:background-color .2s,color .2s,border-color .2s}
     .compact-reminders .note-details{padding:0 34px 34px}
     .compact-reminders .note-details[hidden]{display:none}
     .compact-reminders .note-details p{margin:0;padding-top:24px;border-top:1px solid rgba(47,111,79,.2);color:#555d57;font-size:17px;line-height:1.9}
     .compact-reminders .note.is-open{border-color:color-mix(in srgb,var(--forest) 42%,var(--plate-rim))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 9px rgba(255,255,255,.38),0 4px 7px rgba(59,51,42,.09),0 20px 38px rgba(47,111,79,.16)!important}
     .compact-reminders .note.is-open .note-expand-mark{border-color:#68776e;background:#68776e;color:#fff}
     @media(max-width:700px){
-      .compact-reminders .note-toggle{min-height:148px;padding:30px;grid-template-columns:38px minmax(0,1fr) 32px;gap:14px}
-      .compact-reminders .note .note-title{font-size:22px}
-      .compact-reminders .note .note-expand-mark{width:32px;height:32px;font-size:21px}
+      .compact-reminders .note-toggle{min-height:148px;padding:22px 26px;grid-template-columns:minmax(0,1fr) 32px;grid-template-rows:38px minmax(2.8em,auto);column-gap:12px;row-gap:8px}
+      .compact-reminders .note .note-title{font-size:21px}
+      .compact-reminders .note:nth-child(n) .note-expand-mark{width:32px;height:32px;font-size:21px}
       .compact-reminders .note-details{padding:0 30px 32px}
       .compact-reminders .note-details p{padding-top:21px;font-size:17px}
     }
