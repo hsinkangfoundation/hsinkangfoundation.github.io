@@ -1411,6 +1411,43 @@
       .compact-reminders .note-details{padding:0 30px 32px}
       .compact-reminders .note-details p{padding-top:21px;font-size:17px}
     }
+
+    /* 頁尾資料註記：依內容重要性排序，內容基礎為主要資訊。 */
+    .footer-bottom{
+      grid-template-columns:minmax(0,1.75fr) minmax(180px,.72fr) minmax(190px,.78fr);
+      gap:0;
+      align-items:stretch;
+      padding-top:26px;
+    }
+    .footer-bottom .footer-meta-item{
+      min-width:0;
+      display:grid;
+      grid-template-columns:max-content minmax(0,1fr);
+      gap:8px;
+      align-content:start;
+      align-items:baseline;
+      padding:4px clamp(18px,2vw,30px);
+    }
+    .footer-bottom .footer-meta-item:first-child{padding-left:0}
+    .footer-bottom .footer-meta-item:last-child{padding-right:0}
+    .footer-bottom .footer-meta-item + .footer-meta-item{border-left:1px solid rgba(255,255,255,.22)}
+    .footer-meta-label{color:#f8d66f;font-size:14px;font-weight:800;letter-spacing:.03em;white-space:nowrap}
+    .footer-bottom .footer-meta-value{color:#f7eee5;font-size:16px;font-weight:500;line-height:1.65}
+    .footer-meta-source .footer-meta-value{font-weight:650}
+    @media(max-width:980px){
+      .footer-bottom{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 0}
+      .footer-bottom .footer-meta-source{grid-column:1/-1;padding:0 0 18px;border-bottom:1px solid rgba(255,255,255,.18)}
+      .footer-bottom .footer-meta-source + .footer-meta-item{padding-left:0;border-left:0}
+    }
+    @media(max-width:700px){
+      .footer-bottom{grid-template-columns:1fr;gap:0}
+      .footer-bottom .footer-meta-item{grid-column:auto;padding:14px 0}
+      .footer-bottom .footer-meta-item:first-child{padding-top:0}
+      .footer-bottom .footer-meta-item + .footer-meta-item{border-left:0;border-top:1px solid rgba(255,255,255,.18)}
+      .footer-bottom .footer-meta-source{border-bottom:0}
+      .footer-meta-label{font-size:14px}
+      .footer-bottom .footer-meta-value{font-size:17px}
+    }
 </style>
 </head>
 <body>
@@ -1535,7 +1572,11 @@
       </div>
     </div>
 
-    <div class="footer-bottom"><p>內容更新｜2026年8月28日</p><p>資料查閱｜2026年8月</p><p>內容基礎｜《高齡健康餐盤飲食指南》</p></div>
+    <div class="footer-bottom" aria-label="網站資料註記">
+      <p class="footer-meta-item footer-meta-source"><span class="footer-meta-label">內容基礎｜</span><span class="footer-meta-value">《高齡健康餐盤飲食指南》、官方衛教及飲食資料</span></p>
+      <p class="footer-meta-item"><span class="footer-meta-label">資料查閱｜</span><span class="footer-meta-value">2026年8月</span></p>
+      <p class="footer-meta-item"><span class="footer-meta-label">內容更新｜</span><span class="footer-meta-value">2026年8月28日</span></p>
+    </div>
   </footer>
   <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考餐盤</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食">高齡飲食提醒</a></nav>
   <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="回到頁首" title="回到頁首" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></button>
