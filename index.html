@@ -1524,6 +1524,14 @@
     /* 餐盤小字優先覆寫：解除舊版重要規則造成的 13px 字級。 */
     #planner .mealmeta>span:first-child{font-size:16px!important;line-height:1.45}
     #planner .meal-actions button{font-size:16px!important;line-height:1.45;white-space:nowrap}
+
+    /* 手機版最低字級補強：說明與識別文字也維持至少 16px。 */
+    header .brandtext small,.site-title-kicker,.eyebrow{font-size:16px}
+    @media(max-width:700px){
+      header .brandtext b,header .brandtext small,
+      .site-title-kicker,.eyebrow,
+      .visualmeta,.season-track .visualmeta,.orbit,.season-track .orbit{font-size:16px}
+    }
 </style>
 </head>
 <body>
