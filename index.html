@@ -1448,6 +1448,23 @@
       .footer-meta-label{font-size:14px}
       .footer-bottom .footer-meta-value{font-size:17px}
     }
+
+    /* 頁尾相關連結：以透明題字搭配咖啡色背景。 */
+    .footer-related-title{margin-bottom:22px;font-weight:800}
+    .footer-related-group{width:min(100%,410px)}
+    .footer-related-brand{display:block}
+    .footer-related-brand img{display:block;max-width:100%;height:auto;object-fit:contain}
+    .footer-cafe-brand{width:min(100%,320px);margin:0}
+    .footer-brand-column .footer-social{margin:14px 0 0}
+    .footer-foundation-group{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2)}
+    .footer-foundation-brand{width:min(100%,340px);transition:opacity .2s ease,transform .2s ease}
+    .footer-foundation-brand:hover{opacity:.86;transform:translateY(-2px)}
+    @media(max-width:700px){
+      .footer-related-title{margin-bottom:20px}
+      .footer-cafe-brand{width:min(100%,300px)}
+      .footer-foundation-group{margin-top:24px;padding-top:22px}
+      .footer-foundation-brand{width:min(100%,310px)}
+    }
 </style>
 </head>
 <body>
@@ -1543,7 +1560,9 @@
   <footer class="site-footer" id="sources">
     <div class="footer-main">
       <div class="footer-brand-column">
-        <p class="footer-tagline">新食慢嚐，代代港香</p>
+        <h2 class="footer-title footer-related-title">相關連結</h2>
+        <div class="footer-related-group footer-cafe-group">
+          <div class="footer-related-brand footer-cafe-brand"><img src="assets/hkcafe-calligraphy.png" width="1000" height="379" alt="新港客廳"></div>
         <section class="footer-social" aria-label="新港客廳社群連結">
           <div class="footer-social-links">
             <a class="footer-social-link" href="https://www.facebook.com/hkfcecafe/" target="_blank" rel="noopener noreferrer" aria-label="前往新港客廳 Facebook，另開新視窗">
@@ -1556,9 +1575,9 @@
             </a>
           </div>
         </section>
-        <div class="footer-logo-stack">
-          <div class="footer-logo-card"><img src="assets/hkfce-logo.svg" alt="新港文教基金會"></div>
-          <div class="footer-project-mark"><img src="assets/four-seasons-plate-visual.png" width="1254" height="1254" alt="四時成圓"></div>
+        </div>
+        <div class="footer-related-group footer-foundation-group">
+          <a class="footer-related-brand footer-foundation-brand" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener noreferrer" aria-label="前往新港文教基金會官方網站，另開新視窗"><img src="assets/hkfce-wordmark.png" width="437" height="106" alt="新港文教基金會"></a>
         </div>
       </div>
       <div class="footer-link-column">
