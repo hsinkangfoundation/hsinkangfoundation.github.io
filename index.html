@@ -1214,18 +1214,19 @@
       z-index:1;
     }
 
-    /* 參考餐盤：沿用每季配色，收合時維持接近正方形。 */
+    /* 參考餐盤：沿用每季配色，收合時依內容自然決定高度。 */
     #menus .menu{
       --plate-fill:var(--menu-card);
       --plate-rim:var(--menu-border);
       --plate-shadow:color-mix(in srgb,var(--menu-deep) 16%,transparent);
-      aspect-ratio:1;
+      aspect-ratio:auto;
+      height:auto;
       min-height:0;
       padding:38px 36px 34px;
       display:flex;
       flex-direction:column;
     }
-    #menus .menu:not(.open) .menu-toggle{margin-top:auto}
+    #menus .menu:not(.open) .menu-toggle{margin-top:0}
     #menus .menu.open{
       aspect-ratio:auto;
       border-color:color-mix(in srgb,var(--menu-deep) 34%,var(--menu-border))!important;
@@ -1242,14 +1243,31 @@
       grid-template-columns:repeat(4,minmax(0,1fr));
       justify-content:stretch;
     }
+    .compact-reminders .notes{align-items:start}
     .compact-reminders .note{
       --plate-fill:#fbfcf7;
       --plate-rim:#b8c9b5;
       --plate-shadow:rgba(50,76,55,.14);
       width:100%;
+      height:auto;
       min-height:0;
-      aspect-ratio:1;
+      aspect-ratio:auto;
       padding:40px 38px;
+    }
+    .compact-reminders .note-number,
+    .compact-reminders .note:nth-child(n) .note-number{
+      width:38px;
+      height:38px;
+      min-width:38px;
+      min-height:38px;
+      flex:0 0 38px;
+      display:grid;
+      place-items:center;
+      border:1px solid #8fa48c;
+      border-radius:50%;
+      background:#e8f0e5;
+      color:#4f6c53;
+      font:500 14px/1 "Noto Serif TC","Songti TC",serif;
     }
     .compact-reminders .note.is-related{
       border-color:color-mix(in srgb,var(--forest) 46%,var(--plate-rim))!important;
@@ -1382,14 +1400,14 @@
         </div>
       </div>
       <div class="notes" id="daily-note-grid">
-        <article class="note" data-daily-note="cook"><span>01</span><h3>食物軟，不一定好吞</h3><p>清水和清湯流得快，碎肉泡在湯裡也不好控制，反而可能嗆到。若常嗆咳，請由醫療人員評估適合的軟硬與濃稠度。</p></article>
-        <article class="note" data-daily-note="cook"><span>02</span><h3>先切小、煮軟，不必都打成泥</h3><p>肉切薄切小，蔬菜去掉粗梗，再煮到叉子壓得動。保留食物原來的樣子，通常更能引起食慾。</p></article>
-        <article class="note" data-daily-note="nourish"><span>01</span><h3>稀飯吃得飽，營養可能不夠</h3><p>稀飯和清湯水分多，營養較少。可加蛋、豆腐或魚肉；食量小時，先吃豆、魚、蛋、肉，再吃飯和菜。</p></article>
-        <article class="note" data-daily-note="nourish"><span>02</span><h3>早餐別只吃白粥配醬菜</h3><p>白粥配醬菜，蛋白質通常不夠。可加一顆蛋、豆腐或無糖豆漿，午餐和晚餐也要吃到豆、魚、蛋或肉。</p></article>
-        <article class="note" data-daily-note="safe"><span>01</span><h3>用吸管不一定比較安全</h3><p>用吸管時，水可能一下子流太快，來不及吞就嗆到。若曾嗆咳或吞嚥困難，請先詢問醫療人員是否適合使用。</p></article>
-        <article class="note" data-daily-note="safe"><span>02</span><h3>吃完要清掉嘴裡的食物</h3><p>食物若留在兩頰或嘴巴後方，之後仍可能掉進氣管。吃完先看看嘴裡有沒有食物，再刷牙或漱口。</p></article>
-        <article class="note" data-daily-note="observe"><span>01</span><h3>沒咳嗽，也可能吞得不順</h3><p>吃完聲音變得濕濕的、常清喉嚨、嘴裡有食物，或一餐吃很久，都可能是吞嚥出了問題。</p></article>
-        <article class="note" data-daily-note="observe"><span>02</span><h3>一直吃不下，要找原因</h3><p>牙痛、假牙鬆、口乾、便祕、心情或藥物，都可能讓人吃不下。若常吃不完、體重下降或反覆發燒，請儘早就醫。</p></article>
+        <article class="note" data-daily-note="cook"><span class="note-number">01</span><h3>食物軟，不一定好吞</h3><p>清水和清湯流得快，碎肉泡在湯裡也不好控制，反而可能嗆到。若常嗆咳，請由醫療人員評估適合的軟硬與濃稠度。</p></article>
+        <article class="note" data-daily-note="cook"><span class="note-number">02</span><h3>先切小、煮軟，不必都打成泥</h3><p>肉切薄切小，蔬菜去掉粗梗，再煮到叉子壓得動。保留食物原來的樣子，通常更能引起食慾。</p></article>
+        <article class="note" data-daily-note="nourish"><span class="note-number">03</span><h3>稀飯吃得飽，營養可能不夠</h3><p>稀飯和清湯水分多，營養較少。可加蛋、豆腐或魚肉；食量小時，先吃豆、魚、蛋、肉，再吃飯和菜。</p></article>
+        <article class="note" data-daily-note="nourish"><span class="note-number">04</span><h3>早餐別只吃白粥配醬菜</h3><p>白粥配醬菜，蛋白質通常不夠。可加一顆蛋、豆腐或無糖豆漿，午餐和晚餐也要吃到豆、魚、蛋或肉。</p></article>
+        <article class="note" data-daily-note="safe"><span class="note-number">05</span><h3>用吸管不一定比較安全</h3><p>用吸管時，水可能一下子流太快，來不及吞就嗆到。若曾嗆咳或吞嚥困難，請先詢問醫療人員是否適合使用。</p></article>
+        <article class="note" data-daily-note="safe"><span class="note-number">06</span><h3>吃完要清掉嘴裡的食物</h3><p>食物若留在兩頰或嘴巴後方，之後仍可能掉進氣管。吃完先看看嘴裡有沒有食物，再刷牙或漱口。</p></article>
+        <article class="note" data-daily-note="observe"><span class="note-number">07</span><h3>沒咳嗽，也可能吞得不順</h3><p>吃完聲音變得濕濕的、常清喉嚨、嘴裡有食物，或一餐吃很久，都可能是吞嚥出了問題。</p></article>
+        <article class="note" data-daily-note="observe"><span class="note-number">08</span><h3>一直吃不下，要找原因</h3><p>牙痛、假牙鬆、口乾、便祕、心情或藥物，都可能讓人吃不下。若常吃不完、體重下降或反覆發燒，請儘早就醫。</p></article>
       </div>
     </section>
     <section class="block care compact-care" id="care">
