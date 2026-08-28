@@ -1067,10 +1067,10 @@
     /* 高齡飲食提醒：輕量篩選與就地展開 */
     .compact-reminders{background:var(--leaf-soft)}
     .daily-filter-shell{max-width:1280px;margin:0 auto 18px;padding:0 0 14px;display:flex;align-items:center;gap:18px;border-bottom:1px solid rgba(47,111,79,.22)}
-    .daily-filter-label{flex:0 0 auto;color:var(--forest);font-size:14px;font-weight:800;letter-spacing:.04em}
+    .daily-filter-label{flex:0 0 auto;color:var(--forest);font-size:16px;font-weight:800;letter-spacing:.04em}
     .daily-filter{min-width:0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
     .daily-filter::-webkit-scrollbar{display:none}
-    .daily-filter-button{min-height:42px;padding:8px 14px;flex:0 0 auto;border:1px solid rgba(47,111,79,.25);border-radius:999px;background:rgba(255,253,248,.72);color:#4e5e56;font-size:14px;font-weight:700;white-space:nowrap}
+    .daily-filter-button{min-height:46px;padding:9px 16px;flex:0 0 auto;border:1px solid rgba(47,111,79,.25);border-radius:999px;background:rgba(255,253,248,.72);color:#4e5e56;font-size:16px;font-weight:700;white-space:nowrap}
     .daily-filter-button:hover,.daily-filter-button:focus-visible{border-color:var(--forest);background:#fffdf8;color:var(--forest)}
     .daily-filter-button[aria-pressed="true"]{border-color:var(--forest);background:var(--forest);color:#fff}
     .compact-reminders .notes{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
@@ -1110,7 +1110,7 @@
       .compact-reminders,.compact-care{padding-top:56px!important;padding-bottom:56px!important}
       .daily-filter-shell{margin-bottom:14px;align-items:flex-start;flex-direction:column;gap:9px}
       .daily-filter{width:100%;margin-right:-20px;padding-right:20px}
-      .daily-filter-button{min-height:40px;padding:7px 12px;font-size:13px}
+      .daily-filter-button{min-height:44px;padding:8px 13px;font-size:15px}
       .compact-reminders .notes{gap:9px}
       .compact-reminders .note{min-height:0;padding:22px 20px}
       .compact-reminders .note h3{margin-top:18px}
@@ -1164,49 +1164,50 @@
     <section class="block" id="planner"><div class="section-title"><div><h2>今天想吃什麼？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll" aria-label="更新全部餐食">↻ 全部更新</button><button type="button" class="reel-lever" id="reel-lever" aria-label="拉下把手，更新全部餐食"></button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><h3 id="plate-summary-title">我配好的餐盤</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><section class="plate-advice ai-helper" aria-labelledby="plate-advice-title"><div class="advice-head"><div class="ai-helper-identity"><div><h3 id="plate-advice-title">AI 餐盤建議</h3><p class="ai-helper-intro">依你配好的餐盤，整理幾個實際吃法。</p></div></div><span class="advice-state"><span class="ai-status-dot" aria-hidden="true"></span>會跟著餐盤與選擇更換</span></div><div class="advice-condition-summary" id="advice-condition-summary" hidden><p>餐盤建議已加入你的飲食留意項目：</p><div class="advice-condition-chips" id="advice-condition-chips" aria-label="已選擇的三高留意項目"></div></div><div class="advice-grid" id="plate-advice-list" role="list" aria-live="polite"></div><p class="advice-disclaimer">AI 餐盤建議供日常飲食參考；若有慢性病、服藥、限水或吞嚥問題，請依醫師或營養師建議調整。</p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title"><div><h2 id="menu-title">夏季參考餐盤</h2></div></div><div class="menu-grid" id="menu-grid"></div></section>
     <section class="block gentle compact-reminders" id="notes">
-      <div class="section-title"><div><h2>吃飯時多留意</h2></div><p>選一項，只看現在最需要的提醒；也可以保留「全部」一次瀏覽。</p></div>
+      <div class="section-title"><div><h2>真正有用的吃飯提醒</h2></div><p>不是把食物煮軟就夠。選一個主題，查看容易被忽略、能直接用在這一餐的做法。</p></div>
       <div class="daily-filter-shell">
-        <span class="daily-filter-label">今天比較需要注意</span>
-        <div class="daily-filter" role="group" aria-label="篩選日常飲食提醒">
-          <button type="button" class="daily-filter-button" data-daily-filter="" aria-pressed="true">全部</button>
-          <button type="button" class="daily-filter-button" data-daily-filter="texture" aria-pressed="false">咬不動</button>
-          <button type="button" class="daily-filter-button" data-daily-filter="appetite" aria-pressed="false">食慾不好</button>
-          <button type="button" class="daily-filter-button" data-daily-filter="hydration" aria-pressed="false">容易忘記喝水</button>
-          <button type="button" class="daily-filter-button" data-daily-filter="swallow" aria-pressed="false">吃飯會嗆到</button>
+        <span class="daily-filter-label">這餐想先改善</span>
+        <div class="daily-filter" role="group" aria-label="選擇高齡飲食提醒主題">
+          <button type="button" class="daily-filter-button" data-daily-filter="cook" aria-pressed="true">料理質地</button>
+          <button type="button" class="daily-filter-button" data-daily-filter="nourish" aria-pressed="false">營養密度</button>
+          <button type="button" class="daily-filter-button" data-daily-filter="safe" aria-pressed="false">吞嚥安全</button>
+          <button type="button" class="daily-filter-button" data-daily-filter="observe" aria-pressed="false">異常警訊</button>
         </div>
       </div>
       <div class="notes" id="daily-note-grid">
-        <article class="note" data-daily-note="texture swallow"><span>一</span><h3>切小煮軟，好入口</h3><p>依牙口調整食材大小與軟硬，肉類逆紋切薄，吃得更輕鬆。</p></article>
-        <article class="note" data-daily-note="texture"><span>二</span><h3>保留濕潤，避免乾硬</h3><p>用蒸、煮、燉取代乾煎或油炸；仍咬不動時，可切碎或壓泥。</p></article>
-        <article class="note" data-daily-note="appetite"><span>三</span><h3>少量分次，先吃蛋白質</h3><p>先吃主菜、蛋或豆製品，份量少一些，吃得下再加。</p></article>
-        <article class="note" data-daily-note="appetite"><span>四</span><h3>留意體重與食慾變化</h3><p>若體重下降或食慾持續變差，請詢問醫師或營養師。</p></article>
-        <article class="note" data-daily-note="hydration"><span>五</span><h3>白天分次補水</h3><p>把水放在看得到的地方，不等口渴才喝；有限水需求則依醫囑調整。</p></article>
-        <article class="note" data-daily-note="swallow"><span>六</span><h3>坐直、小口、慢慢吞</h3><p>若常嗆咳、聲音變濕或用餐明顯變久，請尋求吞嚥專業評估。</p></article>
+        <article class="note" data-daily-note="cook"><span>01</span><h3>「軟」不等於「容易吞」</h3><p>清水、清湯流得快；碎肉泡湯等固液混合食物也較難控制。有吞嚥困難時，質地與稠度要依專業評估，別只自行加水或勾芡。</p></article>
+        <article class="note" data-daily-note="cook"><span>02</span><h3>先改形狀，不必全部打成泥</h3><p>肉類逆紋切薄、蔬菜去粗梗與纖維，並煮到能用叉子輕壓。能保留食物原形時，通常比一律打泥更能維持食慾。</p></article>
+        <article class="note" data-daily-note="nourish"><span>01</span><h3>稀飯吃得飽，不一定吃得夠</h3><p>粥和清湯水分多、營養密度較低；可在粥裡加蛋、豆腐或魚肉末。食量小時先吃豆魚蛋肉，再吃飯與菜。</p></article>
+        <article class="note" data-daily-note="nourish"><span>02</span><h3>早餐的蛋白質空缺很難補</h3><p>白粥配醬菜幾乎補不到足量蛋白質；早餐可加蛋、豆腐或無糖豆漿，午、晚餐也各安排豆魚蛋肉。</p></article>
+        <article class="note" data-daily-note="safe"><span>01</span><h3>吸管不一定比較安全</h3><p>液體可能在尚未準備好吞嚥前就流入咽部；曾嗆咳或吞嚥困難者，是否用吸管與飲品稠度應個別評估。</p></article>
+        <article class="note" data-daily-note="safe"><span>02</span><h3>餐後清潔也是防嗆的一部分</h3><p>兩頰與口腔後方殘留的食物，過一段時間仍可能掉入氣管；餐後先查看有無殘渣，再清潔口腔。</p></article>
+        <article class="note" data-daily-note="observe"><span>01</span><h3>沒咳嗽，也可能吞得不安全</h3><p>吃完聲音變濕濁、反覆清喉嚨、口中殘留，或用餐時間愈來愈長，也可能是吞嚥異常的訊號。</p></article>
+        <article class="note" data-daily-note="observe"><span>02</span><h3>把「吃不下」當成身體訊號</h3><p>牙痛、假牙鬆、口乾、便祕、情緒與部分藥物都可能讓食量下降；若持續吃不完、體重下降或反覆發燒，應儘早評估。</p></article>
       </div>
     </section>
     <section class="block care compact-care" id="care">
-      <div class="section-title"><div><h2>三高怎麼吃？</h2></div><p>點選最需要留意的一項，展開具體做法並同步調整 AI 餐盤建議。</p></div>
+      <div class="section-title"><div><h2>三高最容易忽略什麼？</h2></div><p>點開一項，先看常被漏掉的食物來源與做法；選取後也會同步帶入目前的 AI 餐盤建議。</p></div>
       <div class="care-grid">
         <article class="carecard" data-health-card="pressure">
           <button type="button" class="carecard-toggle" data-health-condition="pressure" aria-expanded="false" aria-controls="care-details-pressure">
             <span class="carecard-toggle-top"><span class="carehead"><span class="seal">壓</span><span class="carecard-name">血壓偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
-            <span class="lead">少湯、少醬，比只少放鹽更重要</span><span class="carecard-plus" aria-hidden="true">＋</span>
+            <span class="lead">低鈉鹽含鉀，不是每個人都能自行換</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
-          <div class="carecard-details" id="care-details-pressure" hidden><ul><li>湯麵、火鍋與燉湯以吃料為主，湯汁淺嚐即可。</li><li>醬油、豆瓣醬、沙茶與滷汁分開放，少淋、少沾。</li><li>少選香腸、火腿、醃菜與罐頭，改用薑、蒜、蔥與香菇提味。</li></ul><p class="carecard-plate" id="care-plate-pressure"></p></div>
+          <div class="carecard-details" id="care-details-pressure" hidden><ul><li><b>低鈉鹽不是人人適合：</b>腎功能不佳，或使用保鉀利尿劑、部分降血壓與心律藥物者，改用前先詢問醫療人員。</li><li><b>真正容易超量的是湯與醬：</b>湯麵、火鍋與滷味以吃料為主，湯汁淺嚐；醬料另外盛裝。</li><li><b>吃起來不鹹也可能含鈉：</b>麵線、麵包、加工肉、醃菜、雞粉與味噌都要一起留意。</li></ul><p class="carecard-plate" id="care-plate-pressure"></p></div>
         </article>
         <article class="carecard" data-health-card="sugar">
           <button type="button" class="carecard-toggle" data-health-condition="sugar" aria-expanded="false" aria-controls="care-details-sugar">
             <span class="carecard-toggle-top"><span class="carehead"><span class="seal">糖</span><span class="carecard-name">血糖偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
-            <span class="lead">飯與根莖類，都要算進同一餐的澱粉</span><span class="carecard-plus" aria-hidden="true">＋</span>
+            <span class="lead">南瓜、玉米、山藥和粥，都要算進主食</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
-          <div class="carecard-details" id="care-details-sugar" hidden><ul><li>飯、粥、麵、地瓜、南瓜與玉米都屬主食，避免同餐重複堆疊。</li><li>每餐主食份量盡量固定，優先選擇糙米、燕麥等全穀雜糧。</li><li>飲料選無糖，水果直接吃、不打成果汁，並依建議份量攝取。</li></ul><p class="carecard-plate" id="care-plate-sugar"></p></div>
+          <div class="carecard-details" id="care-details-sugar" hidden><ul><li><b>稀不代表澱粉少：</b>粥只是水分較多，一大碗仍可能吃進不少米，份量仍要固定。</li><li><b>根莖要和飯互換：</b>南瓜、地瓜、山藥、芋頭、蓮藕、玉米與菱角都屬全穀雜糧；同餐有吃，就把飯減一些。</li><li><b>「無糖」仍可能有醣：</b>鮮奶、無糖優格與無加糖穀粉仍含乳糖或澱粉，包裝食品要看總碳水化合物。</li></ul><p class="carecard-plate" id="care-plate-sugar"></p></div>
         </article>
         <article class="carecard" data-health-card="lipid">
           <button type="button" class="carecard-toggle" data-health-condition="lipid" aria-expanded="false" aria-controls="care-details-lipid">
             <span class="carecard-toggle-top"><span class="carehead"><span class="seal">脂</span><span class="carecard-name">血脂偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
-            <span class="lead">蛋白質優先選豆、魚與瘦肉</span><span class="carecard-plus" aria-hidden="true">＋</span>
+            <span class="lead">血脂高不只看油，甜飲與精製糖也要留意</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
-          <div class="carecard-details" id="care-details-lipid" hidden><ul><li>少吃肥肉、肉皮、奶油與酥皮點心，留意隱藏的飽和脂肪。</li><li>蛋白質優先選豆類與魚類；肉類去皮，並挑選較瘦的部位。</li><li>烹調以蒸、煮、烤、燉為主，少油炸，食用油仍要適量。</li></ul><p class="carecard-plate" id="care-plate-lipid"></p></div>
+          <div class="carecard-details" id="care-details-lipid" hidden><ul><li><b>酥、奶、皮也藏著脂肪：</b>酥皮糕餅、奶精、人造奶油、肥肉與肉皮常含較多飽和脂肪或反式脂肪。</li><li><b>三酸甘油脂也受糖影響：</b>甜飲、果汁、糕餅與過量精製澱粉都要留意，不只是少吃油。</li><li><b>健康食材要拿來取代：</b>用豆腐、魚與瘦肉換掉肥肉、加工肉，不是在原本餐點上再多加一份。</li></ul><p class="carecard-plate" id="care-plate-lipid"></p></div>
         </article>
       </div>
     </section>
@@ -1236,12 +1237,12 @@
       </div>
       <div class="footer-source-column">
         <h2 class="footer-title">資料來源與編製資訊</h2>
-        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li></ul>
+        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://ihealth.vghtpe.gov.tw/media/3178" target="_blank" rel="noopener">臺北榮總｜吞嚥困難照護 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&amp;id=28116" target="_blank" rel="noopener">食品藥物管理署｜低鈉鹽提醒 ↗</a></li><li><a href="https://health.ntuh.gov.tw/health/new/6305.html" target="_blank" rel="noopener">臺大醫院｜高血脂飲食保健 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li></ul>
         <p class="footer-source-note">份量與營養內容為一般衛教及餐點搭配參考，實際飲食仍應依個人健康狀況與醫師或營養師建議調整。</p>
       </div>
     </div>
 
-    <div class="footer-bottom"><p>內容更新｜2026年8月8日</p><p>資料查閱｜2026年8月</p><p>內容基礎｜《高齡健康餐盤飲食指南》</p><p>編製團隊｜<strong>新食代・新港覺</strong></p></div>
+    <div class="footer-bottom"><p>內容更新｜2026年8月28日</p><p>資料查閱｜2026年8月</p><p>內容基礎｜《高齡健康餐盤飲食指南》</p><p>編製團隊｜<strong>新食代・新港覺</strong></p></div>
   </footer>
   <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考菜單</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食">高齡飲食提醒</a></nav>
   <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="回到頁首" title="回到頁首" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></button>
@@ -1366,8 +1367,8 @@
     const foodDialog=document.getElementById("food-dialog");
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,mealReelToken=0,healthConditions=new Set(),dailyConcern="";
-    const conditionLabels={pressure:"血壓",sugar:"血糖",lipid:"血脂"},dailyConcernLabels={texture:"牙口",appetite:"食慾",hydration:"補水",swallow:"吞嚥"};
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,mealReelToken=0,healthConditions=new Set(),dailyConcern="cook";
+    const conditionLabels={pressure:"血壓",sugar:"血糖",lipid:"血脂"},dailyConcernLabels={cook:"料理質地",nourish:"營養密度",safe:"吞嚥安全",observe:"異常警訊"};
     const teamPointDetails=[
       {title:"四季好時",copy:"依春夏秋冬切換當季菜色，選菜時更有方向。"},
       {title:"份量與營養",copy:"每道料理都列出參考份量與吃法，點一下就能查看。"},
@@ -1395,15 +1396,15 @@
       const pressureSelected=healthConditions.has("pressure"),sugarSelected=healthConditions.has("sugar"),lipidSelected=healthConditions.has("lipid"),mainPortion=foodInfo[mainDish]?.portion||"約1掌心";
       let proteinTitle="先把蛋白質吃夠",proteinText=extraProtein?mainDish+"建議"+mainPortion+"；"+extraProtein+"也能補充蛋白質。食量較小時先吃這兩樣，再吃飯與湯，比較不容易蛋白質吃不夠。":mainDish+"建議"+mainPortion+"；食量較小時先吃主菜，再吃飯與湯，比較不容易蛋白質吃不夠。";
       if(lipidSelected){proteinTitle="血脂留意：豆魚瘦肉優先";proteinText=fishName?fishName+"可作為這餐較合適的蛋白質，份量以約一掌心為參考，烹調以蒸、煮為主。"+(fattyName?"同餐的"+fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):"蛋白質可優先保留豆類、魚類或瘦肉，肉類去皮並避免油炸。"+(fattyName?fattyName+"建議減量或改用較清爽的料理方式。":"食用油仍要適量。")}
-      if(dailyConcern==="appetite"){if(!lipidSelected)proteinTitle="食慾較差：先吃蛋白質";proteinText+=" 今天若食慾較差，先吃主菜與含蛋白質的配菜，份量少一些、吃得下再加。"}
+      if(dailyConcern==="nourish"){if(!lipidSelected)proteinTitle="營養密度：先保留蛋白質";proteinText=mainDish+"建議"+mainPortion+"；若這餐吃不完，先保留主菜與含蛋白質的配菜。粥與湯體積大但營養較稀，別先喝湯占滿胃口。"}
       let stapleTitle=starchyName?"澱粉別重複吃":"主食份量抓剛好",stapleText=starchyName?staple+"與"+starchyName+"都會提供澱粉；同餐時可減少"+staple+"的份量，避免澱粉重複吃過量。":wholeGrain?staple+"屬全穀雜糧選擇，份量可先抓約1碗，再依食慾與活動量調整。":staple+"份量可先抓約1碗，再依食慾與活動量調整。";
       if(sugarSelected){stapleTitle="血糖留意：澱粉合併計算";stapleText=starchyName?staple+"和"+starchyName+"都算澱粉，建議同餐合併抓固定份量；可少一點"+staple+"，並搭配蛋白質與蔬菜。":staple+"建議維持固定份量，優先選全穀雜糧，和主菜、蔬菜一起吃；含糖飲料與果汁先不加入這餐。"}
       const vegetableText=leafyName?leafyName+"可作為這餐的主要蔬菜；兩道配菜合計以超過一個拳頭為目標。"+(extraProtein?extraProtein+"同時含有蛋白質，若蔬菜量不多，可再補一些青菜。":"可搭配不同顏色的蔬菜，增加纖維與營養多樣性。"):"兩道配菜合計以超過一個拳頭為目標；若以蛋、肉或根莖類為主，建議再補一份深綠色蔬菜。";
       let careTitle=strongName||heartySoup?"湯與醬汁要節制":fishName||chilledName?"質地安全再入口":"切小煮軟更好入口",careText=strongName?strongName+"的醬汁、鹽分或油脂可能較高，建議少淋醬、去除肥油；"+soup+"以吃料為主，湯汁淺嚐即可。":heartySoup?soup+"可能含較多鹽、油脂或勾芡，建議小碗盛裝；自行料理時可減少奶油、鹽與勾芡。":fishName?fishName+"建議蒸、煮至軟嫩並仔細去刺；牙口較弱者可切小，避免乾煎得太硬。":chilledName?chilledName+"可改成溫拌，並依牙口切小、煮軟，減少生冷與咀嚼負擔。":"主菜與配菜可切小、煮軟，肉類逆紋切薄；若用餐常嗆咳，應請醫療專業人員評估。";
       if(pressureSelected){careTitle="血壓留意：少湯、少醬";careText=[strongName,soup].filter(Boolean).join("、")+"建議以吃料為主，醬汁與湯汁淺嚐即可；料理時可用薑、蒜、蔥、菇類增添香氣。"}
-      if(dailyConcern==="texture"){careTitle="牙口留意：切小煮軟";careText=mainDish+"與"+sides.join("、")+"可優先切小、煮軟，肉類逆紋切薄。"+(pressureSelected?"同時少淋醬汁、湯汁淺嚐即可。":"")}
-      if(dailyConcern==="swallow"){careTitle="吞嚥留意：坐直、小口";careText="進食時坐直、一次一小口，吞完再吃下一口。"+(fishName?fishName+"要仔細去刺；":"")+"若常嗆咳、聲音變濕或用餐明顯變久，請尋求專業評估。"}
-      if(dailyConcern==="hydration"){careTitle="補水留意：白天分次";careText=soup+"不能完全取代白開水；可在白天分次、小口補充水分。"+(pressureSelected?"湯汁仍建議淺嚐，若有限水需求請依醫囑。":"若有限水需求請依醫囑調整。")}
+      if(dailyConcern==="cook"){careTitle="質地調整：不是越稀越安全";careText=mainDish+"與"+sides.join("、")+"可先煮到能用叉子輕壓，肉類逆紋切薄並保持濕潤。若已有吞嚥困難，飲品與餐食稠度要依專業評估，不要只自行加水或勾芡。"}
+      if(dailyConcern==="safe"){careTitle="吞嚥安全：吸管未必更安全";careText="進食時坐直、一次一小口，吞完再吃下一口。"+(fishName?fishName+"要仔細去刺；":"")+"曾嗆咳者是否適合吸管與稀水，應由專業人員個別評估。"}
+      if(dailyConcern==="observe"){careTitle="餐後也要看：聲音與殘留";careText="吃完若聲音變濕濁、反覆清喉嚨、口中有殘留，或用餐時間愈來愈長，都可能是吞嚥警訊；持續發生請尋求專業評估。"}
       return[{number:"01",title:proteinTitle,text:proteinText},{number:"02",title:stapleTitle,text:stapleText},{number:"03",title:"蔬菜要比一拳多",text:vegetableText},{number:"04",title:careTitle,text:careText}]
     }
     function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>'<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">建議 '+item.number+'</span></div><h4>'+item.title+'</h4><p>'+item.text+'</p></article>').join("");renderReminderResults()}
@@ -1412,7 +1413,7 @@
     function renderConditionReminder(){const active=[...healthConditions][0]||"";document.querySelectorAll("[data-health-card]").forEach(card=>{const key=card.dataset.healthCard,open=key===active;card.classList.toggle("is-open",open);const button=card.querySelector("[data-health-condition]"),details=card.querySelector(".carecard-details"),plate=card.querySelector(".carecard-plate");if(button)button.setAttribute("aria-expanded",String(open));if(details)details.hidden=!open;if(plate&&open)plate.textContent=conditionGuidance(key)})}
     function syncAdviceConditionSummary(){const summary=document.getElementById("advice-condition-summary"),chips=document.getElementById("advice-condition-chips");if(!summary||!chips)return;const labels=[];if(dailyConcern)labels.push("日常・"+dailyConcernLabels[dailyConcern]);healthConditions.forEach(key=>{if(conditionLabels[key])labels.push("三高・"+conditionLabels[key])});summary.hidden=!labels.length;chips.innerHTML=labels.map(label=>'<span class="advice-health-chip">'+label+'</span>').join("")}
     function renderReminderResults(){renderDailyReminder();renderConditionReminder();syncAdviceConditionSummary()}
-    function selectDailyConcern(key){dailyConcern=dailyConcernLabels[key]&&dailyConcern!==key?key:"";saveState();renderPlateAdvice()}
+    function selectDailyConcern(key){if(!dailyConcernLabels[key])return;dailyConcern=key;saveState();renderPlateAdvice()}
     function toggleHealthCondition(key){if(!conditionLabels[key])return;healthConditions=healthConditions.has(key)?new Set():new Set([key]);saveState();renderPlateAdvice()}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
     function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
