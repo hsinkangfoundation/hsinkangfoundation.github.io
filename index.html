@@ -1682,6 +1682,71 @@
       }
       .footer-source-column{grid-column:auto}
     }
+
+    /* 團隊介紹改為可明確開關的揭露區；手機直式時納入頁面流，避免被視窗與底部導覽裁切。 */
+    .team-title-toggle{
+      width:100%;
+      margin:0;
+      padding:0;
+      display:block;
+      border:0;
+      border-radius:8px;
+      background:transparent;
+      color:inherit;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .team-title-toggle:focus-visible{outline:3px solid #8a765b;outline-offset:6px}
+    .team-name-note[hidden]{display:none!important}
+    .team-name-note:not([hidden]){
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+      transform:translateX(-50%);
+    }
+    .site-team-title .team-name-note{
+      max-height:min(70svh,680px);
+      padding:24px 58px 22px 24px;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+    }
+    .team-name-note-close{
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:36px;
+      height:36px;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,250,243,.48);
+      border-radius:50%;
+      background:rgba(255,250,243,.1);
+      color:#fffaf3;
+      font-size:22px;
+      line-height:1;
+    }
+    .team-name-note-close:hover,.team-name-note-close:focus-visible{background:rgba(255,250,243,.2)}
+
+    /* 其他揭露內容一律依內文自然增高；需要內部捲動的餐點視窗保留觸控慣性。 */
+    .staple-drawer,.menu-details,.team-detail-panel,.note-details,.carecard-details{max-height:none}
+    .dialog-copy{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+
+    @media(max-width:700px), (max-height:700px){
+      .site-team-title .team-name-note{
+        position:relative;
+        top:auto;
+        left:auto;
+        width:100%;
+        max-height:none;
+        margin:12px auto 0;
+        padding:22px 50px 22px 20px;
+        overflow:visible;
+        transform:none;
+      }
+      .site-team-title .team-name-note:not([hidden]){transform:none}
+    }
 </style>
 </head>
 <body>
@@ -1692,7 +1757,10 @@
   <main id="top">
     <div class="site-title site-team-title">
       <h1 class="sr-only">新食代・新港覺</h1>
-      <div class="team-title-wrap" tabindex="0" aria-describedby="team-name-note"><img class="team-title-logo" src="assets/new-era-new-hsinkang-title-flat-v3.png?v=20260821c" width="1843" height="330" alt="新食代・新港覺"><div class="team-name-note" id="team-name-note" role="note"><p>「新食代・新港覺」團隊由柏熹與宜慧於暑期職場體驗計畫期間共同組成，於新港客廳及新港文教基金會展開「食」作。作為行銷企劃與推廣的一員，我們致力於開創一個高齡友善飲食的新時代，不僅翻轉大眾對於介護食餐的既定印象，更盼「從產地到餐桌」營造煥然一「新」之感。</p><p>從企劃的發想與撰寫、餐點的設計與試作、套餐的行銷與推廣；我們將青年創意融合於每一階段當中，亦藉由桌曆版及線上版的指南製作，激發用餐靈感與傳遞友善飲食資訊。希冀透過不同世代的用心品嘗與體會，能化為屬於自己的滋味與感受，讓地方風味成為連結世代的一道橋梁，悠長而美好。</p></div></div>
+      <div class="team-title-wrap">
+        <button type="button" class="team-title-toggle" id="team-title-toggle" aria-expanded="false" aria-controls="team-name-note" aria-label="展開團隊介紹"><img class="team-title-logo" src="assets/new-era-new-hsinkang-title-flat-v3.png?v=20260821c" width="1843" height="330" alt="新食代・新港覺"></button>
+        <div class="team-name-note" id="team-name-note" role="region" aria-labelledby="team-title-toggle" hidden><p>「新食代・新港覺」團隊由柏熹與宜慧於暑期職場體驗計畫期間共同組成，於新港客廳及新港文教基金會展開「食」作。作為行銷企劃與推廣的一員，我們致力於開創一個高齡友善飲食的新時代，不僅翻轉大眾對於介護食餐的既定印象，更盼「從產地到餐桌」營造煥然一「新」之感。</p><p>從企劃的發想與撰寫、餐點的設計與試作、套餐的行銷與推廣；我們將青年創意融合於每一階段當中，亦藉由桌曆版及線上版的指南製作，激發用餐靈感與傳遞友善飲食資訊。希冀透過不同世代的用心品嘗與體會，能化為屬於自己的滋味與感受，讓地方風味成為連結世代的一道橋梁，悠長而美好。</p><button type="button" class="team-name-note-close" id="team-name-note-close" aria-label="收起團隊介紹">×</button></div>
+      </div>
     </div>
     <section class="block team team-top" id="team">
       <div class="team-wrap">
@@ -1939,6 +2007,12 @@
     const stapleToggle=document.getElementById("staple-toggle");
     let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],itemChangeRequest=[0,0,0,0,0],dialogRequestId=0,mealReelToken=0,healthConditions=new Set(),dailyConcern="cook";
     const conditionLabels={pressure:"血壓",sugar:"血糖",lipid:"血脂"},dailyConcernLabels={cook:"料理質地",nourish:"營養密度",safe:"吞嚥安全",observe:"異常警訊"};
+    const teamTitleWrap=document.querySelector(".team-title-wrap"),teamTitleToggle=document.getElementById("team-title-toggle"),teamNameNote=document.getElementById("team-name-note"),teamNameNoteClose=document.getElementById("team-name-note-close");
+    function setTeamNameNoteOpen(open,returnFocus=false){teamNameNote.hidden=!open;teamTitleToggle.setAttribute("aria-expanded",String(open));teamTitleToggle.setAttribute("aria-label",open?"收起團隊介紹":"展開團隊介紹");if(returnFocus)teamTitleToggle.focus()}
+    teamTitleToggle.addEventListener("click",()=>setTeamNameNoteOpen(teamTitleToggle.getAttribute("aria-expanded")!=="true"));
+    teamNameNoteClose.addEventListener("click",()=>setTeamNameNoteOpen(false,true));
+    document.addEventListener("click",event=>{if(!teamNameNote.hidden&&!teamTitleWrap.contains(event.target))setTeamNameNoteOpen(false)});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!teamNameNote.hidden)setTeamNameNoteOpen(false,true)});
     const teamPointDetails=[
       {title:"四季好時",copy:"依時節精心篩選，切換當令菜色即可尋覓此刻滋味。"},
       {title:"份量與營養",copy:"每道料理附上建議份量與營養重點，資訊更容易查找。"},
