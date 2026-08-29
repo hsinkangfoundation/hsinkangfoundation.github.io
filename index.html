@@ -1861,6 +1861,23 @@
       .season-track .o2{right:14%;top:43%}
       .season-track .o3{bottom:15%}
     }
+
+    /* 手機版固定導覽：指定「高齡飲食／提醒」換行，避免拆散「提醒」兩字。 */
+    .quick-nav-reminder-label,
+    .quick-nav-reminder-label>span{display:inline}
+    @media(max-width:700px){
+      .quick-nav-reminder-label{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        line-height:1.25;
+      }
+      .quick-nav-reminder-label>span{
+        display:block;
+        white-space:nowrap;
+      }
+    }
 </style>
 </head>
 <body>
@@ -1996,7 +2013,7 @@
       <p class="footer-meta-item"><span class="footer-meta-label">內容更新｜</span><span class="footer-meta-value">2026年8月28日</span></p>
     </div>
   </footer>
-  <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考餐盤</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食">高齡飲食提醒</a></nav>
+  <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考餐盤</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食"><span class="quick-nav-reminder-label"><span>高齡飲食</span><span>提醒</span></span></a></nav>
   <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="回到頁首" title="回到頁首" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></button>
   <script>
     const staples=["糙米飯","地瓜飯","五穀飯","白米飯","藜麥飯","紫米飯","胚芽米飯","小米粥","燕麥粥","糙米粥","五穀粥","蕎麥粥"];
