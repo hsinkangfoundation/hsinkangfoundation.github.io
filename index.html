@@ -1747,6 +1747,48 @@
       }
       .site-team-title .team-name-note:not([hidden]){transform:none}
     }
+
+    /* 收合式餐盤卡依內容決定高度，避免橫向卡列把未展開卡片等高撐開。 */
+    #menus .menu-grid,
+    .compact-reminders .notes,
+    .compact-care .care-grid{
+      align-items:start;
+    }
+    #menus .menu:not(.open),
+    .compact-care .carecard:not(.is-open),
+    .compact-reminders .note:not(.is-open),
+    .compact-reminders .note:nth-child(n):not(.is-open){
+      height:auto!important;
+      min-height:0!important;
+      align-self:start;
+    }
+    .compact-reminders .notes,
+    .compact-reminders .notes.has-open-note{
+      grid-auto-rows:auto;
+    }
+    .compact-reminders .note-toggle,
+    .compact-reminders .note:not(.is-open) .note-toggle{
+      height:auto;
+      min-height:0;
+      padding-block:22px;
+      grid-template-rows:auto auto;
+      align-content:start;
+    }
+    .compact-reminders .note .note-title{
+      min-height:0;
+    }
+    .compact-care .carecard:not(.is-open) .carecard-toggle{
+      height:auto;
+      min-height:0;
+    }
+    @media(max-width:700px){
+      .compact-reminders .note-toggle,
+      .compact-reminders .note:not(.is-open) .note-toggle{
+        min-height:0;
+        padding-block:20px;
+        grid-template-rows:auto auto;
+      }
+    }
 </style>
 </head>
 <body>
@@ -2053,12 +2095,13 @@
     }
     function renderPlateAdvice(){const list=document.getElementById("plate-advice-list");if(!list)return;list.innerHTML=plateAdvice().map(item=>'<article class="advice-card" role="listitem"><div class="advice-card-meta"><span class="advice-spark" aria-hidden="true">✦</span><span class="advice-number">建議 '+item.number+'</span></div><h4>'+item.title+'</h4><p>'+item.text+'</p></article>').join("");renderReminderResults()}
     function conditionGuidance(key){const {staple,mainDish,soup,strongName,starchyName,fishName,fattyName}=mealSignals();if(key==="pressure")return(strongName?strongName+"的醬汁少淋；":"")+"這餐的"+soup+"以吃料為主、湯汁淺嚐。";if(key==="sugar")return starchyName?staple+"與"+starchyName+"都算澱粉，可減少"+staple+"的份量並搭配主菜與蔬菜。":staple+"份量盡量固定，和"+mainDish+"及蔬菜一起吃，飲料選無糖。";return fishName?fishName+"可優先保留，烹調以蒸、煮為主。"+(fattyName?fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):(fattyName?fattyName+"建議減量，主菜可改選豆類、魚類或較瘦的肉。":"主菜"+mainDish+"注意去皮、去除明顯油脂，並避免油炸。")}
-    function syncDailyNoteGrid(){const grid=document.getElementById("daily-note-grid");if(grid)grid.classList.toggle("has-open-note",Boolean(grid.querySelector(".note.is-open:not([hidden])")))}function setDailyNoteOpen(button,open){const card=button.closest("[data-daily-note]"),details=document.getElementById(button.getAttribute("aria-controls")),mark=button.querySelector(".note-expand-mark");if(!card||!details)return;button.setAttribute("aria-expanded",String(open));details.hidden=!open;card.classList.toggle("is-open",open);if(mark)mark.textContent=open?"－":"＋";syncDailyNoteGrid()}function toggleDailyNote(button){setDailyNoteOpen(button,button.getAttribute("aria-expanded")!=="true")}function renderDailyReminder(){document.querySelectorAll("[data-daily-filter]").forEach(button=>{const active=button.dataset.dailyFilter===dailyConcern,label=dailyConcernLabels[button.dataset.dailyFilter];button.setAttribute("aria-pressed",String(active));button.setAttribute("aria-label",(active?"移除":"選擇")+label+"留意項目");button.title=active?"再次點選可移除":""});document.querySelectorAll("[data-daily-note]").forEach(card=>{const related=!dailyConcern||(card.dataset.dailyNote||"").split(" ").includes(dailyConcern);card.hidden=!related;card.classList.toggle("is-related",Boolean(dailyConcern&&related))});document.getElementById("daily-note-grid")?.classList.toggle("is-filtered",Boolean(dailyConcern));syncDailyNoteGrid()}
+    function scrollExpandedCardIntoView(card){if(!card)return;requestAnimationFrame(()=>requestAnimationFrame(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches,behavior=reduced?"auto":"smooth",scroller=card.closest(".notes");if(scroller&&scroller.scrollWidth>scroller.clientWidth){const cardRect=card.getBoundingClientRect(),scrollerRect=scroller.getBoundingClientRect(),left=scroller.scrollLeft+cardRect.left-scrollerRect.left-(scroller.clientWidth-cardRect.width)/2;scroller.scrollTo({left:Math.max(0,left),behavior})}const header=document.querySelector("header"),offset=(header?.offsetHeight||68)+14,top=Math.max(0,Math.round(card.getBoundingClientRect().top+window.scrollY-offset));window.scrollTo({top,behavior})}))}
+    function syncDailyNoteGrid(){const grid=document.getElementById("daily-note-grid");if(grid)grid.classList.toggle("has-open-note",Boolean(grid.querySelector(".note.is-open:not([hidden])")))}function setDailyNoteOpen(button,open){const card=button.closest("[data-daily-note]"),details=document.getElementById(button.getAttribute("aria-controls")),mark=button.querySelector(".note-expand-mark");if(!card||!details)return;button.setAttribute("aria-expanded",String(open));details.hidden=!open;card.classList.toggle("is-open",open);if(mark)mark.textContent=open?"－":"＋";syncDailyNoteGrid();if(open)scrollExpandedCardIntoView(card)}function toggleDailyNote(button){setDailyNoteOpen(button,button.getAttribute("aria-expanded")!=="true")}function renderDailyReminder(){document.querySelectorAll("[data-daily-filter]").forEach(button=>{const active=button.dataset.dailyFilter===dailyConcern,label=dailyConcernLabels[button.dataset.dailyFilter];button.setAttribute("aria-pressed",String(active));button.setAttribute("aria-label",(active?"移除":"選擇")+label+"留意項目");button.title=active?"再次點選可移除":""});document.querySelectorAll("[data-daily-note]").forEach(card=>{const related=!dailyConcern||(card.dataset.dailyNote||"").split(" ").includes(dailyConcern);card.hidden=!related;card.classList.toggle("is-related",Boolean(dailyConcern&&related))});document.getElementById("daily-note-grid")?.classList.toggle("is-filtered",Boolean(dailyConcern));syncDailyNoteGrid()}
     function renderConditionReminder(){const active=[...healthConditions][0]||"";document.querySelectorAll("[data-health-card]").forEach(card=>{const key=card.dataset.healthCard,open=key===active;card.classList.toggle("is-open",open);const button=card.querySelector("[data-health-condition]"),details=card.querySelector(".carecard-details"),plate=card.querySelector(".carecard-plate");if(button)button.setAttribute("aria-expanded",String(open));if(details)details.hidden=!open;if(plate&&open)plate.textContent=conditionGuidance(key)})}
     function syncAdviceConditionSummary(){const summary=document.getElementById("advice-condition-summary"),chips=document.getElementById("advice-condition-chips");if(!summary||!chips)return;const items=[];if(dailyConcern)items.push({type:"daily",key:dailyConcern,label:"日常・"+dailyConcernLabels[dailyConcern]});healthConditions.forEach(key=>{if(conditionLabels[key])items.push({type:"health",key,label:"三高・"+conditionLabels[key]})});summary.hidden=!items.length;chips.innerHTML=items.map(item=>'<button type="button" class="advice-health-chip" data-remove-attention="'+item.type+'" data-attention-key="'+item.key+'" aria-label="移除'+item.label+'留意項目"><span>'+item.label+'</span><span class="chip-remove" aria-hidden="true">×</span></button>').join("")}
     function renderReminderResults(){renderDailyReminder();renderConditionReminder();syncAdviceConditionSummary()}
     function selectDailyConcern(key){if(!dailyConcernLabels[key])return;const removing=dailyConcern===key;dailyConcern=removing?"":key;saveState();renderPlateAdvice();announce((removing?"已移除":"已加入")+"日常・"+dailyConcernLabels[key]+"留意項目")}
-    function toggleHealthCondition(key){if(!conditionLabels[key])return;healthConditions=healthConditions.has(key)?new Set():new Set([key]);saveState();renderPlateAdvice()}
+    function toggleHealthCondition(key){if(!conditionLabels[key])return;const opening=!healthConditions.has(key);healthConditions=opening?new Set([key]):new Set();saveState();renderPlateAdvice();if(opening){const card=[...document.querySelectorAll("[data-health-card]")].find(item=>item.dataset.healthCard===key);scrollExpandedCardIntoView(card)}}
     function removeAdviceCondition(type,key){let label="";if(type==="daily"&&dailyConcern===key){label="日常・"+dailyConcernLabels[key];dailyConcern=""}else if(type==="health"&&healthConditions.has(key)){label="三高・"+conditionLabels[key];healthConditions.delete(key)}else return;saveState();renderPlateAdvice();announce("已移除"+label+"留意項目")}
     function announce(message){const node=document.getElementById("meal-status");node.textContent="";setTimeout(()=>node.textContent=message,20)}
     function updateSeasonCarousel(){const track=document.getElementById("season-visual-track"),slides=[...document.querySelectorAll("[data-season-slide]")],active=slides.find(slide=>slide.dataset.seasonSlide===season);slides.forEach(slide=>slide.classList.toggle("active",slide===active));if(track&&active){const left=active.offsetLeft-(track.clientWidth-active.clientWidth)/2;track.scrollTo({left:Math.max(0,left),behavior:"smooth"})}}
@@ -2118,7 +2161,7 @@
     function syncMenuCarousel(track){if(!track)return;const index=menuTrackIndex(track),shell=track.closest(".menu-carousel-shell"),status=document.getElementById(track.dataset.status);if(status)status.textContent=`${index+1} / ${track.children.length}`;if(shell){const prev=shell.querySelector(".menu-swipe-arrow.prev"),next=shell.querySelector(".menu-swipe-arrow.next");if(prev)prev.disabled=index===0;if(next)next.disabled=index===track.children.length-1}}
     function slideMenuDish(event,trackId,direction){if(event){event.preventDefault();event.stopPropagation()}const track=document.getElementById(trackId);if(!track)return;const width=Math.max(track.clientWidth||track.getBoundingClientRect().width||1,1),next=Math.max(0,Math.min(track.children.length-1,menuTrackIndex(track)+direction)),left=next*width;if(typeof track.scrollTo==="function")track.scrollTo({left,behavior:"smooth"});else track.scrollLeft=left;requestAnimationFrame(()=>syncMenuCarousel(track))}
     function setupMenuCarousels(){document.querySelectorAll(".menu-dish-track").forEach(track=>{let frame=0;track.addEventListener("scroll",()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;syncMenuCarousel(track)})},{passive:true});track.addEventListener("keydown",event=>{if(event.key==="ArrowLeft")slideMenuDish(event,track.id,-1);if(event.key==="ArrowRight")slideMenuDish(event,track.id,1)});syncMenuCarousel(track)})}
-    function toggleMenu(i){document.querySelectorAll(".menu").forEach((menu,j)=>{const details=menu.querySelector(".menu-details"),toggle=menu.querySelector(".menu-toggle"),open=j===i&&details.hidden;details.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.firstChild.textContent=open?"收起這套餐盤 ":"查看這套餐盤 ";menu.classList.toggle("open",open);if(open){const track=details.querySelector(".menu-dish-track");requestAnimationFrame(()=>syncMenuCarousel(track))}})}
+    function toggleMenu(i){let openedMenu=null;document.querySelectorAll(".menu").forEach((menu,j)=>{const details=menu.querySelector(".menu-details"),toggle=menu.querySelector(".menu-toggle"),open=j===i&&details.hidden;details.hidden=!open;toggle.setAttribute("aria-expanded",String(open));toggle.firstChild.textContent=open?"收起這套餐盤 ":"查看這套餐盤 ";menu.classList.toggle("open",open);if(open){openedMenu=menu;const track=details.querySelector(".menu-dish-track");requestAnimationFrame(()=>syncMenuCarousel(track))}});if(openedMenu)scrollExpandedCardIntoView(openedMenu)}
     function setStapleDrawer(open){stapleDrawer.hidden=!open;stapleToggle.setAttribute("aria-expanded",String(open));stapleToggle.firstChild.textContent=open?"收起主食選擇 ":"查看其他主食與營養資訊 "}
     async function selectStaple(i){const request=++itemChangeRequest[0],assets=[preloadTableImage(staples[i],"high"),preloadDialogImage(staples[i],"high")].filter(Boolean);await Promise.all(assets.map(asset=>asset.ready));if(request!==itemChangeRequest[0])return;const committed=await animateMealChange(idx[0]%staples.length===i?[]:[0],()=>{idx[0]=i;updatePlannerItems([0])});if(committed){setStapleDrawer(false);announce("主食已選用"+staples[i])}}
     async function showFoodInfo(name,category){const info=foodInfo[name];if(!info)return;const request=++dialogRequestId,cached=preloadDialogImage(name,"high");if(cached)await cached.ready;if(request!==dialogRequestId)return;const image=document.getElementById("dialog-image");image.src=dialogFoodImage(name);image.alt=name+"料理照片";foodDialog.style.setProperty("--dish-bg",dialogFoodBackground());document.getElementById("dialog-category").textContent=category+"｜份量與營養";document.getElementById("dialog-food-name").textContent=name;document.getElementById("dialog-portion").textContent=info.portion;document.getElementById("dialog-nutrition").textContent=info.nutrition;if(typeof foodDialog.showModal==="function"&&!foodDialog.open)foodDialog.showModal();else foodDialog.setAttribute("open","")}
