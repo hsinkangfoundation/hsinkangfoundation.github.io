@@ -1803,6 +1803,64 @@
       .site-title.site-team-title{padding:28px 18px 24px}
       .site-team-title .team-title-toggle{width:min(78vw,300px)}
     }
+
+    /* 用餐多留意：收合時維持一致且緊湊的高度，展開後仍依內文自然增高。 */
+    .compact-reminders .note:not(.is-open),
+    .compact-reminders .note:nth-child(n):not(.is-open){
+      height:152px!important;
+      min-height:152px!important;
+      align-self:start;
+    }
+    .compact-reminders .note:not(.is-open) .note-toggle{
+      height:100%;
+      min-height:0;
+      padding-block:20px;
+      align-content:center;
+    }
+
+    /* 四季轉盤：固定季節標示與盤內文字位置，避免字級調整後換行或偏移。 */
+    .season-track .visual{
+      display:grid;
+      grid-template-rows:auto minmax(0,1fr);
+    }
+    .season-track .visualmeta{
+      width:100%;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      align-items:center;
+      gap:12px;
+      font-size:16px!important;
+      line-height:1.35;
+      letter-spacing:.04em;
+    }
+    .season-track .visualmeta span{
+      min-width:0;
+      white-space:nowrap;
+    }
+    .season-track .visualmeta span:last-child{
+      justify-self:end;
+      text-align:right;
+    }
+    .season-track .plate{
+      align-self:center;
+      justify-self:center;
+      margin:auto;
+    }
+    .season-track .orbit{
+      font-size:16px!important;
+      line-height:1.2;
+      letter-spacing:0;
+      white-space:nowrap;
+    }
+    .season-track .o1{left:16%;top:29%}
+    .season-track .o2{right:16%;top:43%}
+    .season-track .o3{left:50%;bottom:17%;transform:translateX(-50%)}
+    @media(max-width:700px){
+      .season-track .visualmeta{gap:8px;letter-spacing:.02em}
+      .season-track .o1{left:14%;top:28%}
+      .season-track .o2{right:14%;top:43%}
+      .season-track .o3{bottom:15%}
+    }
 </style>
 </head>
 <body>
