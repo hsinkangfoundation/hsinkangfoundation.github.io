@@ -1789,6 +1789,20 @@
         grid-template-rows:auto auto;
       }
     }
+
+    /* 降低頁首團隊字標的視覺重量：保留原字體與品牌色，以比例和留白舒緩壓迫感。 */
+    .site-title.site-team-title{
+      padding-top:clamp(36px,4vw,52px);
+      padding-bottom:clamp(26px,3vw,38px);
+    }
+    .site-team-title .team-title-toggle{
+      width:min(100%,480px);
+      margin-inline:auto;
+    }
+    @media(max-width:700px){
+      .site-title.site-team-title{padding:28px 18px 24px}
+      .site-team-title .team-title-toggle{width:min(78vw,300px)}
+    }
 </style>
 </head>
 <body>
