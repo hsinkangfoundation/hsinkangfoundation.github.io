@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#fff9ed">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="高齡健康餐盤指南，以四季當令主菜、配菜與湯品輕鬆搭配日常餐盤。">
+  <meta name="description" content="高齡健康餐盤指南，以四季食材、一般份量與高齡飲食提醒，提供日常配餐靈感。">
   <meta property="og:title" content="高齡健康餐盤指南">
-  <meta property="og:description" content="跟著季節，以當令主菜、配菜與湯品，輕鬆配成今天的一餐。">
+  <meta property="og:description" content="跟著四季挑選食材，搭配主食、主菜、配菜與湯品，整理今天的一餐。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hsinkangfoundation.github.io/">
   <meta property="og:image" content="https://hsinkangfoundation.github.io/assets/share-card.png">
@@ -2038,11 +2038,11 @@
       </div>
     </section>
     <section class="hero">
-      <div><h2>吃當季，<br><em>吃在地。</em></h2><p class="intro">從主食、主菜到配菜與湯品，每一道都盛進四季旬味。跟著時節入菜，找尋屬於你的用餐靈感吧！</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套當令餐盤</small></div></div></div>
+      <div><h2>吃當季，<br><em>選在地。</em></h2><p class="intro">從主食、主菜到配菜與湯品，每套餐盤融入時令食材，提供四季搭配靈感。實際產期與來源會因地區、品種及供應而不同，可依當地市場調整。</p><button type="button" onclick="document.querySelector('#planner').scrollIntoView()">開始配餐 <span>→</span></button><div class="stats"><div><b>04</b><small>季節菜單</small></div><div><b>12</b><small>套季節餐盤</small></div></div></div>
       <div class="season-carousel" aria-label="四季餐盤輪播"><button type="button" class="season-arrow season-arrow-prev" id="season-prev" aria-label="上一季"><span class="season-arrow-icon" aria-hidden="true"></span></button><div class="season-track" id="season-visual-track" tabindex="0" aria-label="春夏秋冬餐盤"><article class="visual spring" data-season-slide="spring" aria-label="春季餐盤"><div class="visualmeta"><span>春季</span><span>3—5月</span></div><div class="plate"><span>春</span><span class="orbit o1">新芽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual summer" data-season-slide="summer" aria-label="夏季餐盤"><div class="visualmeta"><span>夏季</span><span>6—8月</span></div><div class="plate"><span>夏</span><span class="orbit o1">盛陽</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual autumn" data-season-slide="autumn" aria-label="秋季餐盤"><div class="visualmeta"><span>秋季</span><span>9—11月</span></div><div class="plate"><span>秋</span><span class="orbit o1">豐收</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article><article class="visual winter" data-season-slide="winter" aria-label="冬季餐盤"><div class="visualmeta"><span>冬季</span><span>12—2月</span></div><div class="plate"><span>冬</span><span class="orbit o1">暖藏</span><span class="orbit o2">當令</span><span class="orbit o3">均衡</span></div></article></div><button type="button" class="season-arrow season-arrow-next" id="season-next" aria-label="下一季"><span class="season-arrow-icon" aria-hidden="true"></span></button></div>
     </section>
     <div class="seasons" id="season-tabs" role="group" aria-label="選擇配餐季節"></div>
-    <section class="block" id="planner"><div class="section-title"><div><h2>今天想吃什麼？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll" aria-label="更新全部餐食">↻ 全部更新</button><button type="button" class="reel-lever" id="reel-lever" aria-label="拉下把手，更新全部餐食"></button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><h3 id="plate-summary-title">我配好的餐盤</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><section class="plate-advice ai-helper" aria-labelledby="plate-advice-title"><div class="advice-head"><div class="ai-helper-identity"><div><h3 id="plate-advice-title">AI 餐盤建議</h3><p class="ai-helper-intro">依你配好的餐盤，整理幾個實際吃法。</p></div></div><span class="advice-state"><span class="ai-status-dot" aria-hidden="true"></span>會跟著餐盤與選擇更換</span></div><div class="advice-condition-summary" id="advice-condition-summary" hidden><p>餐盤建議已加入你的飲食留意項目：</p><div class="advice-condition-chips" id="advice-condition-chips" aria-label="已選擇的飲食留意項目"></div></div><div class="advice-grid" id="plate-advice-list" role="list" aria-live="polite"></div><p class="advice-disclaimer">AI 餐盤建議供日常飲食參考；若有慢性病、服藥、限水或吞嚥問題，請依醫師或營養師建議調整。</p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
+    <section class="block" id="planner"><div class="section-title"><div><h2>今天想吃什麼？</h2></div><p id="season-desc"></p></div><div class="planner"><div class="toolbar"><div class="toolleft"><span class="seasonbadge" id="badge">夏</span><div><b id="table-title">夏季餐桌</b><small id="table-desc"></small></div></div><div class="toolbar-actions"><button type="button" class="reset" id="reset-meal">回到餐盤 01</button><button type="button" class="roll" id="roll" aria-label="更新全部餐食">↻ 全部更新</button><button type="button" class="reel-lever" id="reel-lever" aria-label="拉下把手，更新全部餐食"></button></div></div><div class="cards" id="meal-cards"></div><div class="staple-assist"><div class="staple-bar"><button type="button" class="staple-current" id="current-staple-info" data-food="糙米飯" data-category="主食"><span>目前主食</span><b id="current-staple">糙米飯</b><small id="current-staple-portion">約1碗（熟飯約200克）</small></button><button type="button" class="staple-toggle" id="staple-toggle" aria-expanded="false" aria-controls="staple-drawer">查看其他主食與營養資訊 <span aria-hidden="true">＋</span></button></div><div class="staple-drawer" id="staple-drawer" hidden><p class="staple-note">主食全年皆可替換；可依牙口、食慾與日常習慣選擇。</p><div class="staples" id="staples"></div></div></div></div><section class="plate-summary" aria-labelledby="plate-summary-title"><div class="summary-head"><div><h3 id="plate-summary-title">我配好的餐盤</h3></div></div><div class="meal-table" role="group" aria-label="互動餐桌；點選任一道料理即可更換"><ol class="plate-list" id="plate-list"></ol></div><div class="summary-actions"><button type="button" id="copy-plate">複製餐盤文字</button><button type="button" id="share-plate">分享餐盤</button><button type="button" class="primary" id="download-plate">下載餐盤圖卡</button></div><p class="action-status" id="share-status" aria-live="polite"></p></section><section class="plate-advice ai-helper" aria-labelledby="plate-advice-title"><div class="advice-head"><div class="ai-helper-identity"><div><h3 id="plate-advice-title">AI 輔助餐盤建議</h3><p class="ai-helper-intro">依預先整理的飲食原則，隨你配好的餐盤提供提醒。</p></div></div><span class="advice-state"><span class="ai-status-dot" aria-hidden="true"></span>依餐盤與留意項目自動更新</span></div><div class="advice-condition-summary" id="advice-condition-summary" hidden><p>餐盤建議已加入你的飲食留意項目：</p><div class="advice-condition-chips" id="advice-condition-chips" aria-label="已選擇的飲食留意項目"></div></div><div class="advice-grid" id="plate-advice-list" role="list" aria-live="polite"></div><p class="advice-disclaimer">內容經 AI 輔助整理，網站依預設規則顯示，並非即時醫療判讀；若有慢性病、服藥、限水或吞嚥問題，請依醫師或營養師建議調整。</p></section><p class="sr-only" id="meal-status" aria-live="polite" aria-atomic="true"></p></section>
     <section class="block menus" id="menus"><div class="section-title menu-section-title"><div><h2 id="menu-title">夏季參考餐盤。</h2></div><div class="menu-season-switcher" role="group" aria-label="切換參考餐盤季節"><button type="button" data-menu-season="spring" aria-pressed="false" onclick="changeSeason('spring')">春季</button><button type="button" data-menu-season="summer" aria-pressed="true" onclick="changeSeason('summer')">夏季</button><button type="button" data-menu-season="autumn" aria-pressed="false" onclick="changeSeason('autumn')">秋季</button><button type="button" data-menu-season="winter" aria-pressed="false" onclick="changeSeason('winter')">冬季</button></div></div><div class="menu-grid" id="menu-grid"></div></section>
     <section class="block gentle compact-reminders" id="notes">
       <div class="section-title"><div><h2>用餐多留意。</h2></div><p>高齡長者用餐時務必加以留心，不僅注意營養是否足夠，更要留意飲食是否安全。</p></div>
@@ -2057,9 +2057,9 @@
       </div>
       <div class="notes" id="daily-note-grid">
         <article class="note" data-daily-note="cook"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-01"><span class="note-number">01</span><span class="note-title">食物軟，不一定好吞</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-01" hidden><p>清水和清湯流得快，碎肉泡在湯裡也不好控制，反而可能嗆到。若常嗆咳，請由醫療人員評估適合的軟硬與濃稠度。</p></div></article>
-        <article class="note" data-daily-note="cook"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-02"><span class="note-number">02</span><span class="note-title">先切小、煮軟，不必都打成泥</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-02" hidden><p>肉切薄切小，蔬菜去掉粗梗，再煮到叉子壓得動。保留食物原來的樣子，通常更能引起食慾。</p></div></article>
-        <article class="note" data-daily-note="nourish"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-03"><span class="note-number">03</span><span class="note-title">稀飯吃得飽，營養可能不夠</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-03" hidden><p>稀飯和清湯水分多，營養較少。可加蛋、豆腐或魚肉；食量小時，先吃豆、魚、蛋、肉，再吃飯和菜。</p></div></article>
-        <article class="note" data-daily-note="nourish"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-04"><span class="note-number">04</span><span class="note-title">早餐別只吃白粥配醬菜</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-04" hidden><p>白粥配醬菜，蛋白質通常不夠。可加一顆蛋、豆腐或無糖豆漿，午餐和晚餐也要吃到豆、魚、蛋或肉。</p></div></article>
+        <article class="note" data-daily-note="cook"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-02"><span class="note-number">02</span><span class="note-title">先切小、煮軟，不必都打成泥</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-02" hidden><p>肉切薄切小，蔬菜去掉粗梗，再煮到叉子壓得動。保留可辨認的食物外觀，也可能提高進食意願。</p></div></article>
+        <article class="note" data-daily-note="nourish"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-03"><span class="note-number">03</span><span class="note-title">稀飯吃得飽，營養可能不夠</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-03" hidden><p>單純白稀飯與清湯的水分較多，若沒有加入其他食材，蛋白質與熱量可能不足。可加蛋、豆腐、魚或肉；食量小時可先吃含蛋白質的食物。</p></div></article>
+        <article class="note" data-daily-note="nourish"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-04"><span class="note-number">04</span><span class="note-title">早餐別只吃白粥配醬菜</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-04" hidden><p>白粥配醬菜的蛋白質通常較少。可加一顆蛋、豆腐或無糖豆漿，午餐和晚餐也要安排豆、魚、蛋或肉。</p></div></article>
         <article class="note" data-daily-note="safe"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-05"><span class="note-number">05</span><span class="note-title">用吸管不一定比較安全</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-05" hidden><p>用吸管時，水可能一下子流太快，來不及吞就嗆到。若曾嗆咳或吞嚥困難，請先詢問醫療人員是否適合使用。</p></div></article>
         <article class="note" data-daily-note="safe"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-06"><span class="note-number">06</span><span class="note-title">吃完要清掉嘴裡的食物</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-06" hidden><p>食物若留在兩頰或嘴巴後方，之後仍可能掉進氣管。吃完先看看嘴裡有沒有食物，再刷牙或漱口。</p></div></article>
         <article class="note" data-daily-note="observe"><button type="button" class="note-toggle" data-note-toggle aria-expanded="false" aria-controls="daily-note-07"><span class="note-number">07</span><span class="note-title">沒咳嗽，也可能吞得不順</span><span class="note-expand-mark" aria-hidden="true">＋</span></button><div class="note-details" id="daily-note-07" hidden><p>吃完聲音變得濕濕的、常清喉嚨、嘴裡有食物，或一餐吃很久，都可能是吞嚥出了問題。</p></div></article>
@@ -2079,21 +2079,21 @@
         <article class="carecard" data-health-card="sugar">
           <button type="button" class="carecard-toggle" data-health-condition="sugar" aria-expanded="false" aria-controls="care-details-sugar">
             <span class="carecard-toggle-top"><span class="carehead"><span class="seal">糖</span><span class="carecard-name">血糖偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
-            <span class="lead">南瓜、玉米、山藥和粥，都算主食</span><span class="carecard-plus" aria-hidden="true">＋</span>
+            <span class="lead">南瓜、玉米、山藥和粥，也會提供醣類</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
-          <div class="carecard-details" id="care-details-sugar" hidden><ul><li><b>稀不代表澱粉少：</b>粥只是水分較多，一大碗仍可能吃進不少米，份量仍要固定。</li><li><b>根莖要和飯互換：</b>南瓜、地瓜、山藥、芋頭、蓮藕、玉米與菱角都屬全穀雜糧；同餐有吃，就把飯減一些。</li><li><b>「無糖」仍可能有醣：</b>鮮奶、無糖優格與無加糖穀粉仍含乳糖或澱粉，包裝食品要看總碳水化合物。</li></ul><p class="carecard-plate" id="care-plate-sugar"></p></div>
+          <div class="carecard-details" id="care-details-sugar" hidden><ul><li><b>稀不代表澱粉少：</b>粥只是水分較多，一大碗仍可能吃進不少米，份量仍要固定。</li><li><b>份量要和飯一起看：</b>南瓜、地瓜、山藥、芋頭、蓮藕、成熟玉米與菱角都會提供醣類；同餐吃得較多時，可相應減少飯量。</li><li><b>「無糖」仍可能有醣：</b>鮮奶、無糖優格與無加糖穀粉仍含乳糖或澱粉，包裝食品要看總碳水化合物。</li></ul><p class="carecard-plate" id="care-plate-sugar"></p></div>
         </article>
         <article class="carecard" data-health-card="lipid">
           <button type="button" class="carecard-toggle" data-health-condition="lipid" aria-expanded="false" aria-controls="care-details-lipid">
             <span class="carecard-toggle-top"><span class="carehead"><span class="seal">脂</span><span class="carecard-name">血脂偏高</span></span><span class="carecard-status">已同步餐盤</span></span>
-            <span class="lead">血脂不只看油，甜飲與精糖也要留意</span><span class="carecard-plus" aria-hidden="true">＋</span>
+            <span class="lead">血脂項目不同，飲食重點也不完全一樣</span><span class="carecard-plus" aria-hidden="true">＋</span>
           </button>
-          <div class="carecard-details" id="care-details-lipid" hidden><ul><li><b>酥、奶、皮也藏著脂肪：</b>酥皮糕餅、奶精、人造奶油、肥肉與肉皮常含較多飽和脂肪或反式脂肪。</li><li><b>三酸甘油脂也受糖影響：</b>甜飲、果汁、糕餅與過量精製澱粉都要留意，不只是少吃油。</li><li><b>健康食材要拿來取代：</b>用豆腐、魚與瘦肉換掉肥肉、加工肉，不是在原本餐點上再多加一份。</li></ul><p class="carecard-plate" id="care-plate-lipid"></p></div>
+          <div class="carecard-details" id="care-details-lipid" hidden><ul><li><b>先看是哪一項偏高：</b>低密度脂蛋白膽固醇與三酸甘油脂的飲食重點不同，應依檢驗結果與醫療建議調整。</li><li><b>飽和脂肪要留意：</b>酥皮糕餅、奶精、肥肉與肉皮的脂肪組成依產品而異，可查看標示並減少高飽和脂肪食物。</li><li><b>三酸甘油脂也受糖影響：</b>甜飲、果汁、糕餅與過量精製澱粉都要留意，不只是少吃油。</li><li><b>用較合適的食材取代：</b>以豆腐、魚與瘦肉替換肥肉或加工肉，而不是在原本餐點上再多加一份。</li></ul><p class="carecard-plate" id="care-plate-lipid"></p></div>
         </article>
       </div>
     </section>
   </main>
-  <dialog id="food-dialog" aria-labelledby="dialog-food-name" aria-describedby="dialog-swipe-hint"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><button type="button" class="dialog-nav prev" id="dialog-prev" aria-label="上一道同類別料理">‹</button><button type="button" class="dialog-nav next" id="dialog-next" aria-label="下一道同類別料理">›</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high" draggable="false"><div class="dialog-browse-meta" id="dialog-browse-meta"><p class="dialog-swipe-hint" id="dialog-swipe-hint"><span class="dialog-swipe-touch">左右滑動切換</span><span class="dialog-swipe-desktop">使用左右按鈕切換</span></p><p class="dialog-browse-status" id="dialog-browse-status" aria-live="polite"></p></div></figure><div class="dialog-copy"><div class="dialog-meta"><p class="dialog-category" id="dialog-category"></p></div><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">內容依《高齡健康餐盤飲食指南》及官方衛教資料整理；實際份量仍請依個人食慾、健康狀況及醫師或營養師建議調整。</p></div></div></div></dialog>
+  <dialog id="food-dialog" aria-labelledby="dialog-food-name" aria-describedby="dialog-swipe-hint"><div class="dialog-inner"><button type="button" class="dialog-close" id="dialog-close" aria-label="關閉料理資訊">×</button><button type="button" class="dialog-nav prev" id="dialog-prev" aria-label="上一道同類別料理">‹</button><button type="button" class="dialog-nav next" id="dialog-next" aria-label="下一道同類別料理">›</button><div class="dialog-layout"><figure class="dialog-media"><img id="dialog-image" src="" alt="" width="1440" height="1240" loading="eager" decoding="async" fetchpriority="high" draggable="false"><div class="dialog-browse-meta" id="dialog-browse-meta"><p class="dialog-swipe-hint" id="dialog-swipe-hint"><span class="dialog-swipe-touch">左右滑動切換</span><span class="dialog-swipe-desktop">使用左右按鈕切換</span></p><p class="dialog-browse-status" id="dialog-browse-status" aria-live="polite"></p></div></figure><div class="dialog-copy"><div class="dialog-meta"><p class="dialog-category" id="dialog-category"></p></div><h2 id="dialog-food-name">料理資訊</h2><div class="dialog-field"><h3>建議份量</h3><p id="dialog-portion"></p></div><div class="dialog-field"><h3>營養小提醒</h3><p id="dialog-nutrition"></p></div><p class="dialog-note">份量以熟食概估；實際營養會隨食材、配方與烹調方式而變。若有慢性病、限鉀、限磷、限水或吞嚥問題，請依醫師或營養師建議調整。</p></div></div></div></dialog>
   <footer class="site-footer" id="sources">
     <div class="footer-main">
       <div class="footer-brand-column">
@@ -2123,15 +2123,15 @@
       </div>
       <div class="footer-source-column">
         <h2 class="footer-title">資料來源與編製資訊</h2>
-        <ul class="footer-sources"><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://ihealth.vghtpe.gov.tw/media/3178" target="_blank" rel="noopener">臺北榮總｜吞嚥困難照護 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&amp;id=28116" target="_blank" rel="noopener">食品藥物管理署｜低鈉鹽提醒 ↗</a></li><li><a href="https://health.ntuh.gov.tw/health/new/6305.html" target="_blank" rel="noopener">臺大醫院｜高血脂飲食保健 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li></ul>
-        <p class="footer-source-note">本網站內容僅供健康飲食與日常照護參考，實際需求請依個人狀況諮詢相關專業人員。</p>
+        <ul class="footer-sources"><li><a href="https://www.fda.gov.tw/tc/siteList.aspx?sid=284" target="_blank" rel="noopener">食品藥物管理署｜食品營養成分資料庫 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/EBook.aspx?nodeid=3821" target="_blank" rel="noopener">國民健康署｜我的餐盤手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4131" target="_blank" rel="noopener">國民健康署｜質地調整飲食 ↗</a></li><li><a href="https://ihealth.vghtpe.gov.tw/media/3178" target="_blank" rel="noopener">臺北榮總｜吞嚥困難照護 ↗</a></li><li><a href="https://www.mohw.gov.tw/fp-16-28656-1.html" target="_blank" rel="noopener">衛生福利部｜老人營養餐食手冊 ↗</a></li><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=4878&amp;pid=19338" target="_blank" rel="noopener">國民健康署｜積極管理三高 ↗</a></li><li><a href="https://www.fda.gov.tw/tc/newsContent.aspx?cid=5049&amp;id=28116" target="_blank" rel="noopener">食品藥物管理署｜低鈉鹽提醒 ↗</a></li><li><a href="https://health.ntuh.gov.tw/health/new/6305.html" target="_blank" rel="noopener">臺大醫院｜高血脂飲食保健 ↗</a></li><li><a href="https://fae.moa.gov.tw/map/county_agri.php" target="_blank" rel="noopener">農業部｜臺灣農產地圖・當令月份 ↗</a></li></ul>
+        <p class="footer-source-note">本網站內容僅供健康飲食與日常照護參考；產季月份為主要食材的概略資料，實際供應依產地、品種與氣候而異。個別需求請諮詢相關專業人員。</p>
       </div>
     </div>
 
     <div class="footer-bottom" aria-label="網站資料註記">
-      <p class="footer-meta-item footer-meta-source"><span class="footer-meta-label">內容基礎｜</span><span class="footer-meta-value">《高齡健康餐盤飲食指南》、官方衛教及飲食資料</span></p>
+      <p class="footer-meta-item footer-meta-source"><span class="footer-meta-label">內容基礎｜</span><span class="footer-meta-value">國民健康署「我的餐盤」、高齡營養與質地調整等官方資料</span></p>
       <p class="footer-meta-item"><span class="footer-meta-label">資料查閱｜</span><span class="footer-meta-value">2026年8月</span></p>
-      <p class="footer-meta-item"><span class="footer-meta-label">內容更新｜</span><span class="footer-meta-value">2026年8月28日</span></p>
+      <p class="footer-meta-item"><span class="footer-meta-label">內容更新｜</span><span class="footer-meta-value">2026年8月30日</span></p>
     </div>
   </footer>
   <nav class="quick-nav" aria-label="固定快速導覽"><a href="#team" data-nav-target="team">我們是誰</a><a href="#planner" data-nav-target="planner">配一餐</a><a href="#menus" data-nav-target="menus">參考餐盤</a><a href="#notes" data-nav-target="notes" aria-label="高齡飲食提醒：日常照護與三高飲食"><span class="quick-nav-reminder-label"><span>高齡飲食</span><span>提醒</span></span></a></nav>
@@ -2185,84 +2185,84 @@
     const dialogSeasonBackgrounds={spring:"#e7efcd",summer:"#fff2d0",autumn:"#eedfbb",winter:"#d9e2f1"};
     const dialogFoodBackground=()=>dialogSeasonBackgrounds[season]||"#f5eee3";
     const foodInfo={
-      "糙米飯":{portion:"約1碗（約200克）",nutrition:"富含膳食纖維與維生素 B 群，有助促進腸道健康；搭配白米一起烹煮，口感更佳也較容易消化。"},
-      "地瓜飯":{portion:"約1碗（約200克）",nutrition:"富含膳食纖維、維生素 A 與鉀，有助促進腸道蠕動及增加飽足感；建議搭配均衡飲食，適量攝取更健康。"},
-      "五穀飯":{portion:"約1碗（約200克）",nutrition:"富含膳食纖維、維生素 B 群及礦物質，有助增加飽足感與促進腸道健康；建議搭配足量飲水，幫助膳食纖維發揮作用。"},
-      "白米飯":{portion:"約1碗（約200克）",nutrition:"提供醣類，是身體的重要能量來源，有助維持日常活動與腦部運作；建議搭配全穀雜糧及蔬菜，讓營養更加均衡。"},
-      "藜麥飯":{portion:"約1碗（約200克）",nutrition:"富含蛋白質、膳食纖維及礦物質，有助維持肌肉與促進腸道健康；建議與白米一起烹煮，口感更佳，也較容易入口。"},
-      "紫米飯":{portion:"約1碗（約200克）",nutrition:"富含花青素、膳食纖維及維生素 B 群，有助促進腸道健康與抗氧化；建議與白米一起烹煮，口感更佳，也較容易消化。"},
-      "胚芽米飯":{portion:"約1碗（約200克）",nutrition:"保留米粒的胚芽，含有維生素 B 群與膳食纖維；煮前充分浸泡，口感更柔軟，也較容易咀嚼。"},
-      "小米粥":{portion:"約2碗（約400克）",nutrition:"小米顆粒細小，煮成粥後質地柔軟、容易入口；搭配蛋、豆腐或魚肉食用，能讓營養更加完整。"},
-      "燕麥粥":{portion:"約2碗（約400克）",nutrition:"燕麥含有膳食纖維，煮成濃粥後滑順好入口；搭配牛奶或無糖豆漿，可增加蛋白質的攝取。"},
-      "糙米粥":{portion:"約2碗（約400克）",nutrition:"糙米保留膳食纖維與維生素 B 群；先浸泡再煮至軟爛，可減少咀嚼負擔，也比糙米飯容易入口。"},
-      "五穀粥":{portion:"約2碗（約400克）",nutrition:"多種穀物能增加主食變化，並提供膳食纖維；烹煮前充分浸泡，煮至顆粒柔軟，更適合長者食用。"},
-      "蕎麥粥":{portion:"約2碗（約400克）",nutrition:"蕎麥含有膳食纖維及多種營養素，可增加主食變化；煮前充分浸泡並煮至軟爛，口感更柔和、容易入口。"},
-      "清蒸鱸魚":{portion:"約1掌心大小（約70–80克）",nutrition:"富含優質蛋白質與 Omega-3 脂肪酸，有助維持肌肉及心血管健康；建議以清蒸方式料理，少油少鹽，更能保留鮮甜風味。"},
-      "清炒菠菜":{portion:"約半碗（約80克）",nutrition:"富含鐵質、葉酸及維生素 A，有助維持造血功能與免疫力；建議快速拌炒，避免久煮造成營養流失。"},
-      "春筍炒肉絲":{portion:"約半碗（春筍約50克、肉絲約30克）",nutrition:"富含膳食纖維與優質蛋白質，可促進腸道健康及維持肌力；建議選用瘦肉並清淡調味，減少鹽分攝取。"},
-      "海帶芽豆腐湯":{portion:"約1碗（約240毫升）",nutrition:"含有鈣質、植物性蛋白及礦物質，可補充多樣營養；建議少鹽調味，避免攝取過多鈉。"},
-      "滷瘦肉":{portion:"約1掌心大小（約70–80克）",nutrition:"富含蛋白質與鐵質，有助維持肌肉量及正常代謝；建議選用瘦肉部位，並減少滷汁攝取，以降低鈉含量。"},
-      "青花菜炒魷魚":{portion:"約半碗（青花菜約50克、魷魚約30克）",nutrition:"富含維生素 C、膳食纖維及蛋白質，有助維持免疫力與腸道健康；魷魚膽固醇較高，建議適量食用並少油清炒。"},
-      "胡蘿蔔炒蛋":{portion:"約半碗（約80克）",nutrition:"富含胡蘿蔔素、維生素 A 及蛋白質，有助保護視力與提升免疫力；搭配少量油脂料理，可幫助營養吸收。"},
-      "香菇雞湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、維生素 B 群及礦物質，有助維持免疫力與身體機能；建議去除雞皮並少鹽調味，減少油脂與鈉的攝取。"},
-      "蘿蔔燉豬肉":{portion:"約1掌心大小（約70–80克）",nutrition:"含有蛋白質、鐵質、維生素 B 群與膳食纖維，可補充多樣營養；建議選用瘦肉並少油少鹽烹調。"},
-      "皮蛋地瓜葉":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 A 與維生素 C，有助維持腸道健康及提升免疫力；皮蛋鈉含量較高，建議適量食用並減少調味。"},
-      "蝦仁炒蘆筍":{portion:"約半碗（蘆筍約50克、蝦仁約30克）",nutrition:"富含蛋白質、葉酸及膳食纖維，有助維持肌肉與促進新陳代謝；建議少油快炒，保留蘆筍鮮脆口感與營養。"},
-      "蘿蔔排骨湯":{portion:"約1碗（約240毫升）",nutrition:"含有蛋白質、礦物質及膳食纖維，可補充多樣營養；建議去除浮油並少鹽調味，減少油脂與鈉的攝取。"},
-      "蒜苗鹹豬肉":{portion:"約1掌心大小（約70–80克）",nutrition:"富含蛋白質及維生素 B 群，有助維持肌肉與補充體力；鹹豬肉鈉含量較高，建議適量食用並搭配蔬菜。"},
-      "清炒空心菜":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 A 及維生素 C，有助促進腸道健康與提升免疫力；建議少油快炒，保留蔬菜鮮嫩口感與營養。"},
-      "玉米筍炒菇":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素及礦物質，有助促進腸道健康與維持代謝；建議少油清炒，保留食材原有的鮮甜風味。"},
-      "冬瓜蛤蜊湯":{portion:"約1碗（約240毫升）",nutrition:"含有蛋白質、礦物質及水分，可補充多樣營養；建議少鹽調味，避免攝取過多鈉。"},
-      "洋蔥炒雞肉":{portion:"約1掌心大小（約70–80克）",nutrition:"富含蛋白質、維生素 B 群及植化素，有助維持肌肉量與正常代謝；建議選用去皮雞肉並少油烹調，降低油脂攝取。"},
-      "絲瓜炒蛋":{portion:"約半碗（約80克）",nutrition:"富含蛋白質、膳食纖維及維生素，有助維持肌肉健康與促進腸道蠕動；建議少油快炒，保留絲瓜鮮甜口感與營養。"},
-      "涼拌秋葵":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 C 及葉酸，有助促進腸道蠕動與維持免疫力；建議汆燙後涼拌，保留營養與爽脆口感。"},
-      "苦瓜排骨湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、維生素 C 及礦物質，有助維持身體機能與均衡營養；建議去除浮油並少鹽調味，減少油脂與鈉的攝取。"},
-      "香煎虱目魚":{portion:"約1掌心大小（約70–90克）",nutrition:"富含蛋白質、Omega-3 脂肪酸及維生素 B 群，有助維持肌肉量與身體機能；建議煎製時減少用油，並注意魚刺處理，方便長者食用。"},
-      "涼拌茄子":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、花青素及多種植化素，有助促進腸道蠕動；採用涼拌方式可減少油脂攝取，建議調味清淡，降低鈉含量。"},
-      "清炒紅莧菜":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 A、維生素 C 及礦物質，有助維持免疫力與身體代謝；建議少油快炒，保留蔬菜鮮味與營養。"},
-      "絲瓜豆腐湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、維生素 C 及礦物質，有助維持身體機能與均衡營養；建議去除浮油並少鹽調味，減少油脂與鈉的攝取。"},
-      "清蒸鯛魚片":{portion:"約1掌心大小（約70–90克）",nutrition:"富含蛋白質、維生素 B 群及礦物質，有助維持肌肉量；清蒸料理可減少油脂攝取，保留魚肉鮮甜與營養。"},
-      "花椰菜炒蝦仁":{portion:"約半碗（約80克）",nutrition:"富含蛋白質、維生素 C 與膳食纖維，有助維持免疫力與腸道健康；建議少油快炒，保留食材營養。"},
-      "南瓜燴菇":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、β-胡蘿蔔素及菇類多醣體，有助維持腸道健康與身體防護力。"},
-      "栗子雞腿湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、礦物質與膳食纖維，有助補充體力；建議去除雞皮並少鹽調味，減少油脂與鈉攝取。"},
-      "馬鈴薯燉肉":{portion:"約半碗至1碗（約120克）",nutrition:"富含蛋白質、碳水化合物及礦物質，有助補充體力；建議選用瘦肉並減少油脂，維持均衡營養。"},
-      "清炒高麗菜":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 C 及植化素，有助促進腸道蠕動；建議少油快炒，保留蔬菜營養。"},
-      "三杯杏鮑菇":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素與菇類多醣體，有助維持腸道健康；三杯料理建議減少油與醬料，降低鈉攝取。"},
-      "菱角香菇雞湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、膳食纖維及礦物質，有助補充體力；建議少鹽調味並去除浮油，減少油脂攝取。"},
-      "南瓜咖喱雞":{portion:"約1掌心大小（約70–90克）",nutrition:"富含蛋白質、β-胡蘿蔔素與多種營養素，有助維持身體機能；建議減少咖哩醬油脂與鹽分攝取。"},
-      "芹菜炒肉絲":{portion:"約半碗（約80克）",nutrition:"富含蛋白質、膳食纖維及礦物質，有助維持肌肉與腸道健康；建議少油烹調，降低油脂攝取。"},
-      "蒜炒青江菜":{portion:"約半碗（約80克）",nutrition:"富含維生素 A、維生素 C 與鈣質，有助維持骨骼與免疫健康；建議少油快炒，保留蔬菜營養。"},
-      "蓮藕排骨湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、礦物質與膳食纖維，有助補充體力；建議去除浮油並少鹽調味，維持健康飲食。"},
-      "香煎鮭魚":{portion:"約1掌心大小（約70–90克）",nutrition:"富含蛋白質與 Omega-3 脂肪酸，有助維持心血管健康；建議少油香煎，保留鮭魚天然營養。"},
-      "青江菜炒豆皮":{portion:"約半碗（約80克）",nutrition:"富含植物性蛋白質、鈣質及膳食纖維，有助維持骨骼與腸道健康；建議少油烹調。"},
-      "菠菜炒羊肉":{portion:"約半碗（約80克）",nutrition:"富含蛋白質、鐵質及維生素 A，有助維持肌肉與血液健康；建議搭配蔬菜均衡攝取。"},
-      "蘿蔔牛腩湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質、礦物質與膳食纖維，有助維持身體機能；建議去除浮油並少鹽調味，減少油脂與鈉攝取。"},
-      "薑絲鱈魚片":{portion:"約1掌心大小（約70–90克）",nutrition:"富含蛋白質、維生素 B 群及礦物質，有助維持肌肉量；建議少油烹調，保留魚肉鮮甜與營養。"},
-      "台式白菜滷":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、維生素 C 及礦物質，有助促進腸道健康；建議減少油脂與調味，享受食材原味。"},
-      "番茄炒蛋":{portion:"約半碗（約80克）",nutrition:"富含蛋白質、茄紅素及維生素 C，有助維持身體機能；建議少油烹調，減少額外調味。"},
-      "麻油雞湯":{portion:"約1碗（約240毫升）",nutrition:"富含蛋白質與礦物質，有助補充體力；建議適量飲用，並去除浮油，減少油脂攝取。"},
-      "照燒松阪豬":{portion:"約1掌心大小（約70–80克）",nutrition:"富含蛋白質及維生素 B 群，有助維持肌肉健康；照燒醬建議適量使用，減少糖分與鈉攝取。"},
-      "蒜炒油菜":{portion:"約半碗（約80克）",nutrition:"富含維生素 A、維生素 C 及膳食纖維，有助維持免疫力；建議少油快炒，保留蔬菜營養。"},
-      "山藥炒菇":{portion:"約半碗（約80克）",nutrition:"富含膳食纖維、鉀及菇類多醣體，有助維持腸道健康與身體機能；建議少油烹調。"},
-      "南瓜濃湯":{portion:"約1碗（約240毫升）",nutrition:"富含β-胡蘿蔔素、膳食纖維及維生素 A，有助維持視力與免疫健康；建議減少奶油與鹽分，降低熱量攝取。"}
+      "糙米飯":{portion:"約1碗（熟飯約200克）",nutrition:"糙米含有膳食纖維及維生素 B 群；與白米混煮可讓口感較柔和。牙口較弱者仍需煮軟，並依實際咀嚼情況調整。"},
+      "地瓜飯":{portion:"約1碗（熟飯約200克）",nutrition:"地瓜含有膳食纖維、β-胡蘿蔔素及鉀，也會提供醣類；與飯同餐時，兩者份量應一起考量。"},
+      "五穀飯":{portion:"約1碗（熟飯約200克）",nutrition:"不同五穀配方的營養差異很大，一般可增加膳食纖維與主食變化；烹煮前充分浸泡並煮軟，較方便咀嚼。"},
+      "白米飯":{portion:"約1碗（熟飯約200克）",nutrition:"白米飯主要提供醣類，是日常能量來源之一；搭配豆魚蛋肉類與蔬菜，比單獨吃白飯更完整。"},
+      "藜麥飯":{portion:"約1碗（熟飯約200克）",nutrition:"藜麥含有蛋白質及膳食纖維，但混入飯中的實際比例會影響營養量，不能取代一份豆魚蛋肉類。"},
+      "紫米飯":{portion:"約1碗（熟飯約200克）",nutrition:"紫米外層含有花青素與膳食纖維；與白米混煮可調整黏度與口感，牙口較弱者可再煮軟。"},
+      "胚芽米飯":{portion:"約1碗（熟飯約200克）",nutrition:"胚芽米保留部分胚芽，含有維生素 B 群與膳食纖維；煮前充分浸泡，可讓米粒更柔軟。"},
+      "小米粥":{portion:"約2碗（成品約400克；米量依稠度而異）",nutrition:"小米粥質地可煮得柔軟，但蛋白質通常有限；可搭配蛋、豆腐、魚或肉，並留意不同稠度的實際米量。"},
+      "燕麥粥":{portion:"約2碗（成品約400克；穀量依稠度而異）",nutrition:"燕麥含有膳食纖維；搭配牛奶或無糖豆漿可增加蛋白質，但實際攝取量仍會受燕麥與液體比例影響。"},
+      "糙米粥":{portion:"約2碗（成品約400克；米量依稠度而異）",nutrition:"糙米含有膳食纖維；先浸泡並煮至軟爛可減少咀嚼負擔，但吞嚥困難者仍需依專業評估調整質地。"},
+      "五穀粥":{portion:"約2碗（成品約400克；穀量依稠度而異）",nutrition:"五穀種類與比例不同，營養和口感也會不同；烹煮前充分浸泡並煮至顆粒柔軟，較方便咀嚼。"},
+      "蕎麥粥":{portion:"約2碗（成品約400克；穀量依稠度而異）",nutrition:"蕎麥含有膳食纖維，可增加主食變化；煮前充分浸泡並煮軟，並依個人咀嚼與吞嚥能力調整。"},
+      "清蒸鱸魚":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"鱸魚可提供蛋白質；脂肪酸含量會因魚種與部位而異。清蒸時宜少鹽，食用前也要仔細去刺。"},
+      "清炒菠菜":{portion:"約半碗（熟重約80克）",nutrition:"菠菜含有葉酸、β-胡蘿蔔素及鐵；植物性鐵的吸收會受整餐搭配影響，不宜只靠單一菜色補鐵。"},
+      "春筍炒肉絲":{portion:"約半碗（春筍約50克、肉絲約30克）",nutrition:"春筍可提供膳食纖維，肉絲可提供蛋白質；牙口較弱者可將筍切薄、煮軟，肉絲宜選瘦肉並少鹽調味。"},
+      "海帶芽豆腐湯":{portion:"約1碗（成品約240毫升）",nutrition:"豆腐可提供植物性蛋白質，鈣含量會因製作方式而異；海帶芽與調味料可能增加鈉，建議吃料為主、湯少量。"},
+      "滷瘦肉":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"瘦肉可提供蛋白質、鐵及維生素 B 群；滷汁通常含鈉較多，建議少淋滷汁並選擇較瘦部位。"},
+      "青花菜炒魷魚":{portion:"約半碗（青花菜約50克、魷魚約30克）",nutrition:"青花菜可提供膳食纖維與維生素 C，魷魚可提供蛋白質；牙口較弱者宜切小、煮至適當軟度。"},
+      "胡蘿蔔炒蛋":{portion:"約半碗（熟重約80克）",nutrition:"胡蘿蔔含有β-胡蘿蔔素，蛋可提供蛋白質；以少量油烹調，有利於脂溶性類胡蘿蔔素的吸收。"},
+      "香菇雞湯":{portion:"約1碗（成品約240毫升）",nutrition:"雞肉可提供蛋白質，香菇可增加食材變化；營養主要來自湯料，建議去皮、吃料為主並少量喝湯。"},
+      "蘿蔔燉豬肉":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"豬肉可提供蛋白質、鐵及維生素 B 群，白蘿蔔可增加蔬菜攝取；宜選瘦肉並控制醬油與鹽的用量。"},
+      "皮蛋地瓜葉":{portion:"約半碗（熟重約80克）",nutrition:"地瓜葉含有膳食纖維與β-胡蘿蔔素；皮蛋與醬料可能增加鈉，建議控制用量並減少額外調味。"},
+      "蝦仁炒蘆筍":{portion:"約半碗（蘆筍約50克、蝦仁約30克）",nutrition:"蝦仁可提供蛋白質，蘆筍含有葉酸與膳食纖維；牙口較弱者可去除較粗纖維並切小、煮軟。"},
+      "蘿蔔排骨湯":{portion:"約1碗（成品約240毫升）",nutrition:"排骨肉可提供蛋白質，白蘿蔔可增加蔬菜攝取；營養主要來自湯料，建議去除浮油、吃料為主並少量喝湯。"},
+      "蒜苗鹹豬肉":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"鹹豬肉的鈉與脂肪通常較高，較適合少量、偶爾食用；可增加蒜苗與其他蔬菜，並減少額外醬料。"},
+      "清炒空心菜":{portion:"約半碗（熟重約80克）",nutrition:"空心菜含有膳食纖維與β-胡蘿蔔素；牙口較弱者可切短、煮軟，並以少油、少鹽方式烹調。"},
+      "玉米筍炒菇":{portion:"約半碗（熟重約80克）",nutrition:"玉米筍與菇類可提供膳食纖維；玉米筍屬蔬菜，不應與成熟玉米一樣直接算作一份主食。"},
+      "冬瓜蛤蜊湯":{portion:"約1碗（成品約240毫升）",nutrition:"蛤蜊可提供蛋白質與礦物質；蛤蜊、湯底及調味料都可能帶入鈉，建議吃料為主並少量喝湯。"},
+      "洋蔥炒雞肉":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"雞肉可提供蛋白質；宜選去皮部位，控制烹調油與醬料用量，洋蔥則可增加蔬菜與風味。"},
+      "絲瓜炒蛋":{portion:"約半碗（熟重約80克）",nutrition:"蛋可提供蛋白質，絲瓜可增加蔬菜攝取；蛋的實際用量會影響蛋白質含量，這道配菜不一定能取代一份主菜。"},
+      "涼拌秋葵":{portion:"約半碗（熟重約80克）",nutrition:"秋葵含有膳食纖維；涼拌不代表質地一定柔軟，牙口較弱者仍需煮至適當軟度並切小。"},
+      "苦瓜排骨湯":{portion:"約1碗（成品約240毫升）",nutrition:"排骨肉可提供蛋白質，苦瓜可增加蔬菜攝取；這道湯不能取代血糖治療，建議去除浮油、吃料為主並少量喝湯。"},
+      "香煎虱目魚":{portion:"約1掌心大小（熟重約70–90克）",nutrition:"虱目魚可提供蛋白質，脂肪含量會因部位而異；煎製時控制用油，並仔細去除細刺。"},
+      "涼拌茄子":{portion:"約半碗（熟重約80克）",nutrition:"茄子含有膳食纖維，紫色外皮含花青素；涼拌醬汁可能含較多鈉，建議少醬並依牙口煮軟。"},
+      "清炒紅莧菜":{portion:"約半碗（熟重約80克）",nutrition:"紅莧菜含有膳食纖維、葉酸及β-胡蘿蔔素；可切短並煮至適當軟度，調味宜清淡。"},
+      "絲瓜豆腐湯":{portion:"約1碗（成品約240毫升）",nutrition:"豆腐可提供植物性蛋白質，絲瓜可增加蔬菜攝取；營養主要來自湯料，建議吃料為主並少量喝湯。"},
+      "清蒸鯛魚片":{portion:"約1掌心大小（熟重約70–90克）",nutrition:"鯛魚可提供蛋白質；清蒸可減少額外用油，仍需控制調味並確認魚刺已去除。"},
+      "花椰菜炒蝦仁":{portion:"約半碗（熟重約80克）",nutrition:"蝦仁可提供蛋白質，花椰菜含有膳食纖維與維生素 C；實際營養量會受兩種食材比例影響。"},
+      "南瓜燴菇":{portion:"約半碗（熟重約80克）",nutrition:"南瓜含有β-胡蘿蔔素，菇類可提供膳食纖維；南瓜也會提供醣類，份量較多時要與飯量一起考量。"},
+      "栗子雞腿湯":{portion:"約1碗（成品約240毫升）",nutrition:"雞肉可提供蛋白質，栗子則屬含澱粉食材；若吃下較多栗子，可相應減少飯量，並以吃料為主、湯少量。"},
+      "馬鈴薯燉肉":{portion:"約半碗至1碗（熟重約120克）",nutrition:"肉類可提供蛋白質，馬鈴薯屬全穀雜糧類並會提供醣類；與飯同餐時，兩者份量應一起計算。"},
+      "清炒高麗菜":{portion:"約半碗（熟重約80克）",nutrition:"高麗菜含有膳食纖維與維生素 C；牙口較弱者可切小、煮軟，並以少油、少鹽方式烹調。"},
+      "三杯杏鮑菇":{portion:"約半碗（熟重約80克）",nutrition:"杏鮑菇可提供膳食纖維；三杯料理常使用較多麻油、醬油與糖，建議減量調味並控制份量。"},
+      "菱角香菇雞湯":{portion:"約1碗（成品約240毫升）",nutrition:"雞肉可提供蛋白質，菱角則屬含澱粉食材；若吃下較多菱角，可相應減少飯量，並以吃料為主、湯少量。"},
+      "南瓜咖喱雞":{portion:"約1掌心大小（熟重約70–90克）",nutrition:"雞肉可提供蛋白質，南瓜含有β-胡蘿蔔素並會提供醣類；咖喱塊或醬的鈉與脂肪可能較高，用量宜適度。"},
+      "芹菜炒肉絲":{portion:"約半碗（熟重約80克）",nutrition:"肉絲可提供蛋白質，芹菜可增加蔬菜攝取；芹菜纖維較明顯，牙口較弱者可切細並煮軟。"},
+      "蒜炒青江菜":{portion:"約半碗（熟重約80克）",nutrition:"青江菜含有膳食纖維、β-胡蘿蔔素與鈣；實際含量會受品種與份量影響，烹調宜少油少鹽。"},
+      "蓮藕排骨湯":{portion:"約1碗（成品約240毫升）",nutrition:"排骨肉可提供蛋白質，蓮藕也會提供醣類；若吃下較多蓮藕，可相應減少飯量，並以吃料為主、湯少量。"},
+      "香煎鮭魚":{portion:"約1掌心大小（熟重約70–90克）",nutrition:"鮭魚含有蛋白質與 Omega-3 脂肪酸，實際含量會因魚種與部位而異；煎製時控制用油與鹽。"},
+      "青江菜炒豆皮":{portion:"約半碗（熟重約80克）",nutrition:"豆皮可提供植物性蛋白質，青江菜可增加蔬菜攝取；豆製品的鈣與鈉含量會因製法和產品而異。"},
+      "菠菜炒羊肉":{portion:"約半碗（熟重約80克）",nutrition:"羊肉可提供蛋白質與鐵，菠菜含有葉酸與β-胡蘿蔔素；宜選較瘦部位並控制油與鹽。"},
+      "蘿蔔牛腩湯":{portion:"約1碗（成品約240毫升）",nutrition:"牛腩可提供蛋白質，但部分部位脂肪較多；建議去除明顯油脂、吃料為主並少量喝湯。"},
+      "薑絲鱈魚片":{portion:"約1掌心大小（熟重約70–90克）",nutrition:"魚肉可提供蛋白質；購買時宜確認實際魚種，烹調以少油、少鹽為原則並仔細去刺。"},
+      "台式白菜滷":{portion:"約半碗（熟重約80克）",nutrition:"白菜可提供膳食纖維；白菜滷的配方差異大，蝦米、醬油、加工肉與勾芡都可能增加鈉或熱量。"},
+      "番茄炒蛋":{portion:"約半碗（熟重約80克）",nutrition:"蛋可提供蛋白質，番茄含有茄紅素；實際營養量會受蛋與番茄比例影響，烹調時宜控制油和調味。"},
+      "麻油雞湯":{portion:"約1碗（成品約240毫升）",nutrition:"雞肉可提供蛋白質，但麻油會增加熱量；若加入米酒，酒精不一定完全揮發，需避免酒精者應改用無酒版本。"},
+      "照燒松阪豬":{portion:"約1掌心大小（熟重約70–80克）",nutrition:"松阪豬可提供蛋白質，但脂肪通常較多；照燒醬也可能含較多糖與鈉，建議縮小份量並少醬。"},
+      "蒜炒油菜":{portion:"約半碗（熟重約80克）",nutrition:"油菜含有膳食纖維、β-胡蘿蔔素與維生素 C；牙口較弱者可切小、煮軟，烹調宜少油少鹽。"},
+      "山藥炒菇":{portion:"約半碗（熟重約80克）",nutrition:"山藥會提供醣類，菇類可提供膳食纖維；與飯同餐且山藥份量較多時，可相應減少飯量。"},
+      "南瓜濃湯":{portion:"約1碗（成品約240毫升）",nutrition:"南瓜含有β-胡蘿蔔素並會提供醣類；若未濾渣可保留較多纖維，奶油或鮮奶油用量則會影響熱量與飽和脂肪。"}
     };
     const S={
-      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#4f7754",desc:"春筍、蘆筍正當季，適合搭配清蒸魚與清淡湯品。",menus:[
-        [["清蒸鱸魚","11—3月"],["清炒菠菜","11—3月"],["春筍炒肉絲","3—5月"],["海帶芽豆腐湯","2—4月"]],
-        [["滷瘦肉","全年皆宜"],["青花菜炒魷魚","11—4月／4—9月"],["胡蘿蔔炒蛋","12—4月"],["香菇雞湯","12—3月"]],
-        [["蘿蔔燉豬肉","11—3月"],["皮蛋地瓜葉","4—11月"],["蝦仁炒蘆筍","3—6月"],["蘿蔔排骨湯","11—3月"]]]},
-      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#956b32",desc:"絲瓜、苦瓜與秋葵水分多，天熱時吃起來較清爽。",menus:[
-        [["蒜苗鹹豬肉","11—2月"],["清炒空心菜","5—10月"],["玉米筍炒菇","7—9月"],["冬瓜蛤蜊湯","4—10月"]],
-        [["洋蔥炒雞肉","12—4月"],["絲瓜炒蛋","5—9月"],["涼拌秋葵","5—9月"],["苦瓜排骨湯","5—9月"]],
-        [["香煎虱目魚","7—11月"],["涼拌茄子","5—11月"],["清炒紅莧菜","5—10月"],["絲瓜豆腐湯","5—9月"]]]},
-      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#8a533e",desc:"南瓜、菱角與栗子帶有自然甜味，煮軟後也方便入口。",menus:[
-        [["清蒸鯛魚片","9—11月"],["花椰菜炒蝦仁","11—4月"],["南瓜燴菇","12—7月"],["栗子雞腿湯","8—10月"]],
-        [["馬鈴薯燉肉","1—3月"],["清炒高麗菜","11—4月（最佳）"],["三杯杏鮑菇","全年皆宜"],["菱角香菇雞湯","9—11月"]],
-        [["南瓜咖喱雞","12—7月"],["芹菜炒肉絲","10—4月"],["蒜炒青江菜","9—4月"],["蓮藕排骨湯","5—10月"]]]},
-      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#4f6f76",desc:"白蘿蔔、葉菜與熱湯上桌，料理以溫熱、軟嫩為主。",menus:[
-        [["香煎鮭魚","9—12月"],["青江菜炒豆皮","9—4月"],["菠菜炒羊肉","11—4月"],["蘿蔔牛腩湯","11—3月"]],
-        [["薑絲鱈魚片","全年皆宜"],["台式白菜滷","9—4月"],["番茄炒蛋","12—4月"],["麻油雞湯","11—2月"]],
-        [["照燒松阪豬","全年皆宜"],["蒜炒油菜","11—3月"],["山藥炒菇","10—2月"],["南瓜濃湯","12—7月"]]]}
+      spring:{label:"春",en:"SPRING",months:"3—5月",cue:"新芽",color:"#4f7754",desc:"春筍、蘆筍常見於春季，可依當地供應搭配清蒸魚與清淡湯品。",menus:[
+        [["清蒸鱸魚","全年可搭配"],["清炒菠菜","菠菜 11—3月"],["春筍炒肉絲","春筍 3—5月"],["海帶芽豆腐湯","全年可搭配"]],
+        [["滷瘦肉","全年可搭配"],["青花菜炒魷魚","青花菜 11—4月"],["胡蘿蔔炒蛋","胡蘿蔔 12—4月"],["香菇雞湯","香菇 12—3月"]],
+        [["蘿蔔燉豬肉","白蘿蔔 11—3月"],["皮蛋地瓜葉","地瓜葉 4—11月"],["蝦仁炒蘆筍","蘆筍 3—6月"],["蘿蔔排骨湯","白蘿蔔 11—3月"]]]},
+      summer:{label:"夏",en:"SUMMER",months:"6—8月",cue:"盛陽",color:"#956b32",desc:"絲瓜、苦瓜與秋葵多見於夏季，適合用少油、清爽的方式料理。",menus:[
+        [["蒜苗鹹豬肉","蒜苗 11—2月"],["清炒空心菜","空心菜 5—10月"],["玉米筍炒菇","玉米筍 7—9月"],["冬瓜蛤蜊湯","冬瓜 4—10月"]],
+        [["洋蔥炒雞肉","洋蔥 12—4月"],["絲瓜炒蛋","絲瓜 5—9月"],["涼拌秋葵","秋葵 5—9月"],["苦瓜排骨湯","苦瓜 5—9月"]],
+        [["香煎虱目魚","虱目魚 7—11月"],["涼拌茄子","茄子 5—11月"],["清炒紅莧菜","紅莧菜 5—10月"],["絲瓜豆腐湯","絲瓜 5—9月"]]]},
+      autumn:{label:"秋",en:"AUTUMN",months:"9—11月",cue:"豐收",color:"#8a533e",desc:"菱角與栗子常見於秋季；南瓜產期依產地與品種而異，皆可依牙口煮軟。",menus:[
+        [["清蒸鯛魚片","全年可搭配"],["花椰菜炒蝦仁","花椰菜 11—4月"],["南瓜燴菇","南瓜 12—7月"],["栗子雞腿湯","栗子 8—10月"]],
+        [["馬鈴薯燉肉","馬鈴薯 1—3月"],["清炒高麗菜","高麗菜 11—4月"],["三杯杏鮑菇","全年可搭配"],["菱角香菇雞湯","菱角 9—11月"]],
+        [["南瓜咖喱雞","南瓜 12—7月"],["芹菜炒肉絲","芹菜 10—4月"],["蒜炒青江菜","青江菜 9—4月"],["蓮藕排骨湯","蓮藕 5—10月"]]]},
+      winter:{label:"冬",en:"WINTER",months:"12—2月",cue:"暖藏",color:"#4f6f76",desc:"白蘿蔔與多種葉菜常見於冷涼季節，料理可依牙口調整為溫熱、軟嫩。",menus:[
+        [["香煎鮭魚","全年可搭配"],["青江菜炒豆皮","青江菜 9—4月"],["菠菜炒羊肉","菠菜 11—3月"],["蘿蔔牛腩湯","白蘿蔔 11—3月"]],
+        [["薑絲鱈魚片","全年可搭配"],["台式白菜滷","白菜 9—4月"],["番茄炒蛋","番茄 12—4月"],["麻油雞湯","全年可搭配"]],
+        [["照燒松阪豬","全年可搭配"],["蒜炒油菜","油菜 11—3月"],["山藥炒菇","山藥 10—2月"],["南瓜濃湯","南瓜 12—7月"]]]}
     };
     const labels=["主食","主菜","配菜一","配菜二","湯品"];
     const stateKey="four-seasons-plate-v2";
@@ -2280,9 +2280,9 @@
     document.addEventListener("click",event=>{if(!teamNameNote.hidden&&!teamTitleWrap.contains(event.target))setTeamNameNoteOpen(false)});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!teamNameNote.hidden)setTeamNameNoteOpen(false,true)});
     const teamPointDetails=[
-      {title:"四季好時",copy:"依時節精心篩選，切換當令菜色即可尋覓此刻滋味。"},
+      {title:"四季好時",copy:"每套餐盤融入一至多項時令食材；產期會因地區、品種與供應而不同。"},
       {title:"份量與營養",copy:"每道料理附上建議份量與營養重點，資訊更容易查找。"},
-      {title:"柔軟質地",copy:"切小、煮軟與清淡調味，讓入口更舒服。"},
+      {title:"柔軟質地",copy:"切小、煮軟可方便咀嚼；若有吞嚥困難，仍需由專業人員評估質地。"},
       {title:"自由搭配",copy:"自由保留、切換各道料理，打造專屬於自己的套餐菜色。"}
     ];
     const teamPointButtons=[...document.querySelectorAll("[data-team-point]")],teamDetailPanel=document.getElementById("team-detail"),teamCopy=document.querySelector(".team-top .team-copy");
@@ -2299,19 +2299,19 @@
     function selectedItems(key=season,indices=idx){return pools(key).map((pool,i)=>{const d=pool[indices[i]%pool.length],name=Array.isArray(d)?d[0]:d;return{category:labels[i],name,portion:foodInfo[name]?.portion||"",month:i===0?"全年可選":(d[1]||"全年皆宜")}})}
     function mealSignals(){
       const items=selectedItems(),names=items.map(item=>item.name),staple=names[0]||"主食",mainDish=names[1]||"主菜",sides=names.slice(2,4),soup=names[4]||"湯品";
-      return{items,names,staple,mainDish,sides,soup,wholeGrain:/(糙米|五穀|燕麥|紫米|藜麥|薏仁)/.test(staple),fishName:names.find(name=>/(魚|鮭|鯖|虱目|鱈|鯛|秋刀)/.test(name)),chilledName:names.find(name=>/(涼拌|冷拌|生菜)/.test(name)),strongName:names.find(name=>/(鹹豬肉|三杯|糖醋|紅燒|滷|照燒|醬燒|麻婆|咖哩|麻油|臘|香腸)/.test(name)),heartySoup:/(濃湯|雞湯|排骨湯|牛腩湯|肉羹|佛跳牆)/.test(soup),fattyName:names.find(name=>/(肥肉|肉皮|松阪|奶油|酥皮|油炸|炸|麻油)/.test(name)),starchyName:names.slice(1).find(name=>/(地瓜|南瓜|馬鈴薯|山藥|玉米|栗子|菱角|蓮藕|芋頭)/.test(name)),leafyName:sides.find(name=>/(空心菜|菠菜|高麗菜|青江菜|油菜|莧菜|地瓜葉|芹菜|花椰菜|青花菜|白菜|秋葵|絲瓜|茄子|蘆筍|苦瓜)/.test(name)),extraProtein:sides.find(name=>/(蛋|豆腐|豆皮|豆干|毛豆|肉|羊|牛|豬|雞|魚|蝦|魷魚)/.test(name))}
+      return{items,names,staple,mainDish,sides,soup,wholeGrain:/(糙米|五穀|燕麥|紫米|藜麥|薏仁|小米|蕎麥|胚芽)/.test(staple),fishName:names.find(name=>/(魚|鮭|鯖|虱目|鱈|鯛|秋刀)/.test(name)),chilledName:names.find(name=>/(涼拌|冷拌|生菜)/.test(name)),strongName:names.find(name=>/(鹹豬肉|三杯|糖醋|紅燒|滷|照燒|醬燒|麻婆|咖哩|咖喱|麻油|臘|香腸)/.test(name)),heartySoup:/(濃湯|雞湯|排骨湯|牛腩湯|肉羹|佛跳牆)/.test(soup),fattyName:names.find(name=>/(肥肉|肉皮|松阪|奶油|酥皮|油炸|炸|麻油)/.test(name)),starchyName:names.slice(1).find(name=>/(地瓜|南瓜|馬鈴薯|山藥|玉米(?!筍)|栗子|菱角|蓮藕|芋頭)/.test(name)),leafyName:sides.find(name=>/(空心菜|菠菜|高麗菜|青江菜|油菜|莧菜|地瓜葉|芹菜|花椰菜|青花菜|白菜|秋葵|絲瓜|茄子|蘆筍|苦瓜)/.test(name)),extraProtein:sides.find(name=>/(蛋|豆腐|豆皮|豆干|毛豆|肉|羊|牛|豬|雞|魚|蝦|魷魚)/.test(name))}
     }
     function plateAdvice(){
       const signal=mealSignals(),{staple,mainDish,sides,soup,wholeGrain,fishName,chilledName,strongName,heartySoup,fattyName,starchyName,leafyName,extraProtein}=signal;
       const pressureSelected=healthConditions.has("pressure"),sugarSelected=healthConditions.has("sugar"),lipidSelected=healthConditions.has("lipid"),mainPortion=foodInfo[mainDish]?.portion||"約1掌心";
       let proteinTitle="先把蛋白質吃夠",proteinText=extraProtein?mainDish+"建議"+mainPortion+"；"+extraProtein+"也能補充蛋白質。食量較小時先吃這兩樣，再吃飯與湯，比較不容易蛋白質吃不夠。":mainDish+"建議"+mainPortion+"；食量較小時先吃主菜，再吃飯與湯，比較不容易蛋白質吃不夠。";
       if(lipidSelected){proteinTitle="血脂留意：豆魚瘦肉優先";proteinText=fishName?fishName+"可作為這餐較合適的蛋白質，份量以約一掌心為參考，烹調以蒸、煮為主。"+(fattyName?"同餐的"+fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):"蛋白質可優先保留豆類、魚類或瘦肉，肉類去皮並避免油炸。"+(fattyName?fattyName+"建議減量或改用較清爽的料理方式。":"食用油仍要適量。")}
-      if(dailyConcern==="nourish"){if(!lipidSelected)proteinTitle="營養密度：先保留蛋白質";proteinText=mainDish+"建議"+mainPortion+"；若這餐吃不完，先保留主菜與含蛋白質的配菜。粥與湯體積大但營養較稀，別先喝湯占滿胃口。"}
-      let stapleTitle=starchyName?"澱粉別重複吃":"主食份量抓剛好",stapleText=starchyName?staple+"與"+starchyName+"都會提供澱粉；同餐時可減少"+staple+"的份量，避免澱粉重複吃過量。":wholeGrain?staple+"屬全穀雜糧選擇，份量可先抓約1碗，再依食慾與活動量調整。":staple+"份量可先抓約1碗，再依食慾與活動量調整。";
-      if(sugarSelected){stapleTitle="血糖留意：澱粉合併計算";stapleText=starchyName?staple+"和"+starchyName+"都算澱粉，建議同餐合併抓固定份量；可少一點"+staple+"，並搭配蛋白質與蔬菜。":staple+"建議維持固定份量，優先選全穀雜糧，和主菜、蔬菜一起吃；含糖飲料與果汁先不加入這餐。"}
+      if(dailyConcern==="nourish"){if(!lipidSelected)proteinTitle="營養密度：先保留蛋白質";proteinText=mainDish+"建議"+mainPortion+"；若這餐吃不完，先保留主菜與含蛋白質的配菜。不要先喝大量湯，以免正餐吃不下。"}
+      const staplePortion=foodInfo[staple]?.portion||"依個人需求調整";let stapleTitle=starchyName?"醣類份量一起看":"主食份量抓剛好",stapleText=starchyName?staple+"與"+starchyName+"都會提供醣類；同餐時可減少"+staple+"的份量，避免總量過多。":staple+"可先參考"+staplePortion+"，再依食慾、活動量與個人需求調整。";
+      if(sugarSelected){stapleTitle="血糖留意：澱粉合併計算";stapleText=starchyName?staple+"和"+starchyName+"都會提供醣類，建議同餐合併考量；可少一點"+staple+"，並搭配蛋白質與蔬菜。":staple+"建議維持相對固定的份量，優先選全穀雜糧，和主菜、蔬菜一起吃；含糖飲料與果汁先不加入這餐。"}
       const vegetableText=leafyName?leafyName+"可作為這餐的主要蔬菜；兩道配菜合計以超過一個拳頭為目標。"+(extraProtein?extraProtein+"同時含有蛋白質，若蔬菜量不多，可再補一些青菜。":"可搭配不同顏色的蔬菜，增加纖維與營養多樣性。"):"兩道配菜合計以超過一個拳頭為目標；若以蛋、肉或根莖類為主，建議再補一份深綠色蔬菜。";
-      let careTitle=strongName||heartySoup?"湯與醬汁要節制":fishName||chilledName?"質地安全再入口":"切小煮軟更好入口",careText=strongName?strongName+"的醬汁、鹽分或油脂可能較高，建議少淋醬、去除肥油；"+soup+"以吃料為主，湯汁淺嚐即可。":heartySoup?soup+"可能含較多鹽、油脂或勾芡，建議小碗盛裝；自行料理時可減少奶油、鹽與勾芡。":fishName?fishName+"建議蒸、煮至軟嫩並仔細去刺；牙口較弱者可切小，避免乾煎得太硬。":chilledName?chilledName+"可改成溫拌，並依牙口切小、煮軟，減少生冷與咀嚼負擔。":"主菜與配菜可切小、煮軟，肉類逆紋切薄；若用餐常嗆咳，應請醫療專業人員評估。";
-      if(pressureSelected){careTitle="血壓留意：少湯、少醬";careText=[strongName,soup].filter(Boolean).join("、")+"建議以吃料為主，醬汁與湯汁淺嚐即可；料理時可用薑、蒜、蔥、菇類增添香氣。"}
+      let careTitle=strongName||heartySoup?"湯與醬汁要節制":fishName||chilledName?"質地安全再入口":"切小煮軟更好入口",careText=strongName?strongName+"的醬汁、鹽分或油脂可能較高，建議少淋醬、去除肥油；"+soup+"以吃料為主，湯汁淺嚐即可。":heartySoup?soup+"可能含較多鹽或油脂，建議小碗盛裝、吃料為主；自行料理時可去除浮油並減少鹽與醬料。":fishName?fishName+"建議蒸、煮至軟嫩並仔細去刺；牙口較弱者可切小，避免乾煎得太硬。":chilledName?chilledName+"雖是涼拌，質地不一定柔軟；仍要依牙口切小、煮軟，吞嚥困難者需個別評估。":"主菜與配菜可切小、煮軟，肉類逆紋切薄；若用餐常嗆咳，應請醫療專業人員評估。";
+      if(pressureSelected){careTitle="血壓留意：少湯、少醬";careText=(strongName?strongName+"少淋醬；":"")+soup+"以吃料為主、湯汁淺嚐即可；料理時可用薑、蒜、蔥、菇類增添香氣。"}
       if(dailyConcern==="cook"){careTitle="質地調整：不是越稀越安全";careText=mainDish+"與"+sides.join("、")+"可先煮到能用叉子輕壓，肉類逆紋切薄並保持濕潤。若已有吞嚥困難，飲品與餐食稠度要依專業評估，不要只自行加水或勾芡。"}
       if(dailyConcern==="safe"){careTitle="吞嚥安全：吸管未必更安全";careText="進食時坐直、一次一小口，吞完再吃下一口。"+(fishName?fishName+"要仔細去刺；":"")+"曾嗆咳者是否適合吸管與稀水，應由專業人員個別評估。"}
       if(dailyConcern==="observe"){careTitle="餐後也要看：聲音與殘留";careText="吃完若聲音變濕濁、反覆清喉嚨、口中有殘留，或用餐時間愈來愈長，都可能是吞嚥警訊；持續發生請尋求專業評估。"}
@@ -2323,7 +2323,7 @@
       [...list.children].forEach((card,i)=>{const item=items[i];if(!item)return;card.querySelector(".advice-number").textContent="建議 "+item.number;card.querySelector("h4").textContent=item.title;card.querySelector("p").textContent=item.text});
       renderReminderResults();
     }
-    function conditionGuidance(key){const {staple,mainDish,soup,strongName,starchyName,fishName,fattyName}=mealSignals();if(key==="pressure")return(strongName?strongName+"的醬汁少淋；":"")+"這餐的"+soup+"以吃料為主、湯汁淺嚐。";if(key==="sugar")return starchyName?staple+"與"+starchyName+"都算澱粉，可減少"+staple+"的份量並搭配主菜與蔬菜。":staple+"份量盡量固定，和"+mainDish+"及蔬菜一起吃，飲料選無糖。";return fishName?fishName+"可優先保留，烹調以蒸、煮為主。"+(fattyName?fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):(fattyName?fattyName+"建議減量，主菜可改選豆類、魚類或較瘦的肉。":"主菜"+mainDish+"注意去皮、去除明顯油脂，並避免油炸。")}
+    function conditionGuidance(key){const {staple,mainDish,soup,strongName,starchyName,fishName,fattyName}=mealSignals();if(key==="pressure")return(strongName?strongName+"的醬汁少淋；":"")+"這餐的"+soup+"以吃料為主、湯汁淺嚐。";if(key==="sugar")return starchyName?staple+"與"+starchyName+"都會提供醣類，可減少"+staple+"的份量並搭配主菜與蔬菜。":staple+"份量盡量固定，和"+mainDish+"及蔬菜一起吃，飲料選無糖。";return fishName?fishName+"可優先保留，烹調以蒸、煮為主。"+(fattyName?fattyName+"建議減量或去除明顯油脂。":"其他肉類可去皮、挑瘦部位。"):(fattyName?fattyName+"建議減量，主菜可改選豆類、魚類或較瘦的肉。":"主菜"+mainDish+"注意去皮、去除明顯油脂，並避免油炸。")}
     function scrollExpandedCardIntoView(card){if(!card)return;clearViewportJumpGuard();requestAnimationFrame(()=>requestAnimationFrame(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches,behavior=reduced?"auto":"smooth",scroller=card.closest(".notes");if(scroller&&scroller.scrollWidth>scroller.clientWidth){const cardRect=card.getBoundingClientRect(),scrollerRect=scroller.getBoundingClientRect(),left=scroller.scrollLeft+cardRect.left-scrollerRect.left-(scroller.clientWidth-cardRect.width)/2;scroller.scrollTo({left:Math.max(0,left),behavior})}const header=document.querySelector("header"),offset=(header?.offsetHeight||68)+14,top=Math.max(0,Math.round(card.getBoundingClientRect().top+window.scrollY-offset));window.scrollTo({top,behavior})}))}
     function syncDailyNoteGrid(){const grid=document.getElementById("daily-note-grid");if(grid)grid.classList.toggle("has-open-note",Boolean(grid.querySelector(".note.is-open:not([hidden])")))}function setDailyNoteOpen(button,open){const card=button.closest("[data-daily-note]"),details=document.getElementById(button.getAttribute("aria-controls")),mark=button.querySelector(".note-expand-mark");if(!card||!details)return;const update=()=>{button.setAttribute("aria-expanded",String(open));details.hidden=!open;card.classList.toggle("is-open",open);if(mark)mark.textContent=open?"－":"＋";syncDailyNoteGrid()};if(open){update();scrollExpandedCardIntoView(card)}else updateWithoutViewportJump(update)}function toggleDailyNote(button){setDailyNoteOpen(button,button.getAttribute("aria-expanded")!=="true")}function renderDailyReminder(){document.querySelectorAll("[data-daily-filter]").forEach(button=>{const active=button.dataset.dailyFilter===dailyConcern,label=dailyConcernLabels[button.dataset.dailyFilter];button.setAttribute("aria-pressed",String(active));button.setAttribute("aria-label",(active?"移除":"選擇")+label+"留意項目");button.title=active?"再次點選可移除":""});document.querySelectorAll("[data-daily-note]").forEach(card=>{const related=!dailyConcern||(card.dataset.dailyNote||"").split(" ").includes(dailyConcern);card.hidden=!related;card.classList.toggle("is-related",Boolean(dailyConcern&&related))});document.getElementById("daily-note-grid")?.classList.toggle("is-filtered",Boolean(dailyConcern));syncDailyNoteGrid()}
     function renderConditionReminder(){document.querySelectorAll("[data-health-card]").forEach(card=>{const key=card.dataset.healthCard,open=healthConditions.has(key);card.classList.toggle("is-open",open);const button=card.querySelector("[data-health-condition]"),details=card.querySelector(".carecard-details"),plate=card.querySelector(".carecard-plate");if(button)button.setAttribute("aria-expanded",String(open));if(details)details.hidden=!open;if(plate&&open)plate.textContent=conditionGuidance(key)})}
@@ -2359,17 +2359,17 @@
         const dishes=s.menus[i],details=menu.querySelector(".menu-details"),track=menu.querySelector(".menu-dish-track");if(!dishes||!details||!track)return;
         menu.querySelector(".menu-season").textContent=s.months;menu.querySelector(".menu-summary b").textContent=s.label+"季餐盤 "+String(i+1).padStart(2,"0");track.setAttribute("aria-label",s.label+"季餐盤 "+(i+1)+" 的四道菜色，可左右滑動");
         const current=menuTrackIndex(track);
-        [...track.children].forEach((slide,j)=>{const dish=dishes[j];if(!dish)return;const name=dish[0],month=dish[1]||"全年皆宜",image=slide.querySelector("img"),src=tableFoodImage(name);slide.dataset.food=name;slide.dataset.category=labels[j+1];slide.querySelector(".menu-dish-category").textContent=labels[j+1];slide.querySelector(".menu-dish-name").textContent=name;slide.querySelector(".menu-dish-month").textContent=month;if(details.hidden){delete image.dataset.requestedSrc;if(image.getAttribute("src")!==src)image.src=src;image.alt=name+"完整料理圖"}else swapImageWhenReady(image,src,name+"完整料理圖",j===current?"high":"auto")});
+        [...track.children].forEach((slide,j)=>{const dish=dishes[j];if(!dish)return;const name=dish[0],month=dish[1]||"全年皆宜",image=slide.querySelector("img"),src=tableFoodImage(name);slide.dataset.food=name;slide.dataset.category=labels[j+1];slide.querySelector(".menu-dish-category").textContent=labels[j+1];slide.querySelector(".menu-dish-name").textContent=name;slide.querySelector(".menu-dish-month").textContent="主要食材參考｜"+month;if(details.hidden){delete image.dataset.requestedSrc;if(image.getAttribute("src")!==src)image.src=src;image.alt=name+"完整料理圖"}else swapImageWhenReady(image,src,name+"完整料理圖",j===current?"high":"auto")});
         syncMenuCarousel(track);
       });
     }
     function render(){
       const s=S[season],items=selectedItems();updateSeasonChrome();
-      document.getElementById("meal-cards").innerHTML=items.map((item,i)=>`<article class="meal"><span class="mealmeta"><span>0${i+1} · ${item.category}</span><button type="button" class="keep" aria-pressed="${locked[i]}" aria-label="${locked[i]?"取消保留":"保留"}${item.name}" onclick="toggleLock(${i})">${locked[i]?"✓ 已保留":"○ 保留"}</button></span><div class="meal-reel-window"><div class="meal-reel-content"><button type="button" class="dish" data-food="${item.name}" data-category="${item.category}">${item.name}</button><span class="month">${item.month}</span></div></div><div class="meal-actions"><button type="button" class="info-link" data-food="${item.name}" data-category="${item.category}">份量與營養</button><button type="button" aria-label="更換${item.category}${item.name}" onclick="nextItem(${i})">換一項 ＋</button></div></article>`).join("");
+      document.getElementById("meal-cards").innerHTML=items.map((item,i)=>`<article class="meal"><span class="mealmeta"><span>0${i+1} · ${item.category}</span><button type="button" class="keep" aria-pressed="${locked[i]}" aria-label="${locked[i]?"取消保留":"保留"}${item.name}" onclick="toggleLock(${i})">${locked[i]?"✓ 已保留":"○ 保留"}</button></span><div class="meal-reel-window"><div class="meal-reel-content"><button type="button" class="dish" data-food="${item.name}" data-category="${item.category}">${item.name}</button><span class="month">主要食材參考｜${item.month}</span></div></div><div class="meal-actions"><button type="button" class="info-link" data-food="${item.name}" data-category="${item.category}">份量與營養</button><button type="button" aria-label="更換${item.category}${item.name}" onclick="nextItem(${i})">換一項 ＋</button></div></article>`).join("");
       const currentStaple=items[0].name;
       document.getElementById("current-staple").textContent=currentStaple;document.getElementById("current-staple-portion").textContent=foodInfo[currentStaple].portion;document.getElementById("current-staple-info").dataset.food=currentStaple;
       document.querySelectorAll(".staple").forEach((card,i)=>{const selected=i===idx[0]%staples.length,button=card.querySelector(".staple-pick");card.classList.toggle("selected",selected);button.textContent=selected?"已選用":"選入";button.disabled=selected;button.setAttribute("aria-pressed",String(selected))});
-      document.getElementById("menu-grid").innerHTML=s.menus.map((m,i)=>{const detailId=`menu-details-${i}`,trackId=`menu-dish-track-${i}`,statusId=`menu-dish-status-${i}`;return `<article class="menu"><div class="menuhead"><div class="menu-number"><small>餐盤</small><b>0${i+1}</b></div><span class="menu-season">${s.months}</span></div><div class="menu-summary"><b>${s.label}季餐盤 ${String(i+1).padStart(2,"0")}</b><p>主菜・配菜二道・湯品</p></div><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="${detailId}" onclick="toggleMenu(${i})">查看這套餐盤 <span aria-hidden="true">＋</span></button><div class="menu-details" id="${detailId}" hidden><div class="menu-carousel-shell"><button type="button" class="menu-swipe-arrow prev" aria-label="上一道菜" onclick="slideMenuDish(event,'${trackId}',-1)">‹</button><div class="menu-dish-track" id="${trackId}" data-status="${statusId}" tabindex="0" aria-label="${s.label}季餐盤 ${i+1} 的四道菜色，可左右滑動">${m.map((d,j)=>`<button type="button" class="menu-dish-slide" data-food="${d[0]}" data-category="${labels[j+1]}"><span class="menu-dish-photo"><img src="${tableFoodImage(d[0])}" alt="${d[0]}完整料理圖" width="720" height="620" loading="lazy" decoding="async"></span><span class="menu-dish-copy"><span class="menu-dish-category">${labels[j+1]}</span><b class="menu-dish-name">${d[0]}</b><small class="menu-dish-month">${d[1]||"全年皆宜"}</small><span class="menu-dish-link">份量與營養</span></span></button>`).join("")}</div><button type="button" class="menu-swipe-arrow next" aria-label="下一道菜" onclick="slideMenuDish(event,'${trackId}',1)">›</button></div><div class="menu-carousel-meta"><span class="menu-dish-position" id="${statusId}" aria-live="polite">1 / ${m.length}</span><span>左右滑動看本套餐盤</span></div><button type="button" class="apply" aria-pressed="false" onclick="applyMenu(event,${i})"><span class="apply-label">套用這套餐盤</span><span class="apply-icon" aria-hidden="true">→</span></button></div></article>`}).join("");
+      document.getElementById("menu-grid").innerHTML=s.menus.map((m,i)=>{const detailId=`menu-details-${i}`,trackId=`menu-dish-track-${i}`,statusId=`menu-dish-status-${i}`;return `<article class="menu"><div class="menuhead"><div class="menu-number"><small>餐盤</small><b>0${i+1}</b></div><span class="menu-season">${s.months}</span></div><div class="menu-summary"><b>${s.label}季餐盤 ${String(i+1).padStart(2,"0")}</b><p>主菜・配菜二道・湯品</p></div><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="${detailId}" onclick="toggleMenu(${i})">查看這套餐盤 <span aria-hidden="true">＋</span></button><div class="menu-details" id="${detailId}" hidden><div class="menu-carousel-shell"><button type="button" class="menu-swipe-arrow prev" aria-label="上一道菜" onclick="slideMenuDish(event,'${trackId}',-1)">‹</button><div class="menu-dish-track" id="${trackId}" data-status="${statusId}" tabindex="0" aria-label="${s.label}季餐盤 ${i+1} 的四道菜色，可左右滑動">${m.map((d,j)=>`<button type="button" class="menu-dish-slide" data-food="${d[0]}" data-category="${labels[j+1]}"><span class="menu-dish-photo"><img src="${tableFoodImage(d[0])}" alt="${d[0]}完整料理圖" width="720" height="620" loading="lazy" decoding="async"></span><span class="menu-dish-copy"><span class="menu-dish-category">${labels[j+1]}</span><b class="menu-dish-name">${d[0]}</b><small class="menu-dish-month">主要食材參考｜${d[1]||"全年皆宜"}</small><span class="menu-dish-link">份量與營養</span></span></button>`).join("")}</div><button type="button" class="menu-swipe-arrow next" aria-label="下一道菜" onclick="slideMenuDish(event,'${trackId}',1)">›</button></div><div class="menu-carousel-meta"><span class="menu-dish-position" id="${statusId}" aria-live="polite">1 / ${m.length}</span><span>左右滑動看本套餐盤</span></div><button type="button" class="apply" aria-pressed="false" onclick="applyMenu(event,${i})"><span class="apply-label">套用這套餐盤</span><span class="apply-icon" aria-hidden="true">→</span></button></div></article>`}).join("");
       setupMenuCarousels();
       document.getElementById("plate-list").innerHTML=items.map((item,i)=>`<li><button type="button" class="table-dish-button" aria-label="目前${item.category}${item.name}，點一下更換${i===0?"下一種主食":"同季另一道料理"}" onclick="nextSummaryItem(${i})"><span class="table-dish-hit" aria-hidden="true"></span><span class="table-dish-photo"><img src="${tableFoodImage(item.name)}" alt="" width="720" height="620" loading="eager" decoding="async" fetchpriority="high"></span><span class="table-refresh" aria-hidden="true">↻</span></button></li>`).join("");saveState();preloadSelectedItems("high");prefetchUpcomingItems();renderPlateAdvice();
     }
@@ -2427,10 +2427,10 @@
     function finishFoodDialogSwipe(event,cancelled=false){const start=dialogSwipeStart;if(!start||start.pointerId!==event.pointerId)return;const currentX=cancelled?start.lastX:(Number.isFinite(event.clientX)?event.clientX:start.lastX),deltaX=currentX-start.x,horizontal=start.axis==="x",velocity=start.velocityX;dialogSwipeStart=null;try{foodDialog.releasePointerCapture(event.pointerId)}catch(error){}if(horizontal&&(Math.abs(deltaX)>=9||Math.abs(velocity)>=.08)){completeFoodDialogSwipe(deltaX<0||(!deltaX&&velocity<0)?1:-1)}else resetFoodDialogDrag(horizontal)}
     function cancelFoodDialogSwipe(event){finishFoodDialogSwipe(event,true)}
     function closeFoodInfo(){dialogRequestId++;dialogCategoryIndex=-1;dialogPoolIndex=-1;dialogSwipeStart=null;dialogSwipeAnimating=false;clearTimeout(dialogSwipeTimer);foodDialog.classList.remove("is-swiping","is-swipe-settling");setFoodDialogDrag(0,1);if(typeof foodDialog.close==="function"&&foodDialog.open)foodDialog.close();else foodDialog.removeAttribute("open")}
-    function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量為一般參考，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
+    function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量以熟食概估，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
     async function copyPlate(){const text=plateText();try{await navigator.clipboard.writeText(text)}catch(error){const area=document.createElement("textarea");area.value=text;area.style.position="fixed";area.style.opacity="0";document.body.appendChild(area);area.select();document.execCommand("copy");area.remove()}document.getElementById("share-status").textContent="餐盤文字已複製。"}
     async function sharePlate(){if(navigator.share){try{await navigator.share({title:"高齡健康餐盤指南｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
-    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("高齡健康餐盤指南",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("新食慢嚐，代代港香",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("建議份量為一般參考，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新食代・新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`高齡健康餐盤指南-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
+    function downloadPlate(){const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),items=selectedItems(),s=S[season];canvas.width=1200;canvas.height=1200;ctx.fillStyle="#fff9ed";ctx.fillRect(0,0,1200,1200);ctx.fillStyle=s.color;ctx.fillRect(0,0,24,1200);ctx.fillStyle="#24352f";ctx.font='700 30px "Noto Sans TC", sans-serif';ctx.fillText("高齡健康餐盤指南",84,92);ctx.font='500 58px "Noto Serif TC", serif';ctx.fillText(s.label+"季・我的餐盤",84,170);ctx.font='400 22px "Noto Sans TC", sans-serif';ctx.fillStyle="#5e655f";ctx.fillText("新食慢嚐，代代港香",84,218);items.forEach((item,i)=>{const y=286+i*145;ctx.fillStyle="#fffef9";ctx.fillRect(72,y,1056,116);ctx.fillStyle=s.color;ctx.font='700 21px "Noto Sans TC", sans-serif';ctx.fillText(item.category,100,y+43);ctx.fillStyle="#24352f";ctx.font='600 34px "Noto Serif TC", serif';ctx.fillText(item.name,260,y+48);ctx.fillStyle="#5e655f";ctx.font='400 21px "Noto Sans TC", sans-serif';ctx.fillText(item.portion,260,y+85)});ctx.fillStyle="#5e655f";ctx.font='400 19px "Noto Sans TC", sans-serif';ctx.fillText("份量以熟食概估，實際飲食請依個人健康狀況調整。",84,1062);ctx.fillStyle="#24352f";ctx.font='500 20px "Noto Sans TC", sans-serif';ctx.fillText("新港文教基金會｜「新食代・新港覺」",84,1110);ctx.fillStyle=s.color;ctx.fillRect(84,1144,1038,3);try{const link=document.createElement("a");link.href=canvas.toDataURL("image/png");link.download=`高齡健康餐盤指南-${s.label}季餐盤.png`;document.body.appendChild(link);link.click();link.remove();document.getElementById("share-status").textContent="餐盤圖卡已下載。"}catch(error){document.getElementById("share-status").textContent="圖卡產生失敗，請稍後再試。"}}
     loadState();preloadSelectedItems("high");
     document.querySelectorAll("[data-daily-filter]").forEach(button=>button.addEventListener("click",()=>selectDailyConcern(button.dataset.dailyFilter)));
     document.querySelectorAll("[data-note-toggle]").forEach(button=>button.addEventListener("click",()=>toggleDailyNote(button)));document.querySelectorAll("[data-health-condition]").forEach(button=>button.addEventListener("click",()=>toggleHealthCondition(button.dataset.healthCondition)));
