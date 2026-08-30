@@ -1989,6 +1989,23 @@
       #planner .staple-pick{min-width:60px;font-size:17px}
     }
 
+    /* 餐盤摘要標題：放大字級並補足上下留白，維持舒展的閱讀節奏。 */
+    #planner .plate-summary .summary-head{
+      margin-bottom:clamp(28px,2.4vw,38px);
+      padding:6px 0 10px;
+    }
+    #planner .plate-summary .summary-head h3{
+      font-size:clamp(36px,3vw,46px);
+      line-height:1.35;
+    }
+    @media(max-width:700px){
+      #planner .plate-summary .summary-head{
+        margin-bottom:24px;
+        padding:4px 0 8px;
+      }
+      #planner .plate-summary .summary-head h3{font-size:34px}
+    }
+
     /* 切換狀態時只更新必要內容，避免大面積色彩過場與 iOS 點擊灰幕造成閃屏。 */
     html{scroll-behavior:auto}
     button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -2145,6 +2162,18 @@
         </div>
         <div class="footer-related-group footer-foundation-group">
           <a class="footer-related-brand footer-foundation-brand" href="https://www.hkfce.org.tw/" target="_blank" rel="noopener noreferrer" aria-label="前往新港文教基金會官方網站，另開新視窗"><img src="assets/hkfce-wordmark-footer.png?v=20260829-2" width="1156" height="292" alt="新港文教基金會"></a>
+          <section class="footer-social" aria-label="新港文教基金會社群連結">
+            <div class="footer-social-links">
+              <a class="footer-social-link" href="https://www.facebook.com/hkfce1987/" target="_blank" rel="noopener noreferrer" aria-label="前往新港文教基金會 Facebook，另開新視窗">
+                <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 8H17V4h-3.3C10.5 4 9 5.9 9 8.8V11H6v4h3v7h4v-7h3.2l.8-4H13V9.2c0-.8.4-1.2 1.2-1.2Z"/></svg></span>
+                <span class="footer-social-copy"><b>Facebook</b></span>
+              </a>
+              <a class="footer-social-link" href="https://www.instagram.com/hkfce1987/" target="_blank" rel="noopener noreferrer" aria-label="前往新港文教基金會 Instagram，另開新視窗">
+                <span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span>
+                <span class="footer-social-copy"><b>Instagram</b></span>
+              </a>
+            </div>
+          </section>
         </div>
       </div>
       <div class="footer-link-column">
