@@ -1945,6 +1945,43 @@
       }
     }
 
+    /* 主食展開區：寬螢幕善用兩側空間，並提高高齡使用者的閱讀與點按尺寸。 */
+    section.block#planner{padding-inline:clamp(18px,3vw,64px)}
+    #planner .planner,
+    #planner .plate-summary,
+    #planner .plate-advice{max-width:1640px}
+    #planner .staple-drawer{padding:8px clamp(26px,2.4vw,42px) 34px}
+    #planner .staple-note{margin-bottom:18px;font-size:18px;line-height:1.7}
+    #planner .staples{grid-template-columns:repeat(3,minmax(0,1fr))}
+    #planner .staple{
+      min-height:100px;
+      grid-template-columns:34px minmax(0,1fr) auto;
+      gap:14px;
+      padding:16px 18px;
+    }
+    #planner .staple>span{font-size:16px;line-height:1.5}
+    #planner .staple-info b{font-size:23px;line-height:1.4;font-weight:650}
+    #planner .staple-info small{margin-top:5px;font-size:17px;line-height:1.55}
+    #planner .staple-pick{
+      min-width:64px;
+      min-height:50px;
+      padding:9px 12px;
+      font-size:18px;
+      line-height:1.4;
+    }
+    @media(max-width:1180px){
+      #planner .staples{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:700px){
+      section.block#planner{padding-inline:16px}
+      #planner .staple-drawer{padding:8px 16px 24px}
+      #planner .staples{grid-template-columns:1fr}
+      #planner .staple{min-height:94px;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;padding:14px 12px}
+      #planner .staple-info b{font-size:22px}
+      #planner .staple-info small{font-size:16px}
+      #planner .staple-pick{min-width:60px;font-size:17px}
+    }
+
     /* 切換狀態時只更新必要內容，避免大面積色彩過場與 iOS 點擊灰幕造成閃屏。 */
     html{scroll-behavior:auto}
     button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
