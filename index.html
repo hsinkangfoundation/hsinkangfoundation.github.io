@@ -389,20 +389,20 @@
     .table-dish-button:hover .table-refresh,.table-dish-button:focus-visible .table-refresh{opacity:1;transform:rotate(50deg)}
     #food-dialog{box-sizing:border-box;width:min(940px,calc(100% - 32px));height:min(660px,calc(100svh - 32px));height:min(660px,calc(100dvh - 24px));max-height:calc(100svh - 32px);max-height:calc(100dvh - 24px);border-radius:28px;background:#fffdf8;overflow:hidden;overscroll-behavior:contain}
     #food-dialog::backdrop{background:rgba(31,33,29,.58);backdrop-filter:none}
-    #food-dialog .dialog-inner{height:100%;min-height:0;padding:0;overflow:hidden;touch-action:pan-y;overscroll-behavior-x:contain}
+    html.food-dialog-open{overflow:hidden;overscroll-behavior:none}
+    html.food-dialog-open body{overscroll-behavior:none}
+    #food-dialog .dialog-inner{height:100%;min-height:0;padding:0;overflow:hidden;touch-action:pan-y pinch-zoom;overscroll-behavior-x:contain}
     #food-dialog .dialog-close{z-index:3;border-color:rgba(69,54,43,.22);border-radius:50%;background:rgba(255,253,247,.94);box-shadow:0 5px 16px rgba(52,40,31,.12)}
     #food-dialog .dialog-nav{display:none}
     #food-dialog .dialog-nav[hidden]{display:none!important}
     @media(min-width:701px){#food-dialog .dialog-nav{position:absolute;z-index:4;top:50%;width:48px;height:48px;padding:0;border:1px solid rgba(69,54,43,.2);border-radius:50%;display:grid;place-items:center;background:rgba(255,253,247,.96);color:var(--accent);font:500 34px/1 Arial,sans-serif;box-shadow:0 7px 20px rgba(52,40,31,.14);transform:translateY(-50%);transition:transform .12s ease,box-shadow .12s ease;cursor:pointer;-webkit-tap-highlight-color:transparent}#food-dialog .dialog-nav.prev{left:16px}#food-dialog .dialog-nav.next{right:16px}#food-dialog .dialog-nav:hover{transform:translateY(-50%) scale(1.06);box-shadow:0 9px 24px rgba(52,40,31,.2)}#food-dialog .dialog-nav:active{transform:translateY(-50%) scale(.96)}#food-dialog .dialog-nav:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 64%,#fff);outline-offset:3px}}
-    .dialog-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);height:100%;min-height:0;max-height:none;overflow:hidden}
-    .dialog-image-stage,.dialog-copy-content{transform:translate3d(var(--dialog-drag-x,0px),0,0)}
-    #food-dialog.is-swiping .dialog-image-stage,#food-dialog.is-swiping .dialog-copy-content,#food-dialog.is-swipe-settling .dialog-image-stage,#food-dialog.is-swipe-settling .dialog-copy-content{will-change:transform}
-    #food-dialog.is-swipe-settling .dialog-image-stage,#food-dialog.is-swipe-settling .dialog-copy-content{transition:transform .09s cubic-bezier(.22,.78,.25,1)}
+    .dialog-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);height:100%;min-height:0;max-height:none;overflow:hidden;touch-action:pan-y pinch-zoom}
+    .dialog-image-stage,.dialog-copy-content{transform:none}
     .dialog-media{position:relative;z-index:1;box-sizing:border-box;width:100%;max-width:none;min-width:0;min-height:0;margin:0;padding:0;border:0;outline:0;box-shadow:none;align-self:stretch;display:grid;place-items:center;overflow:hidden;background:var(--dish-bg,color-mix(in srgb,var(--accent) 7%,#f5eee3))}
     .dialog-image-stage{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
     .dialog-media img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;display:block;border:0;border-radius:0;box-shadow:none;object-fit:contain;object-position:center;opacity:0;visibility:hidden;pointer-events:none;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;backface-visibility:hidden;-webkit-backface-visibility:hidden}
     .dialog-media img.is-active{opacity:1;visibility:visible}
-    .dialog-copy{position:relative;z-index:0;min-width:0;min-height:0;height:100%;padding:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable}
+    .dialog-copy{position:relative;z-index:0;min-width:0;min-height:0;height:100%;padding:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable}
     .dialog-copy-content{box-sizing:border-box;min-width:0;min-height:100%;padding:clamp(34px,4.4vw,58px);display:flex;flex-direction:column;justify-content:center}
     .dialog-meta{margin:0 48px 7px 0;display:flex;align-items:center;gap:12px}
     #food-dialog .dialog-category{margin:0}
@@ -2326,10 +2326,11 @@
     const labels=["主食","主菜","配菜一","配菜二","湯品"];
     const stateKey="four-seasons-plate-v2";
     const foodDialog=document.getElementById("food-dialog");
+    const dialogGestureSurface=document.querySelector("#food-dialog .dialog-layout");
     const dialogImages=[document.getElementById("dialog-image"),document.getElementById("dialog-image-buffer")];
     const stapleDrawer=document.getElementById("staple-drawer");
     const stapleToggle=document.getElementById("staple-toggle");
-    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],dialogRequestId=0,dialogCategoryIndex=-1,dialogPoolIndex=-1,dialogSwipeStart=null,dialogSwipeTimer=0,dialogPlannerSyncTimer=0,dialogActiveImageIndex=0,healthConditions=new Set(),dailyConcern="cook",lastViewportAnchor=null;
+    let season=detectSeason(),idx=[0,0,0,0,0],locked=[false,false,false,false,false],dialogRequestId=0,dialogCategoryIndex=-1,dialogPoolIndex=-1,dialogSwipeStart=null,dialogPlannerSyncTimer=0,dialogPendingPlannerIndex=-1,dialogActiveImageIndex=0,dialogPageScrollY=0,dialogPageLocked=false,dialogBodyStyles=null,healthConditions=new Set(),dailyConcern="cook",lastViewportAnchor=null;
     const rememberViewportAnchor=event=>{const target=event.target instanceof Element?event.target.closest("button,a,[role='button']"):null;if(target)lastViewportAnchor=target};
     document.addEventListener("pointerdown",rememberViewportAnchor,{capture:true,passive:true});document.addEventListener("click",rememberViewportAnchor,true);
     const conditionLabels={pressure:"血壓",sugar:"血糖",lipid:"血脂"},dailyConcernLabels={cook:"料理質地",nourish:"營養密度",safe:"吞嚥安全",observe:"異常警訊"};
@@ -2487,18 +2488,68 @@
       const activeImage=dialogImages[dialogActiveImageIndex],inactiveImage=dialogImages[(dialogActiveImageIndex+1)%dialogImages.length];if(firstOpen){inactiveImage.classList.remove("is-active");inactiveImage.setAttribute("aria-hidden","true");inactiveImage.alt="";activeImage.src=lowSrc;activeImage.dataset.dialogFood=name;activeImage.alt=name+"料理照片";activeImage.removeAttribute("aria-hidden");activeImage.classList.add("is-active")}
       if(highAsset?.image.naturalWidth)showHigh();else{if(!firstOpen){if(lowAsset?.image.naturalWidth)showLow();else lowAsset?.ready.then(showLow)}highAsset?.ready.then(showHigh)}preloadDialogNeighbors()
     }
-    function showFoodInfo(name,category){if(!foodInfo[name])return;setDialogBrowseState(name,category);updateFoodDialog(name,category,true);if(typeof foodDialog.showModal==="function"&&!foodDialog.open)foodDialog.showModal();else foodDialog.setAttribute("open","")}
-    function scheduleDialogPlannerSync(categoryIndex,scrollTop){clearTimeout(dialogPlannerSyncTimer);dialogPlannerSyncTimer=setTimeout(()=>{updatePlannerItemsNow([categoryIndex]);if(Math.abs(window.scrollY-scrollTop)>.5)window.scrollTo({top:scrollTop,left:0,behavior:"auto"})},112)}
-    function navigateFoodDialog(direction){if(dialogCategoryIndex<0||dialogPoolIndex<0)return;const pool=pools()[dialogCategoryIndex];if(pool.length<2)return;dialogPoolIndex=(dialogPoolIndex+direction+pool.length)%pool.length;const categoryIndex=dialogCategoryIndex,poolIndex=dialogPoolIndex,name=dialogEntryName(pool[poolIndex]),category=labels[categoryIndex],scrollTop=window.scrollY;idx[categoryIndex]=poolIndex;saveState();updateFoodDialog(name,category);announce(category+"已換成"+name);scheduleDialogPlannerSync(categoryIndex,scrollTop)}
-    function setFoodDialogDrag(x){foodDialog.style.setProperty("--dialog-drag-x",x+"px")}
-    function resetFoodDialogDrag(animate=true){foodDialog.classList.remove("is-swiping");foodDialog.classList.toggle("is-swipe-settling",animate);requestAnimationFrame(()=>setFoodDialogDrag(0));clearTimeout(dialogSwipeTimer);dialogSwipeTimer=setTimeout(()=>foodDialog.classList.remove("is-swipe-settling"),110)}
-    function completeFoodDialogSwipe(direction){dialogSwipeStart=null;clearTimeout(dialogSwipeTimer);foodDialog.classList.remove("is-swiping","is-swipe-settling");navigateFoodDialog(direction);setFoodDialogDrag(direction>0?28:-28);requestAnimationFrame(()=>requestAnimationFrame(()=>{foodDialog.classList.add("is-swipe-settling");setFoodDialogDrag(0)}));dialogSwipeTimer=setTimeout(()=>foodDialog.classList.remove("is-swipe-settling"),110)}
-    function captureFoodDialogSwipe(start){if(start.captured)return;try{foodDialog.setPointerCapture(start.pointerId);start.captured=true}catch(error){}}
-    function startFoodDialogSwipe(event){if(!foodDialog.open||event.isPrimary===false||event.pointerType==="mouse"||(event.target instanceof Element&&event.target.closest("button,a")))return;clearTimeout(dialogSwipeTimer);foodDialog.classList.remove("is-swipe-settling");setFoodDialogDrag(0);dialogSwipeStart={pointerId:event.pointerId,x:event.clientX,y:event.clientY,lastX:event.clientX,lastTime:performance.now(),velocityX:0,axis:"",captured:false}}
-    function moveFoodDialogSwipe(event){const start=dialogSwipeStart;if(!start||start.pointerId!==event.pointerId)return;const deltaX=event.clientX-start.x,deltaY=event.clientY-start.y,absX=Math.abs(deltaX),absY=Math.abs(deltaY),distance=Math.hypot(deltaX,deltaY);if(!start.axis&&distance>=4){if(absY>absX*1.08)start.axis="y";else if(absX>absY*1.08)start.axis="x";else if(distance>=12)start.axis=absX>absY?"x":"y";if(start.axis==="x")captureFoodDialogSwipe(start)}if(start.axis!=="x")return;if(event.cancelable)event.preventDefault();const now=performance.now(),elapsed=Math.max(now-start.lastTime,1),instantVelocity=(event.clientX-start.lastX)/elapsed;start.velocityX=start.velocityX*.45+instantVelocity*.55;start.lastX=event.clientX;start.lastTime=now;foodDialog.classList.add("is-swiping");setFoodDialogDrag(Math.sign(deltaX)*Math.min(absX*.52,52))}
-    function finishFoodDialogSwipe(event){const start=dialogSwipeStart;if(!start||start.pointerId!==event.pointerId)return;const currentX=Number.isFinite(event.clientX)?event.clientX:start.lastX,deltaX=currentX-start.x,horizontal=start.axis==="x",velocity=start.velocityX;dialogSwipeStart=null;if(start.captured)try{foodDialog.releasePointerCapture(event.pointerId)}catch(error){}if(horizontal&&(Math.abs(deltaX)>=8||Math.abs(velocity)>=.08))completeFoodDialogSwipe(deltaX<0||(!deltaX&&velocity<0)?1:-1);else resetFoodDialogDrag(horizontal)}
-    function cancelFoodDialogSwipe(event){const start=dialogSwipeStart;if(!start||start.pointerId!==event.pointerId)return;dialogSwipeStart=null;if(start.captured)try{foodDialog.releasePointerCapture(event.pointerId)}catch(error){}if(start.axis==="x")resetFoodDialogDrag(true)}
-    function closeFoodInfo(){dialogRequestId++;dialogCategoryIndex=-1;dialogPoolIndex=-1;dialogSwipeStart=null;clearTimeout(dialogSwipeTimer);foodDialog.classList.remove("is-swiping","is-swipe-settling");setFoodDialogDrag(0);if(typeof foodDialog.close==="function"&&foodDialog.open)foodDialog.close();else foodDialog.removeAttribute("open")}
+    function lockFoodDialogPage(){
+      if(dialogPageLocked)return;
+      const body=document.body,scrollbarGap=Math.max(0,window.innerWidth-document.documentElement.clientWidth),computedPadding=parseFloat(getComputedStyle(body).paddingRight)||0;
+      dialogPageScrollY=Math.max(0,window.scrollY||window.pageYOffset||0);
+      dialogBodyStyles={position:body.style.position,top:body.style.top,left:body.style.left,right:body.style.right,width:body.style.width,overflow:body.style.overflow,paddingRight:body.style.paddingRight};
+      document.documentElement.classList.add("food-dialog-open");
+      body.style.position="fixed";body.style.top=`-${dialogPageScrollY}px`;body.style.left="0";body.style.right="0";body.style.width="100%";body.style.overflow="hidden";if(scrollbarGap>0)body.style.paddingRight=(computedPadding+scrollbarGap)+"px";
+      dialogPageLocked=true
+    }
+    function unlockFoodDialogPage(){
+      if(!dialogPageLocked)return;
+      const body=document.body,scrollTop=dialogPageScrollY,styles=dialogBodyStyles||{};
+      Object.keys(styles).forEach(property=>{body.style[property]=styles[property]});
+      document.documentElement.classList.remove("food-dialog-open");dialogPageLocked=false;dialogBodyStyles=null;
+      window.scrollTo({top:scrollTop,left:0,behavior:"auto"});
+      requestAnimationFrame(()=>{if(!foodDialog.open&&Math.abs(window.scrollY-scrollTop)>.5)window.scrollTo({top:scrollTop,left:0,behavior:"auto"})})
+    }
+    function showFoodInfo(name,category){
+      if(!foodInfo[name])return;
+      lockFoodDialogPage();
+      try{setDialogBrowseState(name,category);updateFoodDialog(name,category,true);if(typeof foodDialog.showModal==="function"&&!foodDialog.open)foodDialog.showModal();else foodDialog.setAttribute("open","")}
+      catch(error){unlockFoodDialogPage();throw error}
+    }
+    function flushDialogPlannerSync(){clearTimeout(dialogPlannerSyncTimer);dialogPlannerSyncTimer=0;const categoryIndex=dialogPendingPlannerIndex;dialogPendingPlannerIndex=-1;if(categoryIndex>=0)updatePlannerItemsNow([categoryIndex])}
+    function scheduleDialogPlannerSync(categoryIndex){clearTimeout(dialogPlannerSyncTimer);dialogPendingPlannerIndex=categoryIndex;dialogPlannerSyncTimer=setTimeout(flushDialogPlannerSync,96)}
+    function navigateFoodDialog(direction){if(dialogCategoryIndex<0||dialogPoolIndex<0)return;const pool=pools()[dialogCategoryIndex];if(pool.length<2)return;dialogPoolIndex=(dialogPoolIndex+direction+pool.length)%pool.length;const categoryIndex=dialogCategoryIndex,poolIndex=dialogPoolIndex,name=dialogEntryName(pool[poolIndex]),category=labels[categoryIndex];idx[categoryIndex]=poolIndex;saveState();updateFoodDialog(name,category);announce(category+"已換成"+name);scheduleDialogPlannerSync(categoryIndex)}
+    function beginFoodDialogSwipe(source,id,x,y,target){
+      if(!foodDialog.open||(target instanceof Element&&target.closest("button,a")))return false;
+      dialogSwipeStart={source,id,x,y,lastX:x,lastTime:performance.now(),velocityX:0,axis:"",captured:false};return true
+    }
+    function moveFoodDialogSwipePoint(source,id,x,y,event){
+      const start=dialogSwipeStart;if(!start||start.source!==source||start.id!==id)return;
+      const deltaX=x-start.x,deltaY=y-start.y,absX=Math.abs(deltaX),absY=Math.abs(deltaY),distance=Math.hypot(deltaX,deltaY);
+      if(!start.axis&&distance>=5){if(absX>absY*1.12)start.axis="x";else if(absY>absX*1.05)start.axis="y";else if(distance>=14)start.axis=absX>=absY?"x":"y"}
+      if(start.axis!=="x")return;
+      if(event.cancelable)event.preventDefault();
+      const now=performance.now(),elapsed=Math.max(now-start.lastTime,1),instantVelocity=(x-start.lastX)/elapsed;start.velocityX=start.velocityX*.4+instantVelocity*.6;start.lastX=x;start.lastTime=now
+    }
+    function finishFoodDialogSwipePoint(source,id,x){
+      const start=dialogSwipeStart;if(!start||start.source!==source||start.id!==id)return;
+      const deltaX=(Number.isFinite(x)?x:start.lastX)-start.x,velocity=start.velocityX,horizontal=start.axis==="x",shouldSwitch=horizontal&&(Math.abs(deltaX)>=18||(Math.abs(deltaX)>=10&&Math.abs(velocity)>=.18));
+      dialogSwipeStart=null;if(shouldSwitch)navigateFoodDialog(deltaX<0||(!deltaX&&velocity<0)?1:-1)
+    }
+    function cancelFoodDialogSwipePoint(source,id){const start=dialogSwipeStart;if(start&&start.source===source&&start.id===id)dialogSwipeStart=null}
+    function findDialogTouch(touches,id){for(let i=0;i<touches.length;i++)if(touches[i].identifier===id)return touches[i];return null}
+    function startFoodDialogTouchSwipe(event){if(event.touches.length!==1)return;const touch=event.touches[0];beginFoodDialogSwipe("touch",touch.identifier,touch.clientX,touch.clientY,event.target)}
+    function moveFoodDialogTouchSwipe(event){const start=dialogSwipeStart;if(!start||start.source!=="touch")return;if(event.touches.length!==1){cancelFoodDialogSwipePoint("touch",start.id);return}const touch=findDialogTouch(event.touches,start.id);if(touch)moveFoodDialogSwipePoint("touch",start.id,touch.clientX,touch.clientY,event)}
+    function finishFoodDialogTouchSwipe(event){const start=dialogSwipeStart;if(!start||start.source!=="touch")return;const touch=findDialogTouch(event.changedTouches,start.id);finishFoodDialogSwipePoint("touch",start.id,touch?touch.clientX:start.lastX)}
+    function cancelFoodDialogTouchSwipe(){const start=dialogSwipeStart;if(start?.source==="touch")dialogSwipeStart=null}
+    function startFoodDialogSwipe(event){
+      if(event.isPrimary===false||event.pointerType==="mouse"||(event.pointerType==="touch"&&"ontouchstart" in window))return;
+      if(beginFoodDialogSwipe("pointer",event.pointerId,event.clientX,event.clientY,event.target))try{dialogGestureSurface.setPointerCapture(event.pointerId);dialogSwipeStart.captured=true}catch(error){}
+    }
+    function moveFoodDialogSwipe(event){moveFoodDialogSwipePoint("pointer",event.pointerId,event.clientX,event.clientY,event)}
+    function finishFoodDialogSwipe(event){const start=dialogSwipeStart;if(!start||start.source!=="pointer"||start.id!==event.pointerId)return;if(start.captured)try{dialogGestureSurface.releasePointerCapture(event.pointerId)}catch(error){}finishFoodDialogSwipePoint("pointer",event.pointerId,event.clientX)}
+    function cancelFoodDialogSwipe(event){const start=dialogSwipeStart;if(!start||start.source!=="pointer"||start.id!==event.pointerId)return;if(start.captured)try{dialogGestureSurface.releasePointerCapture(event.pointerId)}catch(error){}cancelFoodDialogSwipePoint("pointer",event.pointerId)}
+    function completeFoodDialogSwipe(direction){dialogSwipeStart=null;navigateFoodDialog(direction)}
+    function closeFoodInfo(){
+      dialogRequestId++;dialogCategoryIndex=-1;dialogPoolIndex=-1;dialogSwipeStart=null;flushDialogPlannerSync();
+      if(typeof foodDialog.close==="function"&&foodDialog.open)foodDialog.close();else foodDialog.removeAttribute("open");
+      unlockFoodDialogPage()
+    }
     function plateText(){const s=S[season],lines=selectedItems().map(item=>`${item.category}｜${item.name}｜${item.portion}`);return `高齡健康餐盤指南｜${s.label}季我的餐盤\n${lines.join("\n")}\n\n份量以熟食概估，請依個人健康狀況調整。\nhttps://hsinkangfoundation.github.io/`}
     async function copyPlate(){const text=plateText();try{await navigator.clipboard.writeText(text)}catch(error){const area=document.createElement("textarea");area.value=text;area.style.position="fixed";area.style.opacity="0";document.body.appendChild(area);area.select();document.execCommand("copy");area.remove()}document.getElementById("share-status").textContent="餐盤文字已複製。"}
     async function sharePlate(){if(navigator.share){try{await navigator.share({title:"高齡健康餐盤指南｜我的餐盤",text:plateText(),url:"https://hsinkangfoundation.github.io/"});document.getElementById("share-status").textContent="餐盤已開啟分享。";return}catch(error){if(error.name==="AbortError")return}}await copyPlate();document.getElementById("share-status").textContent="此裝置不支援直接分享，餐盤文字已複製。"}
@@ -2511,7 +2562,9 @@
     staples.forEach((x,i)=>document.getElementById("staples").insertAdjacentHTML("beforeend",`<div class="staple"><span>${String(i+1).padStart(2,"0")}</span><button type="button" class="staple-info" data-food="${x}" data-category="主食"><b>${x}</b><small>查看份量與營養</small></button><button type="button" class="staple-pick" aria-pressed="false" onclick="selectStaple(${i})">選入</button></div>`));
     stapleToggle.onclick=()=>{const opening=stapleDrawer.hidden;if(opening)setStapleDrawer(true);else updateWithoutViewportJump(()=>setStapleDrawer(false),stapleToggle)};
     document.addEventListener("click",event=>{const trigger=event.target.closest("[data-food]");if(trigger)showFoodInfo(trigger.dataset.food,trigger.dataset.category)});
-    document.getElementById("dialog-close").onclick=closeFoodInfo;document.getElementById("dialog-prev").onclick=()=>completeFoodDialogSwipe(-1);document.getElementById("dialog-next").onclick=()=>completeFoodDialogSwipe(1);foodDialog.addEventListener("click",event=>{if(event.target===foodDialog)closeFoodInfo()});foodDialog.addEventListener("pointerdown",startFoodDialogSwipe);foodDialog.addEventListener("pointermove",moveFoodDialogSwipe,{passive:false});foodDialog.addEventListener("pointerup",finishFoodDialogSwipe);foodDialog.addEventListener("pointercancel",cancelFoodDialogSwipe);foodDialog.addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();navigateFoodDialog(-1)}if(event.key==="ArrowRight"){event.preventDefault();navigateFoodDialog(1)}});
+    document.getElementById("dialog-close").onclick=closeFoodInfo;document.getElementById("dialog-prev").onclick=()=>completeFoodDialogSwipe(-1);document.getElementById("dialog-next").onclick=()=>completeFoodDialogSwipe(1);
+    foodDialog.addEventListener("click",event=>{if(event.target===foodDialog)closeFoodInfo()});foodDialog.addEventListener("cancel",event=>{event.preventDefault();closeFoodInfo()});foodDialog.addEventListener("close",()=>{if(dialogPageLocked)unlockFoodDialogPage()});foodDialog.addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();navigateFoodDialog(-1)}if(event.key==="ArrowRight"){event.preventDefault();navigateFoodDialog(1)}});
+    dialogGestureSurface.addEventListener("touchstart",startFoodDialogTouchSwipe,{passive:true});dialogGestureSurface.addEventListener("touchmove",moveFoodDialogTouchSwipe,{passive:false});dialogGestureSurface.addEventListener("touchend",finishFoodDialogTouchSwipe,{passive:true});dialogGestureSurface.addEventListener("touchcancel",cancelFoodDialogTouchSwipe,{passive:true});dialogGestureSurface.addEventListener("pointerdown",startFoodDialogSwipe);dialogGestureSurface.addEventListener("pointermove",moveFoodDialogSwipe,{passive:false});dialogGestureSurface.addEventListener("pointerup",finishFoodDialogSwipe);dialogGestureSurface.addEventListener("pointercancel",cancelFoodDialogSwipe);
     document.getElementById("season-prev").onclick=()=>shiftSeason(-1);document.getElementById("season-next").onclick=()=>shiftSeason(1);
     document.getElementById("season-visual-track").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();shiftSeason(-1)}if(event.key==="ArrowRight"){event.preventDefault();shiftSeason(1)}});
     document.querySelectorAll("[data-season-slide]").forEach(slide=>slide.addEventListener("click",()=>changeSeason(slide.dataset.seasonSlide)));
